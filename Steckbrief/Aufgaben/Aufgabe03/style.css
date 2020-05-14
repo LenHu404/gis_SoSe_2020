@@ -1,67 +1,192 @@
-
-h1 {
-    text-align: center;
-    background: rgba(148, 235, 235, 0.747)
-}
-
-
 body {
+    background-image: url(bg.png);
+}
+
+main {
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: medium;
-    background: rgba(201, 238, 238, 0.933)
-    
 }
 
-header nav ul {
-    justify-content: center;
-    list-style: none;
-    background-color: rgb(114, 235, 184);
-    padding: 0px;
-    font-family: Arial, Helvetica, sans-serif;
-    word-spacing: -0.25em;
-    
+.active {
+    color: #4CAF50;
+    ;
 }
 
-header nav ul li {
-    justify-content: center;
-    text-align: center;
-    display: inline-block;
-    width: 400px;
-    padding: 5px;
-    border-right: 1px solid black;
-    margin: 0;
-    word-spacing: 0;
-    text-decoration: none;
+.unactive {
+    color: rgb(255, 255, 255);
+    ;
 }
 
-header nav ul li:hover {
-    background-color: rgb(189, 241, 220);
+header nav {
+    position: fixed;
+    top: 0px;
+    left: 60%;
+    width: 320px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(25, 49, 29);
     color: white;
-    box-shadow: 2px 2px 10px black;
-    text-decoration: none;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
 
+header nav a {
+    color: white;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: rgb(215, 231, 66);
+}
+
+header {
+    background-color: rgb(79, 160, 126);
+    height: 900px;
+    width: 900px;
+    border-radius: 50%;
+    margin: -450px auto auto auto;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+header h1 {
+    padding-top: 40%;
+    font-size: 200px;
+    text-decoration: underline;
+    cursor: wait;
+}
+
+header p {
+    text-align: right;
+    margin-top: -130px;
+    width: 200px;
+    margin-left: 550px;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 19pt;
+}
+
+#imFeld h1 {
+    padding-top: 40%;
+    font-size: 200px;
+}
+
+#imFeld p {
+    width: 300px;
+    margin-top: -155px;
+    margin-left: 400px;
+    font-size: 45px;
+}
+
+#imFeld img {
+    height: 40px;
+    width: 40px;
+    margin-top: 80px;
+    padding: 10px 8px 8px 10px;
+}
+
+#imFeld img:hover {
+    height: 45px;
+    width: 45px;
+    margin-top: 80px;
+    padding: 6px 6px 6px 6px;
+    background-color: teal;
+    border-radius: 20%
+}
+
+#imFeld a {
+    text-decoration: none;
+}
+
+#info h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17pt;
+    color: rgb(25, 49, 29)
+}
+
+#info {
+    margin-left: 29%;
+    width: 800px;
+    text-align: left;
+    color: rgb(79, 160, 126);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15pt;
+}
+
+.showcase iframe {
+    width: 800px;
+    height: 600px;
+}
+
+.showcase img {
+    width: 800px;
+}
+
+.content video {
+    width: 800px;
+}
+
+#lastone {
+    margin-bottom: 50px;
+}
+
+section table {
+    border: 1px solid black;
+    width: 250px;
+}
+
+section table th, td {
+    padding: 4px;
+}
+
+section table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+section table tr:nth-child(uneven) {
+    background-color: white;
+}
+
+#table {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding-top: 0px;
+}
+
+main h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17pt;
+    color: rgb(25, 49, 29)
 }
 
 footer {
-    background-color: rgb(62, 165, 122);
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+    bottom: -275px;
+    width: 500px;
+    height: 100px;
+    padding: 4px 10px 100px 10px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(25, 49, 29);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
 }
 
-hr {
-    background-color: rgb(114, 235, 184);
-    color: crimson;
+footer a {
+    text-decoration: none;
+    color: white;
 }
 
-.Important {
-    background: rgba(77, 209, 202, 0.438);
-
+#bigtoe {
+    font-size: 15pt;
 }
 
-.highlight {
-    background-color: rgb(114, 235, 184);
-    background: rgb(114, 235, 184);
-}
-
-.section3 {
-    background: rgb(114, 235, 184);
+footer:hover {
+    bottom: -210px;
 }
