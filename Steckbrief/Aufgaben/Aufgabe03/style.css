@@ -99,6 +99,18 @@ header p {
     text-decoration: none;
 }
 
+.conform {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 20px;
+    width: 300px;
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 50px auto 00 auto;
+    color: rgb(38, 87, 53);
+    font-weight: bolder;
+    margin-top: -20px;
+}
+
 #info h3 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 17pt;
