@@ -55,10 +55,12 @@ header h1 {
     padding-top: 40%;
     font-size: 200px;
     text-decoration: underline;
-    cursor: wait;
+    text-shadow: 6px 6px rgb(59, 124, 84);
+    cursor: grab;
 }
 
 header p {
+    text-shadow: 2px 2px rgb(59, 124, 84);
     text-align: right;
     margin-top: -130px;
     width: 200px;
@@ -74,8 +76,8 @@ header p {
 
 #imFeld p {
     width: 300px;
-    margin-top: -155px;
-    margin-left: 400px;
+    margin-top: -150px;
+    margin-left: 420px;
     font-size: 45px;
 }
 
@@ -84,6 +86,7 @@ header p {
     width: 40px;
     margin-top: 80px;
     padding: 10px 8px 8px 10px;
+    filter: grayscale(100%);
 }
 
 #imFeld img:hover {
@@ -92,7 +95,8 @@ header p {
     margin-top: 80px;
     padding: 6px 6px 6px 6px;
     background-color: teal;
-    border-radius: 20%
+    border-radius: 20%;
+    filter: grayscale(0%);
 }
 
 #imFeld a {
@@ -109,6 +113,46 @@ header p {
     color: rgb(38, 87, 53);
     font-weight: bolder;
     margin-top: -20px;
+}
+
+input[type=text], input[type=submit], input[type=textarea] {
+    padding: 2px 5px;
+    margin-bottom: 4px;
+    background-color: lightgray;
+    color: white;
+    border: none;
+}
+
+input[type=text] {
+    width: 15em;
+}
+
+input[type=textarea] {
+    width: 20em;
+    padding-bottom: 5em;
+}
+
+#Nachricht {
+    width: 300px;
+    height: 80px;
+}
+
+.eingabe p {
+    margin: 0px 0px 6px 0px;
+    color: slategray;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 10px;
+}
+
+.eingabe p b {
+    margin: 0px 0px 6px -178px;
+    color: slategray;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 14px;
+}
+
+.eingabe p u {
+    cursor: pointer;
 }
 
 #info h3 {
@@ -143,20 +187,20 @@ header p {
     margin-bottom: 50px;
 }
 
-section table {
+div table {
     border: 1px solid black;
     width: 250px;
 }
 
-section table th, td {
+div table th, td {
     padding: 4px;
 }
 
-section table tr:nth-child(even) {
+div table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-section table tr:nth-child(uneven) {
+div table tr:nth-child(uneven) {
     background-color: white;
 }
 
@@ -171,6 +215,14 @@ main h3 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 17pt;
     color: rgb(25, 49, 29)
+}
+
+#heady {
+    margin-bottom: 3px;
+}
+
+#w3validatet {
+    margin-left: -95%;
 }
 
 footer {
