@@ -173,6 +173,7 @@ input[type=textarea] {
 .showcase iframe {
     width: 800px;
     height: 600px;
+    border: 0px;
 }
 
 .showcase img {
