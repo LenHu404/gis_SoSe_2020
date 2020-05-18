@@ -1,5 +1,6 @@
 body {
     background-image: url(bg.png);
+    
 }
 
 main {
@@ -162,9 +163,9 @@ input[type=textarea] {
 }
 
 #info {
-    margin-left: 29%;
-    width: 800px;
+    margin: 0 auto;
     text-align: left;
+    width: 800px;
     color: rgb(79, 160, 126);
     font-family: 'Courier New', Courier, monospace;
     font-size: 15pt;
