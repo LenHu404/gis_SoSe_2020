@@ -1,6 +1,5 @@
 body {
     background-image: url(bg.png);
-    
 }
 
 main {
@@ -128,12 +127,13 @@ input[type=text] {
     width: 15em;
 }
 
-input[type=textarea] {
-    width: 20em;
-    padding-bottom: 5em;
+textarea {
+    background-color: lightgray;
+    color: white;
 }
 
 #Nachricht {
+    color: slategray;
     width: 300px;
     height: 80px;
 }
