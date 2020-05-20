@@ -1,0 +1,239 @@
+body {
+    background-image: url(bg02.png);
+}
+
+header {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    text-align: center;
+    background-color: wheat;
+    padding: 15px 40px 15px 40px;
+    border-radius: 20px;
+}
+
+header h1 {
+    color: white;
+}
+
+#navbar {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+    color: rgba(247, 215, 167, 0.747);
+}
+
+div~nav {
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    top: -80px;
+    right: 80px;
+    width: 50px;
+    height: 50px;
+    padding: 90px 10px 10px 5px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#konto {
+    position: fixed;
+    right: 10px;
+}
+
+header nav img {
+    width: 30px;
+    height: 30px;
+}
+
+header nav:hover {
+    top: -40px;
+}
+
+img[alt=Kartoffel-Icon] {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 25px;
+}
+
+#info {
+    margin: 5px auto;
+    padding: 1px 5px 3px 5px;
+    background-color: rgb(54, 54, 54);
+    background-image: url(Kartoffel.png);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15pt;
+    color: white;
+    text-decoration: wavy;
+    border-radius: 20px;
+}
+
+.content {
+    padding: 10px;
+}
+
+section h2 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+
+div.Angebot>div {
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(247, 215, 167, 0.788);
+    border: 5px solid rgba(247, 215, 167, 0.788);
+    border-radius: 5px;
+    padding: 10px;
+    width: 202px;
+    transition: color 0.2s ease-in-out 0s;
+    transition: border 0.2s ease-in-out 0s;
+}
+
+div.Angebot>div:hover {
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(163, 129, 79, 0.747);
+    border: 5px solid rgba(163, 129, 79, 0.747);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: underline;
+}
+
+div.Angebot>div img {
+    width: 200px;
+    height: 200px;
+}
+
+div.Angebot div p.Name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.Angebot {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer::before{
+    content: "";
+}
+
+footer {
+   
+    cursor: grab;
+    transition: bottom 0.5s ease-in-out 0.1s;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+    bottom: -275px;
+    width: 320px;
+    height: 100px;
+    padding: 4px 5px 100px 5px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(141, 100, 54);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+#bigtoe {
+    font-size: 15pt;
+}
+
+footer:hover {
+    bottom: -240px;
+}
+
+@media screen and (max-width:1024px) {
+    #info {
+        display: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #navbar a span {
+        display: none;
+    }
+    section h2 {
+        font-size: 15px;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 10px 16px;
+        background: #555;
+        color: #f1f1f1;
+    }
+    img[alt=Kartoffel-Icon] {
+        display: none;
+    }
+    header {
+        text-align: center;
+        background-color: bisque;
+        padding: 15px 40px 15px 40px;
+    }
+    header nav.secnavbar {
+        background-color: yellow;
+        display: block;
+    }
+    header nav img {
+        width: 30px;
+        height: 30px;
+    }
+    header nav.secnavbar:hover {
+        top: auto;
+        background-color: rgb(119, 87, 27);
+    }
+    header nav.secnavbar {
+        top: auto;
+        position: relative;
+        transition: top 0.5s ease-in-out 0s;
+        width: 50px;
+        height: 50px;
+        padding: 10px 10px 10px 5px;
+        border-radius: 0 0 10px 10px;
+    }
+    div.Angebot>div {
+        margin: auto;
+        margin-top: 15px;
+        border-radius: 5px;
+        padding: 10px;
+        width: 80%;
+        transition: color 0.2s ease-in-out 0s;
+        transition: border 0.2s ease-in-out 0s;
+    }
+
+    div.Angebot>div img {
+        position: relative;
+        width: 100%;
+        height: 300px;
+    }
+    #konto {
+        position: relative;
+    }
+    #info {
+        display: none;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+}
