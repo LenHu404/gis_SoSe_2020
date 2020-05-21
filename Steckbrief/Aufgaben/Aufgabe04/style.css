@@ -45,6 +45,33 @@ div~nav {
     font-size: 13pt;
 }
 
+#menu {
+    top: -180px;
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    right: 80px;
+    width: 150px;
+    height: 140px;
+    padding: 90px 10px 20px 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#menu a {
+    text-decoration: none;
+}
+
+#menu:hover {
+    top: -40px;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+}
+
 #konto {
     position: fixed;
     right: 10px;
@@ -70,7 +97,6 @@ img[alt=Kartoffel-Icon] {
     margin: 5px auto;
     padding: 1px 5px 3px 5px;
     background-color: rgb(54, 54, 54);
-    background-image: url(Kartoffel.png);
     font-family: 'Courier New', Courier, monospace;
     font-size: 15pt;
     color: white;
@@ -93,7 +119,6 @@ section h2 {
 div.Angebot>div {
     margin: auto;
     margin-top: 15px;
-    background-color: rgba(247, 215, 167, 0.788);
     border: 5px solid rgba(247, 215, 167, 0.788);
     border-radius: 5px;
     padding: 10px;
@@ -105,7 +130,6 @@ div.Angebot>div {
 div.Angebot>div:hover {
     margin: auto;
     margin-top: 15px;
-    background-color: rgba(163, 129, 79, 0.747);
     border: 5px solid rgba(163, 129, 79, 0.747);
     border-radius: 5px;
     padding: 10px;
@@ -122,17 +146,38 @@ div.Angebot div p.Name {
     font-size: 20px;
 }
 
+div.Angebot div p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
 .Angebot {
     display: flex;
     flex-wrap: wrap;
 }
 
-footer::before{
+main div.Angebot div p.beschreibung {
+    font-size: 14px;
+}
+
+footer p::after {
     content: "";
 }
 
-footer {
-   
+footer p * {
+    text-decoration: none;
+    color: white;
+}
+
+footer p *:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    width: 100%
+}
+
+footer section {
     cursor: grab;
     transition: bottom 0.5s ease-in-out 0.1s;
     left: 50%;
@@ -150,7 +195,11 @@ footer {
     font-size: 13pt;
 }
 
-footer a {
+footer section h4 {
+    margin: 0px 0px 0px 0px;
+}
+
+footer section a {
     text-decoration: none;
     color: white;
 }
@@ -159,8 +208,28 @@ footer a {
     font-size: 15pt;
 }
 
-footer:hover {
+footer section:hover {
     bottom: -240px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 5px 20px 5px;
+    position: relative;
+    bottom: -5px;
+    background-color: #272727;
+    color: white;
+}
+
+footer h3 a.impressum {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    margin: 10px 0px 20px 0px;
+}
+
+footer h3 a.impressum:hover {
+    text-decoration: underline;
 }
 
 @media screen and (max-width:1024px) {
@@ -170,8 +239,17 @@ footer:hover {
 }
 
 @media screen and (max-width:600px) {
-    #navbar a span {
-        display: none;
+    header::before {
+        content: "";
+    }
+    header {
+        font-size: 10px;
+        text-align: center;
+        padding: 15px 40px 15px 40px;
+    }
+    header nav img {
+        width: 30px;
+        height: 30px;
     }
     section h2 {
         font-size: 15px;
@@ -183,52 +261,60 @@ footer:hover {
     img[alt=Kartoffel-Icon] {
         display: none;
     }
-    header {
-        text-align: center;
-        background-color: bisque;
-        padding: 15px 40px 15px 40px;
-    }
-    header nav.secnavbar {
-        background-color: yellow;
-        display: block;
-    }
-    header nav img {
-        width: 30px;
-        height: 30px;
-    }
-    header nav.secnavbar:hover {
-        top: auto;
-        background-color: rgb(119, 87, 27);
-    }
-    header nav.secnavbar {
-        top: auto;
-        position: relative;
-        transition: top 0.5s ease-in-out 0s;
-        width: 50px;
-        height: 50px;
-        padding: 10px 10px 10px 5px;
-        border-radius: 0 0 10px 10px;
-    }
     div.Angebot>div {
         margin: auto;
         margin-top: 15px;
         border-radius: 5px;
         padding: 10px;
         width: 80%;
+        height: 100%;
         transition: color 0.2s ease-in-out 0s;
         transition: border 0.2s ease-in-out 0s;
     }
-
     div.Angebot>div img {
         position: relative;
         width: 100%;
         height: 300px;
     }
-    #konto {
-        position: relative;
-    }
     #info {
         display: none;
+    }
+    #navbar a span {
+        display: none;
+    }
+    #menu {
+        display: none;
+    }
+    #konto img {
+        width: 20px;
+        height: 20px;
+    }
+    div~nav {
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        top: -80px;
+        right: 80px;
+        width: 30px;
+        height: 30px;
+        padding: 90px 10px 10px 5px;
+        border-radius: 0 0 10px 10px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+    footer section {
+        width: 200px;
+        height: 100px;
+        padding: 4px 5px 100px 5px;
+        position: fixed;
+        bottom: -280px;
+    }
+    footer section a, b {
+        font-size: 10px;
+    }
+    #bigtoe {
+        font-size: 13px;
     }
 }
 
