@@ -45,14 +45,19 @@ div~nav {
     font-size: 13pt;
 }
 
+#menu img {
+    width: 50%;
+    height: 50%;
+}
+
 #menu {
-    top: -180px;
+    top: -235px;
     transition: top 0.5s ease-in-out 0s;
     position: fixed;
     right: 80px;
     width: 150px;
     height: 140px;
-    padding: 90px 10px 20px 10px;
+    padding: 90px 10px 75px 10px;
     border-radius: 0 0 10px 10px;
     background-color: rgb(255, 255, 255);
     color: white;
@@ -239,6 +244,11 @@ footer h3 a.impressum:hover {
     #info {
         display: none;
     }
+    div.Angebot>div img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -277,7 +287,7 @@ footer h3 a.impressum:hover {
     div.Angebot>div img {
         position: relative;
         width: 100%;
-        height: 300px;
+        height: 100%;
     }
     #info {
         display: none;
@@ -319,6 +329,7 @@ footer h3 a.impressum:hover {
     #bigtoe {
         font-size: 13px;
     }
+    
 }
 
 @media print {
