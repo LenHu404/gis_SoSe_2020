@@ -1,3 +1,153 @@
+@media screen and (max-width:1024px) {
+    #info {
+        display: none;
+    }
+    div.Angebot>div img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    #menu img {
+        width: 50%;
+        height: 50%;
+    }
+    
+    #menu {
+        top: -235px;
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        right: 80px;
+        width: 150px;
+        height: 140px;
+        padding: 90px 10px 75px 10px;
+        border-radius: 0 0 10px 10px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+    
+    #menu a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    #menu:hover {
+        top: -40px;
+    }
+    
+    #menu a:hover {
+        text-decoration: underline;
+    }
+    
+}
+
+@media screen and (max-width:600px) {
+    header::before {
+        content: "";
+    }
+    header {
+        font-size: 10px;
+        text-align: center;
+        padding: 15px 40px 15px 40px;
+    }
+    header nav img {
+        width: 30px;
+        height: 30px;
+    }
+    section h2 {
+        font-size: 15px;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 10px 16px;
+        background: #555;
+        color: #f1f1f1;
+    }
+    img[alt=Kartoffel-Icon] {
+        display: none;
+    }
+    div.Angebot>div {
+        margin: auto;
+        margin-top: 15px;
+        border-radius: 5px;
+        padding: 10px;
+        width: 80%;
+        height: 100%;
+        transition: color 0.2s ease-in-out 0s;
+        transition: border 0.2s ease-in-out 0s;
+    }
+    div.Angebot>div img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    #info {
+        display: none;
+    }
+    #navbar a span {
+        display: none;
+    }
+    #menu {
+        display: none;
+    }
+    #konto img {
+        width: 20px;
+        height: 20px;
+    }
+    div~nav {
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        top: -80px;
+        right: 80px;
+        width: 30px;
+        height: 30px;
+        padding: 90px 10px 10px 5px;
+        border-radius: 0 0 10px 10px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+
+    #Home img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #Home {
+        top: -235px;
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        right: 80px;
+        width: 30px;
+        height: 140px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+
+    footer section {
+        width: 200px;
+        height: 100px;
+        padding: 4px 5px 100px 5px;
+        position: fixed;
+        bottom: -280px;
+    }
+    footer section a, b {
+        font-size: 10px;
+    }
+    #bigtoe {
+        font-size: 13px;
+    }
+    
+}
+
+@media print {
+    body {
+        background: white;
+    }
+}
+
 body {
     background-image: url(bg02.png);
 }
@@ -168,6 +318,56 @@ main div.Angebot div p.beschreibung {
     font-size: 14px;
 }
 
+#Bestellen {
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    background-image:url(Kartoffel.png);
+    color: lightcyan;
+    width: 170px;
+    height: 120px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+#Bestellen:hover {
+    background-color: lightslategrey;
+    background-image:url(Kartoffel.png);
+    text-decoration: underline;
+}
+
+#Home img {
+    width: 45%;
+    height: 30%;
+}
+
+#Home {
+    top: -235px;
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    right: 80px;
+    width: 50px;
+    height: 140px;
+    padding: 90px 10px 75px 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#Home a {
+    text-decoration: none;
+    color: black;
+}
+
+#Home:hover {
+    top: -210px;
+}
+
+#Home a:hover {
+    text-decoration: underline;
+}
+
 footer p::after {
     content: "";
 }
@@ -240,100 +440,3 @@ footer h3 a.impressum:hover {
     text-decoration: underline;
 }
 
-@media screen and (max-width:1024px) {
-    #info {
-        display: none;
-    }
-    div.Angebot>div img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-@media screen and (max-width:600px) {
-    header::before {
-        content: "";
-    }
-    header {
-        font-size: 10px;
-        text-align: center;
-        padding: 15px 40px 15px 40px;
-    }
-    header nav img {
-        width: 30px;
-        height: 30px;
-    }
-    section h2 {
-        font-size: 15px;
-        font-family: 'Courier New', Courier, monospace;
-        padding: 10px 16px;
-        background: #555;
-        color: #f1f1f1;
-    }
-    img[alt=Kartoffel-Icon] {
-        display: none;
-    }
-    div.Angebot>div {
-        margin: auto;
-        margin-top: 15px;
-        border-radius: 5px;
-        padding: 10px;
-        width: 80%;
-        height: 100%;
-        transition: color 0.2s ease-in-out 0s;
-        transition: border 0.2s ease-in-out 0s;
-    }
-    div.Angebot>div img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-    #info {
-        display: none;
-    }
-    #navbar a span {
-        display: none;
-    }
-    #menu {
-        display: none;
-    }
-    #konto img {
-        width: 20px;
-        height: 20px;
-    }
-    div~nav {
-        transition: top 0.5s ease-in-out 0s;
-        position: fixed;
-        top: -80px;
-        right: 80px;
-        width: 30px;
-        height: 30px;
-        padding: 90px 10px 10px 5px;
-        border-radius: 0 0 10px 10px;
-        background-color: rgb(255, 255, 255);
-        color: white;
-        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
-        font-size: 13pt;
-    }
-    footer section {
-        width: 200px;
-        height: 100px;
-        padding: 4px 5px 100px 5px;
-        position: fixed;
-        bottom: -280px;
-    }
-    footer section a, b {
-        font-size: 10px;
-    }
-    #bigtoe {
-        font-size: 13px;
-    }
-    
-}
-
-@media print {
-    body {
-        background: white;
-    }
-}
