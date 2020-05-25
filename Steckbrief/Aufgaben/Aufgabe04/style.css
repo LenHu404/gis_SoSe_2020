@@ -324,12 +324,14 @@ main div.Angebot div p.beschreibung {
     font-family: 'Courier New', Courier, monospace;
     background-image:url(Kartoffel.png);
     color: lightcyan;
+    background-image:url(Kartoffel.png);
     width: 170px;
     height: 120px;
     transition: all 0.2s ease-in-out 0s;
 }
 
 #Bestellen:hover {
+    background-image:url(Kartoffel.png);
     background-color: lightslategrey;
     background-image:url(Kartoffel.png);
     text-decoration: underline;
