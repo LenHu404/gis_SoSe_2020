@@ -311,6 +311,53 @@ main div.Angebot div p.beschreibung {
     font-size: 14px;
 }
 
+div#Angebot>div {
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(248, 215, 168, 0.842);
+    border: 5px solid rgba(247, 215, 167, 0.788);
+    border-radius: 5px;
+    padding: 10px;
+    width: 202px;
+    transition: color 0.2s ease-in-out 0s;
+    transition: border 0.2s ease-in-out 0s;
+}
+
+div#Angebot>div:hover {
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(168, 140, 97, 0.747);
+    border: 5px solid rgba(163, 129, 79, 0.747);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: underline;
+}
+
+div#Angebot>div img {
+    width: 200px;
+    height: 200px;
+}
+
+div#Angebot div p.Name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+div#Angebot div p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+#Angebot {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main div#Angebot div p.beschreibung {
+    font-size: 14px;
+}
+
+
 #Bestellen {
     cursor: pointer;
     font-size: 18px;
