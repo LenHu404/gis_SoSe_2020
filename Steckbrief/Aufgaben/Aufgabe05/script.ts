@@ -279,5 +279,5 @@ namespace Aufgabe05 {
         node3.innerHTML += childNodeHTML3;
 
     }
-    console.log("Fertig geladen")
+    console.log("Fertig geladen");
 }
