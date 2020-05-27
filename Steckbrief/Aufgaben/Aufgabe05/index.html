@@ -1,12 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DerKartoffelShop.de</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Bilder/Kartoffel.png" />
     <script src="script.js"></script>
 </head>
+
 <body>
-    
+    <header>
+
+
+        <div class="flexContainer">
+            <h1 id="top"> <img src="Bilder/Kartoffel.png" alt="Kartoffel-Icon" id="prio"> Der
+                Kartoffelshop <img src="Bilder/Kartoffel.png" alt="Kartoffel-Icon"></h1>
+        </div>
+
+        <nav id="menu" class="secnavbar">
+            <a href="#1kartoffel"> Festkochend</a> <br> <br> <a href="#2kartoffel">Mehligkochend</a> <br> <br>
+            <a href="#3kartoffel">Exoten</a> <br> <br> <br>
+
+            <a href="#top"> <img src="Bilder/Kartoffel.png" alt="Menu"></a>
+
+
+
+        </nav>
+
+        <nav class="secnavbar" id="konto">
+
+            <a href="https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe04/Warenkorb.html"> <img
+                    src="Bilder/wk.png" alt="Warenkorb"></a>
+
+        </nav>
+
+        <div id="navbar">
+            <a href="#1kartoffel"> <span>(Vorwiegend)</span> Festkochend</a> | <a href="#2kartoffel">Mehligkochend</a> |
+            <a href="#3kartoffel">Exoten</a>
+
+        </div>
+
+        <div id="info">
+            <p> <b>Die Kartoffel (Solanum tuberosum), auch bekannt als Erdapfel, Erdbirne, Potaten (nur im Plural) oder
+                    Grundbirne ist eine Nutzpflanze aus der Familie der Nachtschattengewächse (Solanaceae).
+                    Im allgemeinen Sprachgebrauch werden mit Kartoffeln meist die im Boden
+                    heranwachsenden Knollen bezeichnet, mit denen die Pflanze sich vegetativ vermehrt.
+                    Weltweit werden jährlich etwa 376 Millionen Tonnen Kartoffeln geerntet. <br> Die Kartoffel ist eines
+                    der
+                    wichtigsten Nahrungsmittel der Welt.</b> </p>
+        </div>
+
+    </header>
+
+    <main class="content">
+        <section id="kartoffel1">
+            <h2 id="1kartoffel">(Vorwiegend) Festkochende Kartoffeln </h2>
+
+            <div class="Angebot">
+                <div>
+                    <img src="Bilder/Linda.jpg" alt="Kartoffel">
+                    <label for="Linda">Kilogramm:</label>
+
+                    <select name="Linda" id="Linda">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg</option>
+                    </select>
+                    <p class="Name">Linda</p>
+                    <p class="beschreibung">Klasse Vertreter von Kartoffeln</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/Annabel.jpg" alt="Kartoffel">
+                    <label for="Annabel">Kilogramm:</label>
+
+                    <select name="Annabel" id="Annabel">
+                        <option value="2.5">2,5 kg | 3,55€ </option>
+                        <option value="5">5,0 kg | 7,98€</option>
+                    </select>
+                    <p class="Name">Annabel</p>
+                    <p class="beschreibung">Werden Annabels nach der Kartoffel benannt oder die Kartoffel nach Annabels?
+                    </p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/marabel.jpg" alt="Kartoffel">
+                    <label for="Marabel">Kilogramm:</label>
+
+                    <select name="Marabel" id="Marabel">
+                        <option value="2.5">2,5 kg | 4,85€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Marabel</p>
+                    <p class="beschreibung"> Eine weitere Kartoffel</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/Laratte.jpg" alt="Kartoffel">
+                    <label for="Ratta">Kilogramm:</label>
+                    <select name="Ratta" id="Ratta">
+                        <option value="2.5">2,5 kg | 4,98€ </option>
+                        <option value="5">5,0 kg | 8,88€</option>
+                    </select>
+                    <p class="Name">La Ratta</p>
+                    <p class="beschreibung"> Perfekt für Ratatouille</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/glorietta.jpg" alt="Kartoffel">
+                    <label for="Glorietta">Kilogramm:</label>
+                    <select name="Glorietta" id="Glorietta">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 9,99€</option>
+                    </select>
+                    <p class="Name">Glorietta</p>
+                    <p class="beschreibung">Eine wirklich glorreiche Kartoffel!</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/allians.jpg" alt="Kartoffel">
+                    <label for="Allians">Kilogramm:</label>
+                    <select name="Allians" id="Allians">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Allians</p>
+                    <p class="beschreibung">Sie ist kein Allien!</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+
+            </div>
+        </section>
+
+        <section id="kartoffel2">
+            <h2 id="2kartoffel">Mehligkochende Kartoffeln</h2>
+
+            <div class="Angebot">
+
+                <div>
+                    <img src="Bilder/augusta.jpg" alt="Kartoffel">
+                    <label for="Augusta">Kilogramm:</label>
+                    <select name="Augusta" id="Augusta">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Augusta</p>
+                    <p class="beschreibung"> Kann auch außerhalb vom August gegessen werden</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/adretta.jpg" alt="Kartoffel">
+                    <label for="Adretta">Kilogramm:</label>
+                    <select name="Adretta" id="Adretta">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Adretta</p>
+                    <p class="beschreibung">Eine ganz adrette Kartoffel!</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/meh-lig.png" alt="Kartoffel">
+                    <label for="mehlige">Kilogramm:</label>
+                    <select name="mehlige" id="mehlige">
+                        <option value="2.5">2,5 kg | 9,55€ </option>
+                        <option value="5">5,0 kg | 19,99€</option>
+                    </select>
+                    <p class="Name">Meh-lige Kartoffel</p>
+                    <p class="beschreibung"> .... meh</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/ACKERSEGEN.jpg" alt="Kartoffel">
+                    <label for="Ackersegen">Kilogramm:</label>
+                    <select name="Ackersegen" id="Ackersegen">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Ackersegen</p>
+                    <p class="beschreibung"> Kann auch ein Segen für dein nächstes Essen werden</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+            </div>
+        </section>
+        <section id="kartoffel3">
+            <h2 id="3kartoffel">Exoten, bunte und besondere Kartoffeln</h2>
+
+            <div class="Angebot">
+                <div>
+                    <img src="Bilder/roteemmalie.jpg" alt="Kartoffel">
+                    <label for="Emmalie">Kilogramm:</label>
+                    <select name="Emmalie" id="Emmalie">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Rote Emmalie</p>
+                    <p class="beschreibung">Der Name sagt alles</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/violetta.jpg" alt="Kartoffel">
+                    <label for="Violetta">Kilogramm:</label>
+                    <select name="Violetta" id="Violetta">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Violetta</p>
+                    <p class="beschreibung">Keine Ahnung wie man auf diesen Namen kam</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/congo-blauer-schwede.jpg" alt="Kartoffel">
+                    <label for="Schwede">Kilogramm:</label>
+                    <select name="Schwede" id="Schwede">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Blauer Schwede</p>
+                    <p class="beschreibung">Vielleicht auch ein bisschen Lila im Blau</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/heiderot.jpg" alt="Kartoffel">
+                    <label for="Heiderot">Kilogramm:</label>
+                    <select name="Heiderot" id="Heiderot">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Heiderot</p>
+                    <p class="beschreibung">Sehr sehr Kartoffelig</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/laura.jpg" alt="Kartoffel">
+                    <label for="Laura">Kilogramm:</label>
+                    <select name="Laura" id="Laura">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Laura</p>
+                    <p class="beschreibung">Man sollte nicht von der Schale auf das innere schließen</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+                <div>
+                    <img src="Bilder/kartoffelnrosatannenzapfen.jpg" alt="Kartoffel">
+                    <label for="Tannenzapfen">Kilogramm:</label>
+                    <select name="Tannenzapfen" id="Tannenzapfen">
+                        <option value="2.5">2,5 kg | 4,55€ </option>
+                        <option value="5">5,0 kg | 8,99€</option>
+                    </select>
+                    <p class="Name">Rosa Tannenzapfen</p>
+                    <p class="beschreibung">Der Namensgeber hatte wohl kein Brille auf</p>
+                    <input type="button" value="In den Warenkorb">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3><a href="https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe03/contact.html"
+                class="impressum" target="blank">Impressum/ Kontakt</a> </h3>
+
+
+        <section>
+            <h4 id="bigtoe"> Wollen sie Experimentieren?</h4>
+            <br>
+            <a href="https://www.lecker.de/rezepte/kartoffeln" target="blank">Leckere Kartoffelrezepte</a>
+        </section>
+    </footer>
+
+
 </body>
+
 </html>
