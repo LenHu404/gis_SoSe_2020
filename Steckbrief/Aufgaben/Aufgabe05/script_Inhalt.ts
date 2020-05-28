@@ -1,7 +1,7 @@
 namespace Aufgabe05 {
-  /*  //Produkte Vorgabe
+    //Produkte Vorgabe
     console.log("Ich werde auch geladen");
-    interface Product {
+    export interface Product {
         Name: string;
         Description: string;
         price1: number;
@@ -14,7 +14,7 @@ namespace Aufgabe05 {
     //#region Produkte
     //Festkochende
 
-    let linda: Product = {
+    export let linda: Product = {
         Name: "Linda",
         Description: "1 Kartoffel",
         price1: 4.55,
@@ -24,7 +24,7 @@ namespace Aufgabe05 {
         Kategorie: "festkochend"
     };
 
-    let annabel: Product = {
+    export let annabel: Product = {
         Name: "Annabel",
         Description: "Werden Annabels nach der Kartoffel benannt oder die Kartoffel nach Annabels?",
         price1: 3.55,
@@ -34,7 +34,7 @@ namespace Aufgabe05 {
         Kategorie: "festkochend"
     };
 
-    let marabel: Product = {
+    export let marabel: Product = {
         Name: "Marabel",
         Description: "Eine weitere wunderbare Kartoffel",
         price1: 4.85,
@@ -44,7 +44,7 @@ namespace Aufgabe05 {
         Kategorie: "festkochend"
     };
 
-    let laratta: Product = {
+    export let laratta: Product = {
         Name: "La Ratta",
         Description: "Perfekt für Ratatouille",
         price1: 4.98,
@@ -54,7 +54,7 @@ namespace Aufgabe05 {
         Kategorie: "festkochend"
     };
 
-    let glorietta: Product = {
+    export let glorietta: Product = {
         Name: "Glorietta",
         Description: "Eine wirklich glorreiche Kartoffel!",
         price1: 4.55,
@@ -64,7 +64,7 @@ namespace Aufgabe05 {
         Kategorie: "festkochend"
     };
 
-    let allians: Product = {
+    export let allians: Product = {
         Name: "Allians",
         Description: "Sie ist kein Allien!",
         price1: 4.98,
@@ -73,18 +73,19 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    /*let trenner: Product = {
+    /*
+    let trenner: Product = {
         Name: "",
         Description: "",
         price1: 0,
         price2: 0,
         imgSrc: "",
         Art: "trenner"
-    } 
+    }  */
 
     //Mehligkochend
 
-    let augusta: Product = {
+    export let augusta: Product = {
         Name: "Augusta",
         Description: "Kann auch außerhalb vom August gegessen werden",
         price1: 4.55,
@@ -94,7 +95,7 @@ namespace Aufgabe05 {
         Kategorie: "mehligkochend"
     };
 
-    let adretta: Product = {
+    export let adretta: Product = {
         Name: "Adretta",
         Description: "Eine ganz adrette Kartoffel",
         price1: 4.55,
@@ -103,7 +104,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-    let mehlig: Product = {
+    export let mehlig: Product = {
         Name: "Meh-lige Kartoffel",
         Description: "... meh",
         price1: 9.55,
@@ -112,7 +113,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-    let ackersegen: Product = {
+    export let ackersegen: Product = {
         Name: "Ackersegen",
         Description: "Auch ein Segen für ihr Gericht",
         price1: 4.55,
@@ -124,7 +125,7 @@ namespace Aufgabe05 {
 
     //Exoten
 
-    let roteemmalie: Product = {
+    export let roteemmalie: Product = {
         Name: "Rote Emmaile",
         Description: "Der Name sagt alles",
         price1: 4.55,
@@ -133,7 +134,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let violetta: Product = {
+    export let violetta: Product = {
         Name: "Violetta",
         Description: "Keine Ahnung wie man nur auf diesen Namen kam",
         price1: 5.99,
@@ -142,7 +143,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let blauerschwede: Product = {
+    export let blauerschwede: Product = {
         Name: "Blauer Schwede",
         Description: "Mit vielleicht ein bisschen Violett im Blau",
         price1: 6.45,
@@ -151,7 +152,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let heiderot: Product = {
+    export let heiderot: Product = {
         Name: "Heiderot",
         Description: "Sehr sehr Kartoffelig",
         price1: 4.55,
@@ -160,7 +161,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let laura: Product = {
+    export let laura: Product = {
         Name: "Laura",
         Description: "Man sollte nicht von der Schale auf das innere schließen",
         price1: 5.65,
@@ -169,7 +170,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let tannenzapfen: Product = {
+    export let tannenzapfen: Product = {
         Name: "Rosa Tannenzapfen",
         Description: "Der Namensgeber hatte wohl kein Brille auf",
         price1: 4.55,
@@ -185,9 +186,9 @@ namespace Aufgabe05 {
     //#region Einsortierung
     //Produktarrays
 
-    let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, adretta, mehlig, ackersegen, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
-    
+    export let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, adretta, mehlig, ackersegen, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+
     //#endregion
-    */
+
 
 }

@@ -272,7 +272,8 @@ div.Angebot>div {
     border: 5px solid rgba(247, 215, 167, 0.788);
     border-radius: 5px;
     padding: 10px;
-    width: 202px;
+    width: 220px;
+    height: 380px;
     transition: color 0.2s ease-in-out 0s;
     transition: border 0.2s ease-in-out 0s;
 }
@@ -288,7 +289,7 @@ div.Angebot>div:hover {
 }
 
 div.Angebot>div img {
-    width: 200px;
+    width: 220px;
     height: 200px;
 }
 
