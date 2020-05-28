@@ -1,11 +1,20 @@
-"use strict";
-var Aufgabe05;
-(function (Aufgabe05) {
-    //Produkte Vorgabe
-    console.log("Hallo Welt");
+namespace Aufgabe05 {
+  /*  //Produkte Vorgabe
+    console.log("Ich werde auch geladen");
+    interface Product {
+        Name: string;
+        Description: string;
+        price1: number;
+        price2: number;
+        imgSrc: string;
+        Art: string;
+        Kategorie: string;
+    }
+
     //#region Produkte
     //Festkochende
-    let linda = {
+
+    let linda: Product = {
         Name: "Linda",
         Description: "1 Kartoffel",
         price1: 4.55,
@@ -14,7 +23,8 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    let annabel = {
+
+    let annabel: Product = {
         Name: "Annabel",
         Description: "Werden Annabels nach der Kartoffel benannt oder die Kartoffel nach Annabels?",
         price1: 3.55,
@@ -23,7 +33,8 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    let marabel = {
+
+    let marabel: Product = {
         Name: "Marabel",
         Description: "Eine weitere wunderbare Kartoffel",
         price1: 4.85,
@@ -32,7 +43,8 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    let laratta = {
+
+    let laratta: Product = {
         Name: "La Ratta",
         Description: "Perfekt für Ratatouille",
         price1: 4.98,
@@ -41,7 +53,8 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    let glorietta = {
+
+    let glorietta: Product = {
         Name: "Glorietta",
         Description: "Eine wirklich glorreiche Kartoffel!",
         price1: 4.55,
@@ -50,7 +63,8 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    let allians = {
+
+    let allians: Product = {
         Name: "Allians",
         Description: "Sie ist kein Allien!",
         price1: 4.98,
@@ -66,9 +80,11 @@ var Aufgabe05;
         price2: 0,
         imgSrc: "",
         Art: "trenner"
-    } */
+    } 
+
     //Mehligkochend
-    let augusta = {
+
+    let augusta: Product = {
         Name: "Augusta",
         Description: "Kann auch außerhalb vom August gegessen werden",
         price1: 4.55,
@@ -77,7 +93,8 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-    let adretta = {
+
+    let adretta: Product = {
         Name: "Adretta",
         Description: "Eine ganz adrette Kartoffel",
         price1: 4.55,
@@ -86,7 +103,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-    let mehlig = {
+    let mehlig: Product = {
         Name: "Meh-lige Kartoffel",
         Description: "... meh",
         price1: 9.55,
@@ -95,7 +112,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-    let ackersegen = {
+    let ackersegen: Product = {
         Name: "Ackersegen",
         Description: "Auch ein Segen für ihr Gericht",
         price1: 4.55,
@@ -104,8 +121,10 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
+
     //Exoten
-    let roteemmalie = {
+
+    let roteemmalie: Product = {
         Name: "Rote Emmaile",
         Description: "Der Name sagt alles",
         price1: 4.55,
@@ -114,7 +133,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let violetta = {
+    let violetta: Product = {
         Name: "Violetta",
         Description: "Keine Ahnung wie man nur auf diesen Namen kam",
         price1: 5.99,
@@ -123,7 +142,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let blauerschwede = {
+    let blauerschwede: Product = {
         Name: "Blauer Schwede",
         Description: "Mit vielleicht ein bisschen Violett im Blau",
         price1: 6.45,
@@ -132,7 +151,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let heiderot = {
+    let heiderot: Product = {
         Name: "Heiderot",
         Description: "Sehr sehr Kartoffelig",
         price1: 4.55,
@@ -141,7 +160,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let laura = {
+    let laura: Product = {
         Name: "Laura",
         Description: "Man sollte nicht von der Schale auf das innere schließen",
         price1: 5.65,
@@ -150,7 +169,7 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-    let tannenzapfen = {
+    let tannenzapfen: Product = {
         Name: "Rosa Tannenzapfen",
         Description: "Der Namensgeber hatte wohl kein Brille auf",
         price1: 4.55,
@@ -159,72 +178,16 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
+
     //#endregion
+
+
     //#region Einsortierung
     //Produktarrays
-    let imVerkauf = [linda, annabel, marabel, laratta, glorietta, allians, augusta, adretta, mehlig, ackersegen, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+
+    let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, adretta, mehlig, ackersegen, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+    
     //#endregion
-    //#region Einfügen in Die Kategorien
-    // Tut mir leid wer sich das hier anschauen muss
-    //For-schleife für Sektion: Festkochend
-    let kategorie = "festkochend";
-    for (let i = 0; i < imVerkauf.length; i++) {
-        if (imVerkauf[i].Kategorie == "festkochend") {
-            kategorie = "festkochend";
-        }
-        else if (imVerkauf[i].Kategorie == "mehligkochend") {
-            kategorie = "mehligkochend";
-        }
-        else {
-            kategorie = "exoten";
-        }
-        console.log(imVerkauf[i].Name, imVerkauf[i].imgSrc, imVerkauf[i].price1, imVerkauf[i].price2);
-        //Estellen von Div Elementen 
-        let newDiv = document.createElement("div");
-        //Div id zuweisen
-        newDiv.id = "artikel" + kategorie + i;
-        //Element hinzufügen
-        document.getElementById(kategorie)?.appendChild(newDiv);
-        //Bild hinzufügen
-        let newImg = document.createElement("img");
-        newImg.src = imVerkauf[i].imgSrc;
-        newImg.setAttribute("alt", imVerkauf[i].Art);
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newImg);
-        //Label hinzufügen
-        let newL = document.createElement("label");
-        newL.setAttribute("for", imVerkauf[i].Name);
-        newL.innerHTML = "Kilogramm:";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newL);
-        //Dropdownmenu hinzufügen
-        let newSelect = document.createElement("select");
-        newSelect.name = imVerkauf[i].Name;
-        newSelect.id = imVerkauf[i].Name + "select";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newSelect);
-        //Option vom Dropdownmenu
-        let newOp1 = document.createElement("option");
-        newOp1.value = "2.5";
-        newOp1.innerHTML = "5 kg | " + imVerkauf[i].price1 + "€";
-        let newOp2 = document.createElement("option");
-        newOp2.value = "5";
-        newOp2.innerHTML = "5 kg | " + imVerkauf[i].price2 + "€";
-        document.getElementById(imVerkauf[i].Name + "select")?.appendChild(newOp1);
-        document.getElementById(imVerkauf[i].Name + "select")?.appendChild(newOp2);
-        //Name hinzugefügt 
-        let newName = document.createElement("p");
-        newName.setAttribute("class", "Name");
-        newName.innerText = imVerkauf[i].Name;
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newName);
-        //beschreibung hinzugefügt 
-        let newP = document.createElement("p");
-        newP.setAttribute("class", "beschreibung");
-        newP.innerHTML = imVerkauf[i].Description;
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newP);
-        //Button hinzugefügt 
-        let newB = document.createElement("input");
-        newB.value = "In den Warenkorb";
-        newB.type = "button";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newB);
-    }
-    console.log("Fertig geladen");
-})(Aufgabe05 || (Aufgabe05 = {}));
-//# sourceMappingURL=script.js.map
+    */
+
+}

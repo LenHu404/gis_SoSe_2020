@@ -1,16 +1,17 @@
-//Ich würds nicht kopieren, ist nicht wirklich ausgereift
 namespace Aufgabe05 {
-//Produkteinführung
+    //Produkte Vorgabe
     console.log("Hallo Welt");
     interface Product {
-        Name: String;
-        Description: String;
+        Name: string;
+        Description: string;
         price1: number;
         price2: number;
-        imgSrc: String;
-        Art: String;
+        imgSrc: string;
+        Art: string;
+        Kategorie: string;
     }
 
+    //#region Produkte
     //Festkochende
 
     let linda: Product = {
@@ -19,7 +20,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 7.98,
         imgSrc: "Bilder/Linda.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
     };
 
     let annabel: Product = {
@@ -28,7 +30,8 @@ namespace Aufgabe05 {
         price1: 3.55,
         price2: 7.54,
         imgSrc: "Bilder/Annabel.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
     };
 
     let marabel: Product = {
@@ -37,7 +40,8 @@ namespace Aufgabe05 {
         price1: 4.85,
         price2: 8.99,
         imgSrc: "Bilder/marabel.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
     };
 
     let laratta: Product = {
@@ -46,7 +50,8 @@ namespace Aufgabe05 {
         price1: 4.98,
         price2: 8.88,
         imgSrc: "Bilder/Laratte.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
     };
 
     let glorietta: Product = {
@@ -55,7 +60,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 9.99,
         imgSrc: "Bilder/glorietta.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
     };
 
     let allians: Product = {
@@ -64,7 +70,8 @@ namespace Aufgabe05 {
         price1: 4.98,
         price2: 8.99,
         imgSrc: "Bilder/allians.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
     };
     /*let trenner: Product = {
         Name: "",
@@ -83,7 +90,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 9.45,
         imgSrc: "Bilder/augusta.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
     };
 
     let adretta: Product = {
@@ -92,7 +100,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 8.99,
         imgSrc: "Bilder/adretta.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
     };
     let mehlig: Product = {
         Name: "Meh-lige Kartoffel",
@@ -100,7 +109,8 @@ namespace Aufgabe05 {
         price1: 9.55,
         price2: 19.99,
         imgSrc: "Bilder/meh-lig.png",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
     };
     let ackersegen: Product = {
         Name: "Ackersegen",
@@ -108,7 +118,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 8.99,
         imgSrc: "Bilder/ACKERSEGEN.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
     };
 
     //Exoten
@@ -119,7 +130,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 8.99,
         imgSrc: "Bilder/roteemmalie.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "exoten"
     };
     let violetta: Product = {
         Name: "Violetta",
@@ -127,7 +139,8 @@ namespace Aufgabe05 {
         price1: 5.99,
         price2: 10.45,
         imgSrc: "Bilder/violetta.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "exoten"
     };
     let blauerschwede: Product = {
         Name: "Blauer Schwede",
@@ -135,7 +148,8 @@ namespace Aufgabe05 {
         price1: 6.45,
         price2: 11.45,
         imgSrc: "Bilder/congo-blauer-schwede.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "exoten"
     };
     let heiderot: Product = {
         Name: "Heiderot",
@@ -143,7 +157,8 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 8.90,
         imgSrc: "Bilder/heiderot.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "exoten"
     };
     let laura: Product = {
         Name: "Laura",
@@ -151,7 +166,8 @@ namespace Aufgabe05 {
         price1: 5.65,
         price2: 9.98,
         imgSrc: "Bilder/laura.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "exoten"
     };
     let tannenzapfen: Product = {
         Name: "Rosa Tannenzapfen",
@@ -159,125 +175,86 @@ namespace Aufgabe05 {
         price1: 4.55,
         price2: 8.98,
         imgSrc: "Bilder/kartoffelnrosatannenzapfen.jpg",
-        Art: "Kartoffel"
+        Art: "Kartoffel",
+        Kategorie: "exoten"
     };
-    
 
+    //#endregion
+
+
+    //#region Einsortierung
     //Produktarrays
 
-    let festkochend: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, /* Trenner zw f. & m.  trenner, augusta*/];
-    let mehligkochend: Product[] = [augusta, adretta, mehlig, ackersegen];
-    let exoten: Product[] = [roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen]
+    let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, adretta, mehlig, ackersegen, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+    
+    //#endregion
+
+    //#region Einfügen in Die Kategorien
+
+    // Tut mir leid wer sich das hier anschauen muss
 
     //For-schleife für Sektion: Festkochend
-    let node: any = document.getElementById("festkochend");
-    let childNodeHTML: String;
 
-    for (let i: number = 0; i < festkochend.length; i++) {
-        if (festkochend[i].Art == "trenner") {
-            childNodeHTML = "</div>  </section>";
+    let kategorie: string = "festkochend";
 
-            childNodeHTML += "<section id='kartoffel2'>";
-            childNodeHTML += "<h2 id='2kartoffel'>Mehligkochende Kartoffeln</h2>";
-
-            childNodeHTML += "<div class='Angebot' id='mehligkochend'>";
-            node.innerHTML += childNodeHTML;
-            continue;
+    for (let i: number = 0; i < imVerkauf.length; i++) {
+        if (imVerkauf[i].Kategorie == "festkochend") {
+            kategorie = "festkochend";
+        } else if (imVerkauf[i].Kategorie == "mehligkochend") {
+            kategorie = "mehligkochend";
+        } else {
+            kategorie = "exoten";
         }
-        console.log(festkochend[i].Name, festkochend[i].imgSrc, festkochend[i].price1, festkochend[i].price2);
 
-        childNodeHTML = "";
-        childNodeHTML += "<div>";
-        childNodeHTML += "<img src='" + festkochend[i].imgSrc + "' alt='" + festkochend[i].Art + "'>";
-        childNodeHTML += "<label for=" + festkochend[i].Name + ">Kilogramm:</label>";
-        childNodeHTML += "<select name=" + festkochend[i].Name + " id=" + festkochend[i].Name + ">";
-        childNodeHTML += "<option value = '2.5'> 2, 5 kg | " + festkochend[i].price1 + "€ </option>";
-        childNodeHTML += "<option value = '5.0'> 5, 0 kg | " + festkochend[i].price2 + " </option>";
-        childNodeHTML += "</select>";
-        childNodeHTML += "<p class = 'Name'>" + festkochend[i].Name + "</p>";
-        childNodeHTML += "<p class='beschreibung'>" + festkochend[i].Description + "</p>";
-        childNodeHTML += "<input type='button' value='In den Warenkorb'>";
-        childNodeHTML += "</div>";
+        console.log(imVerkauf[i].Name, imVerkauf[i].imgSrc, imVerkauf[i].price1, imVerkauf[i].price2);
 
-        node.innerHTML += childNodeHTML;
-
-        /*    //Estellen von Div Elementen 
-            let newDiv: object = document.createElement("div");
-            //Div id zuweisen
-            newDiv.id = "atikel" + i;
-            //Element hinzufügen
-            document.getElementById("Angebot1")?.appendChild(newDiv);
-            //Bild hinzufügen
-            let newImg: String = document.createElement("img");
-            newImg.src = festkochend[i].imgSrc;
-            document.getElementById("atikelH" + i)?.appendChild(newImg);
-            //Name hinzugefügt 
-            let newH = document.createElement("h2");
-            newH.innerHTML = festkochend[i].Name;
-            document.getElementById("atikelH" + i)?.appendChild(newH);
-            //beschreibung hinzugefügt 
-            let newP = document.createElement("p");
-            newP.innerHTML = festkochend[i].Description;
-            document.getElementById("atikelH" + i)?.appendChild(newP);
-            //Preis hinzugefügt 
-            let newPreis = document.createElement("p");
-            newPreis.innerHTML = festkochend[i].price1;
-            document.getElementById("atikelH" + i)?.appendChild(newPreis);
-            //Button hinzugefügt 
-            let newB = document.createElement("input");
-            newB.value = "Kaufen";
-            newB.type = "submit";
-            document.getElementById("atikelH" + i)?.appendChild(newB);
-    */
-    }
-
-    //For-schleife für Sektion: Mehligkochend
-    let node2: any = document.getElementById("mehligkochend");
-    let childNodeHTML2: String;
-
-    for (let i: number = 0; i < mehligkochend.length; i++) {
-        console.log(mehligkochend[i].Name, mehligkochend[i].imgSrc, mehligkochend[i].price1, mehligkochend[i].price2);
-
-        childNodeHTML2 = "";
-        childNodeHTML2 += "<div>";
-        childNodeHTML2 += "<img src='" + mehligkochend[i].imgSrc + "' alt='" + mehligkochend[i].Art + "'>";
-        childNodeHTML2 += "<label for=" + mehligkochend[i].Name + ">Kilogramm:</label>";
-        childNodeHTML2 += "<select name=" + mehligkochend[i].Name + " id=" + mehligkochend[i].Name + ">";
-        childNodeHTML2 += "<option value = '2.5'> 2, 5 kg | " + mehligkochend[i].price1 + "€ </option>";
-        childNodeHTML2 += "<option value = '5.0'> 5, 0 kg | " + mehligkochend[i].price2 + " </option>";
-        childNodeHTML2 += "</select>";
-        childNodeHTML2 += "<p class = 'Name'>" + mehligkochend[i].Name + "</p>";
-        childNodeHTML2 += "<p class='beschreibung'>" + mehligkochend[i].Description + "</p>";
-        childNodeHTML2 += "<input type='button' value='In den Warenkorb'>";
-        childNodeHTML2 += "</div>";
-
-        node2.innerHTML += childNodeHTML2;
-
-       
-    }
-
-    //For-schleife für Sektion: Exoten
-    let node3: any = document.getElementById("exoten");
-    let childNodeHTML3: String;
-
-    for (let i: number = 0; i < festkochend.length; i++) {
-        console.log(exoten[i].Name, exoten[i].imgSrc, exoten[i].price1, exoten[i].price2);
-
-        childNodeHTML3 = "";
-        childNodeHTML3 += "<div>";
-        childNodeHTML3 += "<img src='" + exoten[i].imgSrc + "' alt='" + exoten[i].Art + "'>";
-        childNodeHTML3 += "<label for=" + exoten[i].Name + ">Kilogramm:</label>";
-        childNodeHTML3 += "<select name=" + exoten[i].Name + " id=" + exoten[i].Name + ">";
-        childNodeHTML3 += "<option value = '2.5'> 2, 5 kg | " + exoten[i].price1 + "€ </option>";
-        childNodeHTML3 += "<option value = '5.0'> 5, 0 kg | " + exoten[i].price2 + " </option>";
-        childNodeHTML3 += "</select>";
-        childNodeHTML3 += "<p class = 'Name'>" + exoten[i].Name + "</p>";
-        childNodeHTML3 += "<p class='beschreibung'>" + exoten[i].Description + "</p>";
-        childNodeHTML3 += "<input type='button' value='In den Warenkorb'>";
-        childNodeHTML3 += "</div>";
-
-        node3.innerHTML += childNodeHTML3;
+        //Estellen von Div Elementen 
+        let newDiv: HTMLDivElement = document.createElement("div");
+        //Div id zuweisen
+        newDiv.id = "artikel" + kategorie + i;
+        //Element hinzufügen
+        document.getElementById(kategorie)?.appendChild(newDiv);
+        //Bild hinzufügen
+        let newImg: HTMLImageElement = document.createElement("img");
+        newImg.src = imVerkauf[i].imgSrc;
+        newImg.setAttribute("alt", imVerkauf[i].Art);
+        document.getElementById("artikel" + kategorie + i)?.appendChild(newImg);
+        //Label hinzufügen
+        let newL: HTMLLabelElement = document.createElement("label");
+        newL.setAttribute("for", imVerkauf[i].Name);
+        newL.innerHTML = "Kilogramm:";
+        document.getElementById("artikel" + kategorie + i)?.appendChild(newL);
+        //Dropdownmenu hinzufügen
+        let newSelect: HTMLSelectElement = document.createElement("select");
+        newSelect.name = imVerkauf[i].Name;
+        newSelect.id = imVerkauf[i].Name + "select";
+        document.getElementById("artikel" + kategorie + i)?.appendChild(newSelect);
+        //Option vom Dropdownmenu
+        let newOp1: HTMLOptionElement = document.createElement("option");
+        newOp1.value = "2.5";
+        newOp1.innerHTML = "5 kg | " + imVerkauf[i].price1 + "€";
+        let newOp2: HTMLOptionElement = document.createElement("option");
+        newOp2.value = "5";
+        newOp2.innerHTML = "5 kg | " + imVerkauf[i].price2 + "€";
+        document.getElementById(imVerkauf[i].Name + "select")?.appendChild(newOp1);
+        document.getElementById(imVerkauf[i].Name + "select")?.appendChild(newOp2);
+        //Name hinzugefügt 
+        let newName: HTMLParagraphElement = document.createElement("p");
+        newName.setAttribute("class", "Name");
+        newName.innerText = imVerkauf[i].Name;
+        document.getElementById("artikel" + kategorie + i)?.appendChild(newName);
+        //beschreibung hinzugefügt 
+        let newP: HTMLParagraphElement = document.createElement("p");
+        newP.setAttribute("class", "beschreibung");
+        newP.innerHTML = imVerkauf[i].Description;
+        document.getElementById("artikel" + kategorie + i)?.appendChild(newP);
+        //Button hinzugefügt 
+        let newB: HTMLInputElement = document.createElement("input");
+        newB.value = "In den Warenkorb";
+        newB.type = "button";
+        document.getElementById("artikel" + kategorie + i)?.appendChild(newB);
 
     }
+    
     console.log("Fertig geladen");
 }
