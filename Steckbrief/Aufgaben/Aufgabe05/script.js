@@ -4,40 +4,40 @@ var Aufgabe05;
     //#region Einfügen in Die Kategorien
     // Tut mir leid wer sich das hier anschauen muss
     //For-schleife für die Einsortierung in die Kategorie
-    let kategorie = "festkochend";
+    let _kategorie = "festkochend";
     for (let i = 0; i < Aufgabe05.imVerkauf.length; i++) {
         //Einsortierung in die passende Kategorie
         if (Aufgabe05.imVerkauf[i].Kategorie == "festkochend") {
-            kategorie = "festkochend";
+            _kategorie = "festkochend";
         }
         else if (Aufgabe05.imVerkauf[i].Kategorie == "mehligkochend") {
-            kategorie = "mehligkochend";
+            _kategorie = "mehligkochend";
         }
         else {
-            kategorie = "exoten";
+            _kategorie = "exoten";
         }
         console.log(Aufgabe05.imVerkauf[i].Name, Aufgabe05.imVerkauf[i].imgSrc, Aufgabe05.imVerkauf[i].price1, Aufgabe05.imVerkauf[i].price2);
         //Estellen von Div Elementen 
         let newDiv = document.createElement("div");
         //Div id zuweisen
-        newDiv.id = "artikel" + kategorie + i;
+        newDiv.id = "artikel" + _kategorie + i;
         //Element hinzufügen
-        document.getElementById(kategorie)?.appendChild(newDiv);
+        document.getElementById(_kategorie)?.appendChild(newDiv);
         //Bild hinzufügen
         let newImg = document.createElement("img");
         newImg.src = Aufgabe05.imVerkauf[i].imgSrc;
         newImg.setAttribute("alt", Aufgabe05.imVerkauf[i].Art);
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newImg);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newImg);
         //Label hinzufügen
         let newL = document.createElement("label");
         newL.setAttribute("for", Aufgabe05.imVerkauf[i].Name);
         newL.innerHTML = "Kilogramm:";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newL);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newL);
         //Dropdownmenu hinzufügen
         let newSelect = document.createElement("select");
         newSelect.name = Aufgabe05.imVerkauf[i].Name;
         newSelect.id = Aufgabe05.imVerkauf[i].Name + "select";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newSelect);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newSelect);
         //Option vom Dropdownmenu
         let newOp1 = document.createElement("option");
         newOp1.value = "2.5";
@@ -51,17 +51,17 @@ var Aufgabe05;
         let newName = document.createElement("p");
         newName.setAttribute("class", "Name");
         newName.innerText = Aufgabe05.imVerkauf[i].Name;
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newName);
-        //beschreibung hinzugefügt 
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newName);
+        //Beschreibung hinzugefügt 
         let newP = document.createElement("p");
         newP.setAttribute("class", "beschreibung");
         newP.innerHTML = Aufgabe05.imVerkauf[i].Description;
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newP);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newP);
         //Button hinzugefügt 
         let newB = document.createElement("input");
         newB.value = "In den Warenkorb";
         newB.type = "button";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newB);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newB);
     }
     console.log("Fertig geladen");
 })(Aufgabe05 || (Aufgabe05 = {}));

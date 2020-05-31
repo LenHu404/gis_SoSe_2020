@@ -452,6 +452,7 @@ footer section h4 {
 }
 
 footer section a {
+    font-size: medium;
     text-decoration: none;
     color: white;
 }

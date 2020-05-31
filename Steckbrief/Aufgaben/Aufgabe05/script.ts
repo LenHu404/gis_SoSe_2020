@@ -5,17 +5,17 @@ namespace Aufgabe05 {
 
     //For-schleife für die Einsortierung in die Kategorie
 
-    let kategorie: string = "festkochend";
+    let _kategorie: string = "festkochend";
 
     for (let i: number = 0; i < imVerkauf.length; i++) {
 
         //Einsortierung in die passende Kategorie
         if (imVerkauf[i].Kategorie == "festkochend") {
-            kategorie = "festkochend";
+            _kategorie = "festkochend";
         } else if (imVerkauf[i].Kategorie == "mehligkochend") {
-            kategorie = "mehligkochend";
+            _kategorie = "mehligkochend";
         } else {
-            kategorie = "exoten";
+            _kategorie = "exoten";
         }
 
         console.log(imVerkauf[i].Name, imVerkauf[i].imgSrc, imVerkauf[i].price1, imVerkauf[i].price2);
@@ -23,24 +23,24 @@ namespace Aufgabe05 {
         //Estellen von Div Elementen 
         let newDiv: HTMLDivElement = document.createElement("div");
         //Div id zuweisen
-        newDiv.id = "artikel" + kategorie + i;
+        newDiv.id = "artikel" + _kategorie + i;
         //Element hinzufügen
-        document.getElementById(kategorie)?.appendChild(newDiv);
+        document.getElementById(_kategorie)?.appendChild(newDiv);
         //Bild hinzufügen
         let newImg: HTMLImageElement = document.createElement("img");
         newImg.src = imVerkauf[i].imgSrc;
         newImg.setAttribute("alt", imVerkauf[i].Art);
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newImg);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newImg);
         //Label hinzufügen
         let newL: HTMLLabelElement = document.createElement("label");
         newL.setAttribute("for", imVerkauf[i].Name);
         newL.innerHTML = "Kilogramm:";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newL);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newL);
         //Dropdownmenu hinzufügen
         let newSelect: HTMLSelectElement = document.createElement("select");
         newSelect.name = imVerkauf[i].Name;
         newSelect.id = imVerkauf[i].Name + "select";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newSelect);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newSelect);
         //Option vom Dropdownmenu
         let newOp1: HTMLOptionElement = document.createElement("option");
         newOp1.value = "2.5";
@@ -54,17 +54,17 @@ namespace Aufgabe05 {
         let newName: HTMLParagraphElement = document.createElement("p");
         newName.setAttribute("class", "Name");
         newName.innerText = imVerkauf[i].Name;
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newName);
-        //beschreibung hinzugefügt 
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newName);
+        //Beschreibung hinzugefügt 
         let newP: HTMLParagraphElement = document.createElement("p");
         newP.setAttribute("class", "beschreibung");
         newP.innerHTML = imVerkauf[i].Description;
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newP);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newP);
         //Button hinzugefügt 
         let newB: HTMLInputElement = document.createElement("input");
         newB.value = "In den Warenkorb";
         newB.type = "button";
-        document.getElementById("artikel" + kategorie + i)?.appendChild(newB);
+        document.getElementById("artikel" + _kategorie + i)?.appendChild(newB);
 
     }
     
