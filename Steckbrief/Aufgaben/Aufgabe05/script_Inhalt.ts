@@ -104,6 +104,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
+    
     export let mehlig: Product = {
         Name: "Meh-lige Kartoffel",
         Description: "... meh",
@@ -113,6 +114,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
+    
     export let ackersegen: Product = {
         Name: "Ackersegen",
         Description: "Auch ein Segen für ihr Gericht",
@@ -134,6 +136,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
+   
     export let violetta: Product = {
         Name: "Violetta",
         Description: "Keine Ahnung wie man nur auf diesen Namen kam",
@@ -143,6 +146,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
+   
     export let blauerschwede: Product = {
         Name: "Blauer Schwede",
         Description: "Mit vielleicht ein bisschen Violett im Blau",
@@ -152,6 +156,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
+   
     export let heiderot: Product = {
         Name: "Heiderot",
         Description: "Sehr sehr Kartoffelig",
@@ -161,6 +166,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
+  
     export let laura: Product = {
         Name: "Laura",
         Description: "Man sollte nicht von der Schale auf das innere schließen",
@@ -170,6 +176,7 @@ namespace Aufgabe05 {
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
+   
     export let tannenzapfen: Product = {
         Name: "Rosa Tannenzapfen",
         Description: "Der Namensgeber hatte wohl kein Brille auf",
