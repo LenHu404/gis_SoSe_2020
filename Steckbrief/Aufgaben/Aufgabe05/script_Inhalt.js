@@ -163,7 +163,7 @@ var Aufgabe05;
     //#endregion
     //#region Einsortierung
     //Produktarrays
-    Aufgabe05.imVerkauf = [Aufgabe05.linda, Aufgabe05.linda, Aufgabe05.mehlig, Aufgabe05.annabel, Aufgabe05.marabel, Aufgabe05.laratta, Aufgabe05.glorietta, Aufgabe05.allians, Aufgabe05.augusta, Aufgabe05.mehlig, Aufgabe05.adretta, Aufgabe05.mehlig, Aufgabe05.ackersegen, Aufgabe05.mehlig, Aufgabe05.roteemmalie, Aufgabe05.violetta, Aufgabe05.blauerschwede, Aufgabe05.heiderot, Aufgabe05.laura, Aufgabe05.tannenzapfen];
+    Aufgabe05.imVerkauf = [Aufgabe05.linda, Aufgabe05.annabel, Aufgabe05.marabel, Aufgabe05.laratta, Aufgabe05.glorietta, Aufgabe05.allians, Aufgabe05.augusta, Aufgabe05.mehlig, Aufgabe05.adretta, Aufgabe05.mehlig, Aufgabe05.ackersegen, Aufgabe05.mehlig, Aufgabe05.roteemmalie, Aufgabe05.violetta, Aufgabe05.blauerschwede, Aufgabe05.heiderot, Aufgabe05.laura, Aufgabe05.tannenzapfen];
     //#endregion
 })(Aufgabe05 || (Aufgabe05 = {}));
 //# sourceMappingURL=script_Inhalt.js.map

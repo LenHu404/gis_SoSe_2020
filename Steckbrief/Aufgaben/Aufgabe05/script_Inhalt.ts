@@ -193,7 +193,7 @@ namespace Aufgabe05 {
     //#region Einsortierung
     //Produktarrays
 
-    export let imVerkauf: Product[] = [linda, linda, mehlig,   annabel, marabel, laratta, glorietta, allians, augusta, mehlig, adretta, mehlig, ackersegen, mehlig, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+    export let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, mehlig, adretta, mehlig, ackersegen, mehlig, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
 
     //#endregion
 
