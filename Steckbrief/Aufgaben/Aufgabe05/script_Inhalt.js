@@ -5,7 +5,6 @@ var Aufgabe05;
     console.log("Ich werde auch geladen");
     //#region Produkte
     //Festkochende
-  
     Aufgabe05.linda = {
         Name: "Linda",
         Description: "1 Kartoffel",
@@ -15,7 +14,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-   
     Aufgabe05.annabel = {
         Name: "Annabel",
         Description: "Werden Annabels nach der Kartoffel benannt oder die Kartoffel nach Annabels?",
@@ -25,7 +23,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-   
     Aufgabe05.marabel = {
         Name: "Marabel",
         Description: "Eine weitere wunderbare Kartoffel",
@@ -35,7 +32,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-   
     Aufgabe05.laratta = {
         Name: "La Ratta",
         Description: "Perfekt für Ratatouille",
@@ -45,7 +41,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-   
     Aufgabe05.glorietta = {
         Name: "Glorietta",
         Description: "Eine wirklich glorreiche Kartoffel!",
@@ -55,7 +50,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
- 
     Aufgabe05.allians = {
         Name: "Allians",
         Description: "Sie ist kein Allien!",
@@ -75,7 +69,6 @@ var Aufgabe05;
         Art: "trenner"
     }  */
     //Mehligkochend
-    
     Aufgabe05.augusta = {
         Name: "Augusta",
         Description: "Kann auch außerhalb vom August gegessen werden",
@@ -85,7 +78,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-  
     Aufgabe05.adretta = {
         Name: "Adretta",
         Description: "Eine ganz adrette Kartoffel",
@@ -95,7 +87,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-   
     Aufgabe05.mehlig = {
         Name: "Meh-lige Kartoffel",
         Description: "... meh",
@@ -105,7 +96,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
     };
-  
     Aufgabe05.ackersegen = {
         Name: "Ackersegen",
         Description: "Auch ein Segen für ihr Gericht",
@@ -116,7 +106,6 @@ var Aufgabe05;
         Kategorie: "mehligkochend"
     };
     //Exoten
-  
     Aufgabe05.roteemmalie = {
         Name: "Rote Emmaile",
         Description: "Der Name sagt alles",
@@ -126,7 +115,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
- 
     Aufgabe05.violetta = {
         Name: "Violetta",
         Description: "Keine Ahnung wie man nur auf diesen Namen kam",
@@ -136,7 +124,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-  
     Aufgabe05.blauerschwede = {
         Name: "Blauer Schwede",
         Description: "Mit vielleicht ein bisschen Violett im Blau",
@@ -146,7 +133,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-  
     Aufgabe05.heiderot = {
         Name: "Heiderot",
         Description: "Sehr sehr Kartoffelig",
@@ -156,7 +142,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
- 
     Aufgabe05.laura = {
         Name: "Laura",
         Description: "Man sollte nicht von der Schale auf das innere schließen",
@@ -166,7 +151,6 @@ var Aufgabe05;
         Art: "Kartoffel",
         Kategorie: "exoten"
     };
-  
     Aufgabe05.tannenzapfen = {
         Name: "Rosa Tannenzapfen",
         Description: "Der Namensgeber hatte wohl kein Brille auf",
@@ -179,7 +163,7 @@ var Aufgabe05;
     //#endregion
     //#region Einsortierung
     //Produktarrays
-    Aufgabe05.imVerkauf = [Aufgabe05.linda, Aufgabe05.annabel, Aufgabe05.marabel, Aufgabe05.laratta, Aufgabe05.glorietta, Aufgabe05.allians, Aufgabe05.augusta, Aufgabe05.adretta, Aufgabe05.mehlig, Aufgabe05.ackersegen, Aufgabe05.roteemmalie, Aufgabe05.violetta, Aufgabe05.blauerschwede, Aufgabe05.heiderot, Aufgabe05.laura, Aufgabe05.tannenzapfen];
+    Aufgabe05.imVerkauf = [Aufgabe05.linda, Aufgabe05.linda, Aufgabe05.mehlig, Aufgabe05.annabel, Aufgabe05.marabel, Aufgabe05.laratta, Aufgabe05.glorietta, Aufgabe05.allians, Aufgabe05.augusta, Aufgabe05.mehlig, Aufgabe05.adretta, Aufgabe05.mehlig, Aufgabe05.ackersegen, Aufgabe05.mehlig, Aufgabe05.roteemmalie, Aufgabe05.violetta, Aufgabe05.blauerschwede, Aufgabe05.heiderot, Aufgabe05.laura, Aufgabe05.tannenzapfen];
     //#endregion
 })(Aufgabe05 || (Aufgabe05 = {}));
 //# sourceMappingURL=script_Inhalt.js.map
