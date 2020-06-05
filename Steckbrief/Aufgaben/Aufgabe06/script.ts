@@ -107,32 +107,31 @@ namespace Aufgabe06 {
     function auswahlEinschreanken(_event: Event): void {
         let target: HTMLElement = (<HTMLElement>_event.target);
         let kategorie: string = target.getAttribute("href")!;
-        console.log("Juhu");
         switch (kategorie) {
             case "#1kartoffel": {
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+
                 break;
             }
             case "#2kartoffel": {
-                console.log("jajfa");
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+
                 break;
             }
             case "#3kartoffel": {
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
                 break;
             }
             default: {
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
-                console.log("qwfqwf");
                 break;
             }
         }
