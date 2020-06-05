@@ -8,6 +8,10 @@ var Aufgabe06;
     let productCounter = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
+    document.getElementById("zuKartoffel1")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("zuKartoffel2")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("zuKartoffel3")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("homeKartoffel")?.addEventListener("click", auswahlEinschreanken);
     let gesamtPreis = 0;
     let counter = 0;
     for (let i = 0; i < Aufgabe06.imVerkauf.length; i++) {
@@ -69,7 +73,7 @@ var Aufgabe06;
         newB.addEventListener("click", handlerWarenkorb);
         newB.value = "In den Warenkorb";
         newB.type = "button";
-        newB.setAttribute("articleIndex", "i");
+        newB.setAttribute("articleIndex", i.toString());
         newDiv.appendChild(newB);
     }
     function handlerWarenkorb(_kaufen) {
@@ -77,12 +81,45 @@ var Aufgabe06;
         let target = _kaufen.target;
         let artIndex = parseInt(target.getAttribute("articleIndex"));
         gesamtPreis += Aufgabe06.imVerkauf[artIndex].price2;
-        console.log("Kaufen");
-        console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis + "€");
+        console.log("Lege " + Aufgabe06.imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
+        console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
+        document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+    }
+    function auswahlEinschreanken(_event) {
+        let target = _event.target;
+        let kategorie = target.getAttribute("href");
+        console.log("Juhu");
+        switch (kategorie) {
+            case "#1kartoffel": {
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                break;
+            }
+            case "#2kartoffel": {
+                console.log("jajfa");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                break;
+            }
+            case "#3kartoffel": {
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                break;
+            }
+            default: {
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                console.log("qwfqwf");
+                break;
+            }
+        }
     }
     console.log("Fertig geladen");
-    console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis + "€");
 })(Aufgabe06 || (Aufgabe06 = {}));
 //# sourceMappingURL=script.js.map

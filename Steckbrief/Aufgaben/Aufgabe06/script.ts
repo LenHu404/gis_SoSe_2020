@@ -9,6 +9,10 @@ namespace Aufgabe06 {
     let productCounter: HTMLDivElement = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
+    document.getElementById("zuKartoffel1")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("zuKartoffel2")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("zuKartoffel3")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("homeKartoffel")?.addEventListener("click", auswahlEinschreanken);
     let gesamtPreis: number = 0;
     let counter: number = 0;
 
@@ -82,7 +86,7 @@ namespace Aufgabe06 {
         newB.addEventListener("click", handlerWarenkorb);
         newB.value = "In den Warenkorb";
         newB.type = "button";
-        newB.setAttribute("articleIndex", "i");
+        newB.setAttribute("articleIndex", i.toString());
         newDiv.appendChild(newB);
 
     }
@@ -93,12 +97,46 @@ namespace Aufgabe06 {
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
 
         gesamtPreis += imVerkauf[artIndex].price2;
-        console.log("Kaufen");
-        console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis + "€");
+        console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
+        console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
+        document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+    }
+
+    function auswahlEinschreanken(_event: Event): void {
+        let target: HTMLElement = (<HTMLElement>_event.target);
+        let kategorie: string = target.getAttribute("href")!;
+        console.log("Juhu");
+        switch (kategorie) {
+            case "#1kartoffel": {
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                break;
+            }
+            case "#2kartoffel": {
+                console.log("jajfa");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                break;
+            }
+            case "#3kartoffel": {
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                break;
+            }
+            default: {
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                console.log("qwfqwf");
+                break;
+            }
+        }
     }
 
     console.log("Fertig geladen");
-    console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis + "€");
 }
