@@ -74,8 +74,8 @@ namespace Aufgabe06 {
     };
     
     export let trenner: Product = {
-        Name: "Geschenk: Meh-lige Kartoffel",
-        Description: "... meh",
+        Name: "Geschenk:",
+        Description: " Meh-lige Kartoffel",
         price1: 0,
         price2: 0,
         imgSrc: "Bilder/meh-lig.png",
