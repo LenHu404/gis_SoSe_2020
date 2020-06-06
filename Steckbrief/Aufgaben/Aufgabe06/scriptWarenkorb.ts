@@ -77,6 +77,7 @@ namespace Aufgabe06 {
 
         //Dropdownmenu hinzufügen
         let newSelect: HTMLSelectElement = document.createElement("select");
+        newSelect.setAttribute("class", "option");
         newSelect.name = warenkorb[i].Name;
         newSelect.id = warenkorb[i].Name + "select";
         newDiv.appendChild(newSelect);
@@ -106,6 +107,7 @@ namespace Aufgabe06 {
         //Button hinzugefügt 
         let newB: HTMLInputElement = document.createElement("input");
         newB.addEventListener("click", handlerWarenkorb);
+        newB.setAttribute("class", "button");
         newB.value = "entfernen";
         newB.type = "button";
         newB.setAttribute("articleIndex", i.toString());

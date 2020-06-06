@@ -67,6 +67,7 @@ var Aufgabe06;
         newDiv.appendChild(newL);
         //Dropdownmenu hinzufügen
         let newSelect = document.createElement("select");
+        newSelect.setAttribute("class", "option");
         newSelect.name = warenkorb[i].Name;
         newSelect.id = warenkorb[i].Name + "select";
         newDiv.appendChild(newSelect);
@@ -92,6 +93,7 @@ var Aufgabe06;
         //Button hinzugefügt 
         let newB = document.createElement("input");
         newB.addEventListener("click", handlerWarenkorb);
+        newB.setAttribute("class", "button");
         newB.value = "entfernen";
         newB.type = "button";
         newB.setAttribute("articleIndex", i.toString());
