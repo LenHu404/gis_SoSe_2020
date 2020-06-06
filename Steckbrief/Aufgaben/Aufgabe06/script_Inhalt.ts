@@ -74,13 +74,13 @@ namespace Aufgabe06 {
     };
     
     export let trenner: Product = {
-        Name: "",
-        Description: "",
+        Name: "Geschenk: Meh-lige Kartoffel",
+        Description: "... meh",
         price1: 0,
         price2: 0,
-        imgSrc: "",
-        Art: "trenner",
-        Kategorie: ""
+        imgSrc: "Bilder/meh-lig.png",
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
     }  
 
     //Mehligkochend
@@ -194,7 +194,7 @@ namespace Aufgabe06 {
     //Produktarrays
 
     export let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, mehlig, adretta, mehlig, ackersegen, mehlig, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
-    export let warenkorb: Product[] = [mehlig];
+    export let warenkorb: Product[] = [trenner];
 
     //#endregion
 
