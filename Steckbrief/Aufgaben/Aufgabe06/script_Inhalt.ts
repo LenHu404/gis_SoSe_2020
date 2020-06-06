@@ -1,6 +1,5 @@
 namespace Aufgabe06 {
     //Produkte Vorgabe
-    console.log("Ich werde auch geladen");
     export interface Product {
         Name: string;
         Description: string;
@@ -73,15 +72,16 @@ namespace Aufgabe06 {
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    /*
-    let trenner: Product = {
+    
+    export let trenner: Product = {
         Name: "",
         Description: "",
         price1: 0,
         price2: 0,
         imgSrc: "",
-        Art: "trenner"
-    }  */
+        Art: "trenner",
+        Kategorie: ""
+    }  
 
     //Mehligkochend
 
@@ -194,7 +194,7 @@ namespace Aufgabe06 {
     //Produktarrays
 
     export let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, mehlig, adretta, mehlig, ackersegen, mehlig, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
-    export let warenkorb: Product[] = [marabel, annabel, annabel];
+    export let warenkorb: Product[] = [mehlig];
 
     //#endregion
 
