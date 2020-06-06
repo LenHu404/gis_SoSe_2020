@@ -58,13 +58,13 @@ var Aufgabe06;
         Kategorie: "festkochend"
     };
     Aufgabe06.trenner = {
-        Name: "",
-        Description: "",
+        Name: "Geschenk: Meh-lige Kartoffel",
+        Description: "... meh",
         price1: 0,
         price2: 0,
-        imgSrc: "",
-        Art: "trenner",
-        Kategorie: ""
+        imgSrc: "Bilder/meh-lig.png",
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
     };
     //Mehligkochend
     Aufgabe06.augusta = {
@@ -162,7 +162,7 @@ var Aufgabe06;
     //#region Einsortierung
     //Produktarrays
     Aufgabe06.imVerkauf = [Aufgabe06.linda, Aufgabe06.annabel, Aufgabe06.marabel, Aufgabe06.laratta, Aufgabe06.glorietta, Aufgabe06.allians, Aufgabe06.augusta, Aufgabe06.mehlig, Aufgabe06.adretta, Aufgabe06.mehlig, Aufgabe06.ackersegen, Aufgabe06.mehlig, Aufgabe06.roteemmalie, Aufgabe06.violetta, Aufgabe06.blauerschwede, Aufgabe06.heiderot, Aufgabe06.laura, Aufgabe06.tannenzapfen];
-    Aufgabe06.warenkorb = [Aufgabe06.mehlig];
+    Aufgabe06.warenkorb = [Aufgabe06.trenner];
     //#endregion
 })(Aufgabe06 || (Aufgabe06 = {}));
 //# sourceMappingURL=script_Inhalt.js.map
