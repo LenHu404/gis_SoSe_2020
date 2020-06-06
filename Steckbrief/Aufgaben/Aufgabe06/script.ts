@@ -71,7 +71,7 @@ namespace Aufgabe06 {
         newOp1.innerHTML = "5 kg | " + imVerkauf[i].price1 + "€";
         let newOp2: HTMLOptionElement = document.createElement("option");
         newOp2.value = "5";
-        newOp2.innerHTML = "5 kg | " + imVerkauf[i].price2 + "€";
+        newOp2.innerHTML = "10 kg | " + imVerkauf[i].price2 + "€";
         newSelect.appendChild(newOp1);
         newSelect.appendChild(newOp2);
 
