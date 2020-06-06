@@ -194,6 +194,7 @@ namespace Aufgabe06 {
     //Produktarrays
 
     export let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, mehlig, adretta, mehlig, ackersegen, mehlig, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+    export let warenkorb: Product[] = [marabel, annabel, annabel];
 
     //#endregion
 

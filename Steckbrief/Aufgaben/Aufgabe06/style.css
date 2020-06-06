@@ -153,6 +153,10 @@ header {
     border-radius: 20px;
 }
 
+#top {
+    cursor: pointer;
+}
+
 header h1 {
     color: white;
 }
@@ -220,6 +224,18 @@ div~nav {
 
 #menu a:hover {
     text-decoration: underline;
+}
+
+#showAll {
+    margin-top: -30px;
+    color: rgb(54, 54, 54);
+    font-size: small;
+    cursor: pointer;
+    display: none;
+}
+
+#showAll:hover {
+   text-decoration: underline;
 }
 
 #konto {
@@ -472,7 +488,7 @@ footer section:hover {
 
 footer {
     text-align: center;
-    padding: 10px 5px 20px 5px;
+    padding: 10px 5px 140px 5px;
     position: relative;
     bottom: -5px;
     background-color: #272727;

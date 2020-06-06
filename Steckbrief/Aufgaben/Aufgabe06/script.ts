@@ -13,6 +13,12 @@ namespace Aufgabe06 {
     document.getElementById("zuKartoffel2")?.addEventListener("click", auswahlEinschreanken);
     document.getElementById("zuKartoffel3")?.addEventListener("click", auswahlEinschreanken);
     document.getElementById("homeKartoffel")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("prio")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("top")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("navbarKartoffel1")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("navbarKartoffel2")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("navbarKartoffel3")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("showAll")?.addEventListener("click", auswahlEinschreanken);
     let gesamtPreis: number = 0;
     let counter: number = 0;
 
@@ -95,13 +101,12 @@ namespace Aufgabe06 {
         counter += 1;
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
-
+        warenkorb[counter] = imVerkauf[artIndex];
         gesamtPreis += imVerkauf[artIndex].price2;
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
-        document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
     }
 
     function auswahlEinschreanken(_event: Event): void {
@@ -112,6 +117,7 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+                document.getElementById("showAll")?.setAttribute("style", "display : block");
 
                 break;
             }
@@ -119,6 +125,7 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+                document.getElementById("showAll")?.setAttribute("style", "display : block");
 
                 break;
             }
@@ -126,12 +133,14 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                document.getElementById("showAll")?.setAttribute("style", "display : block");
                 break;
             }
             default: {
                 document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                document.getElementById("showAll")?.setAttribute("style", "display : none");
                 break;
             }
         }
