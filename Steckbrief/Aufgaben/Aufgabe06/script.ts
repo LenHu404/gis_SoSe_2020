@@ -8,6 +8,8 @@ namespace Aufgabe06 {
     let _kategorie: string = "festkochend";
     let productCounter: HTMLDivElement = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
+
+    //Eventlistener zu den einzelnen Elementen hinzufügen
     document.getElementById("konto")?.appendChild(productCounter);
     document.getElementById("zuKartoffel1")?.addEventListener("click", auswahlEinschreanken);
     document.getElementById("zuKartoffel2")?.addEventListener("click", auswahlEinschreanken);
@@ -19,9 +21,14 @@ namespace Aufgabe06 {
     document.getElementById("navbarKartoffel2")?.addEventListener("click", auswahlEinschreanken);
     document.getElementById("navbarKartoffel3")?.addEventListener("click", auswahlEinschreanken);
     document.getElementById("showAll")?.addEventListener("click", auswahlEinschreanken);
+    document.getElementById("zumWarenkorb")?.addEventListener("click", warenkorbAufbauen);
+    document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
+
+    //Variablen deklarieren und initialisieren
     let gesamtPreis: number = 0;
     let counter: number = 0;
 
+    //Produkte, zum Verkauf stehen erstellen
     for (let i: number = 0; i < imVerkauf.length; i++) {
         productCounter.style.display = "none";
 
@@ -33,8 +40,6 @@ namespace Aufgabe06 {
         } else {
             _kategorie = "exoten";
         }
-
-        console.log(imVerkauf[i].Name, imVerkauf[i].imgSrc, imVerkauf[i].price1, imVerkauf[i].price2);
 
         //Estellen von Div Elementen 
         let newDiv: HTMLDivElement = document.createElement("div");
@@ -71,7 +76,7 @@ namespace Aufgabe06 {
         newOp1.value = "2.5";
         newOp1.innerHTML = "5 kg | " + imVerkauf[i].price1 + "€";
         let newOp2: HTMLOptionElement = document.createElement("option");
-       // newOp2.setAttribute("class", "option");
+        // newOp2.setAttribute("class", "option");
         newOp2.value = "5";
         newOp2.innerHTML = "10 kg | " + imVerkauf[i].price2 + "€";
         newSelect.appendChild(newOp1);
@@ -101,18 +106,23 @@ namespace Aufgabe06 {
 
     }
 
+    //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen: Event): void {
         counter += 1;
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         warenkorb[counter] = imVerkauf[artIndex];
-        gesamtPreis += imVerkauf[artIndex].price1;
+        gesamtPreis = 0;
+        for (let i: number = 0; i < warenkorb.length - 1; i++) {
+            gesamtPreis += warenkorb[counter].price1;
+        }
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
     }
 
+    //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event: Event): void {
         let target: HTMLElement = (<HTMLElement>_event.target);
         let kategorie: string = target.getAttribute("href")!;
@@ -122,6 +132,7 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
                 document.getElementById("showAll")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
 
                 break;
             }
@@ -130,6 +141,7 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
                 document.getElementById("showAll")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
 
                 break;
             }
@@ -138,6 +150,7 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
                 document.getElementById("showAll")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
                 break;
             }
             default: {
@@ -145,10 +158,106 @@ namespace Aufgabe06 {
                 document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
                 document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
                 document.getElementById("showAll")?.setAttribute("style", "display : none");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
                 break;
             }
         }
+
+
     }
 
+    //Warenkorb aufbauen und zu updaten ( ist nicht ausgereift, da bei jedem alle Elemente noch einmal hinzugefügt werden :/)
+    //ps: pls dont spam the Einkaufswagenbutton
+    function warenkorbAufbauen(): void {
+        document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
+        document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
+        document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
+        document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : block");
+        for (let i: number = 0; i < warenkorb.length; i++) {
+
+
+            //Estellen von Div Elementen 
+            let newDiv: HTMLDivElement = document.createElement("div");
+
+            //Div id zuweisen
+            newDiv.setAttribute("articleIndex", "i");
+
+            //Element hinzufügen
+            document.getElementById("Angebot")?.appendChild(newDiv);
+
+            //Bild hinzufügen
+            let newImg: HTMLImageElement = document.createElement("img");
+
+            newImg.src = warenkorb[i].imgSrc;
+            newImg.setAttribute("alt", warenkorb[i].Art);
+            newDiv.appendChild(newImg);
+
+            //Label hinzufügen
+            let newL: HTMLLabelElement = document.createElement("label");
+            newL.setAttribute("for", warenkorb[i].Name);
+            newL.innerHTML = "Kilogramm:";
+            newDiv.appendChild(newL);
+
+            //Dropdownmenu hinzufügen
+            let newSelect: HTMLSelectElement = document.createElement("select");
+            newSelect.setAttribute("class", "option");
+            newSelect.name = warenkorb[i].Name;
+            newSelect.id = warenkorb[i].Name + "select";
+            newDiv.appendChild(newSelect);
+
+            //Option vom Dropdownmenu
+            let newOp1: HTMLOptionElement = document.createElement("option");
+            newOp1.value = "2.5";
+            newOp1.innerHTML = "5 kg | " + warenkorb[i].price1 + "€";
+            let newOp2: HTMLOptionElement = document.createElement("option");
+            newOp2.value = "5";
+            newOp2.innerHTML = "5 kg | " + warenkorb[i].price2 + "€";
+            newSelect.appendChild(newOp1);
+            newSelect.appendChild(newOp2);
+
+            //Name hinzugefügt 
+            let newName: HTMLParagraphElement = document.createElement("p");
+            newName.setAttribute("class", "Name");
+            newName.innerText = warenkorb[i].Name;
+            newDiv.appendChild(newName);
+
+            //Beschreibung hinzugefügt 
+            let newP: HTMLParagraphElement = document.createElement("p");
+            newP.setAttribute("class", "beschreibung");
+            newP.innerHTML = warenkorb[i].Description;
+            newDiv.appendChild(newP);
+
+            //Button hinzugefügt 
+            let newB: HTMLInputElement = document.createElement("input");
+            newB.addEventListener("click", handlerWarenkorbEntfernen);
+            newB.setAttribute("class", "button");
+            newB.value = "entfernen";
+            newB.type = "button";
+            newB.setAttribute("articleIndex", i.toString());
+            newDiv.appendChild(newB);
+
+            productCounter.style.display = "block";
+
+        }
+
+        //Funktion um Produkte aus dem Warenkorb zu nehmen (zumindest vielleicht der Ansatz dazu, da die Produkte sich verdoppeln)
+        function handlerWarenkorbEntfernen(_kaufen: Event): void {
+            if (counter > 0)
+                counter -= 1;
+            let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
+            let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
+            if (gesamtPreis - warenkorb[artIndex].price1 <= 0)
+                gesamtPreis = 0;
+            if (gesamtPreis > 0)
+                gesamtPreis -= warenkorb[artIndex].price1;
+            else
+                gesamtPreis = 0;
+            console.log("Nehme " + warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
+            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
+            productCounter.style.display = "block";
+            productCounter.innerHTML = "" + counter;
+        }
+    }
+    
     console.log("Fertig geladen");
 }

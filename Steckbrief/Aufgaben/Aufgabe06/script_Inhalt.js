@@ -1,8 +1,6 @@
 "use strict";
 var Aufgabe06;
 (function (Aufgabe06) {
-    //Produkte Vorgabe
-    console.log("Ich werde auch geladen");
     //#region Produkte
     //Festkochende
     Aufgabe06.linda = {
@@ -59,15 +57,15 @@ var Aufgabe06;
         Art: "Kartoffel",
         Kategorie: "festkochend"
     };
-    /*
-    let trenner: Product = {
+    Aufgabe06.trenner = {
         Name: "",
         Description: "",
         price1: 0,
         price2: 0,
         imgSrc: "",
-        Art: "trenner"
-    }  */
+        Art: "trenner",
+        Kategorie: ""
+    };
     //Mehligkochend
     Aufgabe06.augusta = {
         Name: "Augusta",
@@ -164,7 +162,7 @@ var Aufgabe06;
     //#region Einsortierung
     //Produktarrays
     Aufgabe06.imVerkauf = [Aufgabe06.linda, Aufgabe06.annabel, Aufgabe06.marabel, Aufgabe06.laratta, Aufgabe06.glorietta, Aufgabe06.allians, Aufgabe06.augusta, Aufgabe06.mehlig, Aufgabe06.adretta, Aufgabe06.mehlig, Aufgabe06.ackersegen, Aufgabe06.mehlig, Aufgabe06.roteemmalie, Aufgabe06.violetta, Aufgabe06.blauerschwede, Aufgabe06.heiderot, Aufgabe06.laura, Aufgabe06.tannenzapfen];
-    Aufgabe06.warenkorb = [Aufgabe06.marabel, Aufgabe06.annabel, Aufgabe06.annabel];
+    Aufgabe06.warenkorb = [Aufgabe06.mehlig];
     //#endregion
 })(Aufgabe06 || (Aufgabe06 = {}));
 //# sourceMappingURL=script_Inhalt.js.map
