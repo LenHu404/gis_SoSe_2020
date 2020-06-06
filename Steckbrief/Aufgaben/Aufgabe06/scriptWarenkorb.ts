@@ -1,20 +1,55 @@
 namespace Aufgabe06 {
 
+    let ackersegen: Product = {
+        Name: "Ackersegen",
+        Description: "Auch ein Segen für ihr Gericht",
+        price1: 4.55,
+        price2: 8.99,
+        imgSrc: "Bilder/ACKERSEGEN.jpg",
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
+    };
+    let marabel: Product = {
+        Name: "Marabel",
+        Description: "Eine weitere wunderbare Kartoffel",
+        price1: 4.85,
+        price2: 8.99,
+        imgSrc: "Bilder/marabel.jpg",
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
+    };
+    let annabel: Product = {
+        Name: "Annabel",
+        Description: "Werden Annabels nach der Kartoffel benannt oder die Kartoffel nach Annabels?",
+        price1: 3.55,
+        price2: 7.54,
+        imgSrc: "Bilder/Annabel.jpg",
+        Art: "Kartoffel",
+        Kategorie: "festkochend"
+    };
+    let mehlig: Product = {
+        Name: "Meh-lige Kartoffel",
+        Description: "... meh",
+        price1: 9.55,
+        price2: 19.99,
+        imgSrc: "Bilder/meh-lig.png",
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
+    };
     //#region Einfügen in Die Kategorien
     // Tut mir leid wer sich das hier anschauen muss
 
     //For-schleife für die Einsortierung in die Kategorie
 
+    let warenkorb: Product[] = [marabel, ackersegen, annabel, mehlig];
     let productCounter: HTMLDivElement = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
-    document.getElementById("prio")?.addEventListener("click", auswahlEinschreanken);
-    document.getElementById("top")?.addEventListener("click", auswahlEinschreanken);
     let gesamtPreis: number = 0;
-    let counter: number = 0;
+    let counter: number = warenkorb.length;
+    productCounter.style.display = "block";
 
     for (let i: number = 0; i < warenkorb.length; i++) {
-        productCounter.style.display = "none";
 
         console.log(warenkorb[i].Name, warenkorb[i].imgSrc, warenkorb[i].price1, warenkorb[i].price2);
 
@@ -25,7 +60,7 @@ namespace Aufgabe06 {
         newDiv.setAttribute("articleIndex", "i");
 
         //Element hinzufügen
-        document.getElementById("kartoffel1")?.appendChild(newDiv);
+        document.getElementById("Angebot")?.appendChild(newDiv);
 
         //Bild hinzufügen
         let newImg: HTMLImageElement = document.createElement("img");
@@ -76,55 +111,21 @@ namespace Aufgabe06 {
         newB.setAttribute("articleIndex", i.toString());
         newDiv.appendChild(newB);
 
+        productCounter.style.display = "block";
+
     }
 
     function handlerWarenkorb(_kaufen: Event): void {
-        counter += 1;
+        if (counter > 0)
+            counter -= 1;
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
 
-        gesamtPreis += warenkorb[artIndex].price2;
-        console.log("Lege " + warenkorb[artIndex].Name.toString() + " in den Warenkorb");
+        gesamtPreis -= warenkorb[artIndex].price2;
+        console.log("Nehme " + warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
-    }
-
-    function auswahlEinschreanken(_event: Event): void {
-        let target: HTMLElement = (<HTMLElement>_event.target);
-        let kategorie: string = target.getAttribute("href")!;
-        switch (kategorie) {
-            case "#1kartoffel": {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
-                document.getElementById("showAll")?.setAttribute("style", "display : block");
-
-                break;
-            }
-            case "#2kartoffel": {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
-                document.getElementById("showAll")?.setAttribute("style", "display : block");
-
-                break;
-            }
-            case "#3kartoffel": {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
-                document.getElementById("showAll")?.setAttribute("style", "display : block");
-                break;
-            }
-            default: {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
-                document.getElementById("showAll")?.setAttribute("style", "display : none");
-                break;
-            }
-        }
     }
 
     console.log("Fertig geladen");

@@ -41,7 +41,6 @@ namespace Aufgabe06 {
 
         //Div id zuweisen
         newDiv.id = "artikel" + _kategorie + i;
-        newDiv.setAttribute("articleIndex", "i");
 
         //Element hinzufügen
         document.getElementById(_kategorie)?.appendChild(newDiv);
@@ -56,20 +55,23 @@ namespace Aufgabe06 {
         //Label hinzufügen
         let newL: HTMLLabelElement = document.createElement("label");
         newL.setAttribute("for", imVerkauf[i].Name);
-        newL.innerHTML = "Kilogramm:";
+        newL.innerHTML = "Kilogramm: ";
         newDiv.appendChild(newL);
 
         //Dropdownmenu hinzufügen
         let newSelect: HTMLSelectElement = document.createElement("select");
+        newSelect.setAttribute("class", "option");
         newSelect.name = imVerkauf[i].Name;
         newSelect.id = imVerkauf[i].Name + "select";
         newDiv.appendChild(newSelect);
 
         //Option vom Dropdownmenu
         let newOp1: HTMLOptionElement = document.createElement("option");
+        //newOp1.setAttribute("class", "option");
         newOp1.value = "2.5";
         newOp1.innerHTML = "5 kg | " + imVerkauf[i].price1 + "€";
         let newOp2: HTMLOptionElement = document.createElement("option");
+       // newOp2.setAttribute("class", "option");
         newOp2.value = "5";
         newOp2.innerHTML = "10 kg | " + imVerkauf[i].price2 + "€";
         newSelect.appendChild(newOp1);
@@ -90,10 +92,12 @@ namespace Aufgabe06 {
         //Button hinzugefügt 
         let newB: HTMLInputElement = document.createElement("input");
         newB.addEventListener("click", handlerWarenkorb);
+        newB.setAttribute("class", "button");
         newB.value = "In den Warenkorb";
         newB.type = "button";
         newB.setAttribute("articleIndex", i.toString());
         newDiv.appendChild(newB);
+
 
     }
 
@@ -102,7 +106,7 @@ namespace Aufgabe06 {
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         warenkorb[counter] = imVerkauf[artIndex];
-        gesamtPreis += imVerkauf[artIndex].price2;
+        gesamtPreis += imVerkauf[artIndex].price1;
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         productCounter.style.display = "block";

@@ -379,6 +379,24 @@ main div#Angebot div p.beschreibung {
     font-size: 14px;
 }
 
+.option {
+    background-color: rgba(228, 190, 133, 0.747);
+    padding: 2px 5px 2px 5px;
+}
+
+.button{
+    cursor: pointer;
+    background-color: rgba(228, 190, 133, 0.747);
+    padding: 6px 15px 6px 15px;
+    border: 2px solid rgb(54, 54, 54);
+    border-radius: 5px;
+}
+
+.button:hover {
+    text-decoration: none;
+    background-color: rgba(163, 129, 79, 0.747);
+}
+
 
 #Bestellen {
     cursor: pointer;
