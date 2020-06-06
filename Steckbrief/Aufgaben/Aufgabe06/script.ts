@@ -113,8 +113,8 @@ namespace Aufgabe06 {
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         warenkorb[counter] = imVerkauf[artIndex];
         gesamtPreis = 0;
-        for (let i: number = 0; i < warenkorb.length - 1; i++) {
-            gesamtPreis += warenkorb[counter].price1;
+        for (let i: number = 1; i < warenkorb.length; i++) {
+            gesamtPreis += warenkorb[i].price1;
         }
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
@@ -258,6 +258,6 @@ namespace Aufgabe06 {
             productCounter.innerHTML = "" + counter;
         }
     }
-    
+
     console.log("Fertig geladen");
 }
