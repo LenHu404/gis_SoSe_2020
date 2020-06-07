@@ -72,7 +72,6 @@ namespace Aufgabe06 {
 
         //Option vom Dropdownmenu
         let newOp1: HTMLOptionElement = document.createElement("option");
-        //newOp1.setAttribute("class", "option");
         newOp1.value = "2.5";
         newOp1.innerHTML = "5 kg | " + imVerkauf[i].price1 + "€";
         let newOp2: HTMLOptionElement = document.createElement("option");
@@ -106,6 +105,18 @@ namespace Aufgabe06 {
 
     }
 
+
+    //Funktion um Preis des Warenkorbs zu berechnen, klappt aber nicht, da Elemente nicht aus dem Array gelöscht werden können
+    function preisBerechnung(): number {
+        let preis: number = 0;
+        for (let i: number = 0; i < warenkorb.length; i++) {
+
+            preis += warenkorb[i].price1;
+        }
+        return preis;
+
+    }
+
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen: Event): void {
         counter += 1;
@@ -117,13 +128,21 @@ namespace Aufgabe06 {
             gesamtPreis += warenkorb[i].price1;
         }
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
-        console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
+        try {
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+        } catch (error) {
+            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
+        }
+
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
     }
 
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event: Event): void {
+        if (counter == 0) {
+            productCounter.style.display = "none";
+        }
         let target: HTMLElement = (<HTMLElement>_event.target);
         let kategorie: string = target.getAttribute("href")!;
         switch (kategorie) {
@@ -239,39 +258,55 @@ namespace Aufgabe06 {
                     productCounter.style.display = "block";
                 }
             }
+            try {
+                document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            } catch (error) {
+                document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            }
 
         }
 
         // Produkte aus dem Warenkorb nehmen und aktuellen Preis berechnen
-        function handlerWarenkorbEntfernen(_kaufen: Event): void {
-            if (counter > 0)
-                counter -= 1;
-            let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
-            let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
-            if (gesamtPreis - warenkorb[artIndex].price1 <= 0)
-                gesamtPreis = 0;
-            if (gesamtPreis > 0)
-                gesamtPreis -= warenkorb[artIndex].price1;
-            else
-                gesamtPreis = 0;
-            document.getElementById("WarenkorbItem" + artIndex)?.remove();
-            console.log("Nehme " + warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
-            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
-            productCounter.style.display = "block";
-            productCounter.innerHTML = "" + counter;
-        }
 
-        //Funktion um Preis des Warenkorbs zu berechnen, klappt aber nicht, da Elemente nicht aus dem Array gelöscht werden können
-        /* function preisBerechnung(): number {
-            let preis: number = 0;
-            for (let i: number = 0; i < warenkorb.length; i++) {
-                if (warenkorb[i] != null)
-                    preis += warenkorb[i].price1;
-            }
-            return preis;
-
-        } */
     }
 
+    function handlerWarenkorbEntfernen(_kaufen: Event): void {
+        if (counter > 0)
+            counter -= 1;
+        let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
+        let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
+        console.log("Nehme " + warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
+
+        if (gesamtPreis - warenkorb[artIndex].price1 <= 0)
+            gesamtPreis = 0;
+        if (gesamtPreis > 0)
+            gesamtPreis -= warenkorb[artIndex].price1;
+        else
+            gesamtPreis = 0;
+
+        document.getElementById("WarenkorbItem" + artIndex)?.remove();
+
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + counter;
+        warenkorb.splice(artIndex, 1);
+        try {
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+        } catch (error) {
+            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
+        }
+        try {
+            document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+        } catch (error) {
+            document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+        }
+        for (let i: number = 0; i < warenkorb.length; i++) {
+            document.getElementById("WarenkorbItem" + i)?.remove();
+        }
+        warenkorbAufbauen();
+    }
     console.log("Fertig geladen");
 }
+
+
+
+

@@ -81,7 +81,7 @@ namespace Aufgabe06 {
         imgSrc: "Bilder/Newsletter.png",
         Art: "Kartoffel",
         Kategorie: "mehligkochend"
-    }  
+    };  
 
     //Mehligkochend
 
