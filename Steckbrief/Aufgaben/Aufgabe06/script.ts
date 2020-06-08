@@ -45,7 +45,8 @@ namespace Aufgabe06 {
         let newDiv: HTMLDivElement = document.createElement("div");
 
         //Div id zuweisen
-        newDiv.id = "artikel" + _kategorie + i;
+        newDiv.id = "artikel" + i;
+        newDiv.setAttribute("kategorie", _kategorie.toString());
 
         //Element hinzufügen
         document.getElementById(_kategorie)?.appendChild(newDiv);
@@ -81,6 +82,7 @@ namespace Aufgabe06 {
         newSelect.appendChild(newOp1);
         newSelect.appendChild(newOp2);
 
+
         //Name hinzugefügt 
         let newName: HTMLParagraphElement = document.createElement("p");
         newName.setAttribute("class", "Name");
@@ -106,7 +108,8 @@ namespace Aufgabe06 {
     }
 
 
-    //Funktion um Preis des Warenkorbs zu berechnen, klappt aber nicht, da Elemente nicht aus dem Array gelöscht werden können
+    //Funktion um Preis des Warenkorbs zu berechnen,
+    // klappt aber nur Teilweise, da sie manchmal auf einen Index im Array zugreifen will der nicht mehr da ist
     function preisBerechnung(): number {
         let preis: number = 0;
         for (let i: number = 0; i < warenkorb.length; i++) {
@@ -145,43 +148,69 @@ namespace Aufgabe06 {
         }
         let target: HTMLElement = (<HTMLElement>_event.target);
         let kategorie: string = target.getAttribute("href")!;
-        switch (kategorie) {
-            case "#1kartoffel": {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
-                document.getElementById("showAll")?.setAttribute("style", "display : block");
-                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
 
-                break;
+        for (let i: number = 0; i < imVerkauf.length; i++) {
+            let artikelKategorie: string = document.getElementById("artikel" + i)?.getAttribute("kategorie")!;
+            if (kategorie == "#" + artikelKategorie) {
+                document.getElementById("artikel" + i)?.setAttribute("style", "display : block");
+                console.log("Erster fall");
             }
-            case "#2kartoffel": {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
-                document.getElementById("showAll")?.setAttribute("style", "display : block");
-                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
-
-                break;
+            else {
+                document.getElementById("artikel" + i)?.setAttribute("style", "display : none");
+                console.log("Zweiter fall");
             }
-            case "#3kartoffel": {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
-                document.getElementById("showAll")?.setAttribute("style", "display : block");
-                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
-                break;
-            }
-            default: {
-                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
-                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
-                document.getElementById("showAll")?.setAttribute("style", "display : none");
-                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
-                break;
+            if (kategorie == null) {
+                document.getElementById("artikel" + i)?.setAttribute("style", "display : block");
+                console.log("Driiter fall");
             }
         }
+        switch (kategorie) {
+            case "#festkochend":
+                document.getElementById("1kartoffel")?.setAttribute("style", "display : block");
+                document.getElementById("2kartoffel")?.setAttribute("style", "display : none");
+                document.getElementById("3kartoffel")?.setAttribute("style", "display : none");
+                document.getElementById("showAll")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
 
+                break;
+            case "#mehligkochend":
+                document.getElementById("1kartoffel")?.setAttribute("style", "display : none");
+                document.getElementById("2kartoffel")?.setAttribute("style", "display : block");
+                document.getElementById("3kartoffel")?.setAttribute("style", "display : none");
+                document.getElementById("showAll")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
+
+                break;
+            case "#exoten":
+                document.getElementById("1kartoffel")?.setAttribute("style", "display : none");
+                document.getElementById("2kartoffel")?.setAttribute("style", "display : none");
+                document.getElementById("3kartoffel")?.setAttribute("style", "display : block");
+                document.getElementById("showAll")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
+
+                break;
+
+            default:
+                document.getElementById("1kartoffel")?.setAttribute("style", "display : block");
+                document.getElementById("2kartoffel")?.setAttribute("style", "display : block");
+                document.getElementById("3kartoffel")?.setAttribute("style", "display : block");
+                document.getElementById("showAll")?.setAttribute("style", "display : none");
+                document.getElementById("kartoffel1")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel2")?.setAttribute("style", "display : block");
+                document.getElementById("kartoffel3")?.setAttribute("style", "display : block");
+                document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
+
+                break;
+        }
 
     }
 
