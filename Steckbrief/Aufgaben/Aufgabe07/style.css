@@ -1,0 +1,525 @@
+@media screen and (max-width:1024px) {
+    #info {
+        display: none;
+    }
+    div.Angebot>div {
+        margin: auto;
+        margin-top: 15px;
+    }
+    div.Angebot>div img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    #menu img {
+        width: 50%;
+        height: 50%;
+    }
+    #menu {
+        top: -235px;
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        right: 80px;
+        width: 150px;
+        height: 140px;
+        padding: 90px 10px 75px 10px;
+        border-radius: 0 0 10px 10px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+    #menu a {
+        text-decoration: none;
+        color: black;
+    }
+    #menu:hover {
+        top: -40px;
+    }
+    #menu a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media screen and (max-width:600px) {
+    header::before {
+        content: "";
+    }
+    header {
+        font-size: 10px;
+        text-align: center;
+        padding: 15px 40px 15px 40px;
+    }
+    header nav img {
+        width: 30px;
+        height: 30px;
+    }
+    section h2 {
+        font-size: 15px;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 10px 16px;
+        background: #555;
+        color: #f1f1f1;
+    }
+    img[alt=Kartoffel-Icon] {
+        display: none;
+    }
+    div.Angebot>div {
+        border-radius: 5px;
+        padding: 10px;
+        width: 80%;
+        height: 100%;
+        transition: color 0.2s ease-in-out 0s;
+        transition: border 0.2s ease-in-out 0s;
+    }
+    div.Angebot>div img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    #info {
+        display: none;
+    }
+    #navbar a span {
+        display: none;
+    }
+    #menu {
+        display: none;
+    }
+    #konto img {
+        width: 20px;
+        height: 20px;
+    }
+    div~nav {
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        top: -80px;
+        right: 80px;
+        width: 30px;
+        height: 30px;
+        padding: 90px 10px 10px 5px;
+        border-radius: 0 0 10px 10px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+    #Home img {
+        width: 20px;
+        height: 20px;
+    }
+    #Home {
+        top: -235px;
+        transition: top 0.5s ease-in-out 0s;
+        position: fixed;
+        right: 80px;
+        width: 30px;
+        height: 140px;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+        font-size: 13pt;
+    }
+    footer section {
+        width: 200px;
+        height: 100px;
+        padding: 4px 5px 100px 5px;
+        position: fixed;
+        bottom: -280px;
+    }
+    footer section a, b {
+        font-size: 10px;
+    }
+    #bigtoe {
+        font-size: 13px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+}
+
+body {
+    background-image: url(Bilder/bg02.png);
+}
+
+header {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    text-align: center;
+    background-color: wheat;
+    padding: 15px 40px 15px 40px;
+    border-radius: 20px;
+}
+
+#top {
+    cursor: pointer;
+}
+
+header h1 {
+    color: white;
+}
+
+#navbar {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+    color: rgba(247, 215, 167, 0.747);
+}
+
+div~nav {
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    top: -80px;
+    right: 80px;
+    width: 50px;
+    height: 50px;
+    padding: 90px 10px 10px 5px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#menu img {
+    width: 50%;
+    height: 50%;
+}
+
+#menu {
+    z-index: 1;
+    top: -235px;
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    right: 80px;
+    width: 150px;
+    height: 140px;
+    padding: 90px 10px 75px 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#menu a {
+    text-decoration: none;
+    color: black;
+}
+
+#menu:hover {
+    top: -40px;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+}
+
+#showAll {
+    margin-top: -30px;
+    color: rgb(54, 54, 54);
+    font-size: small;
+    cursor: pointer;
+    display: none;
+}
+
+#showAll:hover {
+   text-decoration: underline;
+}
+
+#konto {
+    z-index: 1;
+    position: fixed;
+    right: 10px;
+}
+
+#productCounter {
+    background-color: saddlebrown;
+    border-radius: 30px;
+}
+
+header nav img {
+    width: 30px;
+    height: 30px;
+}
+
+header nav:hover {
+    top: -40px;
+}
+
+img[alt=Kartoffel-Icon] {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 25px;
+}
+
+#info {
+    margin: 5px auto;
+    padding: 1px 5px 3px 5px;
+    background-color: rgb(54, 54, 54);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15pt;
+    color: white;
+    text-decoration: wavy;
+    border-radius: 20px;
+}
+
+.content {
+    padding: 10px;
+}
+
+section h2 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+
+div.Angebot>div {
+    margin: 5px auto;
+    margin-top: 15px;
+    background-color: rgba(248, 215, 168, 0.842);
+    border: 5px solid rgba(247, 215, 167, 0.788);
+    border-radius: 5px;
+    padding: 10px;
+    width: 220px;
+    height: 380px;
+    transition: color 0.2s ease-in-out 0s;
+    transition: border 0.2s ease-in-out 0s;
+}
+
+div.Angebot>div:hover {
+    background-color: rgba(168, 140, 97, 0.747);
+    border: 5px solid rgba(163, 129, 79, 0.747);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: underline;
+}
+
+div.Angebot>div img {
+    width: 220px;
+    height: 200px;
+}
+
+div.Angebot div p.Name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+div.Angebot div p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.Angebot {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main div.Angebot div p.beschreibung {
+    font-size: 14px;
+}
+
+div#Angebot>div {
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(248, 215, 168, 0.842);
+    border: 5px solid rgba(247, 215, 167, 0.788);
+    border-radius: 5px;
+    padding: 10px;
+    width: 202px;
+    transition: color 0.2s ease-in-out 0s;
+    transition: border 0.2s ease-in-out 0s;
+}
+
+div#Angebot>div:hover {
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(168, 140, 97, 0.747);
+    border: 5px solid rgba(163, 129, 79, 0.747);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: underline;
+}
+
+div#Angebot>div img {
+    width: 200px;
+    height: 200px;
+}
+
+div#Angebot div p.Name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+div#Angebot div p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+#Angebot {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main div#Angebot div p.beschreibung {
+    font-size: 14px;
+}
+
+.option {
+    background-color: rgba(228, 190, 133, 0.747);
+    padding: 2px 5px 2px 5px;
+}
+
+.button{
+    cursor: pointer;
+    background-color: rgba(228, 190, 133, 0.747);
+    padding: 6px 15px 6px 15px;
+    border: 2px solid rgb(54, 54, 54);
+    border-radius: 5px;
+}
+
+.button:hover {
+    text-decoration: none;
+    background-color: rgba(163, 129, 79, 0.747);
+}
+
+
+#Bestellen {
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(Bilder/Kartoffel.png);
+    color: lightcyan;
+    background-image: url(Bilder/Kartoffel.png);
+    width: 170px;
+    height: 120px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+#Bestellen:hover {
+    background-image: url(Bilder/Kartoffel.png);
+    background-color: lightslategrey;
+    background-image: url(Bilder/Kartoffel.png);
+    text-decoration: underline;
+}
+
+#Home img {
+    width: 45%;
+    height: 30%;
+}
+
+#Home {
+    z-index: 1;
+    top: -235px;
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    right: 80px;
+    width: 50px;
+    height: 140px;
+    padding: 90px 10px 75px 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#Home a {
+    text-decoration: none;
+    color: black;
+}
+
+#Home:hover {
+    top: -210px;
+}
+
+#Home a:hover {
+    text-decoration: underline;
+}
+
+footer p::after {
+    content: "";
+}
+
+footer p * {
+    text-decoration: none;
+    color: white;
+}
+
+footer p *:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    width: 100%
+}
+
+footer section {
+    cursor: grab;
+    transition: bottom 0.5s ease-in-out 0.1s;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+    bottom: -275px;
+    width: 320px;
+    height: 100px;
+    padding: 4px 5px 100px 5px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(141, 100, 54);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+footer section h4 {
+    margin: 0px 0px 0px 0px;
+}
+
+footer section a {
+    font-size: medium;
+    text-decoration: none;
+    color: white;
+}
+
+#bigtoe {
+    font-size: 15pt;
+}
+
+footer section:hover {
+    bottom: -225px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 5px 140px 5px;
+    position: relative;
+    bottom: -5px;
+    background-color: #272727;
+    color: white;
+}
+
+footer h3 a.impressum {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    margin: 10px 0px 20px 0px;
+}
+
+footer h3 a.impressum:hover {
+    text-decoration: underline;
+}

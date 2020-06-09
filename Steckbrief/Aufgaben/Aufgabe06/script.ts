@@ -153,15 +153,12 @@ namespace Aufgabe06 {
             let artikelKategorie: string = document.getElementById("artikel" + i)?.getAttribute("kategorie")!;
             if (kategorie == "#" + artikelKategorie) {
                 document.getElementById("artikel" + i)?.setAttribute("style", "display : block");
-                console.log("Erster fall");
             }
             else {
                 document.getElementById("artikel" + i)?.setAttribute("style", "display : none");
-                console.log("Zweiter fall");
             }
             if (kategorie == null) {
                 document.getElementById("artikel" + i)?.setAttribute("style", "display : block");
-                console.log("Driiter fall");
             }
         }
         switch (kategorie) {

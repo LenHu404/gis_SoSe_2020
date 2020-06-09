@@ -1,6 +1,6 @@
 "use strict";
-var Aufgabe06;
-(function (Aufgabe06) {
+var Aufgabe07;
+(function (Aufgabe07) {
     //#region Einfügen in Die Kategorien
     // Tut mir leid wer sich das hier anschauen muss
     //For-schleife für die Einsortierung in die Kategorie
@@ -25,13 +25,13 @@ var Aufgabe06;
     let gesamtPreis = 0;
     let counter = 0;
     //Produkte, zum Verkauf stehen erstellen
-    for (let i = 0; i < Aufgabe06.imVerkauf.length; i++) {
+    for (let i = 0; i < Aufgabe07.imVerkauf.length; i++) {
         productCounter.style.display = "none";
         //Einsortierung in die passende Kategorie
-        if (Aufgabe06.imVerkauf[i].Kategorie == "festkochend") {
+        if (Aufgabe07.imVerkauf[i].Kategorie == "festkochend") {
             _kategorie = "festkochend";
         }
-        else if (Aufgabe06.imVerkauf[i].Kategorie == "mehligkochend") {
+        else if (Aufgabe07.imVerkauf[i].Kategorie == "mehligkochend") {
             _kategorie = "mehligkochend";
         }
         else {
@@ -46,39 +46,39 @@ var Aufgabe06;
         document.getElementById(_kategorie)?.appendChild(newDiv);
         //Bild hinzufügen
         let newImg = document.createElement("img");
-        newImg.src = Aufgabe06.imVerkauf[i].imgSrc;
-        newImg.setAttribute("alt", Aufgabe06.imVerkauf[i].Art);
+        newImg.src = Aufgabe07.imVerkauf[i].imgSrc;
+        newImg.setAttribute("alt", Aufgabe07.imVerkauf[i].Art);
         newDiv.appendChild(newImg);
         //Label hinzufügen
         let newL = document.createElement("label");
-        newL.setAttribute("for", Aufgabe06.imVerkauf[i].Name);
+        newL.setAttribute("for", Aufgabe07.imVerkauf[i].Name);
         newL.innerHTML = "Kilogramm: ";
         newDiv.appendChild(newL);
         //Dropdownmenu hinzufügen
         let newSelect = document.createElement("select");
         newSelect.setAttribute("class", "option");
-        newSelect.name = Aufgabe06.imVerkauf[i].Name;
-        newSelect.id = Aufgabe06.imVerkauf[i].Name + "select";
+        newSelect.name = Aufgabe07.imVerkauf[i].Name;
+        newSelect.id = Aufgabe07.imVerkauf[i].Name + "select";
         newDiv.appendChild(newSelect);
         //Option vom Dropdownmenu
         let newOp1 = document.createElement("option");
         newOp1.value = "2.5";
-        newOp1.innerHTML = "5 kg | " + Aufgabe06.imVerkauf[i].price1 + "€";
+        newOp1.innerHTML = "5 kg | " + Aufgabe07.imVerkauf[i].price1 + "€";
         let newOp2 = document.createElement("option");
         // newOp2.setAttribute("class", "option");
         newOp2.value = "5";
-        newOp2.innerHTML = "10 kg | " + Aufgabe06.imVerkauf[i].price2 + "€";
+        newOp2.innerHTML = "10 kg | " + Aufgabe07.imVerkauf[i].price2 + "€";
         newSelect.appendChild(newOp1);
         newSelect.appendChild(newOp2);
         //Name hinzugefügt 
         let newName = document.createElement("p");
         newName.setAttribute("class", "Name");
-        newName.innerText = Aufgabe06.imVerkauf[i].Name;
+        newName.innerText = Aufgabe07.imVerkauf[i].Name;
         newDiv.appendChild(newName);
         //Beschreibung hinzugefügt 
         let newP = document.createElement("p");
         newP.setAttribute("class", "beschreibung");
-        newP.innerHTML = Aufgabe06.imVerkauf[i].Description;
+        newP.innerHTML = Aufgabe07.imVerkauf[i].Description;
         newDiv.appendChild(newP);
         //Button hinzugefügt 
         let newB = document.createElement("input");
@@ -93,8 +93,8 @@ var Aufgabe06;
     // klappt aber nur Teilweise, da sie manchmal auf einen Index im Array zugreifen will der nicht mehr da ist
     function preisBerechnung() {
         let preis = 0;
-        for (let i = 0; i < Aufgabe06.warenkorb.length; i++) {
-            preis += Aufgabe06.warenkorb[i].price1;
+        for (let i = 0; i < Aufgabe07.warenkorb.length; i++) {
+            preis += Aufgabe07.warenkorb[i].price1;
         }
         return preis;
     }
@@ -103,12 +103,12 @@ var Aufgabe06;
         counter += 1;
         let target = _kaufen.target;
         let artIndex = parseInt(target.getAttribute("articleIndex"));
-        Aufgabe06.warenkorb[counter] = Aufgabe06.imVerkauf[artIndex];
+        Aufgabe07.warenkorb[counter] = Aufgabe07.imVerkauf[artIndex];
         gesamtPreis = 0;
-        for (let i = 1; i < Aufgabe06.warenkorb.length; i++) {
-            gesamtPreis += Aufgabe06.warenkorb[i].price1;
+        for (let i = 1; i < Aufgabe07.warenkorb.length; i++) {
+            gesamtPreis += Aufgabe07.warenkorb[i].price1;
         }
-        console.log("Lege " + Aufgabe06.imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
+        console.log("Lege " + Aufgabe07.imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         try {
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         }
@@ -125,7 +125,7 @@ var Aufgabe06;
         }
         let target = _event.target;
         let kategorie = target.getAttribute("href");
-        for (let i = 0; i < Aufgabe06.imVerkauf.length; i++) {
+        for (let i = 0; i < Aufgabe07.imVerkauf.length; i++) {
             let artikelKategorie = document.getElementById("artikel" + i)?.getAttribute("kategorie");
             if (kategorie == "#" + artikelKategorie) {
                 document.getElementById("artikel" + i)?.setAttribute("style", "display : block");
@@ -186,9 +186,9 @@ var Aufgabe06;
         document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
         document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
         document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : block");
-        for (let i = 0; i < Aufgabe06.warenkorb.length; i++) {
+        for (let i = 0; i < Aufgabe07.warenkorb.length; i++) {
             if (!document.getElementById("WarenkorbItem" + i.toString())) {
-                if (Aufgabe06.warenkorb[i] != null) {
+                if (Aufgabe07.warenkorb[i] != null) {
                     //Estellen von Div Elementen 
                     let newDiv = document.createElement("div");
                     //Div id zuweisen
@@ -198,38 +198,38 @@ var Aufgabe06;
                     document.getElementById("Angebot")?.appendChild(newDiv);
                     //Bild hinzufügen
                     let newImg = document.createElement("img");
-                    newImg.src = Aufgabe06.warenkorb[i].imgSrc;
-                    newImg.setAttribute("alt", Aufgabe06.warenkorb[i].Art);
+                    newImg.src = Aufgabe07.warenkorb[i].imgSrc;
+                    newImg.setAttribute("alt", Aufgabe07.warenkorb[i].Art);
                     newDiv.appendChild(newImg);
                     //Label hinzufügen
                     let newL = document.createElement("label");
-                    newL.setAttribute("for", Aufgabe06.warenkorb[i].Name);
+                    newL.setAttribute("for", Aufgabe07.warenkorb[i].Name);
                     newL.innerHTML = "Kilogramm:";
                     newDiv.appendChild(newL);
                     //Dropdownmenu hinzufügen
                     let newSelect = document.createElement("select");
                     newSelect.setAttribute("class", "option");
-                    newSelect.name = Aufgabe06.warenkorb[i].Name;
-                    newSelect.id = Aufgabe06.warenkorb[i].Name + "select";
+                    newSelect.name = Aufgabe07.warenkorb[i].Name;
+                    newSelect.id = Aufgabe07.warenkorb[i].Name + "select";
                     newDiv.appendChild(newSelect);
                     //Option vom Dropdownmenu
                     let newOp1 = document.createElement("option");
                     newOp1.value = "2.5";
-                    newOp1.innerHTML = "5 kg | " + Aufgabe06.warenkorb[i].price1 + "€";
+                    newOp1.innerHTML = "5 kg | " + Aufgabe07.warenkorb[i].price1 + "€";
                     let newOp2 = document.createElement("option");
                     newOp2.value = "5";
-                    newOp2.innerHTML = "10 kg | " + Aufgabe06.warenkorb[i].price2 + "€";
+                    newOp2.innerHTML = "10 kg | " + Aufgabe07.warenkorb[i].price2 + "€";
                     newSelect.appendChild(newOp1);
                     newSelect.appendChild(newOp2);
                     //Name hinzugefügt 
                     let newName = document.createElement("p");
                     newName.setAttribute("class", "Name");
-                    newName.innerText = Aufgabe06.warenkorb[i].Name;
+                    newName.innerText = Aufgabe07.warenkorb[i].Name;
                     newDiv.appendChild(newName);
                     //Beschreibung hinzugefügt 
                     let newP = document.createElement("p");
                     newP.setAttribute("class", "beschreibung");
-                    newP.innerHTML = Aufgabe06.warenkorb[i].Description;
+                    newP.innerHTML = Aufgabe07.warenkorb[i].Description;
                     newDiv.appendChild(newP);
                     //Button hinzugefügt 
                     let newB = document.createElement("input");
@@ -256,17 +256,17 @@ var Aufgabe06;
             counter -= 1;
         let target = _kaufen.target;
         let artIndex = parseInt(target.getAttribute("articleIndex"));
-        console.log("Nehme " + Aufgabe06.warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
-        if (gesamtPreis - Aufgabe06.warenkorb[artIndex].price1 <= 0)
+        console.log("Nehme " + Aufgabe07.warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
+        if (gesamtPreis - Aufgabe07.warenkorb[artIndex].price1 <= 0)
             gesamtPreis = 0;
         if (gesamtPreis > 0)
-            gesamtPreis -= Aufgabe06.warenkorb[artIndex].price1;
+            gesamtPreis -= Aufgabe07.warenkorb[artIndex].price1;
         else
             gesamtPreis = 0;
         document.getElementById("WarenkorbItem" + artIndex)?.remove();
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
-        Aufgabe06.warenkorb.splice(artIndex, 1);
+        Aufgabe07.warenkorb.splice(artIndex, 1);
         try {
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         }
@@ -279,11 +279,11 @@ var Aufgabe06;
         catch (error) {
             document.getElementById("4kartoffel").innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
         }
-        for (let i = 0; i < Aufgabe06.warenkorb.length; i++) {
+        for (let i = 0; i < Aufgabe07.warenkorb.length; i++) {
             document.getElementById("WarenkorbItem" + i)?.remove();
         }
         warenkorbAufbauen();
     }
     console.log("Fertig geladen");
-})(Aufgabe06 || (Aufgabe06 = {}));
+})(Aufgabe07 || (Aufgabe07 = {}));
 //# sourceMappingURL=script.js.map
