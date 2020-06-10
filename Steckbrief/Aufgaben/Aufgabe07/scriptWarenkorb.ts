@@ -11,7 +11,7 @@ namespace Aufgabe07 {
     productCounter.style.display = "block";
     console.log(Storage.length);
     warenkorbAufbauen2();
-    console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + artIndex)!)].Name);
+    console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name);
     console.log(counter);
 
     /* function warenkorbAufbauen(): void {
@@ -87,10 +87,11 @@ namespace Aufgabe07 {
     } */
 
     function warenkorbAufbauen2(): void {
-
+        console.log("Tester");
 
 
         for (let i: number = 0; i < counter; i++) {
+            console.log("Tester 2");
 
             let artIndex: number = parseInt(localStorage.getItem("Artikel" + i)!);
 

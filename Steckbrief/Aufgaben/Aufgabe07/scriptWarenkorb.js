@@ -12,7 +12,7 @@ var Aufgabe07;
     productCounter.style.display = "block";
     console.log(Storage.length);
     warenkorbAufbauen2();
-    console.log(Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + artIndex))].Name);
+    console.log(Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + 0))].Name);
     console.log(Aufgabe07.counter);
     /* function warenkorbAufbauen(): void {
         for (let i: number = 0; i < counter; i++) {
@@ -86,7 +86,9 @@ var Aufgabe07;
         }
     } */
     function warenkorbAufbauen2() {
+        console.log("Tester");
         for (let i = 0; i < Aufgabe07.counter; i++) {
+            console.log("Tester 2");
             let artIndex = parseInt(localStorage.getItem("Artikel" + i));
             console.log(Aufgabe07.imVerkauf[artIndex].Name, Aufgabe07.imVerkauf[artIndex].imgSrc, Aufgabe07.imVerkauf[artIndex].price1, Aufgabe07.imVerkauf[artIndex].price2);
             //Estellen von Div Elementen 
