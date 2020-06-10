@@ -26,7 +26,7 @@ var Aufgabe07;
     }
     //Globale Variablen deklarieren und initialisieren
     Aufgabe07.gesamtPreis = 0;
-    Aufgabe07.counter = 1;
+    Aufgabe07.counter = 0;
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init() {
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
@@ -101,7 +101,6 @@ var Aufgabe07;
     // klappt aber nur Teilweise, da sie manchmal auf einen Index im Array zugreifen will der nicht mehr da ist
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen) {
-        Aufgabe07.counter += 1;
         let target = _kaufen.target;
         let artIndex = parseInt(target.getAttribute("articleIndex"));
         Aufgabe07.gesamtPreis += Aufgabe07.imVerkauf[artIndex].price1;
@@ -118,6 +117,7 @@ var Aufgabe07;
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + Aufgabe07.counter;
         localStorage.setItem("counter", Aufgabe07.counter.toString());
+        Aufgabe07.counter += 1;
     }
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event) {
