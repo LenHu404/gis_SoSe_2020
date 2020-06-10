@@ -34,7 +34,11 @@ var Aufgabe07;
         addEventListener();
         //For-schleife für die Einsortierung in die Kategorie
         for (let i = 0; i < Aufgabe07.imVerkauf.length; i++) {
-            productCounter.style.display = "none";
+            if (Aufgabe07.counter == 0) {
+                productCounter.style.display = "none";
+            }
+            else
+                productCounter.style.display = "block";
             //Einsortierung in die passende Kategorie
             if (Aufgabe07.imVerkauf[i].Kategorie == "festkochend") {
                 _kategorie = "festkochend";
@@ -102,6 +106,11 @@ var Aufgabe07;
     // klappt aber nur Teilweise, da sie manchmal auf einen Index im Array zugreifen will der nicht mehr da ist
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen) {
+        if (Aufgabe07.counter == 0) {
+            productCounter.style.display = "none";
+        }
+        else
+            productCounter.style.display = "block";
         let target = _kaufen.target;
         let artIndex = parseInt(target.getAttribute("articleIndex"));
         Aufgabe07.gesamtPreis += Aufgabe07.imVerkauf[artIndex].price1;
@@ -115,10 +124,10 @@ var Aufgabe07;
         catch (error) {
             console.log("Aktueller Preis des Warenkorbs: " + Aufgabe07.gesamtPreis.toFixed(2) + "€");
         }
-        productCounter.style.display = "block";
-        productCounter.innerHTML = "" + Aufgabe07.counter;
         Aufgabe07.counter += 1;
         localStorage.setItem("counter", Aufgabe07.counter.toString());
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + Aufgabe07.counter;
     }
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event) {

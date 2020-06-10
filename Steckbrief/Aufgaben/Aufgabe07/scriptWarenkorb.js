@@ -19,6 +19,11 @@ var Aufgabe07;
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
         for (let i = 0; i < Aufgabe07.counter; i++) {
             console.log("Tester 2");
+            if (Aufgabe07.counter == 0) {
+                productCounter.style.display = "none";
+            }
+            else
+                productCounter.style.display = "block";
             let artIndex = parseInt(localStorage.getItem("Artikel" + i));
             //console.log(imVerkauf[artIndex].Name, imVerkauf[artIndex].imgSrc, imVerkauf[artIndex].price1, imVerkauf[artIndex].price2);
             //Estellen von Div Elementen 
@@ -71,7 +76,6 @@ var Aufgabe07;
             newB.type = "button";
             newB.setAttribute("articleIndex", artIndex.toString());
             newDiv.appendChild(newB);
-            productCounter.style.display = "block";
             try {
                 //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
             }

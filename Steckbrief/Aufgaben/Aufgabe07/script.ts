@@ -57,7 +57,12 @@ namespace Aufgabe07 {
 
         //For-schleife für die Einsortierung in die Kategorie
         for (let i: number = 0; i < imVerkauf.length; i++) {
-            productCounter.style.display = "none";
+
+            if (counter == 0) {
+                productCounter.style.display = "none";
+            }
+            else
+                productCounter.style.display = "block";
 
             //Einsortierung in die passende Kategorie
             if (imVerkauf[i].Kategorie == "festkochend") {
@@ -141,6 +146,11 @@ namespace Aufgabe07 {
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen: Event): void {
 
+        if (counter == 0) {
+            productCounter.style.display = "none";
+        }
+        else
+            productCounter.style.display = "block";
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         gesamtPreis += imVerkauf[artIndex].price1;
@@ -156,12 +166,10 @@ namespace Aufgabe07 {
             console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
         }
 
-        productCounter.style.display = "block";
-        productCounter.innerHTML = "" + counter;
-
-
         counter += 1;
         localStorage.setItem("counter", counter.toString());
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + counter;
     }
 
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden

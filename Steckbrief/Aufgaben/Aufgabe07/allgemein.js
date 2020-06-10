@@ -1,6 +1,9 @@
 "use strict";
 var Aufgabe07;
 (function (Aufgabe07) {
+    Aufgabe07.productCounter = document.createElement("div");
+    Aufgabe07.productCounter.setAttribute("id", "productCounter");
+    document.getElementById("konto")?.appendChild(Aufgabe07.productCounter);
     function preisBerechnung() {
         let preis = 0;
         for (let i = 0; i < Aufgabe07.warenkorb.length; i++) {

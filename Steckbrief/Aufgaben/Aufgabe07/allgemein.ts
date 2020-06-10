@@ -1,4 +1,7 @@
 namespace Aufgabe07 {
+    export let productCounter: HTMLDivElement = document.createElement("div");
+    productCounter.setAttribute("id", "productCounter");
+    document.getElementById("konto")?.appendChild(productCounter);
 
     export function preisBerechnung(): number {
         let preis: number = 0;

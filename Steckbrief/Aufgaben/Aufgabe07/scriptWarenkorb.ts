@@ -24,6 +24,13 @@ namespace Aufgabe07 {
         for (let i: number = 0; i < counter; i++) {
             console.log("Tester 2");
 
+            if (counter == 0) {
+                productCounter.style.display = "none";
+            }
+            else
+                productCounter.style.display = "block";
+                
+
             let artIndex: number = parseInt(localStorage.getItem("Artikel" + i)!);
 
             //console.log(imVerkauf[artIndex].Name, imVerkauf[artIndex].imgSrc, imVerkauf[artIndex].price1, imVerkauf[artIndex].price2);
@@ -88,9 +95,6 @@ namespace Aufgabe07 {
             newB.type = "button";
             newB.setAttribute("articleIndex", artIndex.toString());
             newDiv.appendChild(newB);
-
-            productCounter.style.display = "block";
-
 
             try {
                 //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
