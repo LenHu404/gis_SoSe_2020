@@ -11,80 +11,9 @@ namespace Aufgabe07 {
     productCounter.style.display = "block";
     console.log(Storage.length);
     warenkorbAufbauen2();
-    console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name);
+   //console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name.toString());
     console.log(counter);
 
-    /* function warenkorbAufbauen(): void {
-        for (let i: number = 0; i < counter; i++) {
-
-            warenkorb[i + 1] = imVerkauf[parseInt(localStorage.getItem("lastname")!)];
-
-            console.log(warenkorb[i].Name, warenkorb[i].imgSrc, warenkorb[i].price1, warenkorb[i].price2);
-
-            //Estellen von Div Elementen 
-            let newDiv: HTMLDivElement = document.createElement("div");
-
-            //Div id zuweisen
-            newDiv.setAttribute("articleIndex", "i");
-
-            //Element hinzufügen        
-            document.getElementById("Angebot")?.appendChild(newDiv);
-
-            //Bild hinzufügen
-            let newImg: HTMLImageElement = document.createElement("img");
-
-            newImg.src = warenkorb[i].imgSrc;
-            newImg.setAttribute("alt", warenkorb[i].Art);
-            newDiv.appendChild(newImg);
-
-            //Label hinzufügen
-            let newL: HTMLLabelElement = document.createElement("label");
-            newL.setAttribute("for", warenkorb[i].Name);
-            newL.innerHTML = "Kilogramm:";
-            newDiv.appendChild(newL);
-
-            //Dropdownmenu hinzufügen
-            let newSelect: HTMLSelectElement = document.createElement("select");
-            newSelect.setAttribute("class", "option");
-            newSelect.name = warenkorb[i].Name;
-            newSelect.id = warenkorb[i].Name + "select";
-            newDiv.appendChild(newSelect);
-
-            //Option vom Dropdownmenu
-            let newOp1: HTMLOptionElement = document.createElement("option");
-            newOp1.value = "2.5";
-            newOp1.innerHTML = "5 kg | " + warenkorb[i].price1 + "€";
-            let newOp2: HTMLOptionElement = document.createElement("option");
-            newOp2.value = "5";
-            newOp2.innerHTML = "10 kg | " + warenkorb[i].price2 + "€";
-            newSelect.appendChild(newOp1);
-            newSelect.appendChild(newOp2);
-
-            //Name hinzugefügt 
-            let newName: HTMLParagraphElement = document.createElement("p");
-            newName.setAttribute("class", "Name");
-            newName.innerText = warenkorb[i].Name;
-            newDiv.appendChild(newName);
-
-            //Beschreibung hinzugefügt 
-            let newP: HTMLParagraphElement = document.createElement("p");
-            newP.setAttribute("class", "beschreibung");
-            newP.innerHTML = warenkorb[i].Description;
-            newDiv.appendChild(newP);
-
-            //Button hinzugefügt 
-            let newB: HTMLInputElement = document.createElement("input");
-            // newB.addEventListener("click", handlerWarenkorb);
-            newB.setAttribute("class", "button");
-            newB.value = "entfernen";
-            newB.type = "button";
-            newB.setAttribute("articleIndex", i.toString());
-            newDiv.appendChild(newB);
-
-            productCounter.style.display = "block";
-
-        }
-    } */
 
     function warenkorbAufbauen2(): void {
         console.log("Tester");
