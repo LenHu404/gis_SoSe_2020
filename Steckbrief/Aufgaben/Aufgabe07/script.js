@@ -285,5 +285,6 @@ var Aufgabe07;
         warenkorbAufbauen();
     }
     console.log("Fertig geladen");
+    console.log(JSON.stringify(Aufgabe07.imVerkauf));
 })(Aufgabe07 || (Aufgabe07 = {}));
 //# sourceMappingURL=script.js.map

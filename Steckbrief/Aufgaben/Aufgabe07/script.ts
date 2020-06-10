@@ -5,6 +5,7 @@ namespace Aufgabe07 {
 
     //For-schleife für die Einsortierung in die Kategorie
 
+    
     let _kategorie: string = "festkochend";
     let productCounter: HTMLDivElement = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
@@ -331,6 +332,7 @@ namespace Aufgabe07 {
         warenkorbAufbauen();
     }
     console.log("Fertig geladen");
+    console.log(JSON.stringify(imVerkauf));
 }
 
 
