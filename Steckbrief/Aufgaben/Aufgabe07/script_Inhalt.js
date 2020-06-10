@@ -161,8 +161,8 @@ var Aufgabe07;
     //#endregion
     //#region Einsortierung
     //Produktarrays
-    Aufgabe07.imVerkauf = [Aufgabe07.linda, Aufgabe07.annabel, Aufgabe07.marabel, Aufgabe07.laratta, Aufgabe07.glorietta, Aufgabe07.allians, Aufgabe07.augusta, Aufgabe07.mehlig, Aufgabe07.adretta, Aufgabe07.mehlig, Aufgabe07.ackersegen, Aufgabe07.mehlig, Aufgabe07.roteemmalie, Aufgabe07.violetta, Aufgabe07.blauerschwede, Aufgabe07.heiderot, Aufgabe07.laura, Aufgabe07.tannenzapfen];
-    Aufgabe07.warenkorb = [Aufgabe07.trenner];
+    // export let imVerkauf: Product[] = [linda, annabel, marabel, laratta, glorietta, allians, augusta, mehlig, adretta, mehlig, ackersegen, mehlig, roteemmalie, violetta, blauerschwede, heiderot, laura, tannenzapfen];
+    // export let warenkorb: Product[] = [trenner];
     //#endregion
 })(Aufgabe07 || (Aufgabe07 = {}));
 //# sourceMappingURL=script_Inhalt.js.map
