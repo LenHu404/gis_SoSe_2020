@@ -10,18 +10,17 @@ var Aufgabe07;
     let gesamtPreis = 0;
     Aufgabe07.warenkorb = [Aufgabe07.trenner];
     productCounter.style.display = "block";
-    console.log(Storage.length);
-    warenkorbAufbauen2();
-    //console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name.toString());
     console.log(Aufgabe07.counter);
     Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
     console.log(Aufgabe07.counter);
-    function warenkorbAufbauen2() {
+    warenkorbAufbauen2();
+    async function warenkorbAufbauen2() {
         console.log("Tester");
+        await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
         for (let i = 0; i < Aufgabe07.counter; i++) {
             console.log("Tester 2");
             let artIndex = parseInt(localStorage.getItem("Artikel" + i));
-            console.log(Aufgabe07.imVerkauf[artIndex].Name, Aufgabe07.imVerkauf[artIndex].imgSrc, Aufgabe07.imVerkauf[artIndex].price1, Aufgabe07.imVerkauf[artIndex].price2);
+            //console.log(imVerkauf[artIndex].Name, imVerkauf[artIndex].imgSrc, imVerkauf[artIndex].price1, imVerkauf[artIndex].price2);
             //Estellen von Div Elementen 
             let newDiv = document.createElement("div");
             //Div id zuweisen
@@ -31,7 +30,7 @@ var Aufgabe07;
             document.getElementById("Angebot")?.appendChild(newDiv);
             //Bild hinzufügen
             let newImg = document.createElement("img");
-            newImg.src = Aufgabe07.imVerkauf[i].imgSrc;
+            newImg.src = Aufgabe07.imVerkauf[artIndex].imgSrc;
             newImg.setAttribute("alt", Aufgabe07.imVerkauf[artIndex].Art);
             newDiv.appendChild(newImg);
             //Label hinzufügen
@@ -90,6 +89,11 @@ var Aufgabe07;
             console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
             productCounter.style.display = "block";
             productCounter.innerHTML = "" + Aufgabe07.counter;
+        }
+        async function communicate(_url) {
+            let response = await fetch(_url);
+            Aufgabe07.imVerkauf = await response.json();
+            console.log(Aufgabe07.imVerkauf[0].Name.toString());
         }
         console.log("Fertig geladen");
     }

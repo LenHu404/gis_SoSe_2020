@@ -143,7 +143,7 @@ namespace Aufgabe07 {
         gesamtPreis += imVerkauf[artIndex].price1;
         
         localStorage.setItem("Artikel" + counter, artIndex.toString());
-        console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + artIndex)!)].Name);
+        console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + counter)!)].Name);
         console.log(counter);
 
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
@@ -228,130 +228,9 @@ namespace Aufgabe07 {
 
     }
 
-    //Warenkorb aufbauen und updaten 
-    /* function warenkorbAufbauen(): void {
-        document.getElementById("kartoffel1")?.setAttribute("style", "display : none");
-        document.getElementById("kartoffel2")?.setAttribute("style", "display : none");
-        document.getElementById("kartoffel3")?.setAttribute("style", "display : none");
-        document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : block");
-        for (let i: number = 0; i < warenkorb.length; i++) {
-            if (!document.getElementById("WarenkorbItem" + i.toString())) {
-                if (warenkorb[i] != null) {
-                    //Estellen von Div Elementen 
-                    let newDiv: HTMLDivElement = document.createElement("div");
-
-                    //Div id zuweisen
-                    newDiv.setAttribute("articleIndex", i.toString());
-                    newDiv.setAttribute("id", "WarenkorbItem" + i.toString());
-
-                    //Element hinzufügen
-                    document.getElementById("Angebot")?.appendChild(newDiv);
-
-                    //Bild hinzufügen
-                    let newImg: HTMLImageElement = document.createElement("img");
-
-                    newImg.src = warenkorb[i].imgSrc;
-                    newImg.setAttribute("alt", warenkorb[i].Art);
-                    newDiv.appendChild(newImg);
-
-                    //Label hinzufügen
-                    let newL: HTMLLabelElement = document.createElement("label");
-                    newL.setAttribute("for", warenkorb[i].Name);
-                    newL.innerHTML = "Kilogramm:";
-                    newDiv.appendChild(newL);
-
-                    //Dropdownmenu hinzufügen
-                    let newSelect: HTMLSelectElement = document.createElement("select");
-                    newSelect.setAttribute("class", "option");
-                    newSelect.name = warenkorb[i].Name;
-                    newSelect.id = warenkorb[i].Name + "select";
-                    newDiv.appendChild(newSelect);
-
-                    //Option vom Dropdownmenu
-                    let newOp1: HTMLOptionElement = document.createElement("option");
-                    newOp1.value = "2.5";
-                    newOp1.innerHTML = "5 kg | " + warenkorb[i].price1 + "€";
-                    let newOp2: HTMLOptionElement = document.createElement("option");
-                    newOp2.value = "5";
-                    newOp2.innerHTML = "10 kg | " + warenkorb[i].price2 + "€";
-                    newSelect.appendChild(newOp1);
-                    newSelect.appendChild(newOp2);
-
-                    //Name hinzugefügt 
-                    let newName: HTMLParagraphElement = document.createElement("p");
-                    newName.setAttribute("class", "Name");
-                    newName.innerText = warenkorb[i].Name;
-                    newDiv.appendChild(newName);
-
-                    //Beschreibung hinzugefügt 
-                    let newP: HTMLParagraphElement = document.createElement("p");
-                    newP.setAttribute("class", "beschreibung");
-                    newP.innerHTML = warenkorb[i].Description;
-                    newDiv.appendChild(newP);
-
-                    //Button hinzugefügt 
-                    let newB: HTMLInputElement = document.createElement("input");
-                    newB.addEventListener("click", handlerWarenkorbEntfernen);
-                    newB.setAttribute("class", "button");
-                    newB.value = "entfernen";
-                    newB.type = "button";
-                    newB.setAttribute("articleIndex", i.toString());
-                    newDiv.appendChild(newB);
-
-                    productCounter.style.display = "block";
-                }
-            }
-            try {
-                document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-            } catch (error) {
-                document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-            }
-
-        } 
-
-        // Produkte aus dem Warenkorb nehmen und aktuellen Preis berechnen
-
-    } */
-
-    /* function handlerWarenkorbEntfernen(_kaufen: Event): void {
-        if (counter > 0)
-            counter -= 1;
-        let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
-        let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
-        console.log("Nehme " + warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
-
-        if (gesamtPreis - warenkorb[artIndex].price1 <= 0)
-            gesamtPreis = 0;
-        if (gesamtPreis > 0)
-            gesamtPreis -= warenkorb[artIndex].price1;
-        else
-            gesamtPreis = 0;
-
-        document.getElementById("WarenkorbItem" + artIndex)?.remove();
-
-        productCounter.style.display = "block";
-        productCounter.innerHTML = "" + counter;
-        warenkorb.splice(artIndex, 1);
-        try {
-            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-        } catch (error) {
-            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
-        }
-        try {
-            document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-        } catch (error) {
-            document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-        }
-        for (let i: number = 0; i < warenkorb.length; i++) {
-            document.getElementById("WarenkorbItem" + i)?.remove();
-        }
-        warenkorbAufbauen();
-    } */
-
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
         imVerkauf = await response.json();
-        //return myJSONArray;
 
     }
 

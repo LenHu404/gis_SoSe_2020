@@ -9,16 +9,16 @@ namespace Aufgabe07 {
     let gesamtPreis: number = 0;
     export let warenkorb: Product[] = [trenner];
     productCounter.style.display = "block";
-    console.log(Storage.length);
-    warenkorbAufbauen2();
-   //console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name.toString());
+
     console.log(counter);
     counter = parseInt(localStorage.getItem("counter")!);
     console.log(counter);
 
+    warenkorbAufbauen2();
 
-    function warenkorbAufbauen2(): void {
+    async function warenkorbAufbauen2(): Promise<void> {
         console.log("Tester");
+        await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
 
 
         for (let i: number = 0; i < counter; i++) {
@@ -26,7 +26,7 @@ namespace Aufgabe07 {
 
             let artIndex: number = parseInt(localStorage.getItem("Artikel" + i)!);
 
-            console.log(imVerkauf[artIndex].Name, imVerkauf[artIndex].imgSrc, imVerkauf[artIndex].price1, imVerkauf[artIndex].price2);
+            //console.log(imVerkauf[artIndex].Name, imVerkauf[artIndex].imgSrc, imVerkauf[artIndex].price1, imVerkauf[artIndex].price2);
 
             //Estellen von Div Elementen 
             let newDiv: HTMLDivElement = document.createElement("div");
@@ -41,7 +41,7 @@ namespace Aufgabe07 {
             //Bild hinzufügen
             let newImg: HTMLImageElement = document.createElement("img");
 
-            newImg.src = imVerkauf[i].imgSrc;
+            newImg.src = imVerkauf[artIndex].imgSrc;
             newImg.setAttribute("alt", imVerkauf[artIndex].Art);
             newDiv.appendChild(newImg);
 
@@ -111,6 +111,13 @@ namespace Aufgabe07 {
             console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
             productCounter.style.display = "block";
             productCounter.innerHTML = "" + counter;
+        }
+
+        async function communicate(_url: RequestInfo): Promise<void> {
+            let response: Response = await fetch(_url);
+            imVerkauf = await response.json();
+            console.log(imVerkauf[0].Name.toString());
+    
         }
 
 
