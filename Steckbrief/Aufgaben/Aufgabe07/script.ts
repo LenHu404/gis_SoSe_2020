@@ -45,7 +45,7 @@ namespace Aufgabe07 {
 
     //Globale Variablen deklarieren und initialisieren
     export let gesamtPreis: number = 0;
-    export let counter: number = 0;
+    export let counter: number = 1;
 
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init(): Promise<void> {

@@ -26,7 +26,7 @@ var Aufgabe07;
     }
     //Globale Variablen deklarieren und initialisieren
     Aufgabe07.gesamtPreis = 0;
-    Aufgabe07.counter = 0;
+    Aufgabe07.counter = 1;
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init() {
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
