@@ -45,7 +45,10 @@ namespace Aufgabe07 {
 
     //Globale Variablen deklarieren und initialisieren
     export let gesamtPreis: number = 0;
-    export let counter: number = 0;
+
+    export let counter: number;
+    if (counter! == null)
+        counter = 0;
 
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init(): Promise<void> {
@@ -137,11 +140,11 @@ namespace Aufgabe07 {
 
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen: Event): void {
-        
+
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         gesamtPreis += imVerkauf[artIndex].price1;
-        
+
         localStorage.setItem("Artikel" + counter, artIndex.toString());
         console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + counter)!)].Name);
         console.log(counter);
@@ -156,7 +159,7 @@ namespace Aufgabe07 {
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
 
-        
+
         counter += 1;
         localStorage.setItem("counter", counter.toString());
     }
