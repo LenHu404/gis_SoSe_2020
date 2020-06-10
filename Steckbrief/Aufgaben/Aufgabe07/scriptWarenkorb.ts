@@ -13,6 +13,8 @@ namespace Aufgabe07 {
     warenkorbAufbauen2();
    //console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name.toString());
     console.log(counter);
+    counter = parseInt(localStorage.getItem("counter")!);
+    console.log(counter);
 
 
     function warenkorbAufbauen2(): void {

@@ -14,6 +14,8 @@ var Aufgabe07;
     warenkorbAufbauen2();
     //console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + 0)!)].Name.toString());
     console.log(Aufgabe07.counter);
+    Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
+    console.log(Aufgabe07.counter);
     function warenkorbAufbauen2() {
         console.log("Tester");
         for (let i = 0; i < Aufgabe07.counter; i++) {

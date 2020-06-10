@@ -117,6 +117,7 @@ var Aufgabe07;
         }
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + Aufgabe07.counter;
+        localStorage.setItem("counter", Aufgabe07.counter.toString());
     }
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event) {

@@ -155,6 +155,7 @@ namespace Aufgabe07 {
 
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + counter;
+        localStorage.setItem("counter", counter.toString());
     }
 
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
