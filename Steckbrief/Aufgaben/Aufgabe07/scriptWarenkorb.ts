@@ -14,7 +14,7 @@ namespace Aufgabe07 {
     console.log(Storage.length);
 
 
-    function warenkorbAufbauen(): void {
+    /* function warenkorbAufbauen(): void {
         for (let i: number = 0; i < counter; i++) {
 
             warenkorb[i + 1] = imVerkauf[parseInt(localStorage.getItem("lastname")!)];
@@ -84,83 +84,81 @@ namespace Aufgabe07 {
             productCounter.style.display = "block";
 
         }
-    }
+    } */
 
     function warenkorbAufbauen2(): void {
 
 
 
-        for (let i: number = 0; i < Storage.length; i++) {
+        for (let i: number = 0; i < counter; i++) {
 
-            if (warenkorb[i] != null) {
+            let artIndex: number = parseInt(localStorage.getItem("Artikel" + i)!);
 
-                warenkorb[i + 1] = imVerkauf[parseInt(localStorage.getItem("lastname")!)];
+            console.log(imVerkauf[artIndex].Name, imVerkauf[artIndex].imgSrc, imVerkauf[artIndex].price1, imVerkauf[artIndex].price2);
 
-                console.log(warenkorb[i].Name, warenkorb[i].imgSrc, warenkorb[i].price1, warenkorb[i].price2);
+            //Estellen von Div Elementen 
+            let newDiv: HTMLDivElement = document.createElement("div");
 
-                //Estellen von Div Elementen 
-                let newDiv: HTMLDivElement = document.createElement("div");
+            //Div id zuweisen
+            newDiv.setAttribute("articleIndex", artIndex.toString());
+            newDiv.setAttribute("id", "WarenkorbItem" + artIndex.toString());
 
-                //Div id zuweisen
-                newDiv.setAttribute("articleIndex", i.toString());
-                newDiv.setAttribute("id", "WarenkorbItem" + i.toString());
+            //Element hinzufügen
+            document.getElementById("Angebot")?.appendChild(newDiv);
 
-                //Element hinzufügen
-                document.getElementById("Angebot")?.appendChild(newDiv);
+            //Bild hinzufügen
+            let newImg: HTMLImageElement = document.createElement("img");
 
-                //Bild hinzufügen
-                let newImg: HTMLImageElement = document.createElement("img");
+            newImg.src = imVerkauf[i].imgSrc;
+            newImg.setAttribute("alt", imVerkauf[artIndex].Art);
+            newDiv.appendChild(newImg);
 
-                newImg.src = warenkorb[i].imgSrc;
-                newImg.setAttribute("alt", warenkorb[i].Art);
-                newDiv.appendChild(newImg);
+            //Label hinzufügen
+            let newL: HTMLLabelElement = document.createElement("label");
+            newL.setAttribute("for", imVerkauf[artIndex].Name);
+            newL.innerHTML = "Kilogramm:";
+            newDiv.appendChild(newL);
 
-                //Label hinzufügen
-                let newL: HTMLLabelElement = document.createElement("label");
-                newL.setAttribute("for", warenkorb[i].Name);
-                newL.innerHTML = "Kilogramm:";
-                newDiv.appendChild(newL);
+            //Dropdownmenu hinzufügen
+            let newSelect: HTMLSelectElement = document.createElement("select");
+            newSelect.setAttribute("class", "option");
+            newSelect.name = imVerkauf[artIndex].Name;
+            newSelect.id = imVerkauf[artIndex].Name + "select";
+            newDiv.appendChild(newSelect);
 
-                //Dropdownmenu hinzufügen
-                let newSelect: HTMLSelectElement = document.createElement("select");
-                newSelect.setAttribute("class", "option");
-                newSelect.name = warenkorb[i].Name;
-                newSelect.id = warenkorb[i].Name + "select";
-                newDiv.appendChild(newSelect);
+            //Option vom Dropdownmenu
+            let newOp1: HTMLOptionElement = document.createElement("option");
+            newOp1.value = "2.5";
+            newOp1.innerHTML = "5 kg | " + imVerkauf[artIndex].price1 + "€";
+            let newOp2: HTMLOptionElement = document.createElement("option");
+            newOp2.value = "5";
+            newOp2.innerHTML = "10 kg | " + imVerkauf[artIndex].price2 + "€";
+            newSelect.appendChild(newOp1);
+            newSelect.appendChild(newOp2);
 
-                //Option vom Dropdownmenu
-                let newOp1: HTMLOptionElement = document.createElement("option");
-                newOp1.value = "2.5";
-                newOp1.innerHTML = "5 kg | " + warenkorb[i].price1 + "€";
-                let newOp2: HTMLOptionElement = document.createElement("option");
-                newOp2.value = "5";
-                newOp2.innerHTML = "10 kg | " + warenkorb[i].price2 + "€";
-                newSelect.appendChild(newOp1);
-                newSelect.appendChild(newOp2);
+            //Name hinzugefügt 
+            let newName: HTMLParagraphElement = document.createElement("p");
+            newName.setAttribute("class", "Name");
+            newName.innerText = imVerkauf[artIndex].Name;
+            newDiv.appendChild(newName);
 
-                //Name hinzugefügt 
-                let newName: HTMLParagraphElement = document.createElement("p");
-                newName.setAttribute("class", "Name");
-                newName.innerText = warenkorb[i].Name;
-                newDiv.appendChild(newName);
+            //Beschreibung hinzugefügt 
+            let newP: HTMLParagraphElement = document.createElement("p");
+            newP.setAttribute("class", "beschreibung");
+            newP.innerHTML = imVerkauf[artIndex].Description;
+            newDiv.appendChild(newP);
 
-                //Beschreibung hinzugefügt 
-                let newP: HTMLParagraphElement = document.createElement("p");
-                newP.setAttribute("class", "beschreibung");
-                newP.innerHTML = warenkorb[i].Description;
-                newDiv.appendChild(newP);
+            //Button hinzugefügt 
+            let newB: HTMLInputElement = document.createElement("input");
+            // newB.addEventListener("click", handlerWarenkorbEntfernen);
+            newB.setAttribute("class", "button");
+            newB.value = "entfernen";
+            newB.type = "button";
+            newB.setAttribute("articleIndex", artIndex.toString());
+            newDiv.appendChild(newB);
 
-                //Button hinzugefügt 
-                let newB: HTMLInputElement = document.createElement("input");
-                // newB.addEventListener("click", handlerWarenkorbEntfernen);
-                newB.setAttribute("class", "button");
-                newB.value = "entfernen";
-                newB.type = "button";
-                newB.setAttribute("articleIndex", i.toString());
-                newDiv.appendChild(newB);
+            productCounter.style.display = "block";
 
-                productCounter.style.display = "block";
-            }
 
             try {
                 //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";

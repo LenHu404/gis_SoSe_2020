@@ -141,12 +141,10 @@ namespace Aufgabe07 {
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         gesamtPreis += imVerkauf[artIndex].price1;
-        //warenkorb[counter] = imVerkauf[artIndex];
-
-        //for (let i: number = 1; i < warenkorb.length; i++) {
-        //    gesamtPreis += warenkorb[i].price1;
-        //}
+        
         localStorage.setItem("Artikel" + counter, artIndex.toString());
+        console.log(imVerkauf[parseInt(localStorage.getItem("Artikel" + artIndex)!)].Name);
+        console.log(counter);
 
         console.log("Lege " + imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         try {

@@ -105,11 +105,9 @@ var Aufgabe07;
         let target = _kaufen.target;
         let artIndex = parseInt(target.getAttribute("articleIndex"));
         Aufgabe07.gesamtPreis += Aufgabe07.imVerkauf[artIndex].price1;
-        //warenkorb[counter] = imVerkauf[artIndex];
-        //for (let i: number = 1; i < warenkorb.length; i++) {
-        //    gesamtPreis += warenkorb[i].price1;
-        //}
         localStorage.setItem("Artikel" + Aufgabe07.counter, artIndex.toString());
+        console.log(Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + artIndex))].Name);
+        console.log(Aufgabe07.counter);
         console.log("Lege " + Aufgabe07.imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         try {
             console.log("Aktueller Preis des Warenkorbs: " + Aufgabe07.preisBerechnung().toFixed(2) + "€");
