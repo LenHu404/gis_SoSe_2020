@@ -3,7 +3,14 @@ communicate("https://hs-furtwangen.github.io/GIS-SoSe-2020/L07/test.txt");
 communicateJson("https://hs-furtwangen.github.io/GIS-SoSe-2020/L07/testjson.json");
 console.log("End");
 
+localStorage.setItem("test", "187");
 
+console.log(getStorageNumber());
+
+
+function getStorageNumber(): number{
+  return parseInt(localStorage.getItem("test")!);
+}
 
 async function communicate(_url: RequestInfo): Promise<void> {
   let response: Response = await fetch(_url);

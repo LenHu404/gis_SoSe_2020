@@ -26,7 +26,7 @@ namespace Aufgabe07 {
 
     export let counter: number = 0;
     if (parseInt(localStorage.getItem("counter")!))
-        counter = 0;
+        localStorage.setItem("counter", "0");
     else
         counter = parseInt(localStorage.getItem("counter")!);
 

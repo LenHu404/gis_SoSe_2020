@@ -3,6 +3,11 @@ console.log("Start");
 communicate("https://hs-furtwangen.github.io/GIS-SoSe-2020/L07/test.txt");
 communicateJson("https://hs-furtwangen.github.io/GIS-SoSe-2020/L07/testjson.json");
 console.log("End");
+localStorage.setItem("test", "187");
+console.log(getStorageNumber());
+function getStorageNumber() {
+    return parseInt(localStorage.getItem("test"));
+}
 async function communicate(_url) {
     let response = await fetch(_url);
     console.log("Response", response);

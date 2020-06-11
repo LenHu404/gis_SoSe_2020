@@ -11,7 +11,7 @@ var Aufgabe07;
     Aufgabe07.gesamtPreis = 0;
     Aufgabe07.counter = 0;
     if (parseInt(localStorage.getItem("counter")))
-        Aufgabe07.counter = 0;
+        localStorage.setItem("counter", "0");
     else
         Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
     //Eventlistener zu den einzelnen Elementen hinzufügen
