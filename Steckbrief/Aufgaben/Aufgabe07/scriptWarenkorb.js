@@ -19,6 +19,7 @@ var Aufgabe07;
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
         for (let i = 0; i < Aufgabe07.counter; i++) {
             console.log("Tester 2");
+            productCounter.innerHTML = "" + Aufgabe07.counter;
             if (Aufgabe07.counter == 0) {
                 productCounter.style.display = "none";
             }
@@ -77,10 +78,17 @@ var Aufgabe07;
             newB.setAttribute("articleIndex", artIndex.toString());
             newDiv.appendChild(newB);
             try {
-                //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+                document.getElementById("4kartoffel").innerHTML = "Weiter zum Bezahlen: " + Aufgabe07.preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
             }
             catch (error) {
+                console.log("Aktueller Preis des Warenkorbs: n. F. €");
                 //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            }
+            try {
+                console.log("Aktueller Preis des Warenkorbs: " + Aufgabe07.preisBerechnung().toFixed(2) + "€");
+            }
+            catch (error) {
+                console.log("Aktueller Preis des Warenkorbs: n. F2. €");
             }
         }
         function handlerWarenkorb(_kaufen) {

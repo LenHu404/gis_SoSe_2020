@@ -23,7 +23,8 @@ namespace Aufgabe07 {
 
         for (let i: number = 0; i < counter; i++) {
             console.log("Tester 2");
-
+            productCounter.innerHTML = "" + counter;
+            
             if (counter == 0) {
                 productCounter.style.display = "none";
             }
@@ -97,9 +98,15 @@ namespace Aufgabe07 {
             newDiv.appendChild(newB);
 
             try {
-                //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+                document.getElementById("4kartoffel")!.innerHTML = "Weiter zum Bezahlen: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
             } catch (error) {
+                console.log("Aktueller Preis des Warenkorbs: n. F. €");
                 //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            }
+            try {
+                console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+            } catch (error) {
+                console.log("Aktueller Preis des Warenkorbs: n. F2. €");
             }
 
         }

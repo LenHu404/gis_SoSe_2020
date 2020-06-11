@@ -8,6 +8,12 @@ var Aufgabe07;
     productCounter.setAttribute("id", "productCounter");
     //JSON-Datei laden
     Aufgabe07.imVerkauf = [];
+    Aufgabe07.gesamtPreis = 0;
+    Aufgabe07.counter = 0;
+    if (parseInt(localStorage.getItem("counter")))
+        Aufgabe07.counter = 0;
+    else
+        Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
     //Eventlistener zu den einzelnen Elementen hinzufügen
     function addEventListener() {
         document.getElementById("konto")?.appendChild(productCounter);
@@ -25,13 +31,20 @@ var Aufgabe07;
         document.getElementById("warenkorbInhalt")?.setAttribute("style", "display : none");
     }
     //Globale Variablen deklarieren und initialisieren
-    Aufgabe07.gesamtPreis = 0;
-    if (Aufgabe07.counter == null)
-        Aufgabe07.counter = 0;
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init() {
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
         addEventListener();
+        Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
+        if (!parseInt(localStorage.getItem("counter")))
+            Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
+        else
+            localStorage.setItem("counter", Aufgabe07.counter.toString());
+        if (parseInt(localStorage.getItem("counter")) == 0) {
+            productCounter.style.display = "none";
+        }
+        else
+            productCounter.style.display = "block";
         //For-schleife für die Einsortierung in die Kategorie
         for (let i = 0; i < Aufgabe07.imVerkauf.length; i++) {
             if (Aufgabe07.counter == 0) {
@@ -106,7 +119,11 @@ var Aufgabe07;
     // klappt aber nur Teilweise, da sie manchmal auf einen Index im Array zugreifen will der nicht mehr da ist
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen) {
-        if (Aufgabe07.counter == 0) {
+        if (parseInt(localStorage.getItem("counter")) >= 0)
+            Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
+        else
+            Aufgabe07.counter = 0;
+        if (parseInt(localStorage.getItem("counter")) == 0) {
             productCounter.style.display = "none";
         }
         else
@@ -131,7 +148,7 @@ var Aufgabe07;
     }
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event) {
-        if (Aufgabe07.counter == 0) {
+        if (parseInt(localStorage.getItem("counter")) == 0) {
             productCounter.style.display = "none";
         }
         let target = _event.target;

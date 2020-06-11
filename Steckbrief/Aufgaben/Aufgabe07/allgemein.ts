@@ -4,10 +4,12 @@ namespace Aufgabe07 {
     document.getElementById("konto")?.appendChild(productCounter);
 
     export function preisBerechnung(): number {
+        console.log("at least he tried");
+        counter = parseInt(localStorage.getItem("counter")!);
         let preis: number = 0;
-        for (let i: number = 0; i < warenkorb.length; i++) {
+        for (let i: number = 0; i < counter; i++) {
 
-            preis += warenkorb[i].price1;
+            preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
         }
         return preis;
 
@@ -17,7 +19,5 @@ namespace Aufgabe07 {
         let response: Response = await fetch(_url);
         imVerkauf = await response.json();
         console.log(imVerkauf[0].Name.toString());
-        //return myJSONArray;
-
     }
 }

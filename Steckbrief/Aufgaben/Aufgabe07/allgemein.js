@@ -5,9 +5,11 @@ var Aufgabe07;
     Aufgabe07.productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(Aufgabe07.productCounter);
     function preisBerechnung() {
+        console.log("at least he tried");
+        Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
         let preis = 0;
-        for (let i = 0; i < Aufgabe07.warenkorb.length; i++) {
-            preis += Aufgabe07.warenkorb[i].price1;
+        for (let i = 0; i < Aufgabe07.counter; i++) {
+            preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
         }
         return preis;
     }
@@ -16,7 +18,6 @@ var Aufgabe07;
         let response = await fetch(_url);
         Aufgabe07.imVerkauf = await response.json();
         console.log(Aufgabe07.imVerkauf[0].Name.toString());
-        //return myJSONArray;
     }
     Aufgabe07.communicate = communicate;
 })(Aufgabe07 || (Aufgabe07 = {}));

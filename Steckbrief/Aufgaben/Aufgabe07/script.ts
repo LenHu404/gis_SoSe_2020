@@ -22,7 +22,13 @@ namespace Aufgabe07 {
 
     //JSON-Datei laden
     export let imVerkauf: Product[] = [];
+    export let gesamtPreis: number = 0;
 
+    export let counter: number = 0;
+    if (parseInt(localStorage.getItem("counter")!))
+        counter = 0;
+    else
+        counter = parseInt(localStorage.getItem("counter")!);
 
     //Eventlistener zu den einzelnen Elementen hinzufügen
     function addEventListener(): void {
@@ -44,19 +50,30 @@ namespace Aufgabe07 {
 
 
     //Globale Variablen deklarieren und initialisieren
-    export let gesamtPreis: number = 0;
-
-    export let counter: number;
-    if (counter! == null)
-        counter = 0;
+    
 
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init(): Promise<void> {
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
         addEventListener();
+        counter = parseInt(localStorage.getItem("counter")!);
+
+        if (!parseInt(localStorage.getItem("counter")!))
+            counter = parseInt(localStorage.getItem("counter")!);
+
+        else
+            localStorage.setItem("counter", counter.toString());
+
+        if (parseInt(localStorage.getItem("counter")!) == 0) {
+            productCounter.style.display = "none";
+        }
+        else
+            productCounter.style.display = "block";
+
 
         //For-schleife für die Einsortierung in die Kategorie
         for (let i: number = 0; i < imVerkauf.length; i++) {
+            
 
             if (counter == 0) {
                 productCounter.style.display = "none";
@@ -146,11 +163,18 @@ namespace Aufgabe07 {
     //Funktion um den Elemente dem Warenkorb hinzu zu fügen
     function handlerWarenkorb(_kaufen: Event): void {
 
-        if (counter == 0) {
+        if (parseInt(localStorage.getItem("counter")!) >= 0)
+            counter = parseInt(localStorage.getItem("counter")!);
+
+        else
+            counter = 0;
+
+        if (parseInt(localStorage.getItem("counter")!) == 0) {
             productCounter.style.display = "none";
         }
         else
             productCounter.style.display = "block";
+
         let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
         let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
         gesamtPreis += imVerkauf[artIndex].price1;
@@ -174,7 +198,7 @@ namespace Aufgabe07 {
 
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event: Event): void {
-        if (counter == 0) {
+        if (parseInt(localStorage.getItem("counter")!) == 0) {
             productCounter.style.display = "none";
         }
         let target: HTMLElement = (<HTMLElement>_event.target);
