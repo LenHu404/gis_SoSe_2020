@@ -10,7 +10,6 @@ var Aufgabe07;
     //let gesamtPreis: number = 0;
     Aufgabe07.warenkorb = [Aufgabe07.trenner];
     productCounter.style.display = "block";
-    console.log(Aufgabe07.counter);
     Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
     console.log(Aufgabe07.counter);
     warenkorbAufbauen2();
@@ -79,8 +78,12 @@ var Aufgabe07;
             newB.setAttribute("articleIndex", artIndex.toString());
             newB.setAttribute("counter", i.toString());
             newDiv.appendChild(newB);
+            if (Aufgabe07.counter >= 0)
+                document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
+            else
+                document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
         }
         function handlerWarenkorb(_kaufen) {
             if (Aufgabe07.counter > 0)
@@ -99,8 +102,12 @@ var Aufgabe07;
             document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
             localStorage.removeItem("Artikel" + artikelCounter);
             localStorage.setItem("counter", Aufgabe07.counter.toString());
-            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+            if (Aufgabe07.counter >= 0)
+                document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
+            else
+                document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
         }
         async function communicate(_url) {
             let response = await fetch(_url);
@@ -116,6 +123,22 @@ var Aufgabe07;
             }
             return preis;
         }
+        function handleWarenkorbEntleeren(_kaufen) {
+            Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
+            console.log("Counter: " + Aufgabe07.counter);
+            for (let i = 0; i < Aufgabe07.counter; i++) {
+                document.getElementById("WarenkorbItem" + i)?.remove();
+                localStorage.removeItem("Artikel" + i);
+                console.log("HAaaaaaaaaaaaaaalollllooooo");
+            }
+            localStorage.setItem("counter", "0");
+            productCounter.style.display = "block";
+            productCounter.innerHTML = "" + Aufgabe07.counter;
+            console.log("Entleere Warenkorb");
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+            document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+        }
+        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
         console.log("Fertig geladen");
     }
 })(Aufgabe07 || (Aufgabe07 = {}));

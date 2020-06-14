@@ -10,11 +10,13 @@ namespace Aufgabe07 {
     export let warenkorb: Product[] = [trenner];
     productCounter.style.display = "block";
 
-    console.log(counter);
     counter = parseInt(localStorage.getItem("counter")!);
     console.log(counter);
 
+
     warenkorbAufbauen2();
+
+
 
     async function warenkorbAufbauen2(): Promise<void> {
         console.log("Tester");
@@ -99,8 +101,14 @@ namespace Aufgabe07 {
             newB.setAttribute("counter", i.toString());
             newDiv.appendChild(newB);
 
+            if (counter >= 0)
+                document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
+            else
+                document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+
+
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
 
         }
 
@@ -128,8 +136,15 @@ namespace Aufgabe07 {
 
             localStorage.setItem("counter", counter.toString());
 
-            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+
+            if (counter >= 0)
+                document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
+            else
+                document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+
+
 
         }
 
@@ -150,6 +165,31 @@ namespace Aufgabe07 {
             return preis;
 
         }
+
+        function handleWarenkorbEntleeren(_kaufen: Event): void {
+            counter = parseInt(localStorage.getItem("counter")!);
+
+            console.log("Counter: " + counter);
+
+            for (let i: number = 0; i < counter; i++) {
+                document.getElementById("WarenkorbItem" + i)?.remove();
+                localStorage.removeItem("Artikel" + i);
+                console.log("HAaaaaaaaaaaaaaalollllooooo");
+            }
+
+
+            localStorage.setItem("counter", "0");
+
+            productCounter.style.display = "block";
+            productCounter.innerHTML = "" + counter;
+
+            console.log("Entleere Warenkorb");
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+            document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+
+        }
+
+        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
 
 
 
