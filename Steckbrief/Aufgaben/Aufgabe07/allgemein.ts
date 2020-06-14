@@ -3,17 +3,17 @@ namespace Aufgabe07 {
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
 
-    export function preisBerechnung(): number {
-        console.log("at least he tried");
-        counter = parseInt(localStorage.getItem("counter")!);
+    /* export function preisBerechnung(): number {
+        console.log("funktionierts?");
+        let preiscounter: number = parseInt(localStorage.getItem("counter")!);
         let preis: number = 0;
-        for (let i: number = 0; i < counter; i++) {
+        for (let i: number = 0; i < preiscounter; i++) {
 
             preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
         }
         return preis;
 
-    }
+    } */
 
     export async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);

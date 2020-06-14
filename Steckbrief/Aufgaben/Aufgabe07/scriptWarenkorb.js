@@ -7,7 +7,7 @@ var Aufgabe07;
     let productCounter = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
-    let gesamtPreis = 0;
+    //let gesamtPreis: number = 0;
     Aufgabe07.warenkorb = [Aufgabe07.trenner];
     productCounter.style.display = "block";
     console.log(Aufgabe07.counter);
@@ -31,7 +31,8 @@ var Aufgabe07;
             let newDiv = document.createElement("div");
             //Div id zuweisen
             newDiv.setAttribute("articleIndex", artIndex.toString());
-            newDiv.setAttribute("id", "WarenkorbItem" + artIndex.toString());
+            newDiv.setAttribute("id", "WarenkorbItem" + i);
+            newDiv.setAttribute("counter", i.toString());
             //Element hinzufügen
             document.getElementById("Angebot")?.appendChild(newDiv);
             //Bild hinzufügen
@@ -71,41 +72,49 @@ var Aufgabe07;
             newDiv.appendChild(newP);
             //Button hinzugefügt 
             let newB = document.createElement("input");
-            // newB.addEventListener("click", handlerWarenkorbEntfernen);
+            newB.addEventListener("click", handlerWarenkorb);
             newB.setAttribute("class", "button");
             newB.value = "entfernen";
             newB.type = "button";
             newB.setAttribute("articleIndex", artIndex.toString());
+            newB.setAttribute("counter", i.toString());
             newDiv.appendChild(newB);
-            try {
-                document.getElementById("4kartoffel").innerHTML = "Weiter zum Bezahlen: " + Aufgabe07.preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-            }
-            catch (error) {
-                console.log("Aktueller Preis des Warenkorbs: n. F. €");
-                //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-            }
-            try {
-                console.log("Aktueller Preis des Warenkorbs: " + Aufgabe07.preisBerechnung().toFixed(2) + "€");
-            }
-            catch (error) {
-                console.log("Aktueller Preis des Warenkorbs: n. F2. €");
-            }
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
         }
         function handlerWarenkorb(_kaufen) {
             if (Aufgabe07.counter > 0)
                 Aufgabe07.counter -= 1;
             let target = _kaufen.target;
             let artIndex = parseInt(target.getAttribute("articleIndex"));
-            gesamtPreis -= Aufgabe07.warenkorb[artIndex].price1;
-            console.log("Nehme " + Aufgabe07.warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
-            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
+            let artikelCounter = parseInt(target.getAttribute("counter"));
+            console.log("Nehme " + Aufgabe07.imVerkauf[artIndex].Name.toString() + " aus dem Warenkorb");
+            //Warum bekomme ich hier null? 
             productCounter.style.display = "block";
             productCounter.innerHTML = "" + Aufgabe07.counter;
+            //Testing
+            console.log(artikelCounter);
+            console.log(artIndex);
+            //Funktioniert nicht solange artikelCounter null ist
+            document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
+            localStorage.removeItem("Artikel" + artikelCounter);
+            localStorage.setItem("counter", Aufgabe07.counter.toString());
+            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         }
         async function communicate(_url) {
             let response = await fetch(_url);
             Aufgabe07.imVerkauf = await response.json();
             console.log(Aufgabe07.imVerkauf[0].Name.toString());
+        }
+        function preisBerechnung() {
+            let preiscounter = parseInt(localStorage.getItem("counter"));
+            let preis = 0;
+            for (let i = 0; i < preiscounter; i++) {
+                if (parseInt(localStorage.getItem("Artikel" + i)))
+                    preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
+            }
+            return preis;
         }
         console.log("Fertig geladen");
     }

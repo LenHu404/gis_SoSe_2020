@@ -6,7 +6,7 @@ namespace Aufgabe07 {
     let productCounter: HTMLDivElement = document.createElement("div");
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
-    let gesamtPreis: number = 0;
+    //let gesamtPreis: number = 0;
     export let warenkorb: Product[] = [trenner];
     productCounter.style.display = "block";
 
@@ -24,13 +24,13 @@ namespace Aufgabe07 {
         for (let i: number = 0; i < counter; i++) {
             console.log("Tester 2");
             productCounter.innerHTML = "" + counter;
-            
+
             if (counter == 0) {
                 productCounter.style.display = "none";
             }
             else
                 productCounter.style.display = "block";
-                
+
 
             let artIndex: number = parseInt(localStorage.getItem("Artikel" + i)!);
 
@@ -41,7 +41,8 @@ namespace Aufgabe07 {
 
             //Div id zuweisen
             newDiv.setAttribute("articleIndex", artIndex.toString());
-            newDiv.setAttribute("id", "WarenkorbItem" + artIndex.toString());
+            newDiv.setAttribute("id", "WarenkorbItem" + i);
+            newDiv.setAttribute("counter", i.toString());
 
             //Element hinzufügen
             document.getElementById("Angebot")?.appendChild(newDiv);
@@ -90,45 +91,64 @@ namespace Aufgabe07 {
 
             //Button hinzugefügt 
             let newB: HTMLInputElement = document.createElement("input");
-            // newB.addEventListener("click", handlerWarenkorbEntfernen);
+            newB.addEventListener("click", handlerWarenkorb);
             newB.setAttribute("class", "button");
             newB.value = "entfernen";
             newB.type = "button";
             newB.setAttribute("articleIndex", artIndex.toString());
+            newB.setAttribute("counter", i.toString());
             newDiv.appendChild(newB);
 
-            try {
-                document.getElementById("4kartoffel")!.innerHTML = "Weiter zum Bezahlen: " + preisBerechnung().toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-            } catch (error) {
-                console.log("Aktueller Preis des Warenkorbs: n. F. €");
-                //document.getElementById("4kartoffel")!.innerHTML = "Aktueller Betrag: " + gesamtPreis.toFixed(2).toString() + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
-            }
-            try {
-                console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            } catch (error) {
-                console.log("Aktueller Preis des Warenkorbs: n. F2. €");
-            }
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
 
         }
 
         function handlerWarenkorb(_kaufen: Event): void {
             if (counter > 0)
                 counter -= 1;
-            let target: HTMLInputElement = (<HTMLInputElement>_kaufen.target);
+            let target: HTMLElement = (<HTMLElement>_kaufen.target);
             let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
+            let artikelCounter: number = parseInt(target.getAttribute("counter")!);
 
-            gesamtPreis -= warenkorb[artIndex].price1;
-            console.log("Nehme " + warenkorb[artIndex].Name.toString() + " aus dem Warenkorb");
-            console.log("Aktueller Preis des Warenkorbs: " + gesamtPreis.toFixed(2) + "€");
+            console.log("Nehme " + imVerkauf[artIndex].Name.toString() + " aus dem Warenkorb");
+
+            //Warum bekomme ich hier null? 
             productCounter.style.display = "block";
             productCounter.innerHTML = "" + counter;
+
+            //Testing
+            console.log(artikelCounter);
+            console.log(artIndex);
+
+            //Funktioniert nicht solange artikelCounter null ist
+            document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
+            localStorage.removeItem("Artikel" + artikelCounter);
+
+
+            localStorage.setItem("counter", counter.toString());
+
+            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'>";
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+
         }
 
         async function communicate(_url: RequestInfo): Promise<void> {
             let response: Response = await fetch(_url);
             imVerkauf = await response.json();
             console.log(imVerkauf[0].Name.toString());
-    
+
+        }
+
+        function preisBerechnung(): number {
+            let preiscounter: number = parseInt(localStorage.getItem("counter")!);
+            let preis: number = 0;
+            for (let i: number = 0; i < preiscounter; i++) {
+                if (parseInt(localStorage.getItem("Artikel" + i)!))
+                    preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
+            }
+            return preis;
+
         }
 
 

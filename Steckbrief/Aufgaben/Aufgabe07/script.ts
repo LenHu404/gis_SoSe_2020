@@ -54,7 +54,7 @@ namespace Aufgabe07 {
 
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init(): Promise<void> {
-        await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
+        await communicate("artikel.json");
         addEventListener();
         counter = parseInt(localStorage.getItem("counter")!);
 
@@ -193,7 +193,7 @@ namespace Aufgabe07 {
         counter += 1;
         localStorage.setItem("counter", counter.toString());
         productCounter.style.display = "block";
-        productCounter.innerHTML = "" + counter;
+        productCounter.innerHTML = counter.toString();
     }
 
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
@@ -269,6 +269,17 @@ namespace Aufgabe07 {
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
         imVerkauf = await response.json();
+
+    }
+
+    function preisBerechnung(): number {
+        let preiscounter: number = parseInt(localStorage.getItem("counter")!);
+        let preis: number = 0;
+        for (let i: number = 0; i < preiscounter; i++) {
+
+            preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
+        }
+        return preis;
 
     }
 

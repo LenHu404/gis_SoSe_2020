@@ -33,7 +33,7 @@ var Aufgabe07;
     //Globale Variablen deklarieren und initialisieren
     //Produkte, welche zum Verkauf stehen, erstellen
     async function init() {
-        await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
+        await communicate("artikel.json");
         addEventListener();
         Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
         if (!parseInt(localStorage.getItem("counter")))
@@ -136,7 +136,7 @@ var Aufgabe07;
         console.log(Aufgabe07.counter);
         console.log("Lege " + Aufgabe07.imVerkauf[artIndex].Name.toString() + " in den Warenkorb");
         try {
-            console.log("Aktueller Preis des Warenkorbs: " + Aufgabe07.preisBerechnung().toFixed(2) + "€");
+            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         }
         catch (error) {
             console.log("Aktueller Preis des Warenkorbs: " + Aufgabe07.gesamtPreis.toFixed(2) + "€");
@@ -144,7 +144,7 @@ var Aufgabe07;
         Aufgabe07.counter += 1;
         localStorage.setItem("counter", Aufgabe07.counter.toString());
         productCounter.style.display = "block";
-        productCounter.innerHTML = "" + Aufgabe07.counter;
+        productCounter.innerHTML = Aufgabe07.counter.toString();
     }
     //Filtert die anderen Kategorien aus bzw. lässt Kategorien aus- und einblenden
     function auswahlEinschreanken(_event) {
@@ -211,6 +211,14 @@ var Aufgabe07;
     async function communicate(_url) {
         let response = await fetch(_url);
         Aufgabe07.imVerkauf = await response.json();
+    }
+    function preisBerechnung() {
+        let preiscounter = parseInt(localStorage.getItem("counter"));
+        let preis = 0;
+        for (let i = 0; i < preiscounter; i++) {
+            preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
+        }
+        return preis;
     }
     window.addEventListener("load", init);
     console.log("Fertig geladen");
