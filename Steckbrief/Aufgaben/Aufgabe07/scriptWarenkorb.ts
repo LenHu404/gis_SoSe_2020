@@ -13,6 +13,8 @@ namespace Aufgabe07 {
     counter = parseInt(localStorage.getItem("counter")!);
     console.log(counter);
 
+    document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
+
 
     warenkorbAufbauen2();
 
@@ -112,87 +114,88 @@ namespace Aufgabe07 {
 
         }
 
-        function handlerWarenkorb(_kaufen: Event): void {
-            if (counter > 0)
-                counter -= 1;
-            let target: HTMLElement = (<HTMLElement>_kaufen.target);
-            let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
-            let artikelCounter: number = parseInt(target.getAttribute("counter")!);
 
-            console.log("Nehme " + imVerkauf[artIndex].Name.toString() + " aus dem Warenkorb");
+    }
 
-            //Warum bekomme ich hier null? 
-            productCounter.style.display = "block";
-            productCounter.innerHTML = "" + counter;
+    function handlerWarenkorb(_kaufen: Event): void {
+        if (counter > 0)
+            counter -= 1;
+        let target: HTMLElement = (<HTMLElement>_kaufen.target);
+        let artIndex: number = parseInt(target.getAttribute("articleIndex")!);
+        let artikelCounter: number = parseInt(target.getAttribute("counter")!);
 
-            //Testing
-            console.log(artikelCounter);
-            console.log(artIndex);
+        console.log("Nehme " + imVerkauf[artIndex].Name.toString() + " aus dem Warenkorb");
 
-            //Funktioniert nicht solange artikelCounter null ist
-            document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
-            localStorage.removeItem("Artikel" + artikelCounter);
+        //Warum bekomme ich hier null? 
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + counter;
 
+        //Testing
+        console.log(artikelCounter);
+        console.log(artIndex);
 
-            localStorage.setItem("counter", counter.toString());
-
-            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
-            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-
-            if (counter >= 0)
-                document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
-            else
-                document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+        //Funktioniert nicht solange artikelCounter null ist
+        document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
+        localStorage.removeItem("Artikel" + artikelCounter);
 
 
+        localStorage.setItem("counter", counter.toString());
 
-        }
+        (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
+        console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
 
-        async function communicate(_url: RequestInfo): Promise<void> {
-            let response: Response = await fetch(_url);
-            imVerkauf = await response.json();
-            console.log(imVerkauf[0].Name.toString());
-
-        }
-
-        function preisBerechnung(): number {
-            let preiscounter: number = parseInt(localStorage.getItem("counter")!);
-            let preis: number = 0;
-            for (let i: number = 0; i < preiscounter; i++) {
-                if (parseInt(localStorage.getItem("Artikel" + i)!))
-                    preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
-            }
-            return preis;
-
-        }
-
-        function handleWarenkorbEntleeren(_kaufen: Event): void {
-            counter = parseInt(localStorage.getItem("counter")!);
-
-            console.log("Counter: " + counter);
-
-            for (let i: number = 0; i < counter; i++) {
-                document.getElementById("WarenkorbItem" + i)?.remove();
-                localStorage.removeItem("Artikel" + i);
-                console.log("HAaaaaaaaaaaaaaalollllooooo");
-            }
-
-
-            localStorage.setItem("counter", "0");
-
-            productCounter.style.display = "block";
-            productCounter.innerHTML = "" + counter;
-
-            console.log("Entleere Warenkorb");
-            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+        if (counter >= 0)
+            document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
+        else
             document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
 
+
+
+    }
+
+    async function communicate(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
+        imVerkauf = await response.json();
+        console.log(imVerkauf[0].Name.toString());
+
+    }
+
+    function preisBerechnung(): number {
+        let preiscounter: number = parseInt(localStorage.getItem("counter")!);
+        let preis: number = 0;
+        for (let i: number = 0; i < preiscounter; i++) {
+            if (parseInt(localStorage.getItem("Artikel" + i)!))
+                preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
+        }
+        return preis;
+
+    }
+
+
+    function handleWarenkorbEntleeren(_kaufen: Event): void {
+        counter = parseInt(localStorage.getItem("counter")!);
+
+        console.log("Counter: " + counter);
+
+        for (let i: number = 0; i < counter; i++) {
+            document.getElementById("WarenkorbItem" + i)?.remove();
+            localStorage.removeItem("Artikel" + i);
         }
 
-        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
+        counter = 0;
+        localStorage.setItem("counter", "0");
 
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + counter;
 
+        console.log("Entleere Warenkorb");
+        console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+        document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
 
-        console.log("Fertig geladen");
     }
+
+
+
+
+    console.log("Fertig geladen");
 }

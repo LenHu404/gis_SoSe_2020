@@ -12,6 +12,7 @@ var Aufgabe07;
     productCounter.style.display = "block";
     Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
     console.log(Aufgabe07.counter);
+    document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
     warenkorbAufbauen2();
     async function warenkorbAufbauen2() {
         console.log("Tester");
@@ -85,61 +86,60 @@ var Aufgabe07;
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
             document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
         }
-        function handlerWarenkorb(_kaufen) {
-            if (Aufgabe07.counter > 0)
-                Aufgabe07.counter -= 1;
-            let target = _kaufen.target;
-            let artIndex = parseInt(target.getAttribute("articleIndex"));
-            let artikelCounter = parseInt(target.getAttribute("counter"));
-            console.log("Nehme " + Aufgabe07.imVerkauf[artIndex].Name.toString() + " aus dem Warenkorb");
-            //Warum bekomme ich hier null? 
-            productCounter.style.display = "block";
-            productCounter.innerHTML = "" + Aufgabe07.counter;
-            //Testing
-            console.log(artikelCounter);
-            console.log(artIndex);
-            //Funktioniert nicht solange artikelCounter null ist
-            document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
-            localStorage.removeItem("Artikel" + artikelCounter);
-            localStorage.setItem("counter", Aufgabe07.counter.toString());
-            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
-            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            if (Aufgabe07.counter >= 0)
-                document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
-            else
-                document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
-        }
-        async function communicate(_url) {
-            let response = await fetch(_url);
-            Aufgabe07.imVerkauf = await response.json();
-            console.log(Aufgabe07.imVerkauf[0].Name.toString());
-        }
-        function preisBerechnung() {
-            let preiscounter = parseInt(localStorage.getItem("counter"));
-            let preis = 0;
-            for (let i = 0; i < preiscounter; i++) {
-                if (parseInt(localStorage.getItem("Artikel" + i)))
-                    preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
-            }
-            return preis;
-        }
-        function handleWarenkorbEntleeren(_kaufen) {
-            Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
-            console.log("Counter: " + Aufgabe07.counter);
-            for (let i = 0; i < Aufgabe07.counter; i++) {
-                document.getElementById("WarenkorbItem" + i)?.remove();
-                localStorage.removeItem("Artikel" + i);
-                console.log("HAaaaaaaaaaaaaaalollllooooo");
-            }
-            localStorage.setItem("counter", "0");
-            productCounter.style.display = "block";
-            productCounter.innerHTML = "" + Aufgabe07.counter;
-            console.log("Entleere Warenkorb");
-            console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
-        }
-        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
-        console.log("Fertig geladen");
     }
+    function handlerWarenkorb(_kaufen) {
+        if (Aufgabe07.counter > 0)
+            Aufgabe07.counter -= 1;
+        let target = _kaufen.target;
+        let artIndex = parseInt(target.getAttribute("articleIndex"));
+        let artikelCounter = parseInt(target.getAttribute("counter"));
+        console.log("Nehme " + Aufgabe07.imVerkauf[artIndex].Name.toString() + " aus dem Warenkorb");
+        //Warum bekomme ich hier null? 
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + Aufgabe07.counter;
+        //Testing
+        console.log(artikelCounter);
+        console.log(artIndex);
+        //Funktioniert nicht solange artikelCounter null ist
+        document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
+        localStorage.removeItem("Artikel" + artikelCounter);
+        localStorage.setItem("counter", Aufgabe07.counter.toString());
+        document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
+        console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+        if (Aufgabe07.counter >= 0)
+            document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
+        else
+            document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+    }
+    async function communicate(_url) {
+        let response = await fetch(_url);
+        Aufgabe07.imVerkauf = await response.json();
+        console.log(Aufgabe07.imVerkauf[0].Name.toString());
+    }
+    function preisBerechnung() {
+        let preiscounter = parseInt(localStorage.getItem("counter"));
+        let preis = 0;
+        for (let i = 0; i < preiscounter; i++) {
+            if (parseInt(localStorage.getItem("Artikel" + i)))
+                preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
+        }
+        return preis;
+    }
+    function handleWarenkorbEntleeren(_kaufen) {
+        Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
+        console.log("Counter: " + Aufgabe07.counter);
+        for (let i = 0; i < Aufgabe07.counter; i++) {
+            document.getElementById("WarenkorbItem" + i)?.remove();
+            localStorage.removeItem("Artikel" + i);
+        }
+        Aufgabe07.counter = 0;
+        localStorage.setItem("counter", "0");
+        productCounter.style.display = "block";
+        productCounter.innerHTML = "" + Aufgabe07.counter;
+        console.log("Entleere Warenkorb");
+        console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
+        document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+    }
+    console.log("Fertig geladen");
 })(Aufgabe07 || (Aufgabe07 = {}));
 //# sourceMappingURL=scriptWarenkorb.js.map
