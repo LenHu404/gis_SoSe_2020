@@ -83,7 +83,7 @@ var Aufgabe07;
             else
                 document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
+            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
         }
         function handlerWarenkorb(_kaufen) {
             if (Aufgabe07.counter > 0)
@@ -102,7 +102,7 @@ var Aufgabe07;
             document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
             localStorage.removeItem("Artikel" + artikelCounter);
             localStorage.setItem("counter", Aufgabe07.counter.toString());
-            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
+            document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
             if (Aufgabe07.counter >= 0)
                 document.getElementById("Entleeren")?.setAttribute("style", "display : inline");

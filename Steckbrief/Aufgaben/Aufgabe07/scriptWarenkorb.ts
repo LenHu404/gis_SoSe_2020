@@ -108,7 +108,7 @@ namespace Aufgabe07 {
 
 
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
-            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
+            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
 
         }
 
@@ -136,7 +136,7 @@ namespace Aufgabe07 {
 
             localStorage.setItem("counter", counter.toString());
 
-            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> + <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
+            (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
             console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
 
             if (counter >= 0)
