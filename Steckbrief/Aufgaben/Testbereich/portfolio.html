@@ -49,18 +49,18 @@
 
         </table>
         
-        <form action="">
+        <form action="https://gis-example.herokuapp.com/" method="POST">
             <fieldset>
                 <legend>
                     Zugansdaten
                 </legend>
                 <label for="user" title="Wie du halt heißt!" >Benutzername</label>
-                <input type="text" name="" id=""  required> <br>
+                <input type="text" name="fname" id=""  required> <br>
                 <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)" >Passwort</label>
-                <input type="passwort" name="" id="pw" required><br>
-
+                <input type="passwort" name="fname" id="pw" required>
+                <button type="submit"> Abschicken </button>
             </fieldset>
-            <fieldset>
+            <!-- <fieldset>
                 <legend> Infos  </legend>
                 <label for="age">Alter</label>
                 <input type="number" id="age"> <br>
@@ -73,8 +73,9 @@
                 </select> <br>
                 <label for="favcolor">Lieblingsfarbe</label>
                 <input type="color" id="favcolor"><br>
+                <button type="submit"> Abschicken </button>
 
-            </fieldset>
+            </fieldset> -->
         </form>
     </main>
 
