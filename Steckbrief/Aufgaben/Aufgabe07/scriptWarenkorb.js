@@ -117,7 +117,8 @@ var Aufgabe07;
         let preiscounter = parseInt(localStorage.getItem("counter"));
         let preis = 0;
         for (let i = 0; i < preiscounter; i++) {
-            preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
+            if (localStorage.getItem("Artikel" + i))
+                preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
         }
         return preis;
     }

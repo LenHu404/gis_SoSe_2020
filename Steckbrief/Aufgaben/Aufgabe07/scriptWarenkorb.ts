@@ -160,7 +160,8 @@ namespace Aufgabe07 {
         let preiscounter: number = parseInt(localStorage.getItem("counter")!);
         let preis: number = 0;
         for (let i: number = 0; i < preiscounter; i++) {
-            preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
+            if (localStorage.getItem("Artikel" + i))
+                preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
         }
         return preis;
 
