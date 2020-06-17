@@ -15,10 +15,8 @@ var Aufgabe07;
     document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
     warenkorbAufbauen2();
     async function warenkorbAufbauen2() {
-        console.log("Tester");
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
         for (let i = 0; i < Aufgabe07.counter; i++) {
-            console.log("Tester 2");
             productCounter.innerHTML = "" + Aufgabe07.counter;
             if (Aufgabe07.counter == 0) {
                 productCounter.style.display = "none";
@@ -114,18 +112,16 @@ var Aufgabe07;
     async function communicate(_url) {
         let response = await fetch(_url);
         Aufgabe07.imVerkauf = await response.json();
-        console.log(Aufgabe07.imVerkauf[0].Name.toString());
     }
     function preisBerechnung() {
         let preiscounter = parseInt(localStorage.getItem("counter"));
         let preis = 0;
         for (let i = 0; i < preiscounter; i++) {
-            if (parseInt(localStorage.getItem("Artikel" + i)))
-                preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
+            preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
         }
         return preis;
     }
-    function handleWarenkorbEntleeren(_kaufen) {
+    function handleWarenkorbEntleeren() {
         Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
         console.log("Counter: " + Aufgabe07.counter);
         for (let i = 0; i < Aufgabe07.counter; i++) {

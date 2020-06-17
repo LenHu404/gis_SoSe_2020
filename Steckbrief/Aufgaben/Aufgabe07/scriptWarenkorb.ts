@@ -21,12 +21,10 @@ namespace Aufgabe07 {
 
 
     async function warenkorbAufbauen2(): Promise<void> {
-        console.log("Tester");
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
 
 
         for (let i: number = 0; i < counter; i++) {
-            console.log("Tester 2");
             productCounter.innerHTML = "" + counter;
 
             if (counter == 0) {
@@ -156,23 +154,20 @@ namespace Aufgabe07 {
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
         imVerkauf = await response.json();
-        console.log(imVerkauf[0].Name.toString());
-
     }
 
     function preisBerechnung(): number {
         let preiscounter: number = parseInt(localStorage.getItem("counter")!);
         let preis: number = 0;
         for (let i: number = 0; i < preiscounter; i++) {
-            if (parseInt(localStorage.getItem("Artikel" + i)!))
-                preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
+            preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
         }
         return preis;
 
     }
 
 
-    function handleWarenkorbEntleeren(_kaufen: Event): void {
+    function handleWarenkorbEntleeren(): void {
         counter = parseInt(localStorage.getItem("counter")!);
 
         console.log("Counter: " + counter);
