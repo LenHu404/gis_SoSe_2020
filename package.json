@@ -1,0 +1,21 @@
+{
+  "name": "gis_sose_2020",
+  "version": "1.0.0",
+  "description": "kartoffelistbest",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Steckbrief/Aufgaben/Aufgabe08/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LenHu404/gis_SoSe_2020.git"
+  },
+  "author": "Lennard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LenHu404/gis_SoSe_2020/issues"
+  },
+  "homepage": "https://github.com/LenHu404/gis_SoSe_2020#readme"
+}
