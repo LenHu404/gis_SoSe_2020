@@ -5,22 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
     <main>
-        <form action="http://localhost:8100" method="GET">
+        <form action="http://localhost:8100" method="">
+
             <fieldset>
                 <legend>
                     Zugansdaten
                 </legend>
-                <label for="user" title="Wie du halt heißt!">Benutzername</label>
-                <input type="text" name="fname" required> <br>
-                <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)">Passwort</label>
-                <input type="passwort" name="lname" id="pw" required>
-                <button type="submit"> Abschicken </button>
+                <label for="user" title="Wie du halt heißt!"> <b>Benutzername: </b></label>
+                <input type="text" name="fname" placeholder="Parge Lenis" required> <br>
+                <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)"> <b>Passwort: </b></label>
+                <input type="password" name="lname" id="pw" placeholder="123456" required> <br>
+                <button type="submit" class="button"> Abschicken </button>
+                <button type="button" class="button"> Abschicken Testweise</button>
+
             </fieldset>
-        </form>
+
+        </form> 
     </main>
 
 </body>

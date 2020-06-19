@@ -12,7 +12,6 @@ var Aufgabe07;
     productCounter.style.display = "block";
     Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
     console.log(Aufgabe07.counter);
-    document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
     warenkorbAufbauen2();
     async function warenkorbAufbauen2() {
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
@@ -54,21 +53,21 @@ var Aufgabe07;
                 let newOp1 = document.createElement("option");
                 newOp1.value = "2.5";
                 newOp1.innerHTML = "5 kg | " + Aufgabe07.imVerkauf[artIndex].price1 + "€";
-                let newOp2 = document.createElement("option");
+                /* let newOp2: HTMLOptionElement = document.createElement("option");
                 newOp2.value = "5";
-                newOp2.innerHTML = "10 kg | " + Aufgabe07.imVerkauf[artIndex].price2 + "€";
+                newOp2.innerHTML = "10 kg | " + imVerkauf[artIndex].price2 + "€"; */
                 newSelect.appendChild(newOp1);
-                newSelect.appendChild(newOp2);
+                // newSelect.appendChild(newOp2);
                 //Name hinzugefügt 
                 let newName = document.createElement("p");
                 newName.setAttribute("class", "Name");
                 newName.innerText = Aufgabe07.imVerkauf[artIndex].Name;
                 newDiv.appendChild(newName);
-                //Beschreibung hinzugefügt 
-                let newP = document.createElement("p");
+                /* //Beschreibung hinzugefügt
+                let newP: HTMLParagraphElement = document.createElement("p");
                 newP.setAttribute("class", "beschreibung");
-                newP.innerHTML = Aufgabe07.imVerkauf[artIndex].Description;
-                newDiv.appendChild(newP);
+                newP.innerHTML = imVerkauf[artIndex].Description;
+                newDiv.appendChild(newP); */
                 //Button hinzugefügt 
                 let newB = document.createElement("input");
                 newB.addEventListener("click", handlerWarenkorb);
@@ -86,6 +85,7 @@ var Aufgabe07;
                 document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
             }
         }
+        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
     }
     function handlerWarenkorb(_kaufen) {
         if (Aufgabe07.counter > 0)
@@ -105,6 +105,7 @@ var Aufgabe07;
             document.getElementById("Entleeren")?.setAttribute("style", "display : inline");
         else
             document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
     }
     async function communicate(_url) {
         let response = await fetch(_url);
@@ -114,7 +115,7 @@ var Aufgabe07;
         let preiscounter = parseInt(localStorage.getItem("counter"));
         let preis = 0;
         for (let i = 0; i < preiscounter; i++) {
-            if (localStorage.getItem("Artikel" + i))
+            if (localStorage.getItem("Artikel" + i) != null)
                 preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
         }
         return preis;
@@ -123,7 +124,7 @@ var Aufgabe07;
         Aufgabe07.counter = parseInt(localStorage.getItem("counter"));
         console.log("Counter: " + Aufgabe07.counter);
         for (let i = 0; i < Aufgabe07.counter; i++) {
-            if (localStorage.getItem("Artikel" + i)) {
+            if (localStorage.getItem("Artikel" + i) != null) {
                 document.getElementById("WarenkorbItem" + i)?.remove();
                 localStorage.removeItem("Artikel" + i);
             }
@@ -135,6 +136,7 @@ var Aufgabe07;
         console.log("Entleere Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+        warenkorbAufbauen2();
     }
     console.log("Fertig geladen");
 })(Aufgabe07 || (Aufgabe07 = {}));

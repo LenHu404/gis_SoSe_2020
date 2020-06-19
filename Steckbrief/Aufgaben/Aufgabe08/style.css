@@ -1,0 +1,27 @@
+.button {
+    margin: 20px 0px 10px 0px;
+    background-color: rgb(189, 189, 189);
+    border: rgb(99, 99, 99) solid 5px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.button:hover{
+    background-color: rgb(104, 104, 104);
+    border: rgb(165, 165, 165) solid 5px;
+    color: white;
+}
+
+fieldset {
+    background-color: rgb(185, 185, 185);
+    padding: 50px;
+}
+
+legend {
+    font-size: large;
+    background-color: rgb(75, 75, 75);
+    color: white;
+    padding: 5px;
+    border: rgb(139, 139, 139) solid 5px;
+    border-radius: 5px;
+}

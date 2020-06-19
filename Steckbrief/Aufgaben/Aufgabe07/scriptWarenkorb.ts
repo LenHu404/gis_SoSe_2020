@@ -13,11 +13,8 @@ namespace Aufgabe07 {
     counter = parseInt(localStorage.getItem("counter")!);
     console.log(counter);
 
-    document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
-
 
     warenkorbAufbauen2();
-
 
 
     async function warenkorbAufbauen2(): Promise<void> {
@@ -76,11 +73,11 @@ namespace Aufgabe07 {
                 let newOp1: HTMLOptionElement = document.createElement("option");
                 newOp1.value = "2.5";
                 newOp1.innerHTML = "5 kg | " + imVerkauf[artIndex].price1 + "€";
-                let newOp2: HTMLOptionElement = document.createElement("option");
+                /* let newOp2: HTMLOptionElement = document.createElement("option");
                 newOp2.value = "5";
-                newOp2.innerHTML = "10 kg | " + imVerkauf[artIndex].price2 + "€";
+                newOp2.innerHTML = "10 kg | " + imVerkauf[artIndex].price2 + "€"; */
                 newSelect.appendChild(newOp1);
-                newSelect.appendChild(newOp2);
+               // newSelect.appendChild(newOp2);
 
                 //Name hinzugefügt 
                 let newName: HTMLParagraphElement = document.createElement("p");
@@ -88,11 +85,11 @@ namespace Aufgabe07 {
                 newName.innerText = imVerkauf[artIndex].Name;
                 newDiv.appendChild(newName);
 
-                //Beschreibung hinzugefügt 
+                /* //Beschreibung hinzugefügt 
                 let newP: HTMLParagraphElement = document.createElement("p");
                 newP.setAttribute("class", "beschreibung");
                 newP.innerHTML = imVerkauf[artIndex].Description;
-                newDiv.appendChild(newP);
+                newDiv.appendChild(newP); */
 
                 //Button hinzugefügt 
                 let newB: HTMLInputElement = document.createElement("input");
@@ -114,6 +111,9 @@ namespace Aufgabe07 {
                 (<HTMLElement>document.getElementById("3kartoffel")).innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
             }
         }
+
+        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
+
 
 
     }
@@ -144,7 +144,7 @@ namespace Aufgabe07 {
         else
             document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
 
-
+        document.getElementById("Entleeren")?.addEventListener("click", handleWarenkorbEntleeren);
 
     }
 
@@ -157,7 +157,7 @@ namespace Aufgabe07 {
         let preiscounter: number = parseInt(localStorage.getItem("counter")!);
         let preis: number = 0;
         for (let i: number = 0; i < preiscounter; i++) {
-            if (localStorage.getItem("Artikel" + i))
+            if (localStorage.getItem("Artikel" + i) != null)
                 preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
         }
         return preis;
@@ -171,7 +171,7 @@ namespace Aufgabe07 {
         console.log("Counter: " + counter);
 
         for (let i: number = 0; i < counter; i++) {
-            if (localStorage.getItem("Artikel" + i)) {
+            if (localStorage.getItem("Artikel" + i) != null) {
                 document.getElementById("WarenkorbItem" + i)?.remove();
                 localStorage.removeItem("Artikel" + i);
             }
@@ -186,6 +186,8 @@ namespace Aufgabe07 {
         console.log("Entleere Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
+
+        warenkorbAufbauen2();
 
     }
 
