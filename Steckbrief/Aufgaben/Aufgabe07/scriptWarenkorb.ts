@@ -7,7 +7,16 @@ namespace Aufgabe07 {
     productCounter.setAttribute("id", "productCounter");
     document.getElementById("konto")?.appendChild(productCounter);
     //let gesamtPreis: number = 0;
-    export let warenkorb: Product[] = [trenner];
+    let trenner: Product = {
+        Name: "Geschenk:",
+        Description: " Der Kartoffel-Newsletter",
+        price1: 0,
+        price2: 0,
+        imgSrc: "Bilder/Newsletter.png",
+        Art: "Kartoffel",
+        Kategorie: "mehligkochend"
+    };
+    let warenkorb: Product[] = [trenner];
     productCounter.style.display = "block";
 
     counter = parseInt(localStorage.getItem("counter")!);
@@ -20,6 +29,51 @@ namespace Aufgabe07 {
     async function warenkorbAufbauen2(): Promise<void> {
         await communicate("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Aufgabe07/artikel.json");
 
+        let newDiv: HTMLDivElement = document.createElement("div");
+
+        //Div id zuweisen
+        /* newDiv.setAttribute("articleIndex", "100");
+        newDiv.setAttribute("id", "WarenkorbItem100"); */
+        //newDiv.setAttribute("counter", i.toString());
+
+        //Element hinzufügen
+        document.getElementById("Angebot")?.appendChild(newDiv);
+
+        //Bild hinzufügen
+        let newImg: HTMLImageElement = document.createElement("img");
+
+        newImg.src = warenkorb[0].imgSrc;
+        newImg.setAttribute("alt",  warenkorb[0].Art);
+        newDiv.appendChild(newImg);
+
+        /* //Label hinzufügen
+        let newL: HTMLLabelElement = document.createElement("label");
+        newL.setAttribute("for",  warenkorb[0].Name);
+        newL.innerHTML = "Kilogramm:";
+        newDiv.appendChild(newL);
+
+        //Dropdownmenu hinzufügen
+        let newSelect: HTMLSelectElement = document.createElement("select");
+        newSelect.setAttribute("class", "option");
+        newSelect.name =  warenkorb[0].Name;
+        newSelect.id =  warenkorb[0].Name + "select";
+        newDiv.appendChild(newSelect); */
+
+        //Option vom Dropdownmenu
+        /* let newOp1: HTMLOptionElement = document.createElement("option");
+        newOp1.value = "2.5";
+        newOp1.innerHTML = "5 kg | " +  warenkorb[0].price1 + "€";
+        let newOp2: HTMLOptionElement = document.createElement("option");
+        newOp2.value = "5";
+        newOp2.innerHTML = "10 kg | " + imVerkauf[artIndex].price2 + "€"; 
+        newSelect.appendChild(newOp1);
+        // newSelect.appendChild(newOp2);
+ */
+        //Name hinzugefügt 
+        let newName: HTMLParagraphElement = document.createElement("p");
+        newName.setAttribute("class", "Name");
+        newName.innerText =  warenkorb[0].Name;
+        newDiv.appendChild(newName);
 
         for (let i: number = 0; i < counter; i++) {
             if (localStorage.getItem("Artikel" + i)) {
@@ -77,7 +131,7 @@ namespace Aufgabe07 {
                 newOp2.value = "5";
                 newOp2.innerHTML = "10 kg | " + imVerkauf[artIndex].price2 + "€"; */
                 newSelect.appendChild(newOp1);
-               // newSelect.appendChild(newOp2);
+                // newSelect.appendChild(newOp2);
 
                 //Name hinzugefügt 
                 let newName: HTMLParagraphElement = document.createElement("p");
@@ -191,8 +245,6 @@ namespace Aufgabe07 {
 
     }
 
-
-
-
+     
     console.log("Fertig geladen");
 }
