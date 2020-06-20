@@ -241,8 +241,6 @@ namespace Aufgabe07 {
         console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
 
-        warenkorbAufbauen2();
-
     }
 
      

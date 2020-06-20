@@ -184,7 +184,6 @@ var Aufgabe07;
         console.log("Entleere Warenkorb");
         console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
         document.getElementById("Entleeren")?.setAttribute("style", "display : hidden");
-        warenkorbAufbauen2();
     }
     console.log("Fertig geladen");
 })(Aufgabe07 || (Aufgabe07 = {}));
