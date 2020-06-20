@@ -11,18 +11,19 @@
 
 <body>
     <main>
-        <form action="http://localhost:8100" method="">
+        <!-- <form action="https://kartoffel-ist-best.herokuapp.com/" method="GET"> --> 
+        <form>
 
             <fieldset>
                 <legend>
                     Zugansdaten
                 </legend>
-                <label for="user" title="Wie du halt heißt!"> <b>Benutzername: </b></label>
+                <label for="user"> <b>Benutzername: </b></label>
                 <input type="text" name="fname" placeholder="Parge Lenis" required> <br>
-                <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)"> <b>Passwort: </b></label>
-                <input type="password" name="lname" id="pw" placeholder="123456" required> <br>
-                <button type="submit" class="button"> Abschicken </button>
-                <button type="button" class="button"> Abschicken Testweise</button>
+                <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)" id="pw"> <b>Passwort: </b></label>
+                <input type="password" name="lname" placeholder="123456" required> <br>
+                <!-- <button type="submit" class="button"> Abschicken </button> -->
+                <button type="submit" class="button" id="button"> Abschicken Testweise</button>
 
             </fieldset>
 
