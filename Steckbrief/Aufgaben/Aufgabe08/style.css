@@ -1,16 +1,24 @@
 .button {
     margin: 20px 0px 10px 0px;
-    background-color: rgb(189, 189, 189);
-    border: rgb(99, 99, 99) solid 5px;
+    background-color: rgb(94, 94, 94);
+    border: rgb(58, 58, 58) solid 5px;
+    color: white;
     border-radius: 5px;
     transition: all 0.2s ease-in-out 0s;
     cursor: pointer;
 }
 
 .button:hover{
-    background-color: rgb(104, 104, 104);
-    border: rgb(165, 165, 165) solid 5px;
-    color: white;
+    background-color: rgb(182, 182, 182);
+    border: rgb(63, 63, 63) solid 5px;
+    color: rgb(31, 31, 31);
+}
+
+input {
+    background-color: rgb(204, 203, 203);
+    border: rgb(126, 126, 126) solid 2px;
+    border-radius: 3px;
+    padding: 2px 20px 2px 5px;
 }
 
 #decide {
@@ -68,6 +76,7 @@ fieldset > label {
     padding-top: 0px;
     font-size: small;
 }
+
 legend {
     font-size: large;
     background-color: rgb(75, 75, 75);
