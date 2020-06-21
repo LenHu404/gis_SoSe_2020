@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 
-.button:hover{
+.button:hover {
     background-color: rgb(182, 182, 182);
     border: rgb(63, 63, 63) solid 5px;
     color: rgb(31, 31, 31);
@@ -21,11 +21,16 @@ input {
     padding: 2px 20px 2px 5px;
 }
 
+b {
+    font-family: monospace;
+    font-size: larger;
+}
+
 #decide {
     text-align: center;
 }
 
-span{
+span {
     font-size: 20px;
     font-family: monospace;
     margin: 20px;
@@ -37,24 +42,32 @@ fieldset {
     padding: 50px;
 }
 
-fieldset > label {
+fieldset>label {
     padding-right: 10px;
 }
 
+.username {
+    padding-right: 15px;
+}
+
 #fname {
-    padding-right: 48px;
+    padding-right: 58px;
 }
 
 #lname {
-    padding-right: 37px;
+    padding-right: 50px;
 }
 
 .pw {
-    padding-right: 47px;
+    padding-right: 50px;
+}
+
+#farbe {
+    padding-right: 0px;
 }
 
 #email {
-    padding-right: 69px; /* nice  ( ͡° ͜ʖ ͡°) */
+    padding-right: 76px;
 }
 
 #gender {
@@ -66,7 +79,7 @@ fieldset > label {
 }
 
 #url {
-    padding-right: 14px;
+    padding-right: 0px;
 }
 
 /* Ich weiß, mit ner Tabelle hätte ich mir wahrscheinlich arbeit ersparen können ¯\_(ツ)_/¯ */
