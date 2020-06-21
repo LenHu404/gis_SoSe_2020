@@ -13,6 +13,17 @@
     color: white;
 }
 
+#decide {
+    text-align: center;
+}
+
+span{
+    font-size: 20px;
+    font-family: monospace;
+    margin: 20px;
+    text-align: center;
+}
+
 fieldset {
     background-color: rgb(185, 185, 185);
     padding: 50px;
@@ -26,6 +37,29 @@ fieldset > label {
     padding-right: 47px;
 }
 
+#email {
+    padding-right: 69px; /* nice  ( ͡° ͜ʖ ͡°) */
+}
+
+#gender {
+    padding-right: 30px;
+}
+
+#date {
+    padding-right: 33px;
+}
+
+#url {
+    padding-right: 14px;
+}
+
+/* Ich weiß, mit ner Tabelle hätte ich mir wahrscheinlich arbeit ersparen können ¯\_(ツ)_/¯ */
+
+#beschreibung {
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: small;
+}
 legend {
     font-size: large;
     background-color: rgb(75, 75, 75);

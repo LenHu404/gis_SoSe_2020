@@ -6,28 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <main>
-        <!-- <form action="https://kartoffel-ist-best.herokuapp.com/" method="GET"> --> 
-        <form>
+        <div id="decide">
+            <span class="button" id="LogIn">Log in</span>
+            <span class="button" id="SignIn"> Sign In</span>
+        </div>
+        <div id="FormLogIn">
 
-            <fieldset>
-                <legend>
-                    Zugansdaten
-                </legend>
-                <label for="user"> <b>Benutzername: </b></label>
-                <input type="text" name="fname" placeholder="Parge Lenis" required> <br>
-                <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)" id="pw"> <b>Passwort: </b></label>
-                <input type="password" name="lname" placeholder="123456" required> <br>
-                <!-- <button type="submit" class="button"> Abschicken </button> -->
-                <button type="submit" class="button" id="button"> Abschicken Testweise</button>
+            <form >
 
-            </fieldset>
+                <fieldset>
+                    <legend>
+                        Log In
+                    </legend>
+                    <label for="user"> <b>Benutzername: </b></label>
+                    <input type="text" name="username" placeholder="Parge Lenis" required> <br>
+                    <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)" id="pw"> <b>Passwort:
+                        </b></label>
+                    <input type="password" name="password" placeholder="123456" required> <br>
+                    <button type="button" class="button" id="buttonLogIn" zaehler="0"> Log in </button>
 
-        </form> 
+                </fieldset>
+            </form>
+        </div>
+        <div id="FormSingIn">
+            <form >
+
+                <fieldset>
+                    <legend>
+                        Sign In
+                    </legend>
+                    
+                    <label for="email" id="email"> <b>Email: </b></label>
+                    <input type="text" name="email" placeholder="*****@*****.**" required> <br>
+                    
+                    <label for="user"> <b>Benutzername: </b></label>
+                    <input type="text" name="username" placeholder="not Parge Lenis" required> <br>
+                    
+                    <label for="pw" title="Wäre gut wenn du dich daran erinnern könntest ;)" id="pw"> <b>Passwort:
+                        </b></label>
+                    <input type="password" name="password" placeholder="not 123456" required> <br>
+
+                    <label for="color"> <b>Lieblingsfarbe: </b></label>
+                    <input type="color" name="lieblingsfarbe" required> <br>
+
+                    <label for="gender" id="gender"> <b>Geschlecht: </b></label>
+                    <input type="radio" name="male"> Mann  <input type="radio" name="female"> Frau <input type="radio" name="divers"> Divers  <br>
+                    
+                    <label for="birthdate" id="date"> <b>Geburtstag: </b></label>
+                    <input type="date" name="birthdate" required> <br>
+                    
+                    <label for="url" id="url"> <b> Portfolio-Url:* </b></label>
+                    <input type="url" name="url"> <br>
+
+                    <button type="button" class="button" id="buttonSignIn" zaehler="1"> Sign In </button> 
+                    <div id="beschreibung"> mit * markierte Felder sind nicht unbedingt auszufüllen </div>
+
+                </fieldset>
+
+            </form>
+        </div>
     </main>
 
 </body>
