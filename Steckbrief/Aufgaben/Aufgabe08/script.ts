@@ -21,7 +21,14 @@ namespace Aufgabe08 {
     async function addUrl(_event: Event): Promise<void> {
 
         let target: HTMLInputElement = (<HTMLInputElement>_event.target);
-        let formZaehler: number = parseInt(target.getAttribute("zaehler")!);
+        let form: String = target.getAttribute("id")!;
+        let formZaehler: number = 0;
+        if (form == "buttonLogIn") {
+            formZaehler = 0;
+        }
+        else if (form == "buttonSignIn") {
+            formZaehler = 1;
+        }
 
         let formData: FormData = new FormData(document.forms[formZaehler]);
         //let url: string = "http://localhost:8100";

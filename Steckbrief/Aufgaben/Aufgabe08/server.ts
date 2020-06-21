@@ -16,7 +16,7 @@ export namespace A08Server {
   }
   
   function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-  
+    
     //Erstellt des Html-Dokument mit den nötigen Angaben
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -24,6 +24,7 @@ export namespace A08Server {
     //Gibt die query als Text im body des Html-Dokuments aus
     _response.write(_request.url);
     
+
     _response.end();
   }
 }

@@ -14,7 +14,14 @@ var Aufgabe08;
     console.log("Fertig geladen");
     async function addUrl(_event) {
         let target = _event.target;
-        let formZaehler = parseInt(target.getAttribute("zaehler"));
+        let form = target.getAttribute("id");
+        let formZaehler = 0;
+        if (form == "buttonLogIn") {
+            formZaehler = 0;
+        }
+        else if (form == "buttonSignIn") {
+            formZaehler = 1;
+        }
         let formData = new FormData(document.forms[formZaehler]);
         //let url: string = "http://localhost:8100";
         let url = "https://kartoffel-ist-best.herokuapp.com";
