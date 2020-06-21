@@ -33,6 +33,14 @@ fieldset > label {
     padding-right: 10px;
 }
 
+#fname {
+    padding-right: 48px;
+}
+
+#lname {
+    padding-right: 37px;
+}
+
 #pw {
     padding-right: 47px;
 }
