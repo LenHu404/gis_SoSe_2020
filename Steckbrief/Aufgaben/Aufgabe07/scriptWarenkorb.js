@@ -63,8 +63,8 @@ var Aufgabe07;
         newName.setAttribute("class", "Name");
         newName.innerText = warenkorb[0].Name;
         newDiv.appendChild(newName);
-        for (let i = 0; i < Aufgabe07.counter; i++) {
-            if (localStorage.getItem("Artikel" + i)) {
+        for (let i = 0; i < localStorage.length - 1; i++) {
+            if (localStorage.getItem("Artikel" + i) != "NaN") {
                 productCounter.innerHTML = "" + Aufgabe07.counter;
                 if (Aufgabe07.counter == 0) {
                     productCounter.style.display = "none";
@@ -145,7 +145,7 @@ var Aufgabe07;
         productCounter.style.display = "block";
         productCounter.innerHTML = "" + Aufgabe07.counter;
         document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
-        localStorage.removeItem("Artikel" + artikelCounter);
+        localStorage.setItem("Artikel" + artikelCounter, "NaN");
         localStorage.setItem("counter", Aufgabe07.counter.toString());
         document.getElementById("3kartoffel").innerHTML = "Aktueller Preis: " + preisBerechnung().toFixed(2) + "€" + "<br> <input type='button' id='Bestellen' value='Bestellen'> <br> <input type='button' id='Entleeren' value='Alles Entfernen'>";
         console.log("Aktueller Preis des Warenkorbs: " + preisBerechnung().toFixed(2) + "€");
@@ -160,10 +160,10 @@ var Aufgabe07;
         Aufgabe07.imVerkauf = await response.json();
     }
     function preisBerechnung() {
-        let preiscounter = parseInt(localStorage.getItem("counter"));
+        // let preiscounter: number = parseInt(localStorage.getItem("counter")!);
         let preis = 0;
-        for (let i = 0; i < preiscounter; i++) {
-            if (localStorage.getItem("Artikel" + i) != null)
+        for (let i = 0; i < localStorage.length - 1; i++) {
+            if (localStorage.getItem("Artikel" + i) != "NaN")
                 preis += Aufgabe07.imVerkauf[parseInt(localStorage.getItem("Artikel" + i))].price1;
         }
         return preis;

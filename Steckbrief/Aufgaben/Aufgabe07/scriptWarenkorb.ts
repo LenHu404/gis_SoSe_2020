@@ -75,8 +75,8 @@ namespace Aufgabe07 {
         newName.innerText =  warenkorb[0].Name;
         newDiv.appendChild(newName);
 
-        for (let i: number = 0; i < counter; i++) {
-            if (localStorage.getItem("Artikel" + i)) {
+        for (let i: number = 0; i < localStorage.length - 1 ; i++) {
+            if (localStorage.getItem("Artikel" + i) != "NaN") {
 
 
                 productCounter.innerHTML = "" + counter;
@@ -185,7 +185,7 @@ namespace Aufgabe07 {
         productCounter.innerHTML = "" + counter;
 
         document.getElementById("WarenkorbItem" + artikelCounter)?.remove();
-        localStorage.removeItem("Artikel" + artikelCounter);
+        localStorage.setItem("Artikel" + artikelCounter, "NaN");
 
 
         localStorage.setItem("counter", counter.toString());
@@ -208,10 +208,10 @@ namespace Aufgabe07 {
     }
 
     function preisBerechnung(): number {
-        let preiscounter: number = parseInt(localStorage.getItem("counter")!);
+       // let preiscounter: number = parseInt(localStorage.getItem("counter")!);
         let preis: number = 0;
-        for (let i: number = 0; i < preiscounter; i++) {
-            if (localStorage.getItem("Artikel" + i) != null)
+        for (let i: number = 0; i < localStorage.length - 1; i++) {
+            if (localStorage.getItem("Artikel" + i) != "NaN")
                 preis += imVerkauf[parseInt(localStorage.getItem("Artikel" + i)!)].price1;
         }
         return preis;
