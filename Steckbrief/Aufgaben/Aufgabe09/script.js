@@ -21,8 +21,8 @@ var Aufgabe08;
     console.log("Fertig geladen");
     async function communicate(_format) {
         let formData = new FormData(document.forms[formZaehler]);
-        let url = "http://localhost:8100/" + _format;
-        //let url: string = "https://kartoffel-ist-best.herokuapp.com/" + _format;
+        //let url: string = "http://localhost:8100/" + _format;
+        let url = "https://kartoffel-ist-best.herokuapp.com/" + _format;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();

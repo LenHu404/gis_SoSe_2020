@@ -29,8 +29,8 @@ namespace Aufgabe08 {
 
 
         let formData: FormData = new FormData(document.forms[formZaehler]);
-        let url: string = "http://localhost:8100/" + _format;
-        //let url: string = "https://kartoffel-ist-best.herokuapp.com/" + _format;
+        //let url: string = "http://localhost:8100/" + _format;
+        let url: string = "https://kartoffel-ist-best.herokuapp.com/" + _format;
 
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
