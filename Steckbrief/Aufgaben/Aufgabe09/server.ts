@@ -36,10 +36,10 @@ export namespace A08Server {
     if (requestType == "/html") {
       _response.setHeader("content-type", "text/html");
       _response.setHeader("Access-Control-Allow-Origin", "*");
-      rueckgabe = "Host: " + url.host + "; Pathname: " + url.pathname + " <br> Inhalt des Formulars: ";
+      rueckgabe = "Host: " + url.host + "; Pathname: " + url.pathname + " <br> Inhalt des Formulars: <br> ";
       //console.log(url);
       for (let key in url.query) {
-        rueckgabe += key + ": " + url.query[key] + ", ";
+        rueckgabe += key + ": " + url.query[key] + ", <br>";
       }
 
       //rueckgabe += "Benutzername: " + myQuery.username;
