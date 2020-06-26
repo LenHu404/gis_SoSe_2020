@@ -38,10 +38,9 @@ export namespace A08Server {
       _response.setHeader("Access-Control-Allow-Origin", "*");
       rueckgabe = "Host: " + url.host + "; Pathname: " + url.pathname + " <br> Inhalt des Formulars: ";
       //console.log(url);
-      for (let key in url.query){
+      for (let key in url.query) {
         rueckgabe += key + ": " + url.query[key] + ", ";
       }
-
 
       //rueckgabe += "Benutzername: " + myQuery.username;
     }

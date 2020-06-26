@@ -16,6 +16,8 @@ var Aufgabe08;
     signIn.addEventListener("click", handleUser);
     document.getElementById("FormSingIn")?.setAttribute("style", "display: none");
     document.getElementById("FormLogIn")?.setAttribute("style", "display: none");
+    let ausgabe = document.getElementById("Ausgabefeld");
+    ausgabe.setAttribute("style", "display: none");
     console.log("Fertig geladen");
     async function communicate(_format) {
         let formData = new FormData(document.forms[formZaehler]);
@@ -25,10 +27,10 @@ var Aufgabe08;
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         let antwort = await fetch(url);
-        let ausgabe = document.getElementById("Ausgabefeld");
         if (_format == "html") {
             let antwortText = await antwort.text();
             console.log("html: " + antwortText);
+            ausgabe.setAttribute("style", "display: block");
             ausgabe.innerHTML = antwortText;
         }
         else if (_format == "json") {
@@ -36,6 +38,7 @@ var Aufgabe08;
             console.log(query.toString());
             console.log("json: " + JSON.stringify(antwortJson));
             ausgabe.innerHTML = "";
+            ausgabe.setAttribute("style", "display: none");
         }
     }
     function json(_event) {

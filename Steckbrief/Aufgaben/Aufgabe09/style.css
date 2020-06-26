@@ -90,6 +90,12 @@ fieldset>label {
     font-size: small;
 }
 
+#Ausgabefeld {
+    background-color: rgb(211, 96, 96);
+    border: rgb(100, 0, 0) solid 3px;
+    padding: 4px;
+}
+
 legend {
     font-size: large;
     background-color: rgb(75, 75, 75);

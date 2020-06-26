@@ -20,6 +20,8 @@ namespace Aufgabe08 {
     document.getElementById("FormSingIn")?.setAttribute("style", "display: none");
     document.getElementById("FormLogIn")?.setAttribute("style", "display: none");
 
+    let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+    ausgabe.setAttribute("style", "display: none");
 
     console.log("Fertig geladen");
 
@@ -37,7 +39,7 @@ namespace Aufgabe08 {
         let antwort: Response = await fetch(url);
 
 
-        let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+        
 
         if (_format == "html") {
 
@@ -45,7 +47,7 @@ namespace Aufgabe08 {
 
             console.log("html: " + antwortText);
 
-            
+            ausgabe.setAttribute("style", "display: block");
             ausgabe.innerHTML = antwortText;
 
         }
@@ -56,6 +58,8 @@ namespace Aufgabe08 {
             console.log(query.toString());
             console.log("json: " + JSON.stringify(antwortJson));
             ausgabe.innerHTML = "";
+            ausgabe.setAttribute("style", "display: none");
+
         }
 
 
