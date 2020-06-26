@@ -1,5 +1,6 @@
 namespace Aufgabe08 {
 
+
     let buttonSignIn: HTMLButtonElement = document.getElementById("buttonSignIn") as HTMLButtonElement;
     buttonSignIn.addEventListener("click", addUrl);
     let buttonLogIn: HTMLButtonElement = document.getElementById("buttonLogIn") as HTMLButtonElement;
@@ -31,20 +32,23 @@ namespace Aufgabe08 {
         }
 
         let formData: FormData = new FormData(document.forms[formZaehler]);
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://kartoffel-ist-best.herokuapp.com";
+        let url: string = "http://localhost:8100";
+        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
+
         url = url + "?" + query.toString();
         let antwort: Response = await fetch(url);
-        let antwortUrl: String = await antwort.url;
-        let antwortText: String = await antwort.text();
+       
+        //let antwortUrl: string = antwort.url;
+        let antwortText: string = await antwort.text();
+       
+        //let antwortfürHTML: String[] = await antwort.;
+        console.log("lol: " + antwortText);
 
-        console.log(antwortUrl + " " + antwortText);
-        for (let entry of formData) {
-           // console.log(entry);
-            console.log(entry[0] + ": " + entry[1]);
-        }
+        let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+        ausgabe.innerHTML = antwortText;
+
     }
 
     function handleUser(_event: Event): void {

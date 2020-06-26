@@ -1,0 +1,259 @@
+body {
+    background-image: url(bg.png);
+}
+
+main {
+    text-align: center;
+}
+
+.active {
+    color: #4CAF50;
+    ;
+}
+
+.unactive {
+    color: rgb(255, 255, 255);
+    ;
+}
+
+header nav {
+    position: fixed;
+    top: 0px;
+    left: 60%;
+    width: 320px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(25, 49, 29);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: rgb(215, 231, 66);
+}
+
+header {
+    background-color: rgb(79, 160, 126);
+    height: 900px;
+    width: 900px;
+    border-radius: 50%;
+    margin: -450px auto auto auto;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+header h1 {
+    padding-top: 40%;
+    font-size: 200px;
+    text-decoration: underline;
+    text-shadow: 6px 6px rgb(59, 124, 84);
+    cursor: grab;
+}
+
+header p {
+    text-shadow: 2px 2px rgb(59, 124, 84);
+    text-align: right;
+    margin-top: -130px;
+    width: 200px;
+    margin-left: 550px;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 19pt;
+}
+
+#imFeld h1 {
+    padding-top: 40%;
+    font-size: 200px;
+}
+
+#imFeld p {
+    width: 300px;
+    margin-top: -150px;
+    margin-left: 420px;
+    font-size: 45px;
+}
+
+#imFeld img {
+    height: 40px;
+    width: 40px;
+    margin-top: 80px;
+    padding: 10px 8px 8px 10px;
+    filter: grayscale(100%);
+}
+
+#imFeld img:hover {
+    height: 45px;
+    width: 45px;
+    margin-top: 80px;
+    padding: 6px 6px 6px 6px;
+    background-color: teal;
+    border-radius: 20%;
+    filter: grayscale(0%);
+}
+
+#imFeld a {
+    text-decoration: none;
+}
+
+.conform {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 20px;
+    width: 300px;
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 50px auto 00 auto;
+    color: rgb(38, 87, 53);
+    font-weight: bolder;
+    margin-top: -20px;
+}
+
+input[type=text], input[type=submit], input[type=textarea] {
+    padding: 2px 5px;
+    margin-bottom: 4px;
+    background-color: lightgray;
+    color: white;
+    border: none;
+}
+
+input[type=text] {
+    width: 15em;
+}
+
+textarea {
+    background-color: lightgray;
+    color: white;
+}
+
+#Nachricht {
+    color: slategray;
+    width: 300px;
+    height: 80px;
+}
+
+.eingabe p {
+    margin: 0px 0px 6px 0px;
+    color: slategray;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 10px;
+}
+
+.eingabe p b {
+    margin: 0px 0px 6px -178px;
+    color: slategray;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 14px;
+}
+
+.eingabe p u {
+    cursor: pointer;
+}
+
+#info h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17pt;
+    color: rgb(25, 49, 29)
+}
+
+#info {
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+    color: rgb(79, 160, 126);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15pt;
+}
+
+.showcase iframe {
+    width: 800px;
+    height: 600px;
+    border: 0px;
+}
+
+.showcase img {
+    width: 800px;
+}
+
+.content video {
+    width: 800px;
+}
+
+#lastone {
+    margin-bottom: 50px;
+}
+
+div table {
+    border: 1px solid black;
+    width: 250px;
+}
+
+div table th, td {
+    padding: 4px;
+}
+
+div table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+div table tr:nth-child(uneven) {
+    background-color: white;
+}
+
+#table {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding-top: 0px;
+}
+
+main h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17pt;
+    color: rgb(25, 49, 29)
+}
+
+#heady {
+    margin-bottom: 3px;
+}
+
+#w3validatet {
+    margin-left: -95%;
+}
+
+footer {
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+    bottom: -275px;
+    width: 500px;
+    height: 100px;
+    padding: 4px 10px 100px 10px;
+    border-radius: 30px;
+    background-color: rgb(25, 49, 29);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+#bigtoe {
+    font-size: 15pt;
+}
+
+footer:hover {
+    bottom: -210px;
+}

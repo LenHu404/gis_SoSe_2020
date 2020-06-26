@@ -23,19 +23,18 @@ var Aufgabe08;
             formZaehler = 1;
         }
         let formData = new FormData(document.forms[formZaehler]);
-        //let url: string = "http://localhost:8100";
-        let url = "https://kartoffel-ist-best.herokuapp.com";
+        let url = "http://localhost:8100";
+        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         let antwort = await fetch(url);
-        let antwortUrl = await antwort.url;
+        //let antwortUrl: string = antwort.url;
         let antwortText = await antwort.text();
-        console.log(antwortUrl + " " + antwortText);
-        for (let entry of formData) {
-            // console.log(entry);
-            console.log(entry[0] + ": " + entry[1]);
-        }
+        //let antwortfürHTML: String[] = await antwort.;
+        console.log("lol: " + antwortText);
+        let ausgabe = document.getElementById("Ausgabefeld");
+        ausgabe.innerHTML = antwortText;
     }
     function handleUser(_event) {
         let target = _event.target;
