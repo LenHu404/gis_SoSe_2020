@@ -6,7 +6,7 @@ var Aufgabe11;
     let buttonSignInHtml = document.getElementById("absenden");
     buttonSignInHtml.addEventListener("click", handleClickStore);
     let ausgabe = document.getElementById("Ausgabefeld");
-    let formular = document.getElementById("formular");
+    //let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
     ausgabe.setAttribute("style", "display: none");
     let formData;
     /* let buttonActionHtml: HTMLButtonElement = <HTMLButtonElement>document.getElementById("store");

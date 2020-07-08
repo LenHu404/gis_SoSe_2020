@@ -5,6 +5,8 @@ var EndabgabeChat;
     buttonSend.addEventListener("click", handleClickStore);
     let buttonRefresh = document.getElementById("refresh");
     buttonRefresh.addEventListener("click", handleClickRetrieve);
+    let ausgabe = document.getElementById("Ausgabefeld");
+    ausgabe.setAttribute("style", "display: none");
     let formData;
     async function handleClickRetrieve() {
         //let url: string = "http://localhost:8100";

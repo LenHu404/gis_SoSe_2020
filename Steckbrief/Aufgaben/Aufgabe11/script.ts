@@ -7,7 +7,7 @@ namespace Aufgabe11 {
 
 
     let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
-    let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
+    //let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
     ausgabe.setAttribute("style", "display: none");
 
 

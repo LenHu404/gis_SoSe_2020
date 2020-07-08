@@ -6,7 +6,8 @@ namespace EndabgabeChat {
     let buttonRefresh: HTMLButtonElement = document.getElementById("refresh") as HTMLButtonElement;
     buttonRefresh.addEventListener("click", handleClickRetrieve);
 
-
+    let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+    ausgabe.setAttribute("style", "display: none");
 
     
 

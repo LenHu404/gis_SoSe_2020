@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node Steckbrief/Aufgaben/Endabgabe-Chat/server.js"
+    "start": "node Steckbrief/Aufgaben/Aufgabe11/server.js"
   },
   "repository": {
     "type": "git",
