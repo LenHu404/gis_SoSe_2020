@@ -1,23 +1,24 @@
 namespace Aufgabe11 {
 
-    let buttonSignInJson: HTMLButtonElement = document.getElementById("buttonSignInJson") as HTMLButtonElement;
+    let buttonSignInJson: HTMLButtonElement = document.getElementById("ausgeben") as HTMLButtonElement;
     buttonSignInJson.addEventListener("click", handleClickRetrieve);
-    let buttonSignInHtml: HTMLButtonElement = document.getElementById("buttonSignInHtml") as HTMLButtonElement;
+    let buttonSignInHtml: HTMLButtonElement = document.getElementById("absenden") as HTMLButtonElement;
     buttonSignInHtml.addEventListener("click", handleClickStore);
 
 
     let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+    let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
     ausgabe.setAttribute("style", "display: none");
 
 
 
 
     let formData: FormData;
-    let buttonActionHtml: HTMLButtonElement = <HTMLButtonElement>document.getElementById("store");
+    /* let buttonActionHtml: HTMLButtonElement = <HTMLButtonElement>document.getElementById("store");
     buttonActionHtml.addEventListener("click", handleClickStore);
 
     let buttonActionJson: HTMLButtonElement = <HTMLButtonElement>document.getElementById("retrieve");
-    buttonActionJson.addEventListener("click", handleClickRetrieve);
+    buttonActionJson.addEventListener("click", handleClickRetrieve); */
 
     async function handleClickRetrieve(): Promise<void> {
         //let url: string = "http://localhost:8100/" + _format;
@@ -29,8 +30,9 @@ namespace Aufgabe11 {
         console.log(response);
         let responseText: string = await response.json();
 
-        let serverResponse: HTMLElement = <HTMLElement>document.getElementById("serverResponse");
-        serverResponse.innerHTML = responseText;
+        let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+        ausgabe.setAttribute("style", "display: block");
+        ausgabe.innerHTML = responseText;
         console.log(responseText);
     }
 
@@ -44,7 +46,7 @@ namespace Aufgabe11 {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "?" + query.toString();
 
-        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formid");
+        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
         formular.reset();
 
         await fetch(url);
