@@ -63,6 +63,12 @@ fieldset>label {
     padding: 5px 20px 5px 4px;
 }
 
+.message {
+    padding: 5px;
+    background-color: rgba(90, 163, 90, 0.986);
+    border: honeydew 4px solid;
+}
+
 
 /* Ich weiß, mit ner Tabelle hätte ich mir wahrscheinlich arbeit ersparen können ¯\_(ツ)_/¯ */
 

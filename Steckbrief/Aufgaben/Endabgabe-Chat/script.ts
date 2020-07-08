@@ -9,7 +9,7 @@ namespace EndabgabeChat {
     let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
     ausgabe.setAttribute("style", "display: none");
 
-    
+
 
 
     let formData: FormData;
@@ -24,9 +24,22 @@ namespace EndabgabeChat {
         console.log(response);
         let responseText: string = await response.json();
 
+        let splitted: string[] = responseText.split("} <br>", 10);
+
         let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
-        ausgabe.setAttribute("style", "display: block");
         ausgabe.innerHTML = responseText;
+
+        ausgabe.setAttribute("style", "display: block");
+        for (let i: number = 0; i < splitted.length; i++) {
+            splitted[i] += "}";
+
+            let splittedJson: any = JSON.parse(splitted[i]);
+            let newDiv: HTMLDivElement = document.createElement("div");
+            newDiv.className = "message";
+            newDiv.innerHTML = splittedJson.user + ": <br> " + splittedJson.message;
+            document.getElementById("Ausgabefeld")?.appendChild(newDiv);
+        }
+
         console.log(responseText);
     }
 
@@ -38,7 +51,7 @@ namespace EndabgabeChat {
 
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url += "?" + "user=" + localStorage.getItem("user") +  "&" + query.toString();
+        url += "?" + "user=" + localStorage.getItem("user") + "&" + query.toString();
 
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
         formular.reset();

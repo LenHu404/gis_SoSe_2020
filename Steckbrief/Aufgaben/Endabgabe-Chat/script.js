@@ -15,9 +15,18 @@ var EndabgabeChat;
         let response = await fetch(url);
         console.log(response);
         let responseText = await response.json();
+        let splitted = responseText.split("} <br>", 10);
         let ausgabe = document.getElementById("Ausgabefeld");
-        ausgabe.setAttribute("style", "display: block");
         ausgabe.innerHTML = responseText;
+        ausgabe.setAttribute("style", "display: block");
+        for (let i = 0; i < splitted.length; i++) {
+            splitted[i] += "}";
+            let splittedJson = JSON.parse(splitted[i]);
+            let newDiv = document.createElement("div");
+            newDiv.className = "message";
+            newDiv.innerHTML = splittedJson.user + ": <br> " + splittedJson.message;
+            document.getElementById("Ausgabefeld")?.appendChild(newDiv);
+        }
         console.log(responseText);
     }
     async function handleClickStore() {
