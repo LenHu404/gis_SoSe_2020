@@ -17,44 +17,20 @@
         </div>
         
         <div id="FormSingIn">
-            <form >
+            <form id="formular">
 
                 <fieldset>
                     <legend>
                         Sign In
                     </legend>
                     
-                    <label for="emails" id="email"> <b>Email: </b></label>
-                    <input type="text" name="email" placeholder="*****@*****.**" id="emails" required> <br>
                     
-                    <label for="username2" class="username"> <b>Benutzername: </b></label>
-                    <input type="text" name="username" placeholder="Benutzername" id="username2" required> <br>
 
-                    <label for="fname2" id="fname"> <b>Vorname: </b></label>
-                    <input type="text" name="fname" placeholder="Benutzer" id="fname2" required> <br>
-
-                    <label for="lname2" id="lname"> <b>Nachname: </b></label>
-                    <input type="text" name="lname" placeholder="Name" id="lname2" required> <br>
+                    <label for="lname2" id="lname"> <b>Nachricht: </b></label>
+                    <input type="text" name="message" placeholder="Schicke eine Nachricht ..." id="message" required> <br>
                     
-                    <label for="passwords" title="Wäre gut wenn du dich daran erinnern könntest ;)" class="pw"> <b>Passwort:
-                        </b></label>
-                    <input type="password" name="password" placeholder="zB: 123456" required id="passwords"> <br>
-
-                    <label for="color" id="farbe"> <b>Lieblingsfarbe: </b></label>
-                    <input type="color" name="lieblingsfarbe" id="color"> <br>
-
-                    <label for="genders" id="gender"> <b>Geschlecht: </b></label>
-                    <input type="radio" name="male" id="genders"> Mann  <input type="radio" name="female"> Frau <input type="radio" name="divers"> Divers  <br>
-                    
-                    <label for="birthdate" id="date"> <b>Geburtstag: </b></label>
-                    <input type="date" name="birthdate" id="birthdate"> <br>
-                    
-                    <label for="urls" id="url"> <b> Portfolio-Url:* </b></label>
-                    <input type="url" name="url" id="urls"> <br>
-
-                    <button type="button" class="button" id="buttonSignInJson" format="json"> Sign In (Json) </button>
-                    <button type="button" class="button" id="buttonSignInHtml" format="html"> Sign In (html) </button> 
-                    <div id="beschreibung"> mit * markierte Felder sind nicht unbedingt auszufüllen </div>
+                   
+                    <button type="button" class="button" id="senden" format="html"> Senden </button> 
 
                 </fieldset>
 

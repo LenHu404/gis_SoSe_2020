@@ -1,60 +1,60 @@
 import * as Http from "http";
 import * as Url from "url";
-import { ParsedUrlQuery } from "querystring";
+import * as Mongo from "mongodb";
 
+export namespace EndabgabeChat {
+  let mongoDaten: Mongo.Collection;
+  let databaseUrl: string;
 
-export namespace EndabgabeChatServer {
+  //databaseUrl = "mongodb://localhost:27017";
+  databaseUrl = "mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Chat?retryWrites=true&w=majority";
+
+  // mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Aufgabe11?retryWrites=true&w=majority
+
+  connectToDatabase(databaseUrl);
+
   let port: number = Number(process.env.PORT);
   if (!port)
     port = 8100;
 
   let server: Http.Server = Http.createServer();
   server.addListener("request", handleRequest);
-  server.addListener("listening", handleListen);
   server.listen(port);
 
-  console.log("Starting server on port: " + port);
-
-// mongo "mongodb+srv://spacy-nobwa.mongodb.net/<dbname>" --username dbUser
-
-  function handleListen(): void {
-    console.log("Listening");
-  }
+  async function connectToDatabase(_url: string): Promise<void> {
+    let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+    await mongoClient.connect();
+    mongoDaten = mongoClient.db("Chat").collection("WorldChat");
+  } 
 
   function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-    
-    console.log("https://kartoffel-ist-best.herokuapp.com" + `${_request.url}`);
 
-    let myData: Url.UrlWithParsedQuery = Url.parse(`${_request.url}`, true);
-    let myQuery: ParsedUrlQuery = myData.query;
-    let requestType: string = (<string>_request.url).slice(0, 5);
-    let myJsonString: string = JSON.stringify(myQuery);
-    let rueckgabe: string = "";
-    let adresse: string = _request.url!;
-    let url: Url.UrlWithParsedQuery = Url.parse(adresse, true);
+    _response.setHeader("Access-Control-Allow-Origin", "*");
+    _response.setHeader("content-type", "text/html; charset=utf-8");
 
-    if (requestType == "/html") {
-      _response.setHeader("content-type", "text/html");
-      _response.setHeader("Access-Control-Allow-Origin", "*");
-      rueckgabe = "Host: " + url.hostname + "; Pathname: " + url.pathname + " <br> <b> Inhalt des Formulars: </b>" + " <br> ";
-      //console.log(url);
-      for (let key in url.query) {
-        rueckgabe += "<b>" + key + ": </b> " + url.query[key] + "; ";
-        rueckgabe += "<br>";
-      }
+    if (_request.url) {
+      let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+      let path: string | null = url.pathname;
+      if (path == "/retrieve") {
+        mongoDaten.find({}).toArray(function(exception: Mongo.MongoError, result: string[]): void {
+        if (exception)
+          throw exception;
+        
+        let resultString: string = "";
+        for (let i: number = 0; i < result.length; i++) {
+          resultString += JSON.stringify(result[i]) + ",";
+        }
 
-      //rueckgabe += "Benutzername: " + myQuery.username;
+        console.log(resultString);
+        _response.write(JSON.stringify(resultString));
+        _response.end();
+        });
+        }
+        
+      else if (path == "/store")
+        mongoDaten.insertOne(url.query);
     }
-    else if (requestType == "/json") {
-      _response.setHeader("content-type", "application/json");
-      _response.setHeader("Access-Control-Allow-Origin", "*");
-      console.log(myJsonString);
-      rueckgabe = myJsonString;
-
-    }
-
-    _response.write(rueckgabe);
-    _response.end();
-
   }
 }
+

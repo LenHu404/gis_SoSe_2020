@@ -1,0 +1,39 @@
+namespace EndabgabeChat {
+
+    let buttonEinloggen: HTMLButtonElement = document.getElementById("einloggen") as HTMLButtonElement;
+    buttonEinloggen.addEventListener("click", handleUser);
+
+    let buttonMIBChat: HTMLButtonElement = document.getElementById("mib") as HTMLButtonElement;
+    buttonMIBChat.addEventListener("click", handleChatAuswahl);
+
+    let buttonHFUChat: HTMLButtonElement = document.getElementById("hfu") as HTMLButtonElement;
+    buttonHFUChat.addEventListener("click", handleChatAuswahl);
+
+    function handleUser(_event: Event): void {
+        let formData: FormData = new FormData(document.forms[0]);
+        // tslint:disable-next-line: no-any
+        let query: URLSearchParams = new URLSearchParams(<any>formData);
+
+
+
+        localStorage.setItem("user", query.toString());
+        console.log("Einloggen");
+
+    }
+
+    function handleChatAuswahl(_event: Event): void {
+        let target: HTMLInputElement = (<HTMLInputElement>_event.target);
+        let chat: string = target.getAttribute("id")!;
+        if (chat == "mib") {
+            localStorage.setItem("chat", "mib");
+            console.log("Chat: MIB");
+        }
+        else if (chat == "hfu") {
+            localStorage.setItem("chat", "hfu");
+            console.log("Chat: HFU");
+        }
+
+
+
+    }
+}

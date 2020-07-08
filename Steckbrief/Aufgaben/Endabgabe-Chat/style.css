@@ -1,5 +1,5 @@
 .button {
-    margin: 20px 0px 10px 0px;
+    margin: 20px 20px 10px 0px;
     background-color: rgb(94, 94, 94);
     border: rgb(58, 58, 58) solid 5px;
     color: white;
@@ -51,36 +51,18 @@ fieldset>label {
 }
 
 #fname {
-    padding-right: 58px;
-}
-
-#lname {
-    padding-right: 50px;
+    padding-right: 42px;
+    /* Die Antwort auf alles ;) */
 }
 
 .pw {
     padding-right: 50px;
 }
 
-#farbe {
-    padding-right: 0px;
+#message {
+    padding: 5px 20px 5px 4px;
 }
 
-#email {
-    padding-right: 76px;
-}
-
-#gender {
-    padding-right: 30px;
-}
-
-#date {
-    padding-right: 33px;
-}
-
-#url {
-    padding-right: 0px;
-}
 
 /* Ich weiß, mit ner Tabelle hätte ich mir wahrscheinlich arbeit ersparen können ¯\_(ツ)_/¯ */
 
