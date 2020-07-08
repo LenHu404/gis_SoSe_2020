@@ -22,11 +22,11 @@ export namespace EndabgabeChat {
   server.listen(port);
 
   async function connectToDatabase(_url: string): Promise<void> {
-    let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
     await mongoClient.connect();
     mongoDaten = mongoClient.db("Chat").collection("WorldChat");
-  } 
+  }
 
   function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
 
@@ -37,21 +37,21 @@ export namespace EndabgabeChat {
       let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
       let path: string | null = url.pathname;
       if (path == "/retrieve") {
-        mongoDaten.find({}).toArray(function(exception: Mongo.MongoError, result: string[]): void {
-        if (exception)
-          throw exception;
-        
-        let resultString: string = "";
-        for (let i: number = 0; i < result.length; i++) {
-          resultString += JSON.stringify(result[i]) + ",";
-        }
+        mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
+          if (exception)
+            throw exception;
 
-        console.log(resultString);
-        _response.write(JSON.stringify(resultString));
-        _response.end();
+          let resultString: string = "";
+          for (let i: number = 0; i < result.length; i++) {
+            resultString += JSON.stringify(result[i]) + ", <br>";
+          }
+
+          console.log(resultString);
+          _response.write(JSON.stringify(resultString));
+          _response.end();
         });
-        }
-        
+      }
+
       else if (path == "/store")
         mongoDaten.insertOne(url.query);
     }

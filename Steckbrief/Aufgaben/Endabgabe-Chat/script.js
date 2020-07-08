@@ -1,11 +1,10 @@
 "use strict";
 var EndabgabeChat;
 (function (EndabgabeChat) {
-    let buttonSignInJson = document.getElementById("senden");
-    buttonSignInJson.addEventListener("click", handleClickStore);
-    let ausgabe = document.getElementById("Ausgabefeld");
-    let formular = document.getElementById("formular");
-    ausgabe.setAttribute("style", "display: none");
+    let buttonSend = document.getElementById("senden");
+    buttonSend.addEventListener("click", handleClickStore);
+    let buttonRefresh = document.getElementById("refresh");
+    buttonRefresh.addEventListener("click", handleClickRetrieve);
     let formData;
     async function handleClickRetrieve() {
         //let url: string = "http://localhost:8100";
@@ -26,9 +25,10 @@ var EndabgabeChat;
         url += "/store";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        url += "?" + query.toString();
+        url += "?" + "user=" + localStorage.getItem("user") + "&" + query.toString();
         let formular = document.getElementById("formular");
         formular.reset();
+        console.log("fetch-Url: " + url);
         await fetch(url);
         handleClickRetrieve();
     }

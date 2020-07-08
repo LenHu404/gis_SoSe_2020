@@ -1,14 +1,14 @@
 namespace EndabgabeChat {
 
-    let buttonSignInJson: HTMLButtonElement = document.getElementById("senden") as HTMLButtonElement;
-    buttonSignInJson.addEventListener("click", handleClickStore);
+    let buttonSend: HTMLButtonElement = document.getElementById("senden") as HTMLButtonElement;
+    buttonSend.addEventListener("click", handleClickStore);
+
+    let buttonRefresh: HTMLButtonElement = document.getElementById("refresh") as HTMLButtonElement;
+    buttonRefresh.addEventListener("click", handleClickRetrieve);
 
 
 
-    let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
-    let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
-    ausgabe.setAttribute("style", "display: none");
-
+    
 
 
     let formData: FormData;
@@ -37,10 +37,12 @@ namespace EndabgabeChat {
 
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url += "?" + query.toString();
+        url += "?" + "user=" + localStorage.getItem("user") +  "&" + query.toString();
 
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
         formular.reset();
+
+        console.log("fetch-Url: " + url)
 
         await fetch(url);
 
