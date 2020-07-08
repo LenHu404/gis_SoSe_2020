@@ -1,0 +1,103 @@
+body {
+    background-image: url(Bilder/bg02.png);
+}
+
+header {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    text-align: center;
+    background-color: rgb(179, 245, 225);
+    padding: 15px 40px 15px 40px;
+    border-radius: 20px;
+}
+
+header h1 {
+    color: white;
+}
+
+#navbar {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+    color: rgba(167, 235, 247, 0.747);
+}
+
+div~nav {
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    top: -80px;
+    right: 80px;
+    width: 50px;
+    height: 50px;
+    padding: 90px 10px 10px 5px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#menu img {
+    width: 50%;
+    height: 50%;
+}
+
+#menu {
+    z-index: 1;
+    top: -235px;
+    transition: top 0.5s ease-in-out 0s;
+    position: fixed;
+    right: 80px;
+    width: 150px;
+    height: 140px;
+    padding: 90px 10px 75px 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-size: 13pt;
+}
+
+#menu a {
+    text-decoration: none;
+    color: black;
+}
+
+#menu:hover {
+    top: -40px;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+}
+
+#konto {
+    z-index: 1;
+    position: fixed;
+    right: 10px;
+}
+
+header nav img {
+    width: 30px;
+    height: 30px;
+}
+
+header nav:hover {
+    top: -40px;
+}
+
+img[alt=Kartoffel-Icon] {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 25px;
+}
+

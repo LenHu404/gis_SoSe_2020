@@ -3,7 +3,7 @@ import * as Url from "url";
 import { ParsedUrlQuery } from "querystring";
 
 
-export namespace A08Server {
+export namespace EndabgabeChatServer {
   let port: number = Number(process.env.PORT);
   if (!port)
     port = 8100;

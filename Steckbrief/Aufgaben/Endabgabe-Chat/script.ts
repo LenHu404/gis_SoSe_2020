@@ -1,4 +1,4 @@
-namespace Aufgabe08 {
+namespace EndabgabeChatServer {
 
     let buttonSignInJson: HTMLButtonElement = document.getElementById("buttonSignInJson") as HTMLButtonElement;
     buttonSignInJson.addEventListener("click", json);

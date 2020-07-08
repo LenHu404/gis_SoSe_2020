@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.A08Server = void 0;
+exports.EndabgabeChatServer = void 0;
 const Http = require("http");
 const Url = require("url");
-var A08Server;
-(function (A08Server) {
+var EndabgabeChatServer;
+(function (EndabgabeChatServer) {
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
@@ -46,5 +46,5 @@ var A08Server;
         _response.write(rueckgabe);
         _response.end();
     }
-})(A08Server = exports.A08Server || (exports.A08Server = {}));
+})(EndabgabeChatServer = exports.EndabgabeChatServer || (exports.EndabgabeChatServer = {}));
 //# sourceMappingURL=server.js.map

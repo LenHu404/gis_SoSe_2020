@@ -4,11 +4,13 @@
   "description": "kartoffelistbest",
   "main": "index.js",
   "dependencies": {
-    "@types/node": "^14.0.13"
+    "@types/mongodb": "^3.5.25",
+    "@types/node": "^14.0.13",
+    "mongodb": "^3.5.9"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node Steckbrief/Aufgaben/Aufgabe09/server.js"
+    "start": "node Steckbrief/Aufgaben/Aufgabe11/server.js"
   },
   "repository": {
     "type": "git",
