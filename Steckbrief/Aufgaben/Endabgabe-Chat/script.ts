@@ -24,7 +24,7 @@ namespace EndabgabeChat {
         console.log(response);
         let responseText: string = await response.json();
 
-        let splitted: string[] = responseText.split("} <br>", 10);
+        let splitted: string[] = responseText.split("}", 10);
 
         let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
         ausgabe.innerHTML = responseText;

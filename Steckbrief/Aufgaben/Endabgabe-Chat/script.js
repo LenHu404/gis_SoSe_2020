@@ -15,7 +15,7 @@ var EndabgabeChat;
         let response = await fetch(url);
         console.log(response);
         let responseText = await response.json();
-        let splitted = responseText.split("} <br>", 10);
+        let splitted = responseText.split("}", 10);
         let ausgabe = document.getElementById("Ausgabefeld");
         ausgabe.innerHTML = responseText;
         ausgabe.setAttribute("style", "display: block");
