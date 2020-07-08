@@ -43,7 +43,7 @@ export namespace Aufgabe11 {
         
         let resultString: string = "";
         for (let i: number = 0; i < result.length; i++) {
-          resultString += JSON.stringify(result[i]) + ",";
+          resultString += JSON.stringify(result[i]) + " <br>";
         }
 
         console.log(resultString);

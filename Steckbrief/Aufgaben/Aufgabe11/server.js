@@ -36,7 +36,7 @@ var Aufgabe11;
                         throw exception;
                     let resultString = "";
                     for (let i = 0; i < result.length; i++) {
-                        resultString += JSON.stringify(result[i]) + ",";
+                        resultString += JSON.stringify(result[i]) + " <br>";
                     }
                     console.log(resultString);
                     _response.write(JSON.stringify(resultString));
