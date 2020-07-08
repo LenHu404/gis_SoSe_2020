@@ -36,7 +36,7 @@ var EndabgabeChat;
                         throw exception;
                     let resultString = "";
                     for (let i = 0; i < result.length; i++) {
-                        resultString += JSON.stringify(result[i]) + ", <br>";
+                        resultString += JSON.stringify(result[i]);
                     }
                     console.log(resultString);
                     _response.write(JSON.stringify(resultString));

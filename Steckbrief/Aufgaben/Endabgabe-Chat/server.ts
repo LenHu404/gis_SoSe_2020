@@ -43,7 +43,7 @@ export namespace EndabgabeChat {
 
           let resultString: string = "";
           for (let i: number = 0; i < result.length; i++) {
-            resultString += JSON.stringify(result[i]) + ", <br>";
+            resultString += JSON.stringify(result[i]);
           }
 
           console.log(resultString);
