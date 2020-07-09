@@ -109,12 +109,20 @@ fieldset>label {
 #formular {
     position: fixed;
     bottom: 0px;
+    padding: 5px 30% 5px 30%; 
 }
 
 #beschreibung {
     margin-top: 0px;
     padding-top: 0px;
     font-size: small;
+}
+
+#Eingabe {
+    background-color: white;
+    margin: 20px;
+    padding: 10px 200px 5px 200px;
+    
 }
 
 #Ausgabefeld {

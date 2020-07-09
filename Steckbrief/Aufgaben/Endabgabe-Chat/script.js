@@ -48,7 +48,7 @@ var EndabgabeChat;
             newDiv.appendChild(messageBody);
             newDiv.appendChild(dateDiv);
         }
-        console.log(responseText);
+        //console.log(responseText);
     }
     async function handleClickStore() {
         let date = new Date().toLocaleString();
@@ -59,7 +59,7 @@ var EndabgabeChat;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         //url += "?" + "user=" + "Lennard+Hurst" + "&" + query.toString() + "&" + "date=" + date;
-        url += "?" + "user=" + localStorage.getItem("user") + "&" + query.toString() + "&" + "date=" + date;
+        url += "?username=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
         let formular = document.getElementById("formular");
         formular.reset();
         console.log("fetch-Url: " + url);
