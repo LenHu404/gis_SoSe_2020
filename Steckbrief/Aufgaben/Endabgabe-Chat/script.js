@@ -26,12 +26,12 @@ var EndabgabeChat;
             let splittedJson = JSON.parse(splitted[i]);
             let newDiv = document.createElement("div");
             newDiv.className = "message";
-            if (localStorage.getItem("user") == splittedJson.user) {
+            if (localStorage.getItem("username") == splittedJson.user) {
                 newDiv.className = "selfSend";
             }
             let nameTag = document.createElement("div");
             nameTag.className = "nameTag";
-            if (!(localStorage.getItem("user") == splittedJson.user)) {
+            if (!(localStorage.getItem("username") == splittedJson.user)) {
                 nameTag.innerHTML = splittedJson.user + ":";
             }
             let messageBody = document.createElement("div");
@@ -40,7 +40,7 @@ var EndabgabeChat;
             let dateDiv = document.createElement("div");
             dateDiv.className = "date";
             dateDiv.innerHTML = splittedJson.date;
-            if (localStorage.getItem("user") == splittedJson.user) {
+            if (localStorage.getItem("username") == splittedJson.user) {
                 newDiv.style.textAlign = "right";
             }
             document.getElementById("Ausgabefeld")?.appendChild(newDiv);

@@ -40,13 +40,13 @@ namespace EndabgabeChat {
             let splittedJson: any = JSON.parse(splitted[i]);
             let newDiv: HTMLDivElement = document.createElement("div");
             newDiv.className = "message";
-            if (localStorage.getItem("user") == splittedJson.user) {
+            if (localStorage.getItem("username") == splittedJson.user) {
                 newDiv.className = "selfSend";
             }
 
             let nameTag: HTMLDivElement = document.createElement("div");
             nameTag.className = "nameTag";
-            if (!(localStorage.getItem("user") == splittedJson.user)) {
+            if (!(localStorage.getItem("username") == splittedJson.user)) {
                 nameTag.innerHTML = splittedJson.user + ":";
             }
             
@@ -59,7 +59,7 @@ namespace EndabgabeChat {
             dateDiv.className = "date";
             dateDiv.innerHTML = splittedJson.date;
 
-            if (localStorage.getItem("user") == splittedJson.user) {
+            if (localStorage.getItem("username") == splittedJson.user) {
                 newDiv.style.textAlign = "right";
             }
 
