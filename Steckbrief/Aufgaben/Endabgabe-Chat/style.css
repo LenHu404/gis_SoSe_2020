@@ -1,3 +1,7 @@
+body {
+    background-image: url(bg.png);
+}
+
 .button {
     margin: 20px 20px 10px 0px;
     background-color: rgb(94, 94, 94);
@@ -59,18 +63,37 @@ fieldset>label {
     padding-right: 50px;
 }
 
-#message {
+/* #message {
     padding: 5px 20px 5px 4px;
-}
+    color: hotpink;
+} */
 
 .message {
     padding: 5px;
-    background-color: rgba(90, 163, 90, 0.986);
-    border: honeydew 4px solid;
+    background-color: rgba(255, 255, 255, 0.986);
+    border: rgb(65, 138, 65) 4px solid;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
+.nameTag {
+    color: hotpink;
+}
 
-/* Ich weiß, mit ner Tabelle hätte ich mir wahrscheinlich arbeit ersparen können ¯\_(ツ)_/¯ */
+.messageBody {
+    padding: 5px 20px 5px 20px;
+}
+
+.date {
+    text-align: right;
+    font-size: small;
+    color: rgb(94, 94, 94);
+}
+
+#formular {
+    position: fixed;
+    bottom: 0px;
+}
 
 #beschreibung {
     margin-top: 0px;
@@ -79,9 +102,9 @@ fieldset>label {
 }
 
 #Ausgabefeld {
-    background-color: rgb(211, 96, 96);
-    border: rgb(100, 0, 0) solid 3px;
-    padding: 4px;
+    background-image: url(bg.png);
+    /* border: rgb(85, 85, 85, 152) 3px solid; */
+    padding: 4px 20% 250px 20%;
 }
 
 legend {
