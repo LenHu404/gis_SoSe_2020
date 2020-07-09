@@ -82,6 +82,7 @@ namespace EndabgabeChat {
 
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
+        //url += "?" + "user=" + "Lennard+Hurst" + "&" + query.toString() + "&" + "date=" + date;
         url += "?" + "user=" + localStorage.getItem("user") + "&" + query.toString() + "&" + "date=" + date;
 
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;

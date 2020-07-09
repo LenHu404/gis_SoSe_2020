@@ -131,3 +131,20 @@ legend {
     border: rgb(139, 139, 139) solid 5px;
     border-radius: 5px;
 }
+
+@media screen and (max-width:600px) {
+    .message {
+        padding: 5px;
+        background-color: rgba(255, 255, 255, 0.986);
+        border: rgb(65, 138, 65) 4px solid;
+        border-radius: 10px;
+        margin-top: 10px;
+        box-shadow: 10px 10px 15px silver;
+    }
+
+    #Ausgabefeld {
+        background-image: url(bg.png);
+        /* border: rgb(85, 85, 85, 152) 3px solid; */
+        padding: 4px 20px 250px 20px;
+    }
+}
