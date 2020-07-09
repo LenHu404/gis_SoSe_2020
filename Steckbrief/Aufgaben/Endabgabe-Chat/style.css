@@ -74,6 +74,22 @@ fieldset>label {
     border: rgb(65, 138, 65) 4px solid;
     border-radius: 10px;
     margin-top: 10px;
+    box-shadow: 10px 10px 15px silver;
+}
+
+.selfSend {
+    padding: 5px;
+    background-color: rgba(66, 153, 63, 0.986);
+    border: rgb(65, 138, 65) 4px solid;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.selfSend .date {
+    text-align: right;
+    font-size: small;
+    color: rgb(177, 177, 177);
 }
 
 .nameTag {

@@ -13,26 +13,30 @@ var EndabgabeChat;
         let url = "https://kartoffel-ist-best.herokuapp.com";
         url += "/retrieve";
         let response = await fetch(url);
-        console.log(response);
+        // console.log(response);
         let responseText = await response.json();
-        let splitted = responseText.split(",", 10);
+        let splitted = responseText.split("},");
         let ausgabe = document.getElementById("Ausgabefeld");
         ausgabe.innerHTML = "";
         //ausgabe.innerHTML = responseText;
         ausgabe.setAttribute("style", "display: block");
-        for (let i = 0; i < splitted.length - 1; i++) {
+        for (let i = 1; i < splitted.length - 1; i++) {
             //if (!(i == 0))
-            splitted[i] = splitted[i];
+            splitted[i] = splitted[i] + "}";
             let splittedJson = JSON.parse(splitted[i]);
             let newDiv = document.createElement("div");
             newDiv.className = "message";
+            if (localStorage.getItem("user") == splittedJson.user) {
+                newDiv.className = "selfSend";
+            }
             let nameTag = document.createElement("div");
             nameTag.className = "nameTag";
-            nameTag.innerHTML = splittedJson.user + ":";
+            if (!(localStorage.getItem("user") == splittedJson.user)) {
+                nameTag.innerHTML = splittedJson.user + ":";
+            }
             let messageBody = document.createElement("div");
             messageBody.className = "messageBody";
             messageBody.innerHTML = splittedJson.message;
-            let date = new Date().toLocaleString();
             let dateDiv = document.createElement("div");
             dateDiv.className = "date";
             dateDiv.innerHTML = splittedJson.date;
@@ -43,7 +47,6 @@ var EndabgabeChat;
             newDiv.appendChild(nameTag);
             newDiv.appendChild(messageBody);
             newDiv.appendChild(dateDiv);
-            console.log(i);
         }
         console.log(responseText);
     }
@@ -60,7 +63,7 @@ var EndabgabeChat;
         formular.reset();
         console.log("fetch-Url: " + url);
         await fetch(url);
-        handleClickRetrieve();
+        console.log("Nachricht gesendet und neu laden" + handleClickRetrieve());
     }
     console.log("Fertig geladen");
 })(EndabgabeChat || (EndabgabeChat = {}));

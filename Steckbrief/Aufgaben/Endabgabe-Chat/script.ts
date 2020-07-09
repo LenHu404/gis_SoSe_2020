@@ -21,33 +21,40 @@ namespace EndabgabeChat {
         url += "/retrieve";
 
         let response: Response = await fetch(url);
-        console.log(response);
+        // console.log(response);
         let responseText: string = await response.json();
 
-        let splitted: string[] = responseText.split(",", 10);
+        let splitted: string[] = responseText.split("},");
 
         let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
         ausgabe.innerHTML = "";
         //ausgabe.innerHTML = responseText;
 
         ausgabe.setAttribute("style", "display: block");
-        for (let i: number = 0; i < splitted.length - 1; i++) {
+        for (let i: number = 1; i < splitted.length - 1; i++) {
 
             //if (!(i == 0))
-            splitted[i] = splitted[i];
+            splitted[i] = splitted[i] + "}";
 
 
             let splittedJson: any = JSON.parse(splitted[i]);
             let newDiv: HTMLDivElement = document.createElement("div");
             newDiv.className = "message";
+            if (localStorage.getItem("user") == splittedJson.user) {
+                newDiv.className = "selfSend";
+            }
+
             let nameTag: HTMLDivElement = document.createElement("div");
             nameTag.className = "nameTag";
-            nameTag.innerHTML = splittedJson.user + ":";
+            if (!(localStorage.getItem("user") == splittedJson.user)) {
+                nameTag.innerHTML = splittedJson.user + ":";
+            }
+            
+
             let messageBody: HTMLDivElement = document.createElement("div");
             messageBody.className = "messageBody";
             messageBody.innerHTML = splittedJson.message;
 
-            let date: string = new Date().toLocaleString();
             let dateDiv: HTMLDivElement = document.createElement("div");
             dateDiv.className = "date";
             dateDiv.innerHTML = splittedJson.date;
@@ -60,7 +67,7 @@ namespace EndabgabeChat {
             newDiv.appendChild(nameTag);
             newDiv.appendChild(messageBody);
             newDiv.appendChild(dateDiv);
-            console.log(i);
+            
         }
 
         console.log(responseText);
@@ -84,7 +91,7 @@ namespace EndabgabeChat {
 
         await fetch(url);
 
-        handleClickRetrieve();
+        console.log("Nachricht gesendet und neu laden" + handleClickRetrieve());
     }
 
     console.log("Fertig geladen");
