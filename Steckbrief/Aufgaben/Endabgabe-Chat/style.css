@@ -50,6 +50,86 @@ fieldset>label {
     padding-right: 10px;
 }
 
+.sprechblase7 {
+    position: relative;
+    padding: 1rem;
+    border: 4px solid #2651A6;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 10px 10px 15px silver;
+}
+
+.sprechblase7:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 30px;
+    top: 100%;
+    border: 20px solid;
+    border-color: #2651A6 transparent transparent #2651A6;
+    
+}
+
+.sprechblase7:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 34px;
+    top: 100%;
+    border: 15px solid;
+    border-color: #ffffff transparent transparent #ffffff;
+}
+
+.sprechblase3 .date {
+    color: white;
+}
+
+.sprechblase3 {
+    color: white;
+    position: relative;
+    padding: 1rem;
+    background: #45a12e;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 20px;
+    border: #21631f solid 5px;
+    margin-left: 100px;
+    margin-bottom: 15px;
+    box-shadow: 10px 10px 15px silver;
+}
+
+.sprechblase3:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent #45a12e;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -8px;
+    top: 45px;
+}
+
+.sprechblase3:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 19px 0 19px 19px;
+    border-color: transparent #21631f;
+    display: block;
+    width: 0;
+    z-index: 0;
+    right: -17px;
+    top: 41px;
+}
+
 .username {
     padding-right: 15px;
 }
@@ -74,26 +154,30 @@ fieldset>label {
     border: rgb(65, 138, 65) 4px solid;
     border-radius: 10px;
     margin-top: 10px;
+    margin-right: 30%;
     box-shadow: 10px 10px 15px silver;
 }
 
 .selfSend {
+    position: relative;
     padding: 5px;
     background-color: rgba(66, 153, 63, 0.986);
-    border: rgb(65, 138, 65) 4px solid;
+    border: rgb(15, 63, 15) 4px solid;
     color: white;
     border-radius: 10px;
     margin-top: 10px;
+    margin-left: 30%;
+    box-shadow: 10px 10px 15px silver;
 }
 
 .selfSend .date {
     text-align: right;
     font-size: small;
-    color: rgb(177, 177, 177);
+    color: rgb(224, 224, 224);
 }
 
 .nameTag {
-    color: hotpink;
+    color: rgb(88, 42, 161);
 }
 
 .messageBody {
@@ -106,14 +190,11 @@ fieldset>label {
     color: rgb(94, 94, 94);
 }
 
-
-
 #beschreibung {
     margin-top: 0px;
     padding-top: 0px;
     font-size: small;
 }
-
 
 #Ausgabefeld {
     background-image: url(bg.png);
@@ -135,15 +216,14 @@ legend {
     margin: 20px;
     left: -250px;
     padding: 0px 1000px 300px 300px;
-    
 }
-
 
 #formular {
     position: fixed;
     bottom: -310px;
     background-color: white;
-    padding: 0px 0px 5px 0px; 
+    padding: 0px 0px 5px 0px;
+    z-index: 10;
 }
 
 @media screen and (max-width:600px) {
@@ -155,28 +235,23 @@ legend {
         margin-top: 10px;
         box-shadow: 10px 10px 15px silver;
     }
-
     #Ausgabefeld {
         background-image: url(bg.png);
         /* border: rgb(85, 85, 85, 152) 3px solid; */
         padding: 4px 20px 250px 20px;
     }
-
     #formular {
         background-color: white;
         position: fixed;
         bottom: -320px;
         left: -180px;
-        padding: 5px 0px 5px 0px; 
+        padding: 5px 0px 5px 0px;
     }
-
     #Eingabe {
         position: static;
         margin: 20px;
         padding: 10px 200px 300px 200px;
-        
     }
-
     .message {
         font-size: small;
     }

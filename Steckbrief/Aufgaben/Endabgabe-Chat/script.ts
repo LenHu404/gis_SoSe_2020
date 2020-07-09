@@ -9,6 +9,8 @@ namespace EndabgabeChat {
     let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
     ausgabe.setAttribute("style", "display: none");
 
+    handleClickRetrieve();
+
 
 
 
@@ -39,9 +41,12 @@ namespace EndabgabeChat {
 
             let splittedJson: any = JSON.parse(splitted[i]);
             let newDiv: HTMLDivElement = document.createElement("div");
-            newDiv.className = "message";
+            newDiv.className = "sprechblase7";
             if (localStorage.getItem("username") == splittedJson.user) {
-                newDiv.className = "selfSend";
+                newDiv.className = "sprechblase3";
+            }
+            else {
+                newDiv.className = "sprechblase7";
             }
 
             let nameTag: HTMLDivElement = document.createElement("div");
@@ -90,9 +95,10 @@ namespace EndabgabeChat {
 
         console.log("fetch-Url: " + url);
 
+        handleClickRetrieve();
+
         await fetch(url);
 
-        handleClickRetrieve();
     }
 
     console.log("Fertig geladen");

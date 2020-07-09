@@ -7,6 +7,7 @@ var EndabgabeChat;
     buttonRefresh.addEventListener("click", handleClickRetrieve);
     let ausgabe = document.getElementById("Ausgabefeld");
     ausgabe.setAttribute("style", "display: none");
+    handleClickRetrieve();
     let formData;
     async function handleClickRetrieve() {
         //let url: string = "http://localhost:8100";
@@ -25,9 +26,12 @@ var EndabgabeChat;
             splitted[i] = splitted[i] + "}";
             let splittedJson = JSON.parse(splitted[i]);
             let newDiv = document.createElement("div");
-            newDiv.className = "message";
+            newDiv.className = "sprechblase7";
             if (localStorage.getItem("username") == splittedJson.user) {
-                newDiv.className = "selfSend";
+                newDiv.className = "sprechblase3";
+            }
+            else {
+                newDiv.className = "sprechblase7";
             }
             let nameTag = document.createElement("div");
             nameTag.className = "nameTag";
@@ -63,8 +67,8 @@ var EndabgabeChat;
         let formular = document.getElementById("formular");
         formular.reset();
         console.log("fetch-Url: " + url);
-        await fetch(url);
         handleClickRetrieve();
+        await fetch(url);
     }
     console.log("Fertig geladen");
 })(EndabgabeChat || (EndabgabeChat = {}));
