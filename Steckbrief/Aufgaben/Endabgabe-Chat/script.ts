@@ -92,7 +92,7 @@ namespace EndabgabeChat {
 
         await fetch(url);
 
-        console.log("Nachricht gesendet und neu laden" + handleClickRetrieve());
+        handleClickRetrieve();
     }
 
     console.log("Fertig geladen");

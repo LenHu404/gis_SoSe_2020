@@ -3,7 +3,7 @@ body {
 }
 
 .button {
-    margin: 20px 20px 10px 0px;
+    margin: 10px 20px 10px 0px;
     background-color: rgb(94, 94, 94);
     border: rgb(58, 58, 58) solid 5px;
     color: white;
@@ -106,11 +106,7 @@ fieldset>label {
     color: rgb(94, 94, 94);
 }
 
-#formular {
-    position: fixed;
-    bottom: 0px;
-    padding: 5px 30% 5px 30%; 
-}
+
 
 #beschreibung {
     margin-top: 0px;
@@ -118,12 +114,6 @@ fieldset>label {
     font-size: small;
 }
 
-#Eingabe {
-    background-color: white;
-    margin: 20px;
-    padding: 10px 200px 5px 200px;
-    
-}
 
 #Ausgabefeld {
     background-image: url(bg.png);
@@ -140,6 +130,22 @@ legend {
     border-radius: 5px;
 }
 
+#Eingabe {
+    position: relative;
+    margin: 20px;
+    left: -250px;
+    padding: 10px 1000px 300px 300px;
+    
+}
+
+
+#formular {
+    position: fixed;
+    bottom: -280px;
+    background-color: white;
+    padding: 5px 0px 5px 0px; 
+}
+
 @media screen and (max-width:600px) {
     .message {
         padding: 5px;
@@ -154,5 +160,24 @@ legend {
         background-image: url(bg.png);
         /* border: rgb(85, 85, 85, 152) 3px solid; */
         padding: 4px 20px 250px 20px;
+    }
+
+    #formular {
+        background-color: white;
+        position: fixed;
+        bottom: -320px;
+        left: -180px;
+        padding: 5px 0px 5px 0px; 
+    }
+
+    #Eingabe {
+        position: static;
+        margin: 20px;
+        padding: 10px 200px 300px 200px;
+        
+    }
+
+    .message {
+        font-size: small;
     }
 }
