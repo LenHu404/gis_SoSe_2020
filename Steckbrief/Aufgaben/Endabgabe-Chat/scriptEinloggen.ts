@@ -1,3 +1,5 @@
+
+
 namespace EndabgabeChat {
 
     let buttonEinloggen: HTMLButtonElement = document.getElementById("einloggen") as HTMLButtonElement;
@@ -15,8 +17,14 @@ namespace EndabgabeChat {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
 
 
+        let params: URLSearchParams = new URL("https://stackoverflow.com?" + query.toString()).searchParams;
+        //params.get("user"); // "1"
 
-        localStorage.setItem("user", query.toString());
+
+
+        localStorage.setItem("username", params.get("username")!.toString());
+        localStorage.setItem("password", params.get("password")!.toString());
+
         console.log("Einloggen");
 
     }
@@ -26,14 +34,15 @@ namespace EndabgabeChat {
         let chat: string = target.getAttribute("id")!;
         if (chat == "mib") {
             localStorage.setItem("chat", "mib");
-            console.log("Chat: MIB");
+            //console.log("Chat: MIB");
         }
         else if (chat == "hfu") {
             localStorage.setItem("chat", "hfu");
-            console.log("Chat: HFU");
+            // console.log("Chat: HFU");
         }
 
 
 
     }
+
 }

@@ -11,7 +11,10 @@ var EndabgabeChat;
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        localStorage.setItem("user", query.toString());
+        let params = new URL("https://stackoverflow.com?" + query.toString()).searchParams;
+        //params.get("user"); // "1"
+        localStorage.setItem("username", params.get("username").toString());
+        localStorage.setItem("password", params.get("password").toString());
         console.log("Einloggen");
     }
     function handleChatAuswahl(_event) {
@@ -19,11 +22,11 @@ var EndabgabeChat;
         let chat = target.getAttribute("id");
         if (chat == "mib") {
             localStorage.setItem("chat", "mib");
-            console.log("Chat: MIB");
+            //console.log("Chat: MIB");
         }
         else if (chat == "hfu") {
             localStorage.setItem("chat", "hfu");
-            console.log("Chat: HFU");
+            // console.log("Chat: HFU");
         }
     }
 })(EndabgabeChat || (EndabgabeChat = {}));

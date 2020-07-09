@@ -1,0 +1,150 @@
+body {
+    background-image: url(bg.png);
+}
+
+.button {
+    margin: 20px 20px 10px 0px;
+    background-color: rgb(94, 94, 94);
+    border: rgb(58, 58, 58) solid 5px;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out 0s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(182, 182, 182);
+    border: rgb(63, 63, 63) solid 5px;
+    color: rgb(31, 31, 31);
+}
+
+input {
+    background-color: rgb(204, 203, 203);
+    border: rgb(126, 126, 126) solid 2px;
+    border-radius: 3px;
+    padding: 2px 20px 2px 5px;
+}
+
+b {
+    font-family: monospace;
+    font-size: larger;
+}
+
+#decide {
+    text-align: center;
+}
+
+span {
+    font-size: 20px;
+    font-family: monospace;
+    margin: 20px;
+    text-align: center;
+}
+
+fieldset {
+    background-color: rgb(185, 185, 185);
+    padding: 50px;
+}
+
+fieldset>label {
+    padding-right: 10px;
+}
+
+.username {
+    padding-right: 15px;
+}
+
+#fname {
+    padding-right: 42px;
+    /* Die Antwort auf alles ;) */
+}
+
+.pw {
+    padding-right: 50px;
+}
+
+/* #message {
+    padding: 5px 20px 5px 4px;
+    color: hotpink;
+} */
+
+.message {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.986);
+    border: rgb(65, 138, 65) 4px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 10px 10px 15px silver;
+}
+
+.selfSend {
+    padding: 5px;
+    background-color: rgba(66, 153, 63, 0.986);
+    border: rgb(65, 138, 65) 4px solid;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.selfSend .date {
+    text-align: right;
+    font-size: small;
+    color: rgb(177, 177, 177);
+}
+
+.nameTag {
+    color: hotpink;
+}
+
+.messageBody {
+    padding: 5px 20px 5px 20px;
+}
+
+.date {
+    text-align: right;
+    font-size: small;
+    color: rgb(94, 94, 94);
+}
+
+/* #formular {
+    position: fixed;
+    bottom: 0px;
+} */
+
+#beschreibung {
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: small;
+}
+
+#Ausgabefeld {
+    background-image: url(bg.png);
+    /* border: rgb(85, 85, 85, 152) 3px solid; */
+    padding: 4px 20% 250px 20%;
+}
+
+legend {
+    font-size: large;
+    background-color: rgb(75, 75, 75);
+    color: white;
+    padding: 5px;
+    border: rgb(139, 139, 139) solid 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width:600px) {
+    .message {
+        padding: 5px;
+        background-color: rgba(255, 255, 255, 0.986);
+        border: rgb(65, 138, 65) 4px solid;
+        border-radius: 10px;
+        margin-top: 10px;
+        box-shadow: 10px 10px 15px silver;
+    }
+
+    #Ausgabefeld {
+        background-image: url(bg.png);
+        /* border: rgb(85, 85, 85, 152) 3px solid; */
+        padding: 4px 20px 250px 20px;
+    }
+}
