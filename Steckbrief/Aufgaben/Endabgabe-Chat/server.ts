@@ -54,7 +54,7 @@ export namespace EndabgabeChat {
           });
           break;
         }
-        case "/state": {
+        case "/store": {
           mongoDaten.insertOne(url.query);
           break;
         }
