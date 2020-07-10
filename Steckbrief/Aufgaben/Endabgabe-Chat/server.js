@@ -11,18 +11,18 @@ var EndabgabeChat;
     //databaseUrl = "mongodb://localhost:27017";
     databaseUrl = "mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Chat?retryWrites=true&w=majority";
     // mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Aufgabe11?retryWrites=true&w=majority
-    connectToDatabase(databaseUrl);
+    connectToDatabase(databaseUrl, "mib");
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
     let server = Http.createServer();
     server.addListener("request", handleRequest);
     server.listen(port);
-    async function connectToDatabase(_url) {
+    async function connectToDatabase(_url, _collection) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        mongoDaten = mongoClient.db("Chat").collection("WorldChat");
+        mongoDaten = mongoClient.db("Chat").collection(_collection);
     }
     function handleRequest(_request, _response) {
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -30,21 +30,56 @@ var EndabgabeChat;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let path = url.pathname;
-            if (path == "/retrieve") {
-                mongoDaten.find({}).toArray(function (exception, result) {
-                    if (exception)
-                        throw exception;
-                    let resultString = "";
-                    for (let i = 0; i < result.length; i++) {
-                        resultString += JSON.stringify(result[i]) + ",";
-                    }
-                    console.log(resultString);
-                    _response.write(JSON.stringify(resultString));
-                    _response.end();
-                });
+            switch (path) {
+                case "/retrieve": {
+                    mongoDaten.find({}).toArray(function (exception, result) {
+                        if (exception)
+                            throw exception;
+                        let resultString = "";
+                        for (let i = 0; i < result.length; i++) {
+                            resultString += JSON.stringify(result[i]) + ",";
+                        }
+                        console.log(resultString);
+                        _response.write(JSON.stringify(resultString));
+                        _response.end();
+                    });
+                    break;
+                }
+                case "/state": {
+                    mongoDaten.insertOne(url.query);
+                    break;
+                }
+                case "/logIn": {
+                    break;
+                }
+                case "/signIn": {
+                    connectToDatabase(databaseUrl, "user");
+                    mongoDaten.insertOne(url.query);
+                    break;
+                }
+                default: {
+                    //statements; 
+                    break;
+                }
             }
+            /* if (path == "/retrieve") {
+              mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
+                if (exception)
+                  throw exception;
+      
+                let resultString: string = "";
+                for (let i: number = 0; i < result.length; i++) {
+                  resultString += JSON.stringify(result[i]) + ",";
+                }
+      
+                console.log(resultString);
+                _response.write(JSON.stringify(resultString));
+                _response.end();
+              });
+            }
+      
             else if (path == "/store")
-                mongoDaten.insertOne(url.query);
+              mongoDaten.insertOne(url.query); */
         }
     }
 })(EndabgabeChat = exports.EndabgabeChat || (exports.EndabgabeChat = {}));

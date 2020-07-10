@@ -11,7 +11,7 @@ export namespace EndabgabeChat {
 
   // mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Aufgabe11?retryWrites=true&w=majority
 
-  connectToDatabase(databaseUrl);
+  connectToDatabase(databaseUrl, "mib");
 
   let port: number = Number(process.env.PORT);
   if (!port)
@@ -21,11 +21,11 @@ export namespace EndabgabeChat {
   server.addListener("request", handleRequest);
   server.listen(port);
 
-  async function connectToDatabase(_url: string): Promise<void> {
+  async function connectToDatabase(_url: string, _collection: string): Promise<void> {
     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
     await mongoClient.connect();
-    mongoDaten = mongoClient.db("Chat").collection("WorldChat");
+    mongoDaten = mongoClient.db("Chat").collection(_collection);
   }
 
   function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
@@ -36,7 +36,47 @@ export namespace EndabgabeChat {
     if (_request.url) {
       let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
       let path: string | null = url.pathname;
-      if (path == "/retrieve") {
+
+      switch (path) {
+        case "/retrieve": {
+          mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
+            if (exception)
+              throw exception;
+
+            let resultString: string = "";
+            for (let i: number = 0; i < result.length; i++) {
+              resultString += JSON.stringify(result[i]) + ",";
+            }
+
+            console.log(resultString);
+            _response.write(JSON.stringify(resultString));
+            _response.end();
+          });
+          break;
+        }
+        case "/state": {
+          mongoDaten.insertOne(url.query);
+          break;
+        }
+
+        case "/logIn": {
+
+          break;
+        }
+
+        case "/signIn": {
+          connectToDatabase(databaseUrl, "user");
+          mongoDaten.insertOne(url.query);
+
+          break;
+        }
+        default: {
+          //statements; 
+          break;
+        }
+      }
+
+      /* if (path == "/retrieve") {
         mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
           if (exception)
             throw exception;
@@ -53,7 +93,9 @@ export namespace EndabgabeChat {
       }
 
       else if (path == "/store")
-        mongoDaten.insertOne(url.query);
+        mongoDaten.insertOne(url.query); */
+
+
     }
   }
 }
