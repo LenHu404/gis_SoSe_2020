@@ -17,8 +17,8 @@ namespace EndabgabeChat {
     let formData: FormData;
 
     async function handleClickRetrieve(): Promise<void> {
-        let url: string = "http://localhost:8100";
-        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
+        //let url: string = "http://localhost:8100";
+        let url: string = "https://kartoffel-ist-best.herokuapp.com";
 
         url += "/retrieve/" + localStorage.getItem("chat");
 
@@ -81,8 +81,8 @@ namespace EndabgabeChat {
     async function handleClickStore(): Promise<void> {
         let date: string = new Date().toLocaleString();
         formData = new FormData(document.forms[0]);
-        let url: string = "http://localhost:8100";
-        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
+        //let url: string = "http://localhost:8100";
+        let url: string = "https://kartoffel-ist-best.herokuapp.com";
         url += "/store/" + localStorage.getItem("chat");
 
         // tslint:disable-next-line: no-any

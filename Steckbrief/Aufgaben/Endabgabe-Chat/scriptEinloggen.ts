@@ -23,8 +23,8 @@ namespace EndabgabeChat {
         localStorage.setItem("username", params.get("username")!.toString());
         localStorage.setItem("password", params.get("password")!.toString());
 
-        let url: string = "http://localhost:8100";
-        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
+        //let url: string = "http://localhost:8100";
+        let url: string = "https://kartoffel-ist-best.herokuapp.com";
         url += "/logIn";
 
         // tslint:disable-next-line: no-any
