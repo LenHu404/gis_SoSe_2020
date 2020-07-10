@@ -12,7 +12,7 @@ var EndabgabeChat;
     async function handleClickRetrieve() {
         //let url: string = "http://localhost:8100";
         let url = "https://kartoffel-ist-best.herokuapp.com";
-        url += "/retrieve";
+        url += "/retrieve/" + localStorage.getItem("chat");
         let response = await fetch(url);
         // console.log(response);
         let responseText = await response.json();
@@ -59,7 +59,7 @@ var EndabgabeChat;
         formData = new FormData(document.forms[0]);
         //let url: string = "http://localhost:8100";
         let url = "https://kartoffel-ist-best.herokuapp.com";
-        url += "/store";
+        url += "/store/" + localStorage.getItem("chat");
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         //url += "?" + "user=" + "Lennard+Hurst" + "&" + query.toString() + "&" + "date=" + date;

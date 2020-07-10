@@ -3,8 +3,11 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace EndabgabeChat {
-  let mongoDaten: Mongo.Collection;
   let databaseUrl: string;
+  databaseUrl = "mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Chat?retryWrites=true&w=majority";
+  let mongoDaten: Mongo.Collection;
+  let options: Mongo.MongoClientOptions;
+  let mongoClient: Mongo.MongoClient;
 
   //databaseUrl = "mongodb://localhost:27017";
   databaseUrl = "mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Chat?retryWrites=true&w=majority";
@@ -22,8 +25,8 @@ export namespace EndabgabeChat {
   server.listen(port);
 
   async function connectToDatabase(_url: string, _collection: string): Promise<void> {
-    let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+    options = { useNewUrlParser: true, useUnifiedTopology: true };
+    mongoClient = new Mongo.MongoClient(_url, options);
     await mongoClient.connect();
     mongoDaten = mongoClient.db("Chat").collection(_collection);
   }
@@ -38,7 +41,8 @@ export namespace EndabgabeChat {
       let path: string | null = url.pathname;
 
       switch (path) {
-        case "/retrieve": {
+        case "/retrieve/hfu": {
+          mongoDaten = mongoClient.db("Chat").collection("hfu");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -54,7 +58,30 @@ export namespace EndabgabeChat {
           });
           break;
         }
-        case "/store": {
+        case "/retrieve/mib": {
+          mongoDaten = mongoClient.db("Chat").collection("hfu");
+          mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
+            if (exception)
+              throw exception;
+
+            let resultString: string = "";
+            for (let i: number = 0; i < result.length; i++) {
+              resultString += JSON.stringify(result[i]) + ",";
+            }
+
+            console.log(resultString);
+            _response.write(JSON.stringify(resultString));
+            _response.end();
+          });
+          break;
+        }
+        case "/store/hfu": {
+          mongoDaten = mongoClient.db("Chat").collection("hfu");
+          mongoDaten.insertOne(url.query);
+          break;
+        }
+        case "/store/mib": {
+          mongoDaten = mongoClient.db("Chat").collection("mib");
           mongoDaten.insertOne(url.query);
           break;
         }
@@ -65,7 +92,7 @@ export namespace EndabgabeChat {
         }
 
         case "/signIn": {
-          connectToDatabase(databaseUrl, "user");
+          mongoDaten = mongoClient.db("Chat").collection("user");
           mongoDaten.insertOne(url.query);
 
           break;
