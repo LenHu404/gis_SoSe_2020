@@ -2,7 +2,7 @@
 
 namespace EndabgabeChat {
 
-    let buttonEinloggen: HTMLButtonElement = document.getElementById("einloggen") as HTMLButtonElement;
+    let buttonEinloggen: HTMLButtonElement = document.getElementById("chatting") as HTMLButtonElement;
     buttonEinloggen.addEventListener("click", handleUser);
 
     let buttonMIBChat: HTMLButtonElement = document.getElementById("mib") as HTMLButtonElement;

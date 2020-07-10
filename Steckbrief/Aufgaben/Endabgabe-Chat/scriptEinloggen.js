@@ -1,7 +1,7 @@
 "use strict";
 var EndabgabeChat;
 (function (EndabgabeChat) {
-    let buttonEinloggen = document.getElementById("einloggen");
+    let buttonEinloggen = document.getElementById("chatting");
     buttonEinloggen.addEventListener("click", handleUser);
     let buttonMIBChat = document.getElementById("mib");
     buttonMIBChat.addEventListener("click", handleChatAuswahl);

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Einlogfenster</title>
     <link rel="stylesheet" href="styleLogIn.css">
-   
+
     <script src="scriptEinloggen.js" defer></script>
 
 </head>
@@ -14,54 +14,54 @@
 <body>
     <main>
         <div id="FormSingIn">
-            <form id="formular" >
+            <form id="formular">
 
                 <fieldset>
                     <legend>
                         Sign In
                     </legend>
-                    
-                    
+
+
                     <label for="username2" class="username"> <b>Benutzername: </b></label>
                     <input type="text" name="username" placeholder="Benutzername" id="username2" required> <br>
 
-                    
-                    
-                    <label for="passwords" title="Wäre gut wenn du dich daran erinnern könntest ;)" class="pw"> <b>Passwort:
+
+
+                    <label for="passwords" title="Wäre gut wenn du dich daran erinnern könntest ;)" class="pw">
+                        <b>Passwort:
                         </b></label>
                     <input type="password" name="password" placeholder="zB: 123456" required id="passwords"> <br>
 
-                    
 
-                    
 
-                    <button type="button" class="button" id="einloggen" > Einloggen </button>
+
+
+                    <!-- <button type="button" class="button" id="einloggen"> Einloggen </button> -->
                     <!-- <div id="beschreibung"> mit * markierte Felder sind nicht unbedingt auszufüllen </div> -->
 
-                </fieldset>
+                    <!-- <legend>
+                        Chat Auswahl
+                    </legend> -->
 
-            </form>
-
-            
-
-                <fieldset>
-                    <legend>
-                       Chat Auswahl
-                    </legend>
+                    <input type="radio" id="mib" name="chat" value="mib">
+                    <label for="mib">MIB-Chat</label><br>
+                    <input type="radio" id="hfu" name="chat" value="hfu">
+                    <label for="hfu">HFU-Chat</label><br>
                     
 
-                    <button type="button" class="button" class="chat" id="mib" > MIB Chat </button>
-
-                    <button type="button" class="button" class="chat" id="hfu" >HFU Chat</button>
+                    
 
                     <br>
-                    <a href="https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/formularSeite.html" class="button" >Chat betreten</a>
-                    
+                    <a href="https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/formularSeite.html"
+                        class="button" id="chatting">Chat betreten</a>
+
                     <!-- <button type="button" class="button" class="chat" id="losgeht" >Chat betreten</button> -->
 
 
 
                 </fieldset>
+
+            </form>
 
         </div>
     </main>
