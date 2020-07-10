@@ -10,8 +10,8 @@ var EndabgabeChat;
     handleClickRetrieve();
     let formData;
     async function handleClickRetrieve() {
-        //let url: string = "http://localhost:8100";
-        let url = "https://kartoffel-ist-best.herokuapp.com";
+        let url = "http://localhost:8100";
+        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
         url += "/retrieve/" + localStorage.getItem("chat");
         let response = await fetch(url);
         // console.log(response);
@@ -57,8 +57,8 @@ var EndabgabeChat;
     async function handleClickStore() {
         let date = new Date().toLocaleString();
         formData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url = "https://kartoffel-ist-best.herokuapp.com";
+        let url = "http://localhost:8100";
+        //let url: string = "https://kartoffel-ist-best.herokuapp.com";
         url += "/store/" + localStorage.getItem("chat");
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);

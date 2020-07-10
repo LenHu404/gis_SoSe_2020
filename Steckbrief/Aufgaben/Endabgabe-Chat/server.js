@@ -28,6 +28,7 @@ var EndabgabeChat;
         mongoDaten = mongoClient.db("Chat").collection(_collection);
     }
     function handleRequest(_request, _response) {
+        console.log("I hear voices!");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         if (_request.url) {
@@ -50,7 +51,7 @@ var EndabgabeChat;
                     break;
                 }
                 case "/retrieve/mib": {
-                    mongoDaten = mongoClient.db("Chat").collection("hfu");
+                    mongoDaten = mongoClient.db("Chat").collection("mib");
                     mongoDaten.find({}).toArray(function (exception, result) {
                         if (exception)
                             throw exception;
@@ -75,6 +76,14 @@ var EndabgabeChat;
                     break;
                 }
                 case "/logIn": {
+                    let username = url.query[0];
+                    let password = url.query[1];
+                    mongoDaten = mongoClient.db("Chat").collection("user");
+                    if (mongoDaten.findOne({ user: username, password: password }))
+                        _response.write("true");
+                    else
+                        _response.write("false");
+                    _response.end();
                     break;
                 }
                 case "/signIn": {
@@ -83,7 +92,8 @@ var EndabgabeChat;
                     break;
                 }
                 default: {
-                    //statements; 
+                    _response.write("exception 404: path not found");
+                    _response.end();
                     break;
                 }
             }

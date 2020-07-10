@@ -33,6 +33,8 @@ export namespace EndabgabeChat {
 
   function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
 
+    console.log("I hear voices!");
+
     _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.setHeader("content-type", "text/html; charset=utf-8");
 
@@ -59,7 +61,7 @@ export namespace EndabgabeChat {
           break;
         }
         case "/retrieve/mib": {
-          mongoDaten = mongoClient.db("Chat").collection("hfu");
+          mongoDaten = mongoClient.db("Chat").collection("mib");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -87,6 +89,14 @@ export namespace EndabgabeChat {
         }
 
         case "/logIn": {
+          let username: string | undefined | string[] = url.query[0];
+          let password: string | undefined | string[] = url.query[1];
+          mongoDaten = mongoClient.db("Chat").collection("user");
+          if (mongoDaten.findOne({ user: username , password: password}))
+            _response.write("true");
+          else
+            _response.write("false");
+          _response.end();
 
           break;
         }
@@ -98,7 +108,8 @@ export namespace EndabgabeChat {
           break;
         }
         default: {
-          //statements; 
+          _response.write("exception 404: path not found");
+          _response.end();
           break;
         }
       }
