@@ -21,7 +21,7 @@ var EndabgabeChat;
         ausgabe.innerHTML = "";
         //ausgabe.innerHTML = responseText;
         ausgabe.setAttribute("style", "display: block");
-        for (let i = 1; i < splitted.length - 1; i++) {
+        for (let i = 0; i < splitted.length - 1; i++) {
             //if (!(i == 0))
             splitted[i] = splitted[i] + "}";
             let splittedJson = JSON.parse(splitted[i]);

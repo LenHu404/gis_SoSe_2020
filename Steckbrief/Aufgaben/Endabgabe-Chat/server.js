@@ -14,7 +14,7 @@ var EndabgabeChat;
     //databaseUrl = "mongodb://localhost:27017";
     databaseUrl = "mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Chat?retryWrites=true&w=majority";
     // mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Aufgabe11?retryWrites=true&w=majority
-    connectToDatabase(databaseUrl, "mib");
+    connectToDatabase(databaseUrl, "hfu");
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;

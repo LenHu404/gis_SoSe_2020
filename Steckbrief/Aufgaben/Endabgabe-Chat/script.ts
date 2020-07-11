@@ -33,7 +33,7 @@ namespace EndabgabeChat {
         //ausgabe.innerHTML = responseText;
 
         ausgabe.setAttribute("style", "display: block");
-        for (let i: number = 1; i < splitted.length - 1; i++) {
+        for (let i: number = 0; i < splitted.length - 1; i++) {
 
             //if (!(i == 0))
             splitted[i] = splitted[i] + "}";
