@@ -14,7 +14,7 @@ export namespace EndabgabeChat {
 
   // mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Aufgabe11?retryWrites=true&w=majority
 
-  connectToDatabase(databaseUrl, "hfu");
+  connectToDatabase(databaseUrl, "user");
 
   let port: number = Number(process.env.PORT);
   if (!port)
@@ -28,10 +28,11 @@ export namespace EndabgabeChat {
     options = { useNewUrlParser: true, useUnifiedTopology: true };
     mongoClient = new Mongo.MongoClient(_url, options);
     await mongoClient.connect();
+    console.log("Verbindung zur Datenbank mit Kollekion:" + _collection);
     mongoDaten = mongoClient.db("Chat").collection(_collection);
   }
 
-  function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+  async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
 
     console.log("I hear voices!");
 
@@ -45,6 +46,7 @@ export namespace EndabgabeChat {
       switch (path) {
         case "/retrieve/hfu": {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
+          await connectToDatabase(databaseUrl, "hfu");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -57,11 +59,13 @@ export namespace EndabgabeChat {
             console.log(resultString);
             _response.write(JSON.stringify(resultString));
             _response.end();
+            console.log("Nachrichten aus dem Chat hfu geholt");
           });
           break;
         }
         case "/retrieve/mib": {
           mongoDaten = mongoClient.db("Chat").collection("mib");
+          connectToDatabase(databaseUrl, "hfu");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -74,17 +78,22 @@ export namespace EndabgabeChat {
             console.log(resultString);
             _response.write(JSON.stringify(resultString));
             _response.end();
+            console.log("Nachrichten aus dem Chat mib geholt");
           });
           break;
         }
         case "/store/hfu": {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
+          connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
+          console.log("Nachricht an den Chat hfu geschickt");
           break;
         }
         case "/store/mib": {
           mongoDaten = mongoClient.db("Chat").collection("mib");
+          connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
+          console.log("Nachricht an den Chat mib geschickt");
           break;
         }
 
@@ -92,10 +101,16 @@ export namespace EndabgabeChat {
           let username: string | undefined | string[] = url.query[0];
           let password: string | undefined | string[] = url.query[1];
           mongoDaten = mongoClient.db("Chat").collection("user");
-          if (mongoDaten.findOne({ user: username , password: password}))
+          await connectToDatabase(databaseUrl, "user");
+          if (mongoDaten.findOne({ user: username, password: password })) {
             _response.write("true");
-          else
+            console.log("Log In gefunden");
+          }
+
+          else {
             _response.write("false");
+            console.log("Log In nicht gefunden");
+          }
           _response.end();
 
           break;
@@ -103,13 +118,16 @@ export namespace EndabgabeChat {
 
         case "/signIn": {
           mongoDaten = mongoClient.db("Chat").collection("user");
+          connectToDatabase(databaseUrl, "user");
           mongoDaten.insertOne(url.query);
+          console.log("Benutzer in Kollektion 'user' gespeicher");
 
           break;
         }
         default: {
           _response.write("exception 404: path not found");
           _response.end();
+          console.log("Path wurde nicht gefunden");
           break;
         }
       }

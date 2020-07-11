@@ -23,7 +23,10 @@ namespace EndabgabeChat {
         url += "/retrieve/" + localStorage.getItem("chat");
 
         let response: Response = await fetch(url);
-        // console.log(response);
+
+        console.log(url);
+        console.log(response);
+
         let responseText: string = await response.json();
 
         let splitted: string[] = responseText.split("},");
