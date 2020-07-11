@@ -17,6 +17,10 @@ namespace EndabgabeChat {
     let formData: FormData;
 
     async function handleClickRetrieve(): Promise<void> {
+
+        let chatAnzeige: HTMLElement = document.getElementById("chatAnzeige")!;
+        chatAnzeige.innerHTML = localStorage.getItem("chat") + "-Chat";
+
         //let url: string = "http://localhost:8100";
         let url: string = "https://kartoffel-ist-best.herokuapp.com";
 

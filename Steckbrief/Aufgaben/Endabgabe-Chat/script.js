@@ -10,6 +10,8 @@ var EndabgabeChat;
     handleClickRetrieve();
     let formData;
     async function handleClickRetrieve() {
+        let chatAnzeige = document.getElementById("chatAnzeige");
+        chatAnzeige.innerHTML = localStorage.getItem("chat") + "-Chat";
         //let url: string = "http://localhost:8100";
         let url = "https://kartoffel-ist-best.herokuapp.com";
         url += "/retrieve/" + localStorage.getItem("chat");
