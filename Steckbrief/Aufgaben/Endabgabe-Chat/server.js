@@ -29,7 +29,6 @@ var EndabgabeChat;
         mongoDaten = mongoClient.db("Chat").collection(_collection);
     }
     async function handleRequest(_request, _response) {
-        console.log("I hear voices!");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         if (_request.url) {
@@ -89,8 +88,8 @@ var EndabgabeChat;
                     let password = url.query[1];
                     mongoDaten = mongoClient.db("Chat").collection("user");
                     await connectToDatabase(databaseUrl, "user");
-                    console.log(mongoDaten.findOne({ username: username, password: password }));
-                    if (mongoDaten.findOne({ username: username, password: password })) {
+                    console.log(await mongoDaten.findOne({ username: username, password: password }));
+                    if (await mongoDaten.findOne({ username: username, password: password })) {
                         _response.write("true");
                         console.log("Log In gefunden");
                     }
