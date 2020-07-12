@@ -1,6 +1,7 @@
 "use strict";
 var EndabgabeChat;
 (function (EndabgabeChat) {
+    let nachrichtenZaehler = 0;
     let buttonSend = document.getElementById("senden");
     buttonSend.addEventListener("click", handleClickStore);
     let buttonRefresh = document.getElementById("refresh");
@@ -10,6 +11,7 @@ var EndabgabeChat;
     handleClickRetrieve();
     let formData;
     async function handleClickRetrieve() {
+        let neuNachrichtenZaehler = 0;
         let chatAnzeige = document.getElementById("chatAnzeige");
         chatAnzeige.innerHTML = localStorage.getItem("chat") + "-Chat";
         //let url: string = "http://localhost:8100";
@@ -54,7 +56,18 @@ var EndabgabeChat;
             newDiv.appendChild(nameTag);
             newDiv.appendChild(messageBody);
             newDiv.appendChild(dateDiv);
+            neuNachrichtenZaehler++;
         }
+        if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
+            //ausgabe.offsetHeight
+            window.scroll({
+                top: ausgabe.offsetHeight,
+                left: 0,
+                behavior: "smooth"
+            });
+            nachrichtenZaehler = neuNachrichtenZaehler;
+        }
+        //scroll down
         //console.log(responseText);
     }
     async function handleClickStore() {
@@ -73,12 +86,9 @@ var EndabgabeChat;
         handleClickRetrieve();
         await fetch(url);
     }
-    function refrehser() {
-        setTimeout(function () {
-            handleClickRetrieve();
-        }, 10000);
-        refrehser();
-    }
+    setInterval(function () {
+        handleClickRetrieve();
+    }, 30000);
     //refrehser();
     console.log("Fertig geladen");
 })(EndabgabeChat || (EndabgabeChat = {}));

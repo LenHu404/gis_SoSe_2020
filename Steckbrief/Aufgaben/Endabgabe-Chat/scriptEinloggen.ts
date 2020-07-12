@@ -32,14 +32,16 @@ namespace EndabgabeChat {
         
         url += "?" + query.toString();
 
-        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
-        formular.reset();
+        
 
         console.log("fetch-Url: " + url);
 
         await fetch(url);
 
         console.log("Einloggen");
+        
+        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
+        formular.reset();
 
     }
 

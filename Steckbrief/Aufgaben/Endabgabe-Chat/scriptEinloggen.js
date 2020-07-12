@@ -20,11 +20,11 @@ var EndabgabeChat;
         url += "/logIn";
         // tslint:disable-next-line: no-any
         url += "?" + query.toString();
-        let formular = document.getElementById("formular");
-        formular.reset();
         console.log("fetch-Url: " + url);
         await fetch(url);
         console.log("Einloggen");
+        let formular = document.getElementById("formular");
+        formular.reset();
     }
     function handleChatAuswahl(_event) {
         let target = _event.target;

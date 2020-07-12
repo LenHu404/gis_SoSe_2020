@@ -1,5 +1,7 @@
 namespace EndabgabeChat {
 
+    let nachrichtenZaehler: number = 0;
+
     let buttonSend: HTMLButtonElement = document.getElementById("senden") as HTMLButtonElement;
     buttonSend.addEventListener("click", handleClickStore);
 
@@ -17,6 +19,8 @@ namespace EndabgabeChat {
     let formData: FormData;
 
     async function handleClickRetrieve(): Promise<void> {
+
+        let neuNachrichtenZaehler: number = 0;
 
         let chatAnzeige: HTMLElement = document.getElementById("chatAnzeige")!;
         chatAnzeige.innerHTML = localStorage.getItem("chat") + "-Chat";
@@ -80,7 +84,21 @@ namespace EndabgabeChat {
             newDiv.appendChild(messageBody);
             newDiv.appendChild(dateDiv);
 
+            neuNachrichtenZaehler++;
+
         }
+        if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
+            //ausgabe.offsetHeight
+            window.scroll({
+                top: ausgabe.offsetHeight,
+                left: 0,
+                behavior: "smooth"
+            });
+            nachrichtenZaehler = neuNachrichtenZaehler;
+        }
+
+        //scroll down
+
 
         //console.log(responseText);
     }
@@ -108,14 +126,12 @@ namespace EndabgabeChat {
 
     }
 
-    function refrehser(): void {
-        setTimeout(
-            function (): void {
-                handleClickRetrieve();
-            },
-            10000);
-        refrehser();
-    }
+
+    setInterval(
+        function (): void {
+            handleClickRetrieve();
+        },
+        30000);
 
     //refrehser();
 
