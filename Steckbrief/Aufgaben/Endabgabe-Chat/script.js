@@ -29,6 +29,7 @@ var EndabgabeChat;
         for (let i = 0; i < splitted.length - 1; i++) {
             //if (!(i == 0))
             splitted[i] = splitted[i] + "}";
+            // tslint:disable-next-line: no-any
             let splittedJson = JSON.parse(splitted[i]);
             let newDiv = document.createElement("div");
             newDiv.className = "sprechblase7";

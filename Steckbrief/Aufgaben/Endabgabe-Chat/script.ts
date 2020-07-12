@@ -49,7 +49,7 @@ namespace EndabgabeChat {
             //if (!(i == 0))
             splitted[i] = splitted[i] + "}";
 
-
+            // tslint:disable-next-line: no-any
             let splittedJson: any = JSON.parse(splitted[i]);
             let newDiv: HTMLDivElement = document.createElement("div");
             newDiv.className = "sprechblase7";

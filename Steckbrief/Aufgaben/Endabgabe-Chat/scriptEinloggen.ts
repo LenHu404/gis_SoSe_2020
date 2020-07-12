@@ -1,5 +1,3 @@
-
-
 namespace EndabgabeChat {
 
     let buttonEinloggen: HTMLButtonElement = document.getElementById("chatting") as HTMLButtonElement;
@@ -18,7 +16,6 @@ namespace EndabgabeChat {
 
 
         let params: URLSearchParams = new URL("https://stackoverflow.com?" + query.toString()).searchParams;
-        //params.get("user"); // "1"
 
         localStorage.setItem("username", params.get("username")!.toString());
         localStorage.setItem("password", params.get("password")!.toString());
@@ -27,19 +24,35 @@ namespace EndabgabeChat {
         let url: string = "https://kartoffel-ist-best.herokuapp.com";
         url += "/logIn";
 
-        // tslint:disable-next-line: no-any
-        
-        
+
         url += "?" + query.toString();
 
-        
 
         console.log("fetch-Url: " + url);
 
-        await fetch(url);
+        let response: Response = await fetch(url);
+
+        response.toString();
+
+        if (response.toString() == "true") {
+            console.log("Einloggen erfolgreich");
+        }
+        else if ((response.toString() == "false")) {
+            console.log("Einloggen fehlgeschlagen");
+            let fieldset: HTMLFieldSetElement = document.getElementById("fieldset")! as HTMLFieldSetElement;
+            let errorMsg: HTMLDivElement = document.createElement("div");
+            errorMsg.innerHTML = "Falsche Einlogg daten! Bitte Versuche es erneut. <br> Falls du dich noch nicht Registriert hast, dann tu es hier: lul";
+            fieldset.appendChild(errorMsg);
+        }
+        else {
+            console.log("Failed to fetch");
+            console.log(response);
+            console.log(response.toString());
+
+        }
 
         console.log("Einloggen");
-        
+
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
         formular.reset();
 
@@ -50,15 +63,10 @@ namespace EndabgabeChat {
         let chat: string = target.getAttribute("id")!;
         if (chat == "mib") {
             localStorage.setItem("chat", "mib");
-            //console.log("Chat: MIB");
         }
         else if (chat == "hfu") {
             localStorage.setItem("chat", "hfu");
-            // console.log("Chat: HFU");
         }
-
-
-
     }
 
 }

@@ -12,16 +12,30 @@ var EndabgabeChat;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         let params = new URL("https://stackoverflow.com?" + query.toString()).searchParams;
-        //params.get("user"); // "1"
         localStorage.setItem("username", params.get("username").toString());
         localStorage.setItem("password", params.get("password").toString());
         //let url: string = "http://localhost:8100";
         let url = "https://kartoffel-ist-best.herokuapp.com";
         url += "/logIn";
-        // tslint:disable-next-line: no-any
         url += "?" + query.toString();
         console.log("fetch-Url: " + url);
-        await fetch(url);
+        let response = await fetch(url);
+        response.toString();
+        if (response.toString() == "true") {
+            console.log("Einloggen erfolgreich");
+        }
+        else if ((response.toString() == "false")) {
+            console.log("Einloggen fehlgeschlagen");
+            let fieldset = document.getElementById("fieldset");
+            let errorMsg = document.createElement("div");
+            errorMsg.innerHTML = "Falsche Einlogg daten! Bitte Versuche es erneut. <br> Falls du dich noch nicht Registriert hast, dann tu es hier: lul";
+            fieldset.appendChild(errorMsg);
+        }
+        else {
+            console.log("Failed to fetch");
+            console.log(response);
+            console.log(response.toString());
+        }
         console.log("Einloggen");
         let formular = document.getElementById("formular");
         formular.reset();
@@ -31,11 +45,9 @@ var EndabgabeChat;
         let chat = target.getAttribute("id");
         if (chat == "mib") {
             localStorage.setItem("chat", "mib");
-            //console.log("Chat: MIB");
         }
         else if (chat == "hfu") {
             localStorage.setItem("chat", "hfu");
-            // console.log("Chat: HFU");
         }
     }
 })(EndabgabeChat || (EndabgabeChat = {}));

@@ -56,7 +56,7 @@ export namespace EndabgabeChat {
               resultString += JSON.stringify(result[i]) + ",";
             }
 
-            console.log(resultString);
+            //console.log(resultString);
             _response.write(JSON.stringify(resultString));
             _response.end();
             console.log("Nachrichten aus dem Chat hfu geholt");
@@ -75,7 +75,7 @@ export namespace EndabgabeChat {
               resultString += JSON.stringify(result[i]) + ",";
             }
 
-            console.log(resultString);
+            //console.log(resultString);
             _response.write(JSON.stringify(resultString));
             _response.end();
             console.log("Nachrichten aus dem Chat mib geholt");
@@ -131,26 +131,6 @@ export namespace EndabgabeChat {
           break;
         }
       }
-
-      /* if (path == "/retrieve") {
-        mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
-          if (exception)
-            throw exception;
-
-          let resultString: string = "";
-          for (let i: number = 0; i < result.length; i++) {
-            resultString += JSON.stringify(result[i]) + ",";
-          }
-
-          console.log(resultString);
-          _response.write(JSON.stringify(resultString));
-          _response.end();
-        });
-      }
-
-      else if (path == "/store")
-        mongoDaten.insertOne(url.query); */
-
 
     }
   }
