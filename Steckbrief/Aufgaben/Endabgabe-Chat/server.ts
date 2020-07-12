@@ -102,7 +102,8 @@ export namespace EndabgabeChat {
           let password: string | undefined | string[] = url.query[1];
           mongoDaten = mongoClient.db("Chat").collection("user");
           await connectToDatabase(databaseUrl, "user");
-          if (mongoDaten.findOne({ user: username, password: password })) {
+          console.log(mongoDaten.findOne({ username: username, password: password }));
+          if (mongoDaten.findOne({ username: username, password: password })) {
             _response.write("true");
             console.log("Log In gefunden");
           }
