@@ -73,6 +73,13 @@ var EndabgabeChat;
         handleClickRetrieve();
         await fetch(url);
     }
+    function refrehser() {
+        setTimeout(function () {
+            handleClickRetrieve();
+        }, 10000);
+        refrehser();
+    }
+    //refrehser();
     console.log("Fertig geladen");
 })(EndabgabeChat || (EndabgabeChat = {}));
 //# sourceMappingURL=script.js.map

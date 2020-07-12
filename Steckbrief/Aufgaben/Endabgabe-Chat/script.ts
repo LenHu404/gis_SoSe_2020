@@ -61,7 +61,7 @@ namespace EndabgabeChat {
             if (!(localStorage.getItem("username") == splittedJson.user)) {
                 nameTag.innerHTML = splittedJson.user + ":";
             }
-            
+
 
             let messageBody: HTMLDivElement = document.createElement("div");
             messageBody.className = "messageBody";
@@ -79,7 +79,7 @@ namespace EndabgabeChat {
             newDiv.appendChild(nameTag);
             newDiv.appendChild(messageBody);
             newDiv.appendChild(dateDiv);
-            
+
         }
 
         //console.log(responseText);
@@ -107,6 +107,18 @@ namespace EndabgabeChat {
         await fetch(url);
 
     }
+
+    function refrehser(): void {
+        setTimeout(
+            function (): void {
+                handleClickRetrieve();
+            },
+            10000);
+        refrehser();
+    }
+
+    //refrehser();
+
 
     console.log("Fertig geladen");
 }
