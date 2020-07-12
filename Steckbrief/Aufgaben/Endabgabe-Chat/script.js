@@ -6,6 +6,10 @@ var EndabgabeChat;
     buttonSend.addEventListener("click", handleClickStore);
     let buttonRefresh = document.getElementById("refresh");
     buttonRefresh.addEventListener("click", handleClickRetrieve);
+    let buttonLennyEmote = document.getElementById("lennyEmote");
+    buttonLennyEmote.addEventListener("click", handleClickEmote);
+    let buttonIDKEmote = document.getElementById("idkEmote");
+    buttonIDKEmote.addEventListener("click", handleClickEmote);
     let ausgabe = document.getElementById("Ausgabefeld");
     ausgabe.setAttribute("style", "display: none");
     handleClickRetrieve();
@@ -86,6 +90,25 @@ var EndabgabeChat;
         console.log("fetch-Url: " + url);
         handleClickRetrieve();
         await fetch(url);
+    }
+    async function handleClickEmote(_event) {
+        let target = _event.target;
+        let Emote = target.getAttribute("id");
+        let messageBox = document.getElementById("message");
+        switch (Emote) {
+            case "lennyEmote": {
+                messageBox.value += " ( ͡° ͜ʖ ͡°)";
+                break;
+            }
+            case "idkEmote": {
+                messageBox.value += " ¯|_(ツ)_/¯";
+                break;
+            }
+            default: {
+                messageBox.value += " ¯|_(ツ)_/¯";
+                break;
+            }
+        }
     }
     setInterval(function () {
         handleClickRetrieve();

@@ -8,6 +8,12 @@ namespace EndabgabeChat {
     let buttonRefresh: HTMLButtonElement = document.getElementById("refresh") as HTMLButtonElement;
     buttonRefresh.addEventListener("click", handleClickRetrieve);
 
+    let buttonLennyEmote: HTMLButtonElement = document.getElementById("lennyEmote") as HTMLButtonElement;
+    buttonLennyEmote.addEventListener("click", handleClickEmote);
+
+    let buttonIDKEmote: HTMLButtonElement = document.getElementById("idkEmote") as HTMLButtonElement;
+    buttonIDKEmote.addEventListener("click", handleClickEmote);
+
     let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
     ausgabe.setAttribute("style", "display: none");
 
@@ -123,6 +129,30 @@ namespace EndabgabeChat {
         handleClickRetrieve();
 
         await fetch(url);
+
+    }
+
+    async function handleClickEmote(_event: Event): Promise<void> {
+        let target: HTMLElement = (<HTMLElement>_event.target);
+        let Emote: string = target.getAttribute("id")!;
+
+        let messageBox: HTMLInputElement = document.getElementById("message") as HTMLInputElement;
+        
+
+        switch (Emote) {
+            case "lennyEmote": {
+                messageBox.value += " ( ͡° ͜ʖ ͡°)";
+                break;
+            }
+            case "idkEmote": {
+                messageBox.value += " ¯|_(ツ)_/¯";
+                break;
+            }
+            default: {
+                messageBox.value += " ¯|_(ツ)_/¯";
+                break;
+            }
+        }
 
     }
 

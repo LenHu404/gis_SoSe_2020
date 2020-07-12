@@ -2,6 +2,16 @@ body {
     background-image: url(bg.png);
 }
 
+#chatAnzeige {
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+    padding: 20px 5px 3px 5px;
+    top: -10px;
+    border: rgb(95, 62, 21) 5px solid;
+    border-radius: 10px;
+}
+
 .button {
     margin: 10px 20px 10px 0px;
     background-color: rgb(94, 94, 94);
@@ -16,6 +26,39 @@ body {
     background-color: rgb(182, 182, 182);
     border: rgb(63, 63, 63) solid 5px;
     color: rgb(31, 31, 31);
+}
+
+#senden {
+    background-color: rgb(29, 150, 25);
+    padding: 3px;
+    color: white;
+}
+
+#refresh {
+    background-color: rgb(29, 150, 25);
+    padding: 3px;
+
+}
+
+#lennyEmote {
+    background-color: rgba(235, 173, 59, 0.212);
+    color: black;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#idkEmote {
+    background-color: rgba(235, 173, 59, 0.212);
+    color: black;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#emoji {
+    background-color: rgba(235, 173, 59, 0.212);
+    color: black;
+    padding: 5px;
+    border-radius: 20px;
 }
 
 input {
@@ -73,7 +116,6 @@ fieldset>label {
     top: 100%;
     border: 20px solid;
     border-color: #2651A6 transparent transparent #2651A6;
-    
 }
 
 .sprechblase7:after {
@@ -144,10 +186,10 @@ fieldset>label {
     padding-right: 50px;
 }
 
-/* #message {
-    padding: 5px 20px 5px 4px;
-    color: hotpink;
-} */
+#message {
+    width: 300px;
+    height: 2em;
+}
 
 .message {
     padding: 5px;
@@ -217,6 +259,7 @@ legend {
     margin: 20px;
     left: -250px;
     padding: 0px 1000px 300px 300px;
+    width: 80%;
 }
 
 #formular {
@@ -228,6 +271,26 @@ legend {
 }
 
 @media screen and (max-width:600px) {
+    
+    button {
+        font-size: 10px;
+    }
+    div {
+        font-size: small;
+    }
+    .nameTag {
+        font-size: medium;
+        color: rgb(88, 42, 161);
+    }
+    .date {
+        text-align: right;
+        font-size: smaller;
+        color: rgb(94, 94, 94);
+    }
+    #message {
+        width: 290px;
+        font-size: smaller;
+    }
     .message {
         padding: 5px;
         background-color: rgba(255, 255, 255, 0.986);
@@ -251,9 +314,20 @@ legend {
     #Eingabe {
         position: static;
         margin: 20px;
-        padding: 10px 200px 300px 200px;
+        padding: 10px 160px 300px 165px;
+        width: 100%;
     }
     .message {
         font-size: small;
     }
+}
+
+@media screen and (max-width:380px) {
+    #message {
+        width: 235px;
+        font-size: smaller;
+    }
+    #emoji {
+        display: none;
+     }
 }
