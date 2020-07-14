@@ -85,6 +85,8 @@ export namespace EndabgabeChat {
           connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
           console.log("Nachricht an den Chat hfu geschickt");
+          _response.write("Message stored in hfu-chat");
+          _response.end();
           break;
         }
         case "/store/mib": {
@@ -92,16 +94,18 @@ export namespace EndabgabeChat {
           connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
           console.log("Nachricht an den Chat mib geschickt");
+          _response.write("Message stored in mib-chat");
+          _response.end();
           break;
         }
 
         case "/logIn": {
-          let username: string | undefined | string[] = url.query[0];
-          let password: string | undefined | string[] = url.query[1];
+          let _username: string | undefined | string[] = url.query[0];
+          //let _password: string | undefined | string[] = url.query[1];
           mongoDaten = mongoClient.db("Chat").collection("user");
           await connectToDatabase(databaseUrl, "user");
-          console.log(await mongoDaten.findOne({ username: username, password: password }));
-          if (await mongoDaten.findOne({ username: username, password: password })) {
+          console.log(await mongoDaten.findOne({ username: _username}));
+          if (await mongoDaten.findOne({ username: _username})) {
             _response.write("true");
             console.log("Log In gefunden");
           }

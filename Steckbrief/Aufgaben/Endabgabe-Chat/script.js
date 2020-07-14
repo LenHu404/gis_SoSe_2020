@@ -89,13 +89,14 @@ var EndabgabeChat;
         formular.reset();
         console.log("fetch-Url: " + url);
         handleClickRetrieve();
-        await fetch(url);
+        let response = await fetch(url);
+        console.log(response);
     }
     async function handleClickEmote(_event) {
         let target = _event.target;
-        let Emote = target.getAttribute("id");
+        let emote = target.getAttribute("id");
         let messageBox = document.getElementById("message");
-        switch (Emote) {
+        switch (emote) {
             case "lennyEmote": {
                 messageBox.value += " ( ͡° ͜ʖ ͡°)";
                 break;

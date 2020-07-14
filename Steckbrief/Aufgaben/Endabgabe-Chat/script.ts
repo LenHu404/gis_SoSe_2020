@@ -128,18 +128,19 @@ namespace EndabgabeChat {
 
         handleClickRetrieve();
 
-        await fetch(url);
+        let response: Response = await fetch(url);
+        console.log(response);
 
     }
 
     async function handleClickEmote(_event: Event): Promise<void> {
         let target: HTMLElement = (<HTMLElement>_event.target);
-        let Emote: string = target.getAttribute("id")!;
+        let emote: string = target.getAttribute("id")!;
 
         let messageBox: HTMLInputElement = document.getElementById("message") as HTMLInputElement;
         
 
-        switch (Emote) {
+        switch (emote) {
             case "lennyEmote": {
                 messageBox.value += " ( ͡° ͜ʖ ͡°)";
                 break;
