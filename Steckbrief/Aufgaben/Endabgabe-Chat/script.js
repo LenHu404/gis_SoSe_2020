@@ -90,7 +90,7 @@ var EndabgabeChat;
         console.log("fetch-Url: " + url);
         handleClickRetrieve();
         let response = await fetch(url);
-        console.log(response);
+        console.log("Server: " + response.json());
     }
     async function handleClickEmote(_event) {
         let target = _event.target;

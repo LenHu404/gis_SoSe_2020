@@ -93,7 +93,7 @@ var EndabgabeChat;
                     mongoDaten = mongoClient.db("Chat").collection("user");
                     await connectToDatabase(databaseUrl, "user");
                     console.log(await mongoDaten.findOne({ username: _username }));
-                    if (await mongoDaten.findOne({ username: _username })) {
+                    if (mongoDaten.findOne({ username: _username })) {
                         _response.write("true");
                         console.log("Log In gefunden");
                     }
@@ -109,6 +109,8 @@ var EndabgabeChat;
                     connectToDatabase(databaseUrl, "user");
                     mongoDaten.insertOne(url.query);
                     console.log("Benutzer in Kollektion 'user' gespeicher");
+                    _response.write("Benutzer hat sich registriert");
+                    _response.end();
                     break;
                 }
                 default: {

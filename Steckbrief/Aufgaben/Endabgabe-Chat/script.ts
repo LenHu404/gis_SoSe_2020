@@ -129,7 +129,7 @@ namespace EndabgabeChat {
         handleClickRetrieve();
 
         let response: Response = await fetch(url);
-        console.log(response);
+        console.log("Server: " + response.json());
 
     }
 
