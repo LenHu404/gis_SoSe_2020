@@ -29,6 +29,7 @@ var EndabgabeChat;
         mongoDaten = mongoClient.db("Chat").collection(_collection);
     }
     async function handleRequest(_request, _response) {
+        console.log("Anfrage bekommen");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         if (_request.url) {
@@ -89,10 +90,11 @@ var EndabgabeChat;
                 }
                 case "/logIn": {
                     let _username = url.query[0];
-                    //let _password: string | undefined | string[] = url.query[1];
+                    let _password = url.query[1];
+                    console.log("Login-Versuch mit username:" + _username + " und password:" + _password);
                     mongoDaten = mongoClient.db("Chat").collection("user");
                     await connectToDatabase(databaseUrl, "user");
-                    console.log(await mongoDaten.findOne({ username: _username }));
+                    console.log("findOne Ausgabe: " + mongoDaten.findOne({ username: _username }));
                     if (mongoDaten.findOne({ username: _username })) {
                         _response.write("true");
                         console.log("Log In gefunden");
@@ -105,11 +107,22 @@ var EndabgabeChat;
                     break;
                 }
                 case "/signIn": {
+                    let _username = url.query[0];
+                    let _password = url.query[1];
+                    console.log("SignIn-Versuch mit username:" + _username + " und password:" + _password);
                     mongoDaten = mongoClient.db("Chat").collection("user");
                     connectToDatabase(databaseUrl, "user");
                     mongoDaten.insertOne(url.query);
-                    console.log("Benutzer in Kollektion 'user' gespeicher");
-                    _response.write("Benutzer hat sich registriert");
+                    console.log(mongoDaten.findOne({ username: _username }));
+                    if (mongoDaten.findOne({ username: _username })) {
+                        console.log("Benutzer konnte nicht in Kollektion 'user' gespeichert werden, da sie schon voranden waren.");
+                        _response.write("Benutzer konnte nicht registriert werden");
+                    }
+                    else {
+                        mongoDaten.insertOne(url.query);
+                        console.log("Benutzer in Kollektion 'user' gespeicher");
+                        _response.write("Benutzer" + _username + " hat sich registriert");
+                    }
                     _response.end();
                     break;
                 }
