@@ -25,7 +25,7 @@ var EndabgabeChat;
         options = { useNewUrlParser: true, useUnifiedTopology: true };
         mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        console.log("Verbindung zur Datenbank mit Kollekion:" + _collection);
+        console.log("Verbindung zur Datenbank mit Kollekion: " + _collection);
         mongoDaten = mongoClient.db("Chat").collection(_collection);
     }
     async function handleRequest(_request, _response) {
@@ -55,7 +55,7 @@ var EndabgabeChat;
                 }
                 case "/retrieve/mib": {
                     mongoDaten = mongoClient.db("Chat").collection("mib");
-                    connectToDatabase(databaseUrl, "hfu");
+                    connectToDatabase(databaseUrl, "mib");
                     mongoDaten.find({}).toArray(function (exception, result) {
                         if (exception)
                             throw exception;
@@ -74,7 +74,10 @@ var EndabgabeChat;
                     mongoDaten = mongoClient.db("Chat").collection("hfu");
                     connectToDatabase(databaseUrl, "mib");
                     mongoDaten.insertOne(url.query);
-                    console.log("Nachricht an den Chat hfu geschickt");
+                    console.log("Nachricht an den Chat hfu geschickt" + url.query);
+                    console.log("url.query: " + url.query);
+                    console.log("url.query.toString(): " + url.query.toString());
+                    console.log("JSON.stringify: " + JSON.stringify(url.query));
                     _response.write("Message stored in hfu-chat");
                     _response.end();
                     break;
@@ -89,21 +92,24 @@ var EndabgabeChat;
                     break;
                 }
                 case "/logIn": {
-                    let _username = url.query[0];
-                    let _password = url.query[1];
-                    console.log("Login-Versuch mit username:" + _username + " und password:" + _password);
+                    /* let _username: string = url.query;
+                    let _password: string = url.query[1]?.toString;
+          
+                    console.log("Login-Versuch mit username:" + _username + " und password:" +  _password);
+          
                     mongoDaten = mongoClient.db("Chat").collection("user");
                     await connectToDatabase(databaseUrl, "user");
                     console.log("findOne Ausgabe: " + mongoDaten.findOne({ username: _username }));
-                    if (mongoDaten.findOne({ username: _username })) {
-                        _response.write("true");
-                        console.log("Log In gefunden");
+                    if (mongoDaten.findOne({ username: _username }) ) {
+                      _response.write("true");
+                      console.log("Log In gefunden");
                     }
+          
                     else {
-                        _response.write("false");
-                        console.log("Log In nicht gefunden");
+                      _response.write("false");
+                      console.log("Log In nicht gefunden");
                     }
-                    _response.end();
+                    _response.end(); */
                     break;
                 }
                 case "/signIn": {
@@ -136,4 +142,5 @@ var EndabgabeChat;
         }
     }
 })(EndabgabeChat = exports.EndabgabeChat || (exports.EndabgabeChat = {}));
+//mongodb-win32-x86_64-2012plus-4.2.8
 //# sourceMappingURL=server.js.map

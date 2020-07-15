@@ -28,7 +28,7 @@ export namespace EndabgabeChat {
     options = { useNewUrlParser: true, useUnifiedTopology: true };
     mongoClient = new Mongo.MongoClient(_url, options);
     await mongoClient.connect();
-    console.log("Verbindung zur Datenbank mit Kollekion:" + _collection);
+    console.log("Verbindung zur Datenbank mit Kollekion: " + _collection);
     mongoDaten = mongoClient.db("Chat").collection(_collection);
   }
 
@@ -64,7 +64,7 @@ export namespace EndabgabeChat {
         }
         case "/retrieve/mib": {
           mongoDaten = mongoClient.db("Chat").collection("mib");
-          connectToDatabase(databaseUrl, "hfu");
+          connectToDatabase(databaseUrl, "mib");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -85,7 +85,10 @@ export namespace EndabgabeChat {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
           connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
-          console.log("Nachricht an den Chat hfu geschickt");
+          console.log("Nachricht an den Chat hfu geschickt" + url.query);
+          console.log("url.query: " + url.query);
+          console.log("url.query.toString(): " + url.query.toString());
+          console.log("JSON.stringify: " + JSON.stringify(url.query));
           _response.write("Message stored in hfu-chat");
           _response.end();
           break;
@@ -101,8 +104,8 @@ export namespace EndabgabeChat {
         }
 
         case "/logIn": {
-          let _username: string | undefined | string[] = url.query[0];
-          let _password: string | undefined | string[] = url.query[1];
+          /* let _username: string = url.query;
+          let _password: string = url.query[1]?.toString;
 
           console.log("Login-Versuch mit username:" + _username + " und password:" +  _password);
 
@@ -118,7 +121,7 @@ export namespace EndabgabeChat {
             _response.write("false");
             console.log("Log In nicht gefunden");
           }
-          _response.end();
+          _response.end(); */
 
           break;
         }
@@ -162,3 +165,4 @@ export namespace EndabgabeChat {
   }
 }
 
+//mongodb-win32-x86_64-2012plus-4.2.8
