@@ -80,6 +80,11 @@ legend {
     border: rgb(139, 139, 139) solid 5px;
     border-radius: 5px;
 }
+#errorMsg {
+    margin-top: 15px;
+    color: rgb(170, 24, 24);
+
+}
 
 @media screen and (max-width:600px) {
     .message {
