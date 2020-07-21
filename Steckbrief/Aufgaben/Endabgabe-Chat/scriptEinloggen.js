@@ -11,19 +11,21 @@ var EndabgabeChat;
     buttonHFUChat.addEventListener("click", handleChatAuswahl);
     let fieldset = document.getElementById("fieldset");
     let errorMsg = document.createElement("div");
+    errorMsg.id = "errorMsg";
     async function handleUser(_event) {
         let target = _event.target;
         let type = target.getAttribute("id");
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        let params = new URL("https://stackoverflow.com?" + query.toString()).searchParams;
+        let params = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
         localStorage.setItem("username", params.get("username").toString());
         localStorage.setItem("password", params.get("password").toString());
         //let url: string = "http://localhost:8100/";
         let url = "https://kartoffel-ist-best.herokuapp.com/";
         url += type;
         url += "?" + query.toString();
+        console.log(query.toString());
         console.log("fetch-Url: " + url);
         let response = await fetch(url);
         let responseText = await response.text();

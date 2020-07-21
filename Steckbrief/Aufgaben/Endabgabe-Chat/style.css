@@ -2,14 +2,27 @@ body {
     background-image: url(bg.png);
 }
 
-#chatAnzeige {
+#chatAnzeige1 {
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+    padding: 40px 5px 3px 5px;
+    top: -13px;
+    border: rgb(95, 62, 21) 5px solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#chatAnzeige2 {
     position: fixed;
     background-color: white;
     z-index: 2;
     padding: 20px 5px 3px 5px;
     top: -10px;
+    left: 100px;
     border: rgb(95, 62, 21) 5px solid;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .button {
@@ -37,7 +50,6 @@ body {
 #refresh {
     background-color: rgb(29, 150, 25);
     padding: 3px;
-
 }
 
 #lennyEmote {
@@ -92,7 +104,9 @@ fieldset {
 fieldset>label {
     padding-right: 10px;
 }
+
 /* CSS-Code für Sprechblase von https://roginnovation.com/tutorials/website/css/speechbubble/speechbubble.php oder https://www.it-swarm.dev/de/html/css-sprechblase-mit-box-shadow/940949820/*/
+
 .sprechblase7 {
     position: relative;
     padding: 1rem;
@@ -270,8 +284,22 @@ legend {
     z-index: 10;
 }
 
+#errorMsg {
+    color: red;
+    margin-top: 10px;
+}
+
+#error {
+    position: fixed;
+    bottom: 400px;
+    left: 40%;
+    background-color: rgb(153, 153, 153);
+    padding: 10px;
+    color: red;
+    text-align: center;
+}
+
 @media screen and (max-width:600px) {
-    
     button {
         font-size: 10px;
     }
@@ -329,5 +357,5 @@ legend {
     }
     #emoji {
         display: none;
-     }
+    }
 }

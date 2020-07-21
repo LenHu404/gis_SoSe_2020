@@ -2,6 +2,16 @@ namespace EndabgabeChat {
 
     let nachrichtenZaehler: number = 0;
 
+    let chatAnzeige1: HTMLElement = document.getElementById("chatAnzeige1")!;
+    let chatAnzeige2: HTMLElement = document.getElementById("chatAnzeige2")!;
+
+    chatAnzeige1.addEventListener("click", chatAendern);
+    chatAnzeige2.addEventListener("click", chatAendern);
+
+    let errorDiv: HTMLElement = document.getElementById("error") as HTMLElement;
+
+
+
     let buttonSend: HTMLButtonElement = document.getElementById("senden") as HTMLButtonElement;
     buttonSend.addEventListener("click", handleClickStore);
 
@@ -25,79 +35,108 @@ namespace EndabgabeChat {
     let formData: FormData;
 
     async function handleClickRetrieve(): Promise<void> {
+        let url: string = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
 
-        let neuNachrichtenZaehler: number = 0;
-
-        let chatAnzeige: HTMLElement = document.getElementById("chatAnzeige")!;
-        chatAnzeige.innerHTML = localStorage.getItem("chat") + "-Chat";
-
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://kartoffel-ist-best.herokuapp.com";
-
-        url += "/retrieve/" + localStorage.getItem("chat");
 
         let response: Response = await fetch(url);
+        let responseText: string = await response.text();
 
-        console.log(url);
-        console.log(response);
-
-        let responseText: string = await response.json();
-
-        let splitted: string[] = responseText.split("},");
-
-        let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
-        ausgabe.innerHTML = "";
-
-        ausgabe.setAttribute("style", "display: block");
-        for (let i: number = 0; i < splitted.length - 1; i++) {
-
-            splitted[i] = splitted[i] + "}";
-
-            // tslint:disable-next-line: no-any
-            let splittedJson: any = JSON.parse(splitted[i]);
-            let newDiv: HTMLDivElement = document.createElement("div");
-            newDiv.className = "sprechblase7";
-            if (localStorage.getItem("username") == splittedJson.user) {
-                newDiv.className = "sprechblase3";
-            }
-            else {
-                newDiv.className = "sprechblase7";
-            }
-
-            let nameTag: HTMLDivElement = document.createElement("div");
-            nameTag.className = "nameTag";
-            if (!(localStorage.getItem("username") == splittedJson.user)) {
-                nameTag.innerHTML = splittedJson.user + ":";
-            }
+        console.log(responseText);
 
 
-            let messageBody: HTMLDivElement = document.createElement("div");
-            messageBody.className = "messageBody";
-            messageBody.innerHTML = splittedJson.message;
 
-            let dateDiv: HTMLDivElement = document.createElement("div");
-            dateDiv.className = "date";
-            dateDiv.innerHTML = splittedJson.date;
-
-            if (localStorage.getItem("username") == splittedJson.user) {
-                newDiv.style.textAlign = "right";
-            }
-
-            document.getElementById("Ausgabefeld")?.appendChild(newDiv);
-            newDiv.appendChild(nameTag);
-            newDiv.appendChild(messageBody);
-            newDiv.appendChild(dateDiv);
-
-            neuNachrichtenZaehler++;
+        if (responseText == "false") {
+            console.log("Du bist nicht richtig eingeloggt");
+            errorDiv.style.display = "block";
+            let ausgabe: HTMLElement = document.getElementById("Ausgabefeld") as HTMLElement;
+            ausgabe.innerHTML = "";
 
         }
-        if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
-            window.scroll({
-                top: ausgabe.offsetHeight,
-                left: 0,
-                behavior: "smooth"
-            });
-            nachrichtenZaehler = neuNachrichtenZaehler;
+        else {
+
+            errorDiv.style.display = "none";
+            let neuNachrichtenZaehler: number = 0;
+
+
+
+            if (localStorage.getItem("chat") == "mib") {
+                chatAnzeige1.innerHTML = "MIB-Chat";
+                chatAnzeige2.innerHTML = "HFU-Chat";
+            }
+            else if (localStorage.getItem("chat") == "hfu") {
+                chatAnzeige1.innerHTML = "HFU-Chat";
+                chatAnzeige2.innerHTML = "MIB-Chat";
+            }
+
+
+            //let url: string = "http://localhost:8100";
+            let url: string = "https://kartoffel-ist-best.herokuapp.com";
+
+            url += "/retrieve/" + localStorage.getItem("chat");
+
+            let response: Response = await fetch(url);
+
+            console.log(url);
+            console.log(response);
+
+            let responseText: string = await response.json();
+
+            let splitted: string[] = responseText.split("},");
+
+            let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
+            ausgabe.innerHTML = "";
+
+            ausgabe.setAttribute("style", "display: block");
+            for (let i: number = 0; i < splitted.length - 1; i++) {
+
+                splitted[i] = splitted[i] + "}";
+
+                // tslint:disable-next-line: no-any
+                let splittedJson: any = JSON.parse(splitted[i]);
+                let newDiv: HTMLDivElement = document.createElement("div");
+                newDiv.className = "sprechblase7";
+                if (localStorage.getItem("username") == splittedJson.user) {
+                    newDiv.className = "sprechblase3";
+                }
+                else {
+                    newDiv.className = "sprechblase7";
+                }
+
+                let nameTag: HTMLDivElement = document.createElement("div");
+                nameTag.className = "nameTag";
+                if (!(localStorage.getItem("username") == splittedJson.user)) {
+                    nameTag.innerHTML = splittedJson.user + ":";
+                }
+
+
+                let messageBody: HTMLDivElement = document.createElement("div");
+                messageBody.className = "messageBody";
+                messageBody.innerHTML = splittedJson.message;
+
+                let dateDiv: HTMLDivElement = document.createElement("div");
+                dateDiv.className = "date";
+                dateDiv.innerHTML = splittedJson.date;
+
+                if (localStorage.getItem("username") == splittedJson.user) {
+                    newDiv.style.textAlign = "right";
+                }
+
+                document.getElementById("Ausgabefeld")?.appendChild(newDiv);
+                newDiv.appendChild(nameTag);
+                newDiv.appendChild(messageBody);
+                newDiv.appendChild(dateDiv);
+
+                neuNachrichtenZaehler++;
+
+            }
+            if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
+                window.scroll({
+                    top: ausgabe.offsetHeight,
+                    left: 0,
+                    behavior: "smooth"
+                });
+                nachrichtenZaehler = neuNachrichtenZaehler;
+            }
         }
 
     }
@@ -125,12 +164,12 @@ namespace EndabgabeChat {
 
     }
 
-    async function handleClickEmote(_event: Event): Promise<void> {
+    function handleClickEmote(_event: Event): void {
         let target: HTMLElement = (<HTMLElement>_event.target);
         let emote: string = target.getAttribute("id")!;
 
         let messageBox: HTMLInputElement = document.getElementById("message") as HTMLInputElement;
-        
+
 
         switch (emote) {
             case "lennyEmote": {
@@ -147,6 +186,16 @@ namespace EndabgabeChat {
             }
         }
 
+    }
+
+    function chatAendern(): void {
+        let aktuellerchat: string = localStorage.getItem("chat")!;
+        if (aktuellerchat == "mib")
+            localStorage.setItem("chat", "hfu");
+        else if (aktuellerchat == "hfu")
+            localStorage.setItem("chat", "mib");
+
+        handleClickRetrieve();
     }
 
 

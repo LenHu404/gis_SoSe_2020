@@ -15,6 +15,7 @@ namespace EndabgabeChat {
 
     let fieldset: HTMLFieldSetElement = document.getElementById("fieldset")! as HTMLFieldSetElement;
     let errorMsg: HTMLDivElement = document.createElement("div");
+    errorMsg.id = "errorMsg";
 
     async function handleUser(_event: Event): Promise<void> {
         let target: HTMLElement = (<HTMLElement>_event.target);
@@ -25,7 +26,7 @@ namespace EndabgabeChat {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
 
 
-        let params: URLSearchParams = new URL("https://stackoverflow.com?" + query.toString()).searchParams;
+        let params: URLSearchParams = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
 
         localStorage.setItem("username", params.get("username")!.toString());
         localStorage.setItem("password", params.get("password")!.toString());
@@ -36,6 +37,8 @@ namespace EndabgabeChat {
 
 
         url += "?" + query.toString();
+
+        console.log(query.toString());
 
 
         console.log("fetch-Url: " + url);

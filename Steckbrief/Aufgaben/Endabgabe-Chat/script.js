@@ -2,6 +2,11 @@
 var EndabgabeChat;
 (function (EndabgabeChat) {
     let nachrichtenZaehler = 0;
+    let chatAnzeige1 = document.getElementById("chatAnzeige1");
+    let chatAnzeige2 = document.getElementById("chatAnzeige2");
+    chatAnzeige1.addEventListener("click", chatAendern);
+    chatAnzeige2.addEventListener("click", chatAendern);
+    let errorDiv = document.getElementById("error");
     let buttonSend = document.getElementById("senden");
     buttonSend.addEventListener("click", handleClickStore);
     let buttonRefresh = document.getElementById("refresh");
@@ -15,59 +20,78 @@ var EndabgabeChat;
     handleClickRetrieve();
     let formData;
     async function handleClickRetrieve() {
-        let neuNachrichtenZaehler = 0;
-        let chatAnzeige = document.getElementById("chatAnzeige");
-        chatAnzeige.innerHTML = localStorage.getItem("chat") + "-Chat";
-        //let url: string = "http://localhost:8100";
-        let url = "https://kartoffel-ist-best.herokuapp.com";
-        url += "/retrieve/" + localStorage.getItem("chat");
+        let url = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
         let response = await fetch(url);
-        console.log(url);
-        console.log(response);
-        let responseText = await response.json();
-        let splitted = responseText.split("},");
-        let ausgabe = document.getElementById("Ausgabefeld");
-        ausgabe.innerHTML = "";
-        ausgabe.setAttribute("style", "display: block");
-        for (let i = 0; i < splitted.length - 1; i++) {
-            splitted[i] = splitted[i] + "}";
-            // tslint:disable-next-line: no-any
-            let splittedJson = JSON.parse(splitted[i]);
-            let newDiv = document.createElement("div");
-            newDiv.className = "sprechblase7";
-            if (localStorage.getItem("username") == splittedJson.user) {
-                newDiv.className = "sprechblase3";
-            }
-            else {
-                newDiv.className = "sprechblase7";
-            }
-            let nameTag = document.createElement("div");
-            nameTag.className = "nameTag";
-            if (!(localStorage.getItem("username") == splittedJson.user)) {
-                nameTag.innerHTML = splittedJson.user + ":";
-            }
-            let messageBody = document.createElement("div");
-            messageBody.className = "messageBody";
-            messageBody.innerHTML = splittedJson.message;
-            let dateDiv = document.createElement("div");
-            dateDiv.className = "date";
-            dateDiv.innerHTML = splittedJson.date;
-            if (localStorage.getItem("username") == splittedJson.user) {
-                newDiv.style.textAlign = "right";
-            }
-            document.getElementById("Ausgabefeld")?.appendChild(newDiv);
-            newDiv.appendChild(nameTag);
-            newDiv.appendChild(messageBody);
-            newDiv.appendChild(dateDiv);
-            neuNachrichtenZaehler++;
+        let responseText = await response.text();
+        console.log(responseText);
+        if (responseText == "false") {
+            console.log("Du bist nicht richtig eingeloggt");
+            errorDiv.style.display = "block";
+            let ausgabe = document.getElementById("Ausgabefeld");
+            ausgabe.innerHTML = "";
         }
-        if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
-            window.scroll({
-                top: ausgabe.offsetHeight,
-                left: 0,
-                behavior: "smooth"
-            });
-            nachrichtenZaehler = neuNachrichtenZaehler;
+        else {
+            errorDiv.style.display = "none";
+            let neuNachrichtenZaehler = 0;
+            if (localStorage.getItem("chat") == "mib") {
+                chatAnzeige1.innerHTML = "MIB-Chat";
+                chatAnzeige2.innerHTML = "HFU-Chat";
+            }
+            else if (localStorage.getItem("chat") == "hfu") {
+                chatAnzeige1.innerHTML = "HFU-Chat";
+                chatAnzeige2.innerHTML = "MIB-Chat";
+            }
+            //let url: string = "http://localhost:8100";
+            let url = "https://kartoffel-ist-best.herokuapp.com";
+            url += "/retrieve/" + localStorage.getItem("chat");
+            let response = await fetch(url);
+            console.log(url);
+            console.log(response);
+            let responseText = await response.json();
+            let splitted = responseText.split("},");
+            let ausgabe = document.getElementById("Ausgabefeld");
+            ausgabe.innerHTML = "";
+            ausgabe.setAttribute("style", "display: block");
+            for (let i = 0; i < splitted.length - 1; i++) {
+                splitted[i] = splitted[i] + "}";
+                // tslint:disable-next-line: no-any
+                let splittedJson = JSON.parse(splitted[i]);
+                let newDiv = document.createElement("div");
+                newDiv.className = "sprechblase7";
+                if (localStorage.getItem("username") == splittedJson.user) {
+                    newDiv.className = "sprechblase3";
+                }
+                else {
+                    newDiv.className = "sprechblase7";
+                }
+                let nameTag = document.createElement("div");
+                nameTag.className = "nameTag";
+                if (!(localStorage.getItem("username") == splittedJson.user)) {
+                    nameTag.innerHTML = splittedJson.user + ":";
+                }
+                let messageBody = document.createElement("div");
+                messageBody.className = "messageBody";
+                messageBody.innerHTML = splittedJson.message;
+                let dateDiv = document.createElement("div");
+                dateDiv.className = "date";
+                dateDiv.innerHTML = splittedJson.date;
+                if (localStorage.getItem("username") == splittedJson.user) {
+                    newDiv.style.textAlign = "right";
+                }
+                document.getElementById("Ausgabefeld")?.appendChild(newDiv);
+                newDiv.appendChild(nameTag);
+                newDiv.appendChild(messageBody);
+                newDiv.appendChild(dateDiv);
+                neuNachrichtenZaehler++;
+            }
+            if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
+                window.scroll({
+                    top: ausgabe.offsetHeight,
+                    left: 0,
+                    behavior: "smooth"
+                });
+                nachrichtenZaehler = neuNachrichtenZaehler;
+            }
         }
     }
     async function handleClickStore() {
@@ -86,7 +110,7 @@ var EndabgabeChat;
         let response = await fetch(url);
         console.log("Server: " + response.json());
     }
-    async function handleClickEmote(_event) {
+    function handleClickEmote(_event) {
         let target = _event.target;
         let emote = target.getAttribute("id");
         let messageBox = document.getElementById("message");
@@ -104,6 +128,14 @@ var EndabgabeChat;
                 break;
             }
         }
+    }
+    function chatAendern() {
+        let aktuellerchat = localStorage.getItem("chat");
+        if (aktuellerchat == "mib")
+            localStorage.setItem("chat", "hfu");
+        else if (aktuellerchat == "hfu")
+            localStorage.setItem("chat", "mib");
+        handleClickRetrieve();
     }
     setInterval(function () {
         handleClickRetrieve();
