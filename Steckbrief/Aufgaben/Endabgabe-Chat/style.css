@@ -42,25 +42,25 @@ body {
 }
 
 #senden {
-    background-color: rgb(29, 150, 25);
+    background-color: rgb(68, 151, 64);
     padding: 3px;
     color: white;
 }
 
 #refresh {
-    background-color: rgb(29, 150, 25);
+    background-color: rgb(68, 151, 64);
     padding: 3px;
 }
 
 #lennyEmote {
-    background-color: rgba(235, 173, 59, 0.212);
+    background-color: rgba(240, 240, 240, 0.212);
     color: black;
     padding: 5px;
     border-radius: 20px;
 }
 
 #idkEmote {
-    background-color: rgba(235, 173, 59, 0.212);
+    background-color: rgb(255, 255, 255);
     color: black;
     padding: 5px;
     border-radius: 20px;
@@ -192,6 +192,7 @@ legend {
 }
 
 #formular {
+    text-align: left;
     position: fixed;
     bottom: -310px;
     background-color: white;

@@ -58,7 +58,7 @@ var EndabgabeChat;
                 let splittedJson = JSON.parse(splitted[i]);
                 let newDiv = document.createElement("div");
                 if (localStorage.getItem("username") == splittedJson.user) {
-                    newDiv.className = "bubbleMe";
+                    newDiv.className = "sprechblase3";
                 }
                 else {
                     newDiv.className = "bubble";

@@ -1,7 +1,7 @@
 .bubble {
-    background-color: #c2f3ff;
+    background-color: #f4fafc;
     border-radius: 5px;
-    box-shadow: 0px 0px 6px #B2B2B2;
+    box-shadow: 0px 0px 12px #B2B2B2;
     margin: 20px;
     margin-right: 10%;
     width: 100%;
@@ -10,7 +10,7 @@
 }
 
 .bubble::after {
-    background-color: #c2f3ff;
+    background-color: #f4fafc;
     box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4);
     content: "\00a0";
     display: block;
@@ -29,7 +29,7 @@
 .bubbleMe {
     background-color: #88c476;
     border-radius: 5px;
-    box-shadow: 0px 0px 6px #B2B2B2;
+    box-shadow: 0px 0px 12px #B2B2B2;
     margin: 20px;
     margin-left: 10%;
     width: 100%;
@@ -63,40 +63,29 @@
     color: white;
     position: relative;
     padding: 1rem;
-    background: #6ea161;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 20px;
-    border: #21631f solid 2px;
+    background: #88c476;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: #88c476 solid 2px;
     margin-left: 10%;
     margin-bottom: 15px;
+    width: 100%;
     box-shadow: 10px 10px 15px silver;
 }
 
-.sprechblase3:after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 15px 0 15px 15px;
-    border-color: transparent #6ea161;
-    display: block;
-    width: 0;
-    z-index: 1;
-    right: -8px;
-    top: 45px;
-}
 
 .sprechblase3:before {
     content: '';
     position: absolute;
     border-style: solid;
     border-width: 19px 0 19px 19px;
-    border-color: transparent #21631f;
+    border-color: transparent #88c476;
     display: block;
     width: 0;
     z-index: 0;
     right: -17px;
-    top: 41px;
+    top: 25px;
 }
 
 #Ausgabefeld {
@@ -122,14 +111,10 @@
         padding: 18px;
         padding-left: 15px;
     }
-    .bubbleMe {
-        background-color: #88c476;
-        border-radius: 5px;
-        box-shadow: 0px 0px 6px #B2B2B2;
-        margin: 20px;
+    .sprechblase3 {
+        
         margin-left: 10%;
+        margin-bottom: 15px;
         width: 80%;
-        padding: 18px;
-        padding-left: 15px;
     }
 }

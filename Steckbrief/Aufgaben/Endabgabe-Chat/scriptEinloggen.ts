@@ -16,6 +16,8 @@ namespace EndabgabeChat {
     let fieldset: HTMLFieldSetElement = document.getElementById("fieldset")! as HTMLFieldSetElement;
     let errorMsg: HTMLDivElement = document.createElement("div");
     errorMsg.id = "errorMsg";
+    fieldset.appendChild(errorMsg);
+
 
     async function handleUser(_event: Event): Promise<void> {
         let target: HTMLElement = (<HTMLElement>_event.target);
@@ -27,67 +29,75 @@ namespace EndabgabeChat {
 
 
         let params: URLSearchParams = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
+        if (params.get("username")!.toString().trim() && params.get("password")!.toString().trim()) {
 
-        localStorage.setItem("username", params.get("username")!.toString().trim());
-        localStorage.setItem("password", params.get("password")!.toString().trim());
-
-        //let url: string = "http://localhost:8100/";
-        let url: string = "https://kartoffel-ist-best.herokuapp.com/";
-        url += type;
-
-
-        url += "?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
-
-        console.log(query.toString());
-
-
-        console.log("fetch-Url: " + url);
-
-        let response: Response = await fetch(url);
-        let responseText: string = await response.text();
-
-        console.log(responseText);
+            localStorage.setItem("username", params.get("username")!.toString().trim());
+            localStorage.setItem("password", params.get("password")!.toString().trim());
 
 
 
-        if (responseText == "true") {
-            if (type == "signIn") {
-                console.log("Registrieren erfolgreich");
+            //let url: string = "http://localhost:8100/";
+            let url: string = "https://kartoffel-ist-best.herokuapp.com/";
+            url += type;
+
+
+            url += "?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
+
+            console.log(query.toString());
+
+
+            console.log("fetch-Url: " + url);
+
+            let response: Response = await fetch(url);
+            let responseText: string = await response.text();
+
+            console.log(responseText);
+
+
+
+            if (responseText == "true") {
+                if (type == "signIn") {
+                    console.log("Registrieren erfolgreich");
+                }
+                else if (type == "logIn")
+                    console.log("Einloggen erfolgreich");
+
+                location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/formularSeite.html");
             }
-            else if (type == "logIn")
-                console.log("Einloggen erfolgreich");
+            else if ((responseText == "false")) {
+                if (type == "signIn") {
+                    console.log("Registrieren fehlgeschlagen");
+                }
+                else if (type == "logIn") {
+                    console.log("Einloggen fehlgeschlagen");
+                }
 
-            location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/formularSeite.html");
-        }
-        else if ((responseText == "false")) {
-            if (type == "signIn") {
-                console.log("Registrieren fehlgeschlagen");
+
+
+                if (type == "logIn") {
+                    errorMsg.innerHTML = "Falsche Einloggdaten! Bitte versuche es erneut. <br> Hast du dich schon Registriert?";
+                }
+                else if (type == "signIn") {
+                    errorMsg.innerHTML = "Registrieren fehlgeschlagen, Daten sind schon vergeben. <br> Bitte versuche es erneut.";
+                }
+
+
+                
             }
-            else if (type == "logIn") {
-                console.log("Einloggen fehlgeschlagen");
+            else {
+                console.log("Failed to fetch");
+                console.log(response);
             }
 
-
-
-            if (type == "logIn") {
-                errorMsg.innerHTML = "Falsche Einloggdaten! Bitte Versuche es erneut. <br> Hast du dich schon Registriert?";
-            }
-            else if (type == "signIn") {
-                errorMsg.innerHTML = "Registrieren fehlgeschlagen, Daten sind schon vergeben. <br> Bitte versuche es erneut.";
-            }
-
-
-            fieldset.appendChild(errorMsg);
+            let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
+            formular.reset();
         }
         else {
-            console.log("Failed to fetch");
-            console.log(response);
-            console.log(response);
-
+            errorMsg.innerHTML = "Bitte geben sie ihre Daten ein.";
+            console.log("Error");
+            
         }
-
-        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
-        formular.reset();
+            
 
     }
 
