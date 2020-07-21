@@ -36,7 +36,7 @@ namespace EndabgabeChat {
         url += type;
 
 
-        url += "?" + query.toString();
+        url += "?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
 
         console.log(query.toString());
 
@@ -52,19 +52,19 @@ namespace EndabgabeChat {
 
         if (responseText == "true") {
             if (type == "signIn") {
-                console.log("Einloggen erfolgreich");
+                console.log("Registrieren erfolgreich");
             }
             else if (type == "logIn")
-                console.log("Registrieren erfolgreich");
+                console.log("Einloggen erfolgreich");
 
             location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/formularSeite.html");
         }
         else if ((responseText == "false")) {
             if (type == "signIn") {
-                console.log("Einloggen fehlgeschlagen");
+                console.log("Registrieren fehlgeschlagen");
             }
             else if (type == "logIn") {
-                console.log("Registrieren fehlgeschlagen");
+                console.log("Einloggen fehlgeschlagen");
             }
 
 
