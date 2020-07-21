@@ -1,0 +1,135 @@
+.bubble {
+    background-color: #c2f3ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px #B2B2B2;
+    margin: 20px;
+    margin-right: 10%;
+    width: 100%;
+    padding: 18px;
+    padding-left: 15px;
+}
+
+.bubble::after {
+    background-color: #c2f3ff;
+    box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4);
+    content: "\00a0";
+    display: block;
+    height: 20px;
+    left: -23px;
+    position: relative;
+    top: -40px;
+    transform: rotate( 45deg);
+    -moz-transform: rotate( 45deg);
+    -ms-transform: rotate( 45deg);
+    -o-transform: rotate( 45deg);
+    -webkit-transform: rotate( 45deg);
+    width: 20px;
+}
+
+.bubbleMe {
+    background-color: #88c476;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px #B2B2B2;
+    margin: 20px;
+    margin-left: 10%;
+    width: 100%;
+    padding: 18px;
+    padding-left: 15px;
+}
+
+.bubbleMe::after {
+    background-color: #88c476;
+    box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4);
+    content: "\00a0";
+    display: block;
+    height: 20px;
+    position: relative;
+    top: -9px;
+    transform: rotate( -135deg);
+    -moz-transform: rotate( -135deg);
+    -ms-transform: rotate( -135deg);
+    -o-transform: rotate( -135deg);
+    -webkit-transform: rotate( -135deg);
+    width: 20px;
+}
+
+/* CSS-Code für Sprechblase von https://roginnovation.com/tutorials/website/css/speechbubble/speechbubble.php oder https://www.it-swarm.dev/de/html/css-sprechblase-mit-box-shadow/940949820/*/
+
+.sprechblase3 .date {
+    color: white;
+}
+
+.sprechblase3 {
+    color: white;
+    position: relative;
+    padding: 1rem;
+    background: #6ea161;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 20px;
+    border: #21631f solid 2px;
+    margin-left: 10%;
+    margin-bottom: 15px;
+    box-shadow: 10px 10px 15px silver;
+}
+
+.sprechblase3:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent #6ea161;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -8px;
+    top: 45px;
+}
+
+.sprechblase3:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 19px 0 19px 19px;
+    border-color: transparent #21631f;
+    display: block;
+    width: 0;
+    z-index: 0;
+    right: -17px;
+    top: 41px;
+}
+
+#Ausgabefeld {
+    background-image: url(bg.png);
+    /* border: rgb(85, 85, 85, 152) 3px solid; */
+    padding: 4px 20% 150px 20%;
+}
+
+@media screen and (max-width:600px) {
+    .messageBody {
+        font-size: medium;
+    }
+        
+    #Ausgabefeld {
+        background-image: url(bg.png);
+        /* border: rgb(85, 85, 85, 152) 3px solid; */
+        padding: 4px 5% 130px 5%;
+    }
+    .bubble {
+        margin: 20px;
+        margin-right: 10%;
+        width: 80%;
+        padding: 18px;
+        padding-left: 15px;
+    }
+    .bubbleMe {
+        background-color: #88c476;
+        border-radius: 5px;
+        box-shadow: 0px 0px 6px #B2B2B2;
+        margin: 20px;
+        margin-left: 10%;
+        width: 80%;
+        padding: 18px;
+        padding-left: 15px;
+    }
+}

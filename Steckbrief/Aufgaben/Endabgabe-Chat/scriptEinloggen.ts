@@ -28,8 +28,8 @@ namespace EndabgabeChat {
 
         let params: URLSearchParams = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
 
-        localStorage.setItem("username", params.get("username")!.toString());
-        localStorage.setItem("password", params.get("password")!.toString());
+        localStorage.setItem("username", params.get("username")!.toString().trim());
+        localStorage.setItem("password", params.get("password")!.toString().trim());
 
         //let url: string = "http://localhost:8100/";
         let url: string = "https://kartoffel-ist-best.herokuapp.com/";

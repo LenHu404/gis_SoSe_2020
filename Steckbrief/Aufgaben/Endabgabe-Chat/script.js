@@ -57,12 +57,11 @@ var EndabgabeChat;
                 // tslint:disable-next-line: no-any
                 let splittedJson = JSON.parse(splitted[i]);
                 let newDiv = document.createElement("div");
-                newDiv.className = "sprechblase7";
                 if (localStorage.getItem("username") == splittedJson.user) {
-                    newDiv.className = "sprechblase3";
+                    newDiv.className = "bubbleMe";
                 }
                 else {
-                    newDiv.className = "sprechblase7";
+                    newDiv.className = "bubble";
                 }
                 let nameTag = document.createElement("div");
                 nameTag.className = "nameTag";

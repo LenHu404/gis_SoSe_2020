@@ -19,8 +19,8 @@ var EndabgabeChat;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         let params = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
-        localStorage.setItem("username", params.get("username").toString());
-        localStorage.setItem("password", params.get("password").toString());
+        localStorage.setItem("username", params.get("username").toString().trim());
+        localStorage.setItem("password", params.get("password").toString().trim());
         //let url: string = "http://localhost:8100/";
         let url = "https://kartoffel-ist-best.herokuapp.com/";
         url += type;

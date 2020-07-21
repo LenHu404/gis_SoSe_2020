@@ -105,87 +105,6 @@ fieldset>label {
     padding-right: 10px;
 }
 
-/* CSS-Code für Sprechblase von https://roginnovation.com/tutorials/website/css/speechbubble/speechbubble.php oder https://www.it-swarm.dev/de/html/css-sprechblase-mit-box-shadow/940949820/*/
-
-.sprechblase7 {
-    position: relative;
-    padding: 1rem;
-    border: 4px solid #2651A6;
-    margin: 0 auto;
-    margin-right: 10%;
-    margin-bottom: 40px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    background: #fff;
-    box-shadow: 10px 10px 15px silver;
-}
-
-.sprechblase7:before {
-    content: ' ';
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: 30px;
-    top: 100%;
-    border: 20px solid;
-    border-color: #2651A6 transparent transparent #2651A6;
-}
-
-.sprechblase7:after {
-    content: ' ';
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: 34px;
-    top: 100%;
-    border: 15px solid;
-    border-color: #ffffff transparent transparent #ffffff;
-}
-
-.sprechblase3 .date {
-    color: white;
-}
-
-.sprechblase3 {
-    color: white;
-    position: relative;
-    padding: 1rem;
-    background: #45a12e;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 20px;
-    border: #21631f solid 5px;
-    margin-left: 10%;
-    margin-bottom: 15px;
-    box-shadow: 10px 10px 15px silver;
-}
-
-.sprechblase3:after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 15px 0 15px 15px;
-    border-color: transparent #45a12e;
-    display: block;
-    width: 0;
-    z-index: 1;
-    right: -8px;
-    top: 45px;
-}
-
-.sprechblase3:before {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 19px 0 19px 19px;
-    border-color: transparent #21631f;
-    display: block;
-    width: 0;
-    z-index: 0;
-    right: -17px;
-    top: 41px;
-}
 
 .username {
     padding-right: 15px;
@@ -253,11 +172,7 @@ fieldset>label {
     font-size: small;
 }
 
-#Ausgabefeld {
-    background-image: url(bg.png);
-    /* border: rgb(85, 85, 85, 152) 3px solid; */
-    padding: 4px 20% 250px 20%;
-}
+
 
 legend {
     font-size: large;
@@ -327,11 +242,7 @@ legend {
         margin-top: 10px;
         box-shadow: 10px 10px 15px silver;
     }
-    #Ausgabefeld {
-        background-image: url(bg.png);
-        /* border: rgb(85, 85, 85, 152) 3px solid; */
-        padding: 4px 20px 250px 20px;
-    }
+    
     #formular {
         background-color: white;
         position: fixed;
