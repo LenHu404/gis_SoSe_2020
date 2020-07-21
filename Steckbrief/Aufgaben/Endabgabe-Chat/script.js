@@ -28,10 +28,8 @@ var EndabgabeChat;
         let splitted = responseText.split("},");
         let ausgabe = document.getElementById("Ausgabefeld");
         ausgabe.innerHTML = "";
-        //ausgabe.innerHTML = responseText;
         ausgabe.setAttribute("style", "display: block");
         for (let i = 0; i < splitted.length - 1; i++) {
-            //if (!(i == 0))
             splitted[i] = splitted[i] + "}";
             // tslint:disable-next-line: no-any
             let splittedJson = JSON.parse(splitted[i]);
@@ -64,7 +62,6 @@ var EndabgabeChat;
             neuNachrichtenZaehler++;
         }
         if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
-            //ausgabe.offsetHeight
             window.scroll({
                 top: ausgabe.offsetHeight,
                 left: 0,
@@ -72,8 +69,6 @@ var EndabgabeChat;
             });
             nachrichtenZaehler = neuNachrichtenZaehler;
         }
-        //scroll down
-        //console.log(responseText);
     }
     async function handleClickStore() {
         let date = new Date().toLocaleString();
@@ -83,7 +78,6 @@ var EndabgabeChat;
         url += "/store/" + localStorage.getItem("chat");
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        //url += "?" + "user=" + "Lennard+Hurst" + "&" + query.toString() + "&" + "date=" + date;
         url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
         let formular = document.getElementById("formular");
         formular.reset();
@@ -113,8 +107,7 @@ var EndabgabeChat;
     }
     setInterval(function () {
         handleClickRetrieve();
-    }, 30000);
-    //refrehser();
+    }, 60000);
     console.log("Fertig geladen");
 })(EndabgabeChat || (EndabgabeChat = {}));
 //# sourceMappingURL=script.js.map

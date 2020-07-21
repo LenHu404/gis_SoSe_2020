@@ -92,7 +92,7 @@ fieldset {
 fieldset>label {
     padding-right: 10px;
 }
-
+/* CSS-Code für Sprechblase von https://roginnovation.com/tutorials/website/css/speechbubble/speechbubble.php oder https://www.it-swarm.dev/de/html/css-sprechblase-mit-box-shadow/940949820/*/
 .sprechblase7 {
     position: relative;
     padding: 1rem;

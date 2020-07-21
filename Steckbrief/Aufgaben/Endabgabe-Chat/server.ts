@@ -4,7 +4,6 @@ import * as Mongo from "mongodb";
 
 export namespace EndabgabeChat {
   let databaseUrl: string;
-  databaseUrl = "mongodb+srv://dbUser:1234@spacy-nobwa.mongodb.net/Chat?retryWrites=true&w=majority";
   let mongoDaten: Mongo.Collection;
   let options: Mongo.MongoClientOptions;
   let mongoClient: Mongo.MongoClient;
@@ -45,7 +44,6 @@ export namespace EndabgabeChat {
       switch (path) {
         case "/retrieve/hfu": {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
-          await connectToDatabase(databaseUrl, "hfu");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -64,7 +62,6 @@ export namespace EndabgabeChat {
         }
         case "/retrieve/mib": {
           mongoDaten = mongoClient.db("Chat").collection("mib");
-          connectToDatabase(databaseUrl, "mib");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {
             if (exception)
               throw exception;
@@ -83,36 +80,36 @@ export namespace EndabgabeChat {
         }
         case "/store/hfu": {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
-          connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
-          console.log("Nachricht an den Chat hfu geschickt" + url.query);
-          console.log("url.query: " + url.query);
-          console.log("url.query.toString(): " + url.query.toString());
-          console.log("JSON.stringify: " + JSON.stringify(url.query));
-          _response.write("Message stored in hfu-chat");
+          console.log("Nachricht an den Chat hfu geschickt");
+          _response.write("{response: 'Message stored in hfu -chat'} ");
           _response.end();
           break;
         }
         case "/store/mib": {
           mongoDaten = mongoClient.db("Chat").collection("mib");
-          connectToDatabase(databaseUrl, "mib");
           mongoDaten.insertOne(url.query);
           console.log("Nachricht an den Chat mib geschickt");
-          _response.write("Message stored in mib-chat");
+          _response.write("{response: 'Message stored in mib-chat'} ");
           _response.end();
           break;
         }
 
         case "/logIn": {
-          /* let _username: string = url.query;
-          let _password: string = url.query[1]?.toString;
+          let _username: string = <string>url.query.username!;
+          let _password: string = <string>url.query.password;
 
-          console.log("Login-Versuch mit username:" + _username + " und password:" +  _password);
+          console.log(url.query.username);
+          console.log(url.query);
+
+          console.log("Login-Versuch mit username:" + _username + " und password:" + _password);
 
           mongoDaten = mongoClient.db("Chat").collection("user");
-          await connectToDatabase(databaseUrl, "user");
-          console.log("findOne Ausgabe: " + mongoDaten.findOne({ username: _username }));
-          if (mongoDaten.findOne({ username: _username }) ) {
+          console.log("FindOne-Ausgabe:");
+
+          console.log(await mongoDaten.findOne(url.query));
+
+          if (await mongoDaten.findOne(url.query)) {
             _response.write("true");
             console.log("Log In gefunden");
           }
@@ -121,33 +118,29 @@ export namespace EndabgabeChat {
             _response.write("false");
             console.log("Log In nicht gefunden");
           }
-          _response.end(); */
+          _response.end();
 
           break;
         }
 
         case "/signIn": {
-          let _username: string | undefined | string[] = url.query[0];
-          let _password: string | undefined | string[] = url.query[1];
+          let _username: string = <string>url.query.username;
+          let _password: string = <string>url.query.password;
 
-          console.log("SignIn-Versuch mit username:" + _username + " und password:" +  _password);
+          console.log("SignIn mit username:" + _username + " und password:" + _password);
 
           mongoDaten = mongoClient.db("Chat").collection("user");
-          connectToDatabase(databaseUrl, "user");
-          mongoDaten.insertOne(url.query);
 
-          console.log(mongoDaten.findOne({ username: _username }));
-          if (mongoDaten.findOne({ username: _username })) {
-            console.log("Benutzer konnte nicht in Kollektion 'user' gespeichert werden, da sie schon voranden waren.");
-            _response.write("Benutzer konnte nicht registriert werden");
+          if (await mongoDaten.findOne(url.query)) {
+            _response.write("false");
+            console.log("Registrierung fehlgeschlagen, Daten schon vorhanden");
           }
 
           else {
             mongoDaten.insertOne(url.query);
-            console.log("Benutzer in Kollektion 'user' gespeicher");
-            _response.write("Benutzer" + _username + " hat sich registriert");
+            _response.write("true");
+            console.log("Registrierung erfolgreich");
           }
-
 
           _response.end();
 
@@ -164,5 +157,3 @@ export namespace EndabgabeChat {
     }
   }
 }
-
-//mongodb-win32-x86_64-2012plus-4.2.8

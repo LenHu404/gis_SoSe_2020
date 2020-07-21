@@ -47,12 +47,10 @@ namespace EndabgabeChat {
 
         let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
         ausgabe.innerHTML = "";
-        //ausgabe.innerHTML = responseText;
 
         ausgabe.setAttribute("style", "display: block");
         for (let i: number = 0; i < splitted.length - 1; i++) {
 
-            //if (!(i == 0))
             splitted[i] = splitted[i] + "}";
 
             // tslint:disable-next-line: no-any
@@ -94,7 +92,6 @@ namespace EndabgabeChat {
 
         }
         if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
-            //ausgabe.offsetHeight
             window.scroll({
                 top: ausgabe.offsetHeight,
                 left: 0,
@@ -103,10 +100,6 @@ namespace EndabgabeChat {
             nachrichtenZaehler = neuNachrichtenZaehler;
         }
 
-        //scroll down
-
-
-        //console.log(responseText);
     }
 
     async function handleClickStore(): Promise<void> {
@@ -118,7 +111,6 @@ namespace EndabgabeChat {
 
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        //url += "?" + "user=" + "Lennard+Hurst" + "&" + query.toString() + "&" + "date=" + date;
         url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
 
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
@@ -162,9 +154,7 @@ namespace EndabgabeChat {
         function (): void {
             handleClickRetrieve();
         },
-        30000);
-
-    //refrehser();
+        60000);
 
 
     console.log("Fertig geladen");
