@@ -18,6 +18,8 @@ namespace EndabgabeChat {
     errorMsg.id = "errorMsg";
     fieldset.appendChild(errorMsg);
 
+    localStorage.setItem("chat", "hfu");
+
 
     async function handleUser(_event: Event): Promise<void> {
         let target: HTMLElement = (<HTMLElement>_event.target);

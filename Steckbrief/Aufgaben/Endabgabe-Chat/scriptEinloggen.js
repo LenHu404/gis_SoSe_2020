@@ -13,6 +13,7 @@ var EndabgabeChat;
     let errorMsg = document.createElement("div");
     errorMsg.id = "errorMsg";
     fieldset.appendChild(errorMsg);
+    localStorage.setItem("chat", "hfu");
     async function handleUser(_event) {
         let target = _event.target;
         let type = target.getAttribute("id");

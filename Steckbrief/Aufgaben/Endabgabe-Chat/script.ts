@@ -95,7 +95,7 @@ namespace EndabgabeChat {
                 let splittedJson: any = JSON.parse(splitted[i]);
                 let newDiv: HTMLDivElement = document.createElement("div");
                 if (localStorage.getItem("username") == splittedJson.user) {
-                    newDiv.className = "sprechblase3";
+                    newDiv.className = "bubbleMe";
                 }
                 else {
                     newDiv.className = "bubble";
