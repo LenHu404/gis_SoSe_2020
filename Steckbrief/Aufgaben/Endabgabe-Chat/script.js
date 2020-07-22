@@ -96,20 +96,29 @@ var EndabgabeChat;
         }
     }
     async function handleClickStore() {
-        let date = new Date().toLocaleString();
-        formData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url = "https://kartoffel-ist-best.herokuapp.com";
-        url += "/store/" + localStorage.getItem("chat");
-        // tslint:disable-next-line: no-any
-        let query = new URLSearchParams(formData);
-        url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
+        let url = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
         let formular = document.getElementById("formular");
-        formular.reset();
-        console.log("fetch-Url: " + url);
-        handleClickRetrieve();
         let response = await fetch(url);
-        console.log("Server: " + response.json());
+        let responseText = await response.text();
+        if (responseText == "false") {
+            console.log("Du bist nicht richtig eingeloggt");
+            formular.reset();
+        }
+        else {
+            let date = new Date().toLocaleString();
+            formData = new FormData(document.forms[0]);
+            //let url: string = "http://localhost:8100";
+            let url = "https://kartoffel-ist-best.herokuapp.com";
+            url += "/store/" + localStorage.getItem("chat");
+            // tslint:disable-next-line: no-any
+            let query = new URLSearchParams(formData);
+            url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
+            formular.reset();
+            console.log("fetch-Url: " + url);
+            handleClickRetrieve();
+            let response = await fetch(url);
+            console.log("Server: " + response.json());
+        }
     }
     function handleClickEmote(_event) {
         let target = _event.target;
