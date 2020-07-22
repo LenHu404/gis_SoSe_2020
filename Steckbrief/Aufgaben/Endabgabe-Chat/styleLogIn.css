@@ -1,5 +1,14 @@
 body {
-    background-image: url(bg.png);
+    /* background-image: url(Bilder/bg2.gif); */
+}
+
+#bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
 }
 
 #FormSingIn {
@@ -35,6 +44,14 @@ b {
     font-size: larger;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(223, 223, 223);
+}
+
+a:hover {
+    text-decoration: underline;
+}
 
 span {
     font-size: 20px;
@@ -44,8 +61,10 @@ span {
 }
 
 fieldset {
-    background-color: rgb(185, 185, 185);
+    background-image: url(Bilder/bg1.gif);
     padding: 50px;
+    display: inline;
+    color: white;
 }
 
 fieldset>label {
@@ -65,7 +84,6 @@ fieldset>label {
     padding-right: 50px;
 }
 
-
 #beschreibung {
     margin-top: 0px;
     padding-top: 0px;
@@ -80,10 +98,10 @@ legend {
     border: rgb(139, 139, 139) solid 5px;
     border-radius: 5px;
 }
+
 #errorMsg {
     margin-top: 15px;
-    color: rgb(170, 24, 24);
-
+    color: rgb(245, 42, 42);
 }
 
 @media screen and (max-width:600px) {

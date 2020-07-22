@@ -10,7 +10,8 @@ namespace EndabgabeChat {
 
     let errorDiv: HTMLElement = document.getElementById("error") as HTMLElement;
 
-
+    let abmelden: HTMLElement = document.getElementById("Ausgabefeld") as HTMLElement;
+    abmelden.addEventListener("click", handleAbmelden);
 
     let buttonSend: HTMLButtonElement = document.getElementById("senden") as HTMLButtonElement;
     buttonSend.addEventListener("click", handleClickStore);
@@ -195,6 +196,11 @@ namespace EndabgabeChat {
             localStorage.setItem("chat", "mib");
 
         handleClickRetrieve();
+    }
+
+    function handleAbmelden(): void {
+        localStorage.clear();
+        location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/EinlogFenster.html");
     }
 
 

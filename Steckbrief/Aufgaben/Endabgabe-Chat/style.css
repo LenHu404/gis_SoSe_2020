@@ -34,6 +34,18 @@ body {
     cursor: pointer;
 }
 
+#abmelden {
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+    padding: 20px 5px 3px 5px;
+    top: -10px;
+    right: 0px;
+    border: rgb(95, 62, 21) 5px solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .button {
     margin: 10px 20px 10px 0px;
     background-color: rgb(94, 94, 94);
@@ -192,8 +204,8 @@ legend {
 #Eingabe {
     position: relative;
     margin: 20px;
-    left: -250px;
-    padding: 0px 1500px 300px 300px;
+    left: -300px;
+    padding: 0px 1500px 300px 400px;
     width: 80%;
 }
 
@@ -201,6 +213,7 @@ legend {
     text-align: left;
     position: fixed;
     bottom: -310px;
+    left: -50px;
     background-color: white;
     padding: 0px 0px 5px 0px;
     z-index: 10;

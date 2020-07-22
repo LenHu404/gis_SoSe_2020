@@ -7,6 +7,8 @@ var EndabgabeChat;
     chatAnzeige1.addEventListener("click", chatAendern);
     chatAnzeige2.addEventListener("click", chatAendern);
     let errorDiv = document.getElementById("error");
+    let abmelden = document.getElementById("Ausgabefeld");
+    abmelden.addEventListener("click", handleAbmelden);
     let buttonSend = document.getElementById("senden");
     buttonSend.addEventListener("click", handleClickStore);
     let buttonRefresh = document.getElementById("refresh");
@@ -135,6 +137,10 @@ var EndabgabeChat;
         else if (aktuellerchat == "hfu")
             localStorage.setItem("chat", "mib");
         handleClickRetrieve();
+    }
+    function handleAbmelden() {
+        localStorage.clear();
+        location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/EinlogFenster.html");
     }
     setInterval(function () {
         handleClickRetrieve();
