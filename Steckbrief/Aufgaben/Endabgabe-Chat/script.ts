@@ -8,10 +8,11 @@ namespace EndabgabeChat {
     chatAnzeige1.addEventListener("click", chatAendern);
     chatAnzeige2.addEventListener("click", chatAendern);
 
+    let abmelden: HTMLElement = document.getElementById("abmelden") as HTMLElement;
+    abmelden.addEventListener("click", handleAbmelden);
+
     let errorDiv: HTMLElement = document.getElementById("error") as HTMLElement;
 
-    let abmelden: HTMLElement = document.getElementById("Ausgabefeld") as HTMLElement;
-    abmelden.addEventListener("click", handleAbmelden);
 
     let buttonSend: HTMLButtonElement = document.getElementById("senden") as HTMLButtonElement;
     buttonSend.addEventListener("click", handleClickStore);
@@ -145,7 +146,7 @@ namespace EndabgabeChat {
         let url: string = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
 
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
-        
+
         let response: Response = await fetch(url);
         let responseText: string = await response.text();
 
@@ -164,7 +165,7 @@ namespace EndabgabeChat {
             let query: URLSearchParams = new URLSearchParams(<any>formData);
             url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
 
-            
+
             formular.reset();
 
             console.log("fetch-Url: " + url);
