@@ -20,6 +20,7 @@ var EndabgabeChat;
     let server = Http.createServer();
     server.addListener("request", handleRequest);
     server.listen(port);
+    // Verbindung mit Datenbank aufbauen
     async function connectToDatabase(_url, _collection) {
         options = { useNewUrlParser: true, useUnifiedTopology: true };
         mongoClient = new Mongo.MongoClient(_url, options);
@@ -35,6 +36,7 @@ var EndabgabeChat;
             let url = Url.parse(_request.url, true);
             let path = url.pathname;
             switch (path) {
+                // Unterscheiden der Funktionen anhand des Paths
                 case "/retrieve/hfu": {
                     mongoDaten = mongoClient.db("Chat").collection("hfu");
                     mongoDaten.find({}).toArray(function (exception, result) {

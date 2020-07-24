@@ -36,7 +36,9 @@ namespace EndabgabeChat {
 
     let formData: FormData;
 
+    //Funktion um die Nachrichten aus der Datenbank zu holen
     async function handleClickRetrieve(): Promise<void> {
+        //Url erstellen mit username und passwort um zu überprüfen ob man richtig eingelogt ist
         let url: string = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
 
 
@@ -46,7 +48,7 @@ namespace EndabgabeChat {
         console.log(responseText);
 
 
-
+        // Falls die Daten falsch sind, dann werden keine Nachrichten geladen
         if (responseText == "false") {
             console.log("Du bist nicht richtig eingeloggt");
             errorDiv.style.display = "block";
@@ -60,7 +62,7 @@ namespace EndabgabeChat {
             let neuNachrichtenZaehler: number = 0;
 
 
-
+            // Im welchen chat befinden man sich gerade
             if (localStorage.getItem("chat") == "mib") {
                 chatAnzeige1.innerHTML = "MIB-Chat";
                 chatAnzeige2.innerHTML = "HFU-Chat";
@@ -70,10 +72,12 @@ namespace EndabgabeChat {
                 chatAnzeige2.innerHTML = "MIB-Chat";
             }
 
-
+            // Url zum lokalen bzw. Online-Server
             //let url: string = "http://localhost:8100";
             let url: string = "https://kartoffel-ist-best.herokuapp.com";
 
+
+            // Anhängen des Paths für die Anfragefunktion + chat
             url += "/retrieve/" + localStorage.getItem("chat");
 
             let response: Response = await fetch(url);
@@ -81,14 +85,18 @@ namespace EndabgabeChat {
             console.log(url);
             console.log(response);
 
-            let responseText: string = await response.json();
+            let responseText: string = await response.json();       
 
+            // Antwort vom Server als String um ihn dann an den Zeichen }, zu zerteilen
             let splitted: string[] = responseText.split("},");
 
+            //Ausgabefeld finden und zurücksetzten
             let ausgabe: HTMLElement = document.getElementById("Ausgabefeld")!;
             ausgabe.innerHTML = "";
 
             ausgabe.setAttribute("style", "display: block");
+
+            //Schleife um die Einzelnen Nachrichten zu erstellen
             for (let i: number = 0; i < splitted.length - 1; i++) {
 
                 splitted[i] = splitted[i] + "}";
@@ -130,6 +138,8 @@ namespace EndabgabeChat {
                 neuNachrichtenZaehler++;
 
             }
+
+            //Nach unten scrollen falls eine Nachricht da ist
             if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
                 window.scroll({
                     top: ausgabe.offsetHeight,
@@ -142,7 +152,10 @@ namespace EndabgabeChat {
 
     }
 
+
+    // Funktion um Nchrichten an den Server/ die Datenbank zu schicken
     async function handleClickStore(): Promise<void> {
+        // Überprüfen ob man eingeloggt ist
         let url: string = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
 
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("formular")!;
@@ -157,8 +170,10 @@ namespace EndabgabeChat {
         else {
             let date: string = new Date().toLocaleString();
             formData = new FormData(document.forms[0]);
+
             //let url: string = "http://localhost:8100";
             let url: string = "https://kartoffel-ist-best.herokuapp.com";
+
             url += "/store/" + localStorage.getItem("chat");
 
             // tslint:disable-next-line: no-any
@@ -170,6 +185,7 @@ namespace EndabgabeChat {
 
             console.log("fetch-Url: " + url);
 
+            // Alle Nachrichten neu laden mit der neuen Nachricht dabei
             handleClickRetrieve();
 
             let response: Response = await fetch(url);
@@ -178,6 +194,8 @@ namespace EndabgabeChat {
 
     }
 
+
+    // Funktion für die Emotes
     function handleClickEmote(_event: Event): void {
         let target: HTMLElement = (<HTMLElement>_event.target);
         let emote: string = target.getAttribute("id")!;
@@ -202,6 +220,7 @@ namespace EndabgabeChat {
 
     }
 
+    // Funktion um den Chat zu änder und die Nachrichten neu zu laden
     function chatAendern(): void {
         let aktuellerchat: string = localStorage.getItem("chat")!;
         if (aktuellerchat == "mib")
@@ -212,12 +231,13 @@ namespace EndabgabeChat {
         handleClickRetrieve();
     }
 
+    // Abmelden und zurück zur Einloggseite
     function handleAbmelden(): void {
         localStorage.clear();
         location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/EinlogFenster.html");
     }
 
-
+    // Die Funktion zum neu laden alle 60 Sekunden ausführen um nach neuen Nachrichten zu schauen
     setInterval(
         function (): void {
             handleClickRetrieve();

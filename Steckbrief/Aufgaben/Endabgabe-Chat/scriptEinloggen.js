@@ -16,11 +16,13 @@ var EndabgabeChat;
     localStorage.setItem("chat", "hfu");
     async function handleUser(_event) {
         let target = _event.target;
+        // Unterschied Log In oder Sign In
         let type = target.getAttribute("id");
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         let params = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
+        // Schauen ob was eingegeben ist
         if (params.get("username").toString().trim() && params.get("password").toString().trim()) {
             localStorage.setItem("username", params.get("username").toString().trim());
             localStorage.setItem("password", params.get("password").toString().trim());
@@ -30,6 +32,7 @@ var EndabgabeChat;
             url += "?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
             console.log(query.toString());
             console.log("fetch-Url: " + url);
+            // Daten absenden
             let response = await fetch(url);
             let responseText = await response.text();
             console.log(responseText);
@@ -44,15 +47,11 @@ var EndabgabeChat;
             else if ((responseText == "false")) {
                 if (type == "signIn") {
                     console.log("Registrieren fehlgeschlagen");
+                    errorMsg.innerHTML = "Registrieren fehlgeschlagen, Daten sind schon vergeben. <br> Bitte versuche es erneut.";
                 }
                 else if (type == "logIn") {
                     console.log("Einloggen fehlgeschlagen");
-                }
-                if (type == "logIn") {
                     errorMsg.innerHTML = "Falsche Einloggdaten! Bitte versuche es erneut. <br> Hast du dich schon Registriert?";
-                }
-                else if (type == "signIn") {
-                    errorMsg.innerHTML = "Registrieren fehlgeschlagen, Daten sind schon vergeben. <br> Bitte versuche es erneut.";
                 }
             }
             else {
@@ -67,6 +66,7 @@ var EndabgabeChat;
             console.log("Error");
         }
     }
+    //Chatauswahl im localstorage speichern
     function handleChatAuswahl(_event) {
         let target = _event.target;
         let chat = target.getAttribute("id");

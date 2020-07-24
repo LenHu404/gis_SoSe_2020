@@ -23,6 +23,7 @@ export namespace EndabgabeChat {
   server.addListener("request", handleRequest);
   server.listen(port);
 
+  // Verbindung mit Datenbank aufbauen
   async function connectToDatabase(_url: string, _collection: string): Promise<void> {
     options = { useNewUrlParser: true, useUnifiedTopology: true };
     mongoClient = new Mongo.MongoClient(_url, options);
@@ -42,6 +43,7 @@ export namespace EndabgabeChat {
       let path: string | null = url.pathname;
 
       switch (path) {
+        // Unterscheiden der Funktionen anhand des Paths
         case "/retrieve/hfu": {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
           mongoDaten.find({}).toArray(function (exception: Mongo.MongoError, result: string[]): void {

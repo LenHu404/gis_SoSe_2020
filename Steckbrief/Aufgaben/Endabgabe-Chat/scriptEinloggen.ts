@@ -23,6 +23,7 @@ namespace EndabgabeChat {
 
     async function handleUser(_event: Event): Promise<void> {
         let target: HTMLElement = (<HTMLElement>_event.target);
+        // Unterschied Log In oder Sign In
         let type: string = target.getAttribute("id")!;
 
         let formData: FormData = new FormData(document.forms[0]);
@@ -31,6 +32,8 @@ namespace EndabgabeChat {
 
 
         let params: URLSearchParams = new URL("https://kartoffel-ist-best.herokuapp.com?" + query.toString()).searchParams;
+
+        // Schauen ob was eingegeben ist
         if (params.get("username")!.toString().trim() && params.get("password")!.toString().trim()) {
 
             localStorage.setItem("username", params.get("username")!.toString().trim());
@@ -50,6 +53,7 @@ namespace EndabgabeChat {
 
             console.log("fetch-Url: " + url);
 
+            // Daten absenden
             let response: Response = await fetch(url);
             let responseText: string = await response.text();
 
@@ -69,22 +73,14 @@ namespace EndabgabeChat {
             else if ((responseText == "false")) {
                 if (type == "signIn") {
                     console.log("Registrieren fehlgeschlagen");
+                    errorMsg.innerHTML = "Registrieren fehlgeschlagen, Daten sind schon vergeben. <br> Bitte versuche es erneut.";
                 }
                 else if (type == "logIn") {
                     console.log("Einloggen fehlgeschlagen");
-                }
-
-
-
-                if (type == "logIn") {
                     errorMsg.innerHTML = "Falsche Einloggdaten! Bitte versuche es erneut. <br> Hast du dich schon Registriert?";
                 }
-                else if (type == "signIn") {
-                    errorMsg.innerHTML = "Registrieren fehlgeschlagen, Daten sind schon vergeben. <br> Bitte versuche es erneut.";
-                }
 
-
-                
+                               
             }
             else {
                 console.log("Failed to fetch");
@@ -103,6 +99,7 @@ namespace EndabgabeChat {
 
     }
 
+    //Chatauswahl im localstorage speichern
     function handleChatAuswahl(_event: Event): void {
         let target: HTMLInputElement = (<HTMLInputElement>_event.target);
         let chat: string = target.getAttribute("id")!;

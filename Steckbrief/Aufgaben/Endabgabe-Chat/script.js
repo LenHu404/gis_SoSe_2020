@@ -21,11 +21,14 @@ var EndabgabeChat;
     ausgabe.setAttribute("style", "display: none");
     handleClickRetrieve();
     let formData;
+    //Funktion um die Nachrichten aus der Datenbank zu holen
     async function handleClickRetrieve() {
+        //Url erstellen mit username und passwort um zu überprüfen ob man richtig eingelogt ist
         let url = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
         let response = await fetch(url);
         let responseText = await response.text();
         console.log(responseText);
+        // Falls die Daten falsch sind, dann werden keine Nachrichten geladen
         if (responseText == "false") {
             console.log("Du bist nicht richtig eingeloggt");
             errorDiv.style.display = "block";
@@ -35,6 +38,7 @@ var EndabgabeChat;
         else {
             errorDiv.style.display = "none";
             let neuNachrichtenZaehler = 0;
+            // Im welchen chat befinden man sich gerade
             if (localStorage.getItem("chat") == "mib") {
                 chatAnzeige1.innerHTML = "MIB-Chat";
                 chatAnzeige2.innerHTML = "HFU-Chat";
@@ -43,17 +47,22 @@ var EndabgabeChat;
                 chatAnzeige1.innerHTML = "HFU-Chat";
                 chatAnzeige2.innerHTML = "MIB-Chat";
             }
+            // Url zum lokalen bzw. Online-Server
             //let url: string = "http://localhost:8100";
             let url = "https://kartoffel-ist-best.herokuapp.com";
+            // Anhängen des Paths für die Anfragefunktion + chat
             url += "/retrieve/" + localStorage.getItem("chat");
             let response = await fetch(url);
             console.log(url);
             console.log(response);
             let responseText = await response.json();
+            // Antwort vom Server als String um ihn dann an den Zeichen }, zu zerteilen
             let splitted = responseText.split("},");
+            //Ausgabefeld finden und zurücksetzten
             let ausgabe = document.getElementById("Ausgabefeld");
             ausgabe.innerHTML = "";
             ausgabe.setAttribute("style", "display: block");
+            //Schleife um die Einzelnen Nachrichten zu erstellen
             for (let i = 0; i < splitted.length - 1; i++) {
                 splitted[i] = splitted[i] + "}";
                 // tslint:disable-next-line: no-any
@@ -85,6 +94,7 @@ var EndabgabeChat;
                 newDiv.appendChild(dateDiv);
                 neuNachrichtenZaehler++;
             }
+            //Nach unten scrollen falls eine Nachricht da ist
             if (!(neuNachrichtenZaehler == nachrichtenZaehler)) {
                 window.scroll({
                     top: ausgabe.offsetHeight,
@@ -95,7 +105,9 @@ var EndabgabeChat;
             }
         }
     }
+    // Funktion um Nchrichten an den Server/ die Datenbank zu schicken
     async function handleClickStore() {
+        // Überprüfen ob man eingeloggt ist
         let url = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
         let formular = document.getElementById("formular");
         let response = await fetch(url);
@@ -115,11 +127,13 @@ var EndabgabeChat;
             url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
             formular.reset();
             console.log("fetch-Url: " + url);
+            // Alle Nachrichten neu laden mit der neuen Nachricht dabei
             handleClickRetrieve();
             let response = await fetch(url);
             console.log("Server: " + response.json());
         }
     }
+    // Funktion für die Emotes
     function handleClickEmote(_event) {
         let target = _event.target;
         let emote = target.getAttribute("id");
@@ -139,6 +153,7 @@ var EndabgabeChat;
             }
         }
     }
+    // Funktion um den Chat zu änder und die Nachrichten neu zu laden
     function chatAendern() {
         let aktuellerchat = localStorage.getItem("chat");
         if (aktuellerchat == "mib")
@@ -147,10 +162,12 @@ var EndabgabeChat;
             localStorage.setItem("chat", "mib");
         handleClickRetrieve();
     }
+    // Abmelden und zurück zur Einloggseite
     function handleAbmelden() {
         localStorage.clear();
         location.assign("https://lenhu404.github.io/gis_SoSe_2020/Steckbrief/Aufgaben/Endabgabe-Chat/EinlogFenster.html");
     }
+    // Die Funktion zum neu laden alle 60 Sekunden ausführen um nach neuen Nachrichten zu schauen
     setInterval(function () {
         handleClickRetrieve();
     }, 60000);
