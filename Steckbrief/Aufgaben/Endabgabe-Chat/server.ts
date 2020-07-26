@@ -84,7 +84,7 @@ export namespace EndabgabeChat {
           mongoDaten = mongoClient.db("Chat").collection("hfu");
           mongoDaten.insertOne(url.query);
           console.log("Nachricht an den Chat hfu geschickt");
-          _response.write("{response: 'Message stored in hfu -chat'} ");
+          _response.write("Message stored in hfu");
           _response.end();
           break;
         }
@@ -92,7 +92,7 @@ export namespace EndabgabeChat {
           mongoDaten = mongoClient.db("Chat").collection("mib");
           mongoDaten.insertOne(url.query);
           console.log("Nachricht an den Chat mib geschickt");
-          _response.write("{response: 'Message stored in mib-chat'} ");
+          _response.write("Message stored in mib");
           _response.end();
           break;
         }
@@ -101,8 +101,8 @@ export namespace EndabgabeChat {
           let _username: string = <string>url.query.username!;
           let _password: string = <string>url.query.password;
 
-          console.log(url.query.username);
-          console.log(url.query);
+          //console.log(url.query.username);
+          //console.log(url.query);
 
           console.log("Login-Versuch mit username:" + _username + " und password:" + _password);
 

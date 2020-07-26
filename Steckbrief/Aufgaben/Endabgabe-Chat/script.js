@@ -27,7 +27,7 @@ var EndabgabeChat;
         let url = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
         let response = await fetch(url);
         let responseText = await response.text();
-        console.log(responseText);
+        console.log("Eingeloggt: " + responseText);
         // Falls die Daten falsch sind, dann werden keine Nachrichten geladen
         if (responseText == "false") {
             console.log("Du bist nicht richtig eingeloggt");
@@ -53,8 +53,8 @@ var EndabgabeChat;
             // Anhängen des Paths für die Anfragefunktion + chat
             url += "/retrieve/" + localStorage.getItem("chat");
             let response = await fetch(url);
-            console.log(url);
-            console.log(response);
+            console.log("fetch-Url: " + url);
+            //console.log(response);
             let responseText = await response.json();
             // Antwort vom Server als String um ihn dann an den Zeichen }, zu zerteilen
             let splitted = responseText.split("},");
@@ -110,6 +110,9 @@ var EndabgabeChat;
         // Überprüfen ob man eingeloggt ist
         let url = "https://kartoffel-ist-best.herokuapp.com/logIn?username=" + localStorage.getItem("username") + "&password=" + localStorage.getItem("password");
         let formular = document.getElementById("formular");
+        formData = new FormData(document.forms[0]);
+        // tslint:disable-next-line: no-any
+        let query = new URLSearchParams(formData);
         let response = await fetch(url);
         let responseText = await response.text();
         if (responseText == "false") {
@@ -117,20 +120,23 @@ var EndabgabeChat;
             formular.reset();
         }
         else {
-            let date = new Date().toLocaleString();
-            formData = new FormData(document.forms[0]);
-            //let url: string = "http://localhost:8100";
-            let url = "https://kartoffel-ist-best.herokuapp.com";
-            url += "/store/" + localStorage.getItem("chat");
-            // tslint:disable-next-line: no-any
-            let query = new URLSearchParams(formData);
-            url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
-            formular.reset();
-            console.log("fetch-Url: " + url);
-            // Alle Nachrichten neu laden mit der neuen Nachricht dabei
-            handleClickRetrieve();
-            let response = await fetch(url);
-            console.log("Server: " + response.json());
+            // if-Abfrage um zu schauen ob eine Nachricht eingegeben wurde
+            if (query.toString() != "message=") {
+                let date = new Date().toLocaleString();
+                //let url: string = "http://localhost:8100";
+                let url = "https://kartoffel-ist-best.herokuapp.com";
+                url += "/store/" + localStorage.getItem("chat");
+                // tslint:disable-next-line: no-any
+                // let query: URLSearchParams = new URLSearchParams(<any>formData);
+                url += "?user=" + localStorage.getItem("username") + "&" + query.toString() + "&" + "date=" + date;
+                formular.reset();
+                console.log("fetch-Url: " + url);
+                // Alle Nachrichten neu laden mit der neuen Nachricht dabei
+                handleClickRetrieve();
+                let response = await fetch(url);
+                let responseText = await response.text();
+                console.log(responseText);
+            }
         }
     }
     // Funktion für die Emotes

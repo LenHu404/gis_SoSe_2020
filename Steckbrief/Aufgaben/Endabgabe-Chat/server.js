@@ -73,7 +73,7 @@ var EndabgabeChat;
                     mongoDaten = mongoClient.db("Chat").collection("hfu");
                     mongoDaten.insertOne(url.query);
                     console.log("Nachricht an den Chat hfu geschickt");
-                    _response.write("{response: 'Message stored in hfu -chat'} ");
+                    _response.write("Message stored in hfu");
                     _response.end();
                     break;
                 }
@@ -81,15 +81,15 @@ var EndabgabeChat;
                     mongoDaten = mongoClient.db("Chat").collection("mib");
                     mongoDaten.insertOne(url.query);
                     console.log("Nachricht an den Chat mib geschickt");
-                    _response.write("{response: 'Message stored in mib-chat'} ");
+                    _response.write("Message stored in mib");
                     _response.end();
                     break;
                 }
                 case "/logIn": {
                     let _username = url.query.username;
                     let _password = url.query.password;
-                    console.log(url.query.username);
-                    console.log(url.query);
+                    //console.log(url.query.username);
+                    //console.log(url.query);
                     console.log("Login-Versuch mit username:" + _username + " und password:" + _password);
                     mongoDaten = mongoClient.db("Chat").collection("user");
                     console.log("FindOne-Ausgabe:");
